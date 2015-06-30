@@ -5,6 +5,42 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class Test06 {
+  static class Key {
+    String id;
+    public Key(String id) {
+      this.id = id;
+    }
+    
+    // 인스턴스 변수의 값이 같으면 같은 해시코드를 리턴한다.
+    @Override
+    public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + ((id == null) ? 0 : id.hashCode());
+      return result;
+    }
+    
+    // 인스턴스 변수의 값이 같으면 true를 리턴한다.
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj)
+        return true;
+      if (obj == null)
+        return false;
+      if (getClass() != obj.getClass())
+        return false;
+      Key other = (Key) obj;
+      if (id == null) {
+        if (other.id != null)
+          return false;
+      } else if (!id.equals(other.id))
+        return false;
+      return true;
+    }
+    
+    
+  }
+  
   static class Member {
     String name;
     String id;
@@ -89,7 +125,10 @@ public class Test06 {
     
   }
   public static void main(String[] args) {
-    int a = 20;
+    Key k1 = new Key("hong");
+    Key k2 = new Key("leem");
+    Key k3 = new Key("yoo");
+    
     Member m1 = new Member(
         "홍길동", "hong", "1111", "hong@test.com", "111-1111", null);
     Member m2 = new Member(
@@ -97,33 +136,20 @@ public class Test06 {
     Member m3 = new Member(
         "유관순", "yoo", "1111", "yoo@test.com", "111-1113", null);
 
-    HashMap<String,Member> map = new HashMap<String,Member>();
-    map.put("hong", m1);
-    map.put("leem", m2);
-    map.put("yoo", m3);
-    map.put("hong", m3);
+    HashMap<Key,Member> map = new HashMap<Key,Member>();
+    map.put(k1, m1);
+    map.put(k2, m2);
+    map.put(k3, m3);
+
+    // 값을 찾는 절차
+    // 1) 키의 해시코드 값으로 보관소에서 찾는다.
+    // 2) 보관소에 들어있는 키 객체와 파라미터로 넘긴 키 객체가 같은지 
+    //    equals()를 호출하여 비교한다.
+    // 
+    System.out.println(map.get(k1));
     
-    // 값만 꺼내기
-    for (Member m : map.values()) {
-      System.out.println(m);
-    }
-    System.out.println("-------------------------------------");
-    
-    // 키만 꺼내기
-    for (String key : map.keySet()) {
-      System.out.println(key);
-    }
-    System.out.println("-------------------------------------");
-    
-    // 키와 값을 함께 꺼내기
-    for ( Entry<String,Member> entry: map.entrySet()) {
-      System.out.printf("%s: %s\n", entry.getKey(), entry.getValue());
-    }
-    System.out.println("-------------------------------------");
-    
-    // 키를 사용하여 특정 데이터를 꺼내기
-    System.out.println(map.get("hong"));
-    
+    Key k4 = new Key("hong");
+    System.out.println(map.get(k4));
     
   }
 

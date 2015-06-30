@@ -62,7 +62,8 @@ Test05.java
 
 Test06.java
   - 키 클래스를 만들기
-  - hashCode()와 equals()
+  - 키로 사용할 클래스는 반드시 hashCode()와 equals()를 오버라이딩하라!
+  
     
       
     
