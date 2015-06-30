@@ -63,10 +63,17 @@ Test05.java
 Test06.java
   - 키 클래스를 만들기
   - 키로 사용할 클래스는 반드시 hashCode()와 equals()를 오버라이딩하라!
-  
+
+Test07.java
+  - 랩퍼 클래스의 활용
+  - boxing, unboxing => auto-boxing  
     
-      
-    
+[step03]
+Test01.java
+  - 셋터 메서드에 체이닝 호출 적용     
+
+Test02.java
+  - Class 클래스를 사용한 객체 생성     
     
     
     
