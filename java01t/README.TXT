@@ -56,7 +56,14 @@ Test03.java
   
 Test04.java
   - Object.equals() 의미
-  
+
+Test05.java
+  - HashMap 사용
+
+Test06.java
+  - 키 클래스를 만들기
+  - hashCode()와 equals()
+    
       
     
     

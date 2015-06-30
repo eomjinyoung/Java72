@@ -1,10 +1,10 @@
 package net.bitacademy.java72.step02;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
-public class Test04 {
+public class Test05 {
   static class Member {
     String name;
     String id;
@@ -86,53 +86,45 @@ public class Test04 {
     
     
     
+    
   }
   public static void main(String[] args) {
     int a = 20;
     Member m1 = new Member(
         "홍길동", "hong", "1111", "hong@test.com", "111-1111", null);
     Member m2 = new Member(
-        "홍길동", "hong", "1111", "hong@test.com", "111-1111", null);
-  
-    if (m1 != m2) {
-      System.out.println("m1 != m2");
-    }
+        "임꺽정", "leem", "1111", "leem@test.com", "111-1112", null);
+    Member m3 = new Member(
+        "유관순", "yoo", "1111", "yoo@test.com", "111-1113", null);
+
+    HashMap<String,Member> map = new HashMap<String,Member>();
+    map.put("hong", m1);
+    map.put("leem", m2);
+    map.put("yoo", m3);
+    map.put("hong", m3);
     
-    // Object.equals() => 인스턴스가 다르면 false를 리턴한다.
-    // => 재정의 해야만 같은 데이터를 갖는 경우 true를 리턴할 수 있다.
-    if (m1.equals(m2)) {
-      System.out.println("m1.equals(m2)");
+    // 값만 꺼내기
+    for (Member m : map.values()) {
+      System.out.println(m);
     }
+    System.out.println("-------------------------------------");
     
-    String s1 = new String("Hello");
-    String s2 = new String("Hello");
-    if (s1 != s2) {
-      System.out.println("s1 != s2");
+    // 키만 꺼내기
+    for (String key : map.keySet()) {
+      System.out.println(key);
     }
+    System.out.println("-------------------------------------");
     
-    if (s1.equals(s2)) {
-      System.out.println("s1.equals(s2)");
+    // 키와 값을 함께 꺼내기
+    for ( Entry<String,Member> entry: map.entrySet()) {
+      System.out.printf("%s: %s\n", entry.getKey(), entry.getValue());
     }
+    System.out.println("-------------------------------------");
     
-    StringBuffer sb1 = new StringBuffer("Hello");
-    StringBuffer sb2 = new StringBuffer("Hello");
-    if (sb1 != sb2) {
-      System.out.println("sb1 != sb2");
-    }
+    // 키를 사용하여 특정 데이터를 꺼내기
+    System.out.println(map.get("hong"));
     
-    if (sb1.equals(sb2)) {
-      System.out.println("sb1.equals(sb2)");
-    }
     
-    Integer i1 = new Integer(10);
-    Integer i2 = new Integer(10);
-    if (i1 != i2) {
-      System.out.println("i1 != i2");
-    }
-    
-    if (i1.equals(i2)) {
-      System.out.println("i1.equals(i2)");
-    } 
   }
 
 }
