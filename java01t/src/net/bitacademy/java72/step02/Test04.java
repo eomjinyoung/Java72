@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
-public class Test02 {
+public class Test04 {
   static class Member {
     String name;
     String id;
@@ -29,41 +29,32 @@ public class Test02 {
           + ", email=" + email + ", tel=" + tel + ", regDate=" + regDate + "]";
     }
     
-    
-    
   }
   public static void main(String[] args) {
     int a = 20;
     Member m1 = new Member(
         "홍길동", "hong", "1111", "hong@test.com", "111-1111", null);
     Member m2 = new Member(
-        "임꺽정", "leem", "1111", "leem@test.com", "111-1112", null);
-    Member m3 = new Member(
-        "유관순", "yoo", "1111", "yoo@test.com", "111-1113", null);
-
-    //m1 = m2;
-    System.out.println(m1.hashCode());
-    System.out.println(m2.hashCode());
-    System.out.println(m3.hashCode());
-    
-    // ArrayList를 이용하여 객체 보관하기
-    ArrayList<Member> list = new ArrayList<Member>();
-    list.add(m1); // 인스턴스 주소를 보관한다.
-    list.add(m2);
-    list.add(m3);
-    // 중복 데이터의 허용!
-    list.add(m1);
-    list.add(m2);
-    list.add(m3);
-    
-    /*
-    for (int i = 0; i < list.size(); i++) {
-      System.out.println(list.get(i));
-    }*/
-    
-    for (Member m : list) {
-      System.out.println(m);
+        "홍길동", "hong", "1111", "hong@test.com", "111-1111", null);
+  
+    if (m1 != m2) {
+      System.out.println("m1 != m2");
     }
+    
+    if (!m1.equals(m2)) {
+      System.out.println("!m1.equals(m2)");
+    }
+    
+    String s1 = new String("Hello");
+    String s2 = new String("Hello");
+    if (s1 != s2) {
+      System.out.println("s1 != s2");
+    }
+    
+    if (s1.equals(s2)) {
+      System.out.println("s1.equals(s2)");
+    }
+
   }
 
 }
