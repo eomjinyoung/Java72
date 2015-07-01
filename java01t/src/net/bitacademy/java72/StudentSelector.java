@@ -18,6 +18,7 @@ public class StudentSelector {
       no = (int)(Math.random() * 24);
       Thread.sleep(500);
     }
+    Thread.sleep(2000);
     System.out.println(students[no]);
     
   }
