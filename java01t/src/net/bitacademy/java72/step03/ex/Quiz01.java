@@ -24,7 +24,7 @@ public class Quiz01 {
     // Math를 다룰 도구를 얻는다.
     c = Class.forName("java.lang.Math");
     // abs를 다룰 도구를 얻는다.
-    m = c.getMethod("abs",int.class);
+    m = c.getMethod("abs", int.class);
     // 메소드를 호출한다.
     int b = (int)m.invoke(null, -5);
     // 값을 출력한다.

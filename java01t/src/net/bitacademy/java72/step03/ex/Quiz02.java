@@ -14,7 +14,6 @@ public class Quiz02 {
     //Member 인스턴스틑 만들자.
     Member m = (Member)c.newInstance();
     
-    
     // 2. Class 도구를 이용하여 Member 클래스로부터 셋터 메서드만 추출하여
     //    맵 객체에 저장하라. 저장할 때 키 값은 메서드 이름을 사용하라.
     HashMap<String,Method> methodMap = new HashMap<String,Method>();
