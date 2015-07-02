@@ -7,5 +7,10 @@ public class Hello {
     System.out.println("오호라...!");
     System.out.println("오호라222...!");
   }
+  
+  public static int plus(int a, int b) {
+    int r = a + b;
+    return r;
+  }
 
 }
