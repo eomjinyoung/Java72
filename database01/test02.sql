@@ -38,12 +38,76 @@ create table board3 (
 후보키(candidate key): 키들 중에서 가장 적은 컬럼을 갖는 키.최소 키.
 주키(Primary Key): DBMS 관리자가 후보 키 중에서 어떤 것을 식별자로 사용할 지 결정한 것.
  */
+/*
+primary key 설정 방법1.
+컬럼명 타입 ... primary key
+ */
+create table board4 (
+  bno   int not null,
+  title   varchar(255) not null primary key,
+  content mediumtext,
+  views int default 0,
+  cre_dt  datetime not null,
+  pwd   varchar(20)
+);
 
+create table board5 (
+  bno   int not null primary key,
+  title   varchar(255) not null ,
+  content mediumtext,
+  views int default 0,
+  cre_dt  datetime not null,
+  pwd   varchar(20)
+);
 
+/*
+primary key 설정 방법2.
+컬럼명 타입 ..., 
+컬럼명 타입 ...,
+constraint board6_pk primary key (컬럼명,...)
+ */
+create table board6 (
+  bno   int not null,
+  title   varchar(255) not null ,
+  content mediumtext,
+  views int default 0,
+  cre_dt  datetime not null,
+  pwd   varchar(20),
+  constraint board6_pk primary key (bno)
+);
 
+/*
+primary key 설정 방법3.
+alter table 테이블명 
+  add constraint board6_pk primary key (컬럼명,...)
 
+ */
+create table board7 (
+  bno   int not null,
+  title   varchar(255) not null ,
+  content mediumtext,
+  views int default 0,
+  cre_dt  datetime not null,
+  pwd   varchar(20)
+);
 
+alter table board7
+  add constraint board7_pk primary key (bno);
 
+/*
+여러 개의 컬럼을 묶어 primary key로 사용하기
+ */
+create table board8 (
+  bno   int not null,
+  title   varchar(255) not null ,
+  content mediumtext,
+  views int default 0,
+  cre_dt  datetime not null,
+  pwd   varchar(20)
+);
+
+alter table board8
+  add constraint board8_pk primary key (bno,title);
 
 
 
