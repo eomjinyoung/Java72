@@ -59,8 +59,20 @@ alter table board10
   add column att_file3 varchar(255);   
   
   
-  
-  
+/*
+테스트 데이터 입력
+ */  
+insert into board10(title, cre_dt) values('aaaa', now());
+insert into board10(title, cre_dt) values('bbbb', now());
+insert into board10(title, cre_dt) values('cccc', now());
+insert into board10(title, cre_dt) values('dddd', now());
+insert into board10(title, cre_dt) values('eeee', now());
+insert into board10(title, cre_dt) values('ffff', now());
+insert into board10(title, cre_dt) values('gggg', now());
+insert into board10(title, cre_dt) values('hhhh', now());
+insert into board10(title, cre_dt) values('iiii', now());
+insert into board10(title, cre_dt) values('jjjj', now());
+
   
   
   
