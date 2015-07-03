@@ -95,7 +95,14 @@ Test03.java
   - CPU Scheduling : 여러 프로세스와 스레드가 CPU를 공유하기 때문에
                      실행 순서를 관리할 필요가 있다. OS 일이다.     
   - 스레드 생성 및 테스트   
-    
+
+Test04.java
+  - Critical Section(Region) <-> Thread Safe
+  - Semaphore(n)
+  - Semaphore(1) == Mutex
+  - sychronized
+  
+      
     
     
     
