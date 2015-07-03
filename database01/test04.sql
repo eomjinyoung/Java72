@@ -68,12 +68,29 @@ from board10;
 select concat('(',bno,')',title,'(',cre_dt,')') as boardInfo
 from board10;
 
+-- 날짜 값을 특정 형식의 문자열로 바꾸기
+select concat('(',bno,')',title,'(',date_format(cre_dt,'%Y-%m-%d'),')') as boardInfo
+from board10;
 
+-- 출력 결과를 정렬하기
+-- order by 컬럼명 [asc(기본)|desc] 
+select bno, title, cre_dt
+from board10
+order by bno;
 
+select bno, title, cre_dt
+from board10
+order by bno asc;
 
+select bno, title, cre_dt
+from board10
+order by bno desc;
 
-
-
+-- 실행 순서: from --> where --> order by --> select 
+select title, cre_dt
+from board10
+where bno > 2
+order by bno desc;
 
 
 
