@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/* DBMS에서 결과 가져오기
+/* DBMS에서 가져온 결과를 출력하기
  */
-public class Test07 {
+public class Test08 {
 
   public static void main(String[] args) throws Exception {
     Connection con = null;
@@ -46,6 +46,14 @@ public class Test07 {
           + " FROM board10"
           + " ORDER BY bno desc");
       System.out.println("결과를 가져올 도구 준비 완료!");
+      
+      // DBMS 서버에서 한 개의 레코드를 가져오기
+      while (rs.next()) {
+        // 레코드에서 컬럼 값을 꺼내 출력하기 
+        System.out.printf("%d, %s, %s, %d\n",
+            rs.getInt("bno"), rs.getString("title"),
+            rs.getDate("cre_dt"), rs.getInt("views"));
+      }
 
     } catch (SQLException e) {
       e.printStackTrace();
