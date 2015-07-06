@@ -104,7 +104,39 @@ Test04.java
   
 [step05] - JDBC Programming
 Test01.java
-  - java.sql.Driver 구현체를 로딩       
+  - java.sql.Driver 구현체를 로딩  
+  - Class.forName() 사용
+       
+Test02.java
+  - java.sql.Driver 구현체를 로딩  
+  - DriverManager.registerDriver() 사용
+
+Test03.java
+  - java.sql.Driver 구현체를 로딩  
+  - Class.forName() 사용 이점.
+    => 외부에서 Driver 클래스 이름을 전달할 수 있다.
+
+Test04.java
+  - DBMS에 연결하기: java.sql.Connection 구현체
+
+Test05.java
+  - SQL 질의를 도와줄 객체 얻기 : java.sql.Statement 구현체            
+
+Test06.java
+  - 오류가 발생하더라도 Connection 객체의 연결을 제대로 끊기.
+
+Test07.java
+  - 질의 하기 : SELECT 문 실행
+  - 결과 가져오기 : ResultSet 사용
+      
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
