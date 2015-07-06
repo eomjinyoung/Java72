@@ -129,6 +129,13 @@ Test07.java
   - 질의 하기 : SELECT 문 실행
   - 결과 가져오기 : ResultSet 사용
       
+Test08.java
+  - 질의 결과 출력하기
+  - next(), getXXX() 사용
+  
+Test09.java
+  - 데이터 입력 : INSERT 문 실행
+  
     
     
     
