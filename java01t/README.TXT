@@ -135,6 +135,23 @@ Test08.java
   
 Test09.java
   - 데이터 입력 : INSERT 문 실행
+
+Test10.java
+  - 데이터 변경 : UPDATE 문 실행
+  
+Test11.java
+  - 데이터 삭제 : DELETE 문 실행
+
+[중간 경진 대회]
+BoardCreate.java 
+BoardRead.java
+BoardUpdate.java
+BoardDelete.java
+* 특별 주문
+BoardDelete 실행 
+삭제할 게시물 번호> 11(엔터)
+
+    
   
     
     
