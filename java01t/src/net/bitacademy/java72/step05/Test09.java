@@ -20,7 +20,8 @@ public class Test09 {
       // 드라이버 관리자에게 DBMS의 연결을 요청한다.
       con = DriverManager.getConnection(
           /* JDBC URL: DBMS 연결 정보. JDBC 드라이버마다 약간 씩 다르다. */
-          "jdbc:mysql://localhost:3306/java72db",    
+          //"jdbc:mysql://localhost:3306/java72db?useUnicode=yes&characterEncoding=UTF-8",
+          "jdbc:mysql://localhost:3306/java72db",
           "java72", /* 접속할 때 사용자 ID */
           "java72"); /* 사용자 암호 */
       System.out.println("연결 성공입니다.");
@@ -37,7 +38,7 @@ public class Test09 {
       // 예) DELETE문 -> 삭제한 레코드 개수
       int count = stmt.executeUpdate(
           "INSERT INTO board10(title,content,pwd,cre_dt)"
-          + " values('aaaa','aaaaaaa','1111',now())");
+          + " values('오호라..','aaaaaaa','1111',now())");
       System.out.printf("입력 완료!: %d\n", count);
       
     } catch (SQLException e) {
