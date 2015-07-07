@@ -187,8 +187,11 @@ v07.BoardApp
     => Connection 변수를 인스턴스 변수로 전환한다.
     => Connection 객체를 생성자에서 준비한다.         
   
-  
-  
+v08.BoardApp
+  - Connection 관리 기능을 준비한다. => DBConnectionPool
+  - "Pooling 기법"
+    => 적은 자원을 효율적으로 사용하기 위해 객체를 공유하는 기법  
+  - 필요한 객체를 외부에서 제공(주입; Dependency Injection(DI) => IoC)
   
   
   
