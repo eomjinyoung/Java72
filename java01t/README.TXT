@@ -172,7 +172,12 @@ v03.BoardApp
 
 v04.BoardApp
   - 각 명령어를 처리하는 코드를 별도의 메서드를 분리.
-     
+
+v05.BoardApp
+  - 데이터를 다루는 메서드를 별도의 클래스로 분리한다.
+    => Data Access Object(DAO)
+    => BoardDao 클래스 작성
+         
   
   
   
