@@ -3,7 +3,6 @@ package net.bitacademy.java72.step06.v03;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
@@ -81,11 +80,57 @@ public class BoardApp {
         }
       
       } else if (command.equals("update")) {
-        System.out.println("변경 성공!");
+        System.out.print("변경할 게시물 번호? ");
+        String no = scanner.nextLine();
+        
+        Connection con = null;
+        Statement stmt = null;
+        
+        try {
+          Class.forName("com.mysql.jdbc.Driver");
+          con = DriverManager.getConnection(
+              "jdbc:mysql://localhost:3306/java72db",
+              "java72", 
+              "java72"); 
+          stmt = con.createStatement();
+          int count = stmt.executeUpdate(
+              "UPDATE board10 SET title='변경변경' WHERE bno=" + no);
+          System.out.printf("변경 완료!: %d\n", count);
+          
+        } catch (Exception e) {
+          e.printStackTrace();
+
+        } finally {
+          try {stmt.close();} catch (Exception e) {}
+          try {con.close();} catch (Exception e) {}
+        }
       
       } else if (command.equals("delete")) {
-        System.out.println("삭제 성공!");
-      
+        Connection con = null;
+        Statement stmt = null;
+        
+        try {
+          Class.forName("com.mysql.jdbc.Driver");
+          con = DriverManager.getConnection(
+              "jdbc:mysql://localhost:3306/java72db",
+              "java72",
+              "java72"); 
+          stmt = con.createStatement();
+          
+          System.out.print("삭제할 게시물 번호? ");
+          String no = scanner.nextLine();
+          
+          int count = stmt.executeUpdate(
+              "DELETE FROM board10 WHERE bno=" + no);
+          System.out.printf("삭제 완료!: %d\n", count);
+          
+        } catch (Exception e) {
+          e.printStackTrace();
+
+        } finally {
+          try {stmt.close();} catch (Exception e) {}
+          try {con.close();} catch (Exception e) {}
+        }
       } else if (command.equals("quit")) {
         System.out.println("안녕히 가세요!");
       
