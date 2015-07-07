@@ -180,7 +180,12 @@ v05.BoardApp
 
 v06.BoardApp
   - BoardDao에서 공통으로 사용할 Connection 객체를 static 변수로 공유한다.
-    => static 블록 사용         
+    => static 블록 사용
+    
+v07.BoardApp
+  - BoardDao를 여러 DB에 동시에 연결할 수 있도록 연결 정보를 개별관리한다.
+    => Connection 변수를 인스턴스 변수로 전환한다.
+    => Connection 객체를 생성자에서 준비한다.         
   
   
   
