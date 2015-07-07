@@ -36,9 +36,15 @@ public class Test09 {
       // 예) INSERT문 -> 입력한 레코드 개수
       // 예) UPDATE문 -> 변경한 레코드 개수
       // 예) DELETE문 -> 삭제한 레코드 개수
+      String title = "제목이래....";
+      String content = "내용이래...";
+      String password = "1111";
+      
       int count = stmt.executeUpdate(
           "INSERT INTO board10(title,content,pwd,cre_dt)"
-          + " values('오호라..','aaaaaaa','1111',now())");
+          + " values('" + title + "','" 
+          + content + "','" 
+          + password + "',now())");
       System.out.printf("입력 완료!: %d\n", count);
       
     } catch (SQLException e) {

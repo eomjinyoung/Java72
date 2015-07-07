@@ -153,7 +153,10 @@ BoardDelete 실행
 
 Test12.java
   - SQL 문에 데이터를 넣는 쉬운 방법: PreparedStatement
-  
+
+Test13.java
+  - SQL 문에 데이터를 넣는 쉬운 방법: PreparedStatement
+  - Statement vs PreparedStatement  
   
   
   
