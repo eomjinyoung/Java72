@@ -158,7 +158,13 @@ Test13.java
   - SQL 문에 데이터를 넣는 쉬운 방법: PreparedStatement
   - Statement vs PreparedStatement  
   
-  
+[step06]
+  - 게시물 애플리케이션을 단계적으로 발전시킨다.
+  - 객체지향 프로그래밍 개념을 익힌다.
+v01.BoardApp
+  - 사용자에게 프롬프트를 출력한다.
+
+
   
   
   
