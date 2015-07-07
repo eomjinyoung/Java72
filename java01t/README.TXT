@@ -166,7 +166,13 @@ v01.BoardApp
 
 v02.BoardApp
   - 사용자가 입력한 명령어를 분기 처리한다.
-  
+
+v03.BoardApp
+  - 각 명령어에 대해 JDBC 적용
+
+v04.BoardApp
+  - 각 명령어를 처리하는 코드를 별도의 메서드를 분리.
+     
   
   
   
