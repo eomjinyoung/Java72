@@ -151,7 +151,26 @@ BoardDelete.java
 BoardDelete 실행 
 삭제할 게시물 번호> 11(엔터)
 
-    
+Test12.java
+  - SQL 문에 데이터를 넣는 쉬운 방법: PreparedStatement
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
   
     
     
