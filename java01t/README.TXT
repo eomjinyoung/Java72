@@ -177,7 +177,10 @@ v05.BoardApp
   - 데이터를 다루는 메서드를 별도의 클래스로 분리한다.
     => Data Access Object(DAO)
     => BoardDao 클래스 작성
-         
+
+v06.BoardApp
+  - BoardDao에서 공통으로 사용할 Connection 객체를 static 변수로 공유한다.
+    => static 블록 사용         
   
   
   
