@@ -198,12 +198,17 @@ v09.BoardApp
   - 두 클래스가 데이터를 주고 받을 수 있도록 값을 전달할 때 사용하는 객체 추가
     => Board
     => DTO(Data Transfer Object), VO(Value Object)    
-  
-v10.BoardApp
+
+[step07]  
+v01.BoardApp
   - Persistence Framework 사용
   - MyBatis 프레임워크 사용
   - SQL Mapper
-  - www.mybatis.org
+  - www.mybatis.org로부터 라이브러리 파일 다운로드.
+  - $프로젝트/libs/ 디렉토리에 관련 .jar 파일 복사
+  - 1) mybatis 설정 파일 준비
+  - 2) SQL문을 담고 있는 파일 준비
+  - 3) mybatis가 제공하는 객체를 사용하여 질의를 수행
     
   
   

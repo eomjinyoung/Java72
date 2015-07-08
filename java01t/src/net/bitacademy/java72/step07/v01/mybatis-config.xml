@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- DBMS 정보를 설정한다. -->
+  <environments default="development">
+  
+    <!-- DBMS를 여러 개 설정할 수 있다. -->
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/java72db"/>
+        <property name="username" value="java72"/>
+        <property name="password" value="java72"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <!-- SQL문이 들어있는 파일의 위치를 지정한다. -->
+  <mappers>
+    <mapper resource="net/bitacademy/java72/step07/v01/BoardDao.xml"/>
+  </mappers>
+</configuration>
+
+
+
+
+
+

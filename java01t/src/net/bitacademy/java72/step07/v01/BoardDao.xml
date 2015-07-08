@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+namespace 속성
+- SQL문을 찾을 때 주소로 사용한다.
+- 유지보수 하기 좋게 의미있는 이름을 지정하라.
+
+ -->  
+<mapper namespace="net.bitacademy.java72.step07.v01.BoardDao">
+  <select id="list" resultType="net.bitacademy.java72.step07.v01.Board">
+    SELECT bno,title,cre_dt,views
+    FROM board10
+    ORDER BY bno desc
+  </select>
+  <!--  
+  <insert id=""></insert>
+  <update id=""></update>
+  <delete id=""></delete>
+  -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
