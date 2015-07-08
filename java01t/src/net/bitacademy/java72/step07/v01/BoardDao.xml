@@ -9,9 +9,19 @@ namespace 속성
 
  -->  
 <mapper namespace="net.bitacademy.java72.step07.v01.BoardDao">
+
+  <!-- select 한 결과를 Board 객체에 담을 때,
+       컬럼 이름과 일치하는 프로퍼티(setXxx())를 찾는다.
+       만약 컬럼 이름과 프로퍼티 이름이 다르다면,
+       컬럼의 별명을 프로퍼티 이름과 같게 하라!
+   -->
   <select id="list" 
           resultType="net.bitacademy.java72.step07.v01.Board">
-    SELECT bno,title,cre_dt,views
+    SELECT 
+      bno as no, 
+      title, 
+      cre_dt as createDate, 
+      views as viewCount
     FROM board10
     ORDER BY bno desc
   </select>
@@ -34,9 +44,24 @@ namespace 속성
   <delete id="delete" parameterType="int">
     DELETE FROM board10 WHERE bno=#{value}
   </delete>
-  <!--  
-  <update id=""></update>
-  -->
+
+  <update id="update" 
+          parameterType="net.bitacademy.java72.step07.v01.Board">
+    UPDATE board10 SET 
+      title=#{title},
+      content=#{content} 
+    WHERE bno=#{no}      
+  </update>
+  
+  <select id="get" parameterType="int"
+          resultType="net.bitacademy.java72.step07.v01.Board">
+    SELECT 
+      bno as no,
+      title,
+      content
+    FROM board10
+    WHERE bno=#{value}
+  </select>
 </mapper>
 
 

@@ -1,7 +1,12 @@
 package net.bitacademy.java72.step07.v01;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class BoardApp {
   static Scanner scanner;
@@ -9,14 +14,24 @@ public class BoardApp {
   public static void main(String[] args) {
     scanner = new Scanner(System.in);
     String command = null;
+    BoardDao boardDao = null;
     
-    DBConnectionPool dbPool = new DBConnectionPool(
-        "com.mysql.jdbc.Driver",
-        "jdbc:mysql://localhost:3306/java72db",    
-        "java72", 
-        "java72");
+    try {
+      // mybatis 설정 파일이 있는 경로를 지정한다.
+      String resource = "net/bitacademy/java72/step07/v01/mybatis-config.xml";
+      // 위에서 가리키는 경로에서 mybatis 설정 파일을 읽을 도구를 준비한다.
+      InputStream inputStream = Resources.getResourceAsStream(resource);
+      // mybatis 설정 파일에 맞추어 SqlSessionFactory를 준비한다.
+      SqlSessionFactory sqlSessionFactory = 
+          new SqlSessionFactoryBuilder().build(inputStream);
     
-    BoardDao boardDao = new BoardDao(dbPool);
+      boardDao = new BoardDao();
+      boardDao.setSqlSessionFactory(sqlSessionFactory); // 의존 객체 주입
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
     
     do {
       System.out.print("명령> ");
@@ -94,8 +109,6 @@ public class BoardApp {
       
       
     } while (!command.toLowerCase().equals("quit"));
-    
-    dbPool.closeAll();
     
     scanner.close();
   }
