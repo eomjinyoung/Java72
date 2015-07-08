@@ -1,12 +1,9 @@
 package net.bitacademy.java72.step07.v01;
 
-import java.io.InputStream;
 import java.util.List;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class BoardDao {
   SqlSessionFactory sqlSessionFactory;
@@ -18,7 +15,6 @@ public class BoardDao {
   public List<Board> list() {
     SqlSession sqlSession = null;
     try {
-      
       // SqlSessionFactory 클래스로부터 실제 SQL 작업을 수행할 SqlSession을 얻는다.
       sqlSession = sqlSessionFactory.openSession();
 
@@ -38,14 +34,15 @@ public class BoardDao {
   public int delete(int no) {
     SqlSession sqlSession = null;
     try {
-      String resource = "net/bitacademy/java72/step07/v01/mybatis-config.xml";
-      InputStream inputStream = Resources.getResourceAsStream(resource);
-      SqlSessionFactory sqlSessionFactory = 
-          new SqlSessionFactoryBuilder().build(inputStream);
       sqlSession = sqlSessionFactory.openSession();
-      return sqlSession.delete(
+      int count = sqlSession.delete(
           "net.bitacademy.java72.step07.v01.BoardDao.delete",
           no);
+      /* DML(Data Manipulation Language; insert, update, delete)
+       * 명령의 결과를 실제 테이블에 반영하라고 지시한다.
+       */
+      sqlSession.commit();
+      return count;
       
     } catch (Exception e) {
       e.printStackTrace();
@@ -59,14 +56,12 @@ public class BoardDao {
   public int update(Board board) {
     SqlSession sqlSession = null;
     try {
-      String resource = "net/bitacademy/java72/step07/v01/mybatis-config.xml";
-      InputStream inputStream = Resources.getResourceAsStream(resource);
-      SqlSessionFactory sqlSessionFactory = 
-          new SqlSessionFactoryBuilder().build(inputStream);
       sqlSession = sqlSessionFactory.openSession();
-      return sqlSession.update(
+      int count = sqlSession.update(
           "net.bitacademy.java72.step07.v01.BoardDao.update",
           board);
+      sqlSession.commit();
+      return count;
       
     } catch (Exception e) {
       e.printStackTrace();
@@ -80,14 +75,12 @@ public class BoardDao {
   public int insert(Board board) {
     SqlSession sqlSession = null;
     try {
-      String resource = "net/bitacademy/java72/step07/v01/mybatis-config.xml";
-      InputStream inputStream = Resources.getResourceAsStream(resource);
-      SqlSessionFactory sqlSessionFactory = 
-          new SqlSessionFactoryBuilder().build(inputStream);
       sqlSession = sqlSessionFactory.openSession();
-      return sqlSession.insert(
+      int count = sqlSession.insert(
           "net.bitacademy.java72.step07.v01.BoardDao.insert",
           board);
+      sqlSession.commit();
+      return count;
       
     } catch (Exception e) {
       e.printStackTrace();
@@ -101,10 +94,6 @@ public class BoardDao {
   public Board get(int no) {
     SqlSession sqlSession = null;
     try {
-      String resource = "net/bitacademy/java72/step07/v01/mybatis-config.xml";
-      InputStream inputStream = Resources.getResourceAsStream(resource);
-      SqlSessionFactory sqlSessionFactory = 
-          new SqlSessionFactoryBuilder().build(inputStream);
       sqlSession = sqlSessionFactory.openSession();
       return sqlSession.selectOne(
           "net.bitacademy.java72.step07.v01.BoardDao.get",
