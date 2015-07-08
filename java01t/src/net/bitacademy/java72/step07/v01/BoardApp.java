@@ -81,7 +81,7 @@ public class BoardApp {
         
       } else if (command.equals("delete")) {
         System.out.print("삭제할 게시물 번호? ");
-        String no = scanner.nextLine();
+        int no = Integer.parseInt(scanner.nextLine());
         
         boardDao.delete(no);
         

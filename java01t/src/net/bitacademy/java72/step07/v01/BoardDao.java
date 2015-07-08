@@ -29,7 +29,8 @@ public class BoardDao {
       InputStream inputStream = Resources.getResourceAsStream(resource);
       
       // mybatis 설정 파일에 맞추어 SqlSessionFactory를 준비한다.
-      SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+      SqlSessionFactory sqlSessionFactory = 
+          new SqlSessionFactoryBuilder().build(inputStream);
       
       // SqlSessionFactory 클래스로부터 실제 SQL 작업을 수행할 SqlSession을 얻는다.
       sqlSession = sqlSessionFactory.openSession();
@@ -47,23 +48,24 @@ public class BoardDao {
     }
   }
   
-  public void delete(String no) {
-    Connection con = null;
-    Statement stmt = null;
-    
+  public int delete(int no) {
+    SqlSession sqlSession = null;
     try {
-      con = dbPool.getConnection();
-      stmt = con.createStatement();
-      int count = stmt.executeUpdate(
-          "DELETE FROM board10 WHERE bno=" + no);
-      System.out.printf("삭제 완료!: %d\n", count);
+      String resource = "net/bitacademy/java72/step07/v01/mybatis-config.xml";
+      InputStream inputStream = Resources.getResourceAsStream(resource);
+      SqlSessionFactory sqlSessionFactory = 
+          new SqlSessionFactoryBuilder().build(inputStream);
+      sqlSession = sqlSessionFactory.openSession();
+      return sqlSession.delete(
+          "net.bitacademy.java72.step07.v01.BoardDao.delete",
+          no);
       
     } catch (Exception e) {
       e.printStackTrace();
-
+      return 0;
+      
     } finally {
-      try {stmt.close();} catch (Exception e) {}
-      dbPool.returnConnection(con);
+      sqlSession.close();
     }
   }
 
@@ -90,25 +92,23 @@ public class BoardDao {
   }
 
   public int insert(Board board) {
-    Connection con = null;
-    PreparedStatement stmt = null;
-    
+    SqlSession sqlSession = null;
     try {
-      con = dbPool.getConnection();
-      stmt = con.prepareStatement( 
-          "INSERT INTO board10(title,content,pwd,cre_dt)"
-          + " values(?, ?, ?, now())");
-      stmt.setString(1, board.getTitle());
-      stmt.setString(2, board.getContent());
-      stmt.setString(3, board.getPassword());
-      return stmt.executeUpdate();
+      String resource = "net/bitacademy/java72/step07/v01/mybatis-config.xml";
+      InputStream inputStream = Resources.getResourceAsStream(resource);
+      SqlSessionFactory sqlSessionFactory = 
+          new SqlSessionFactoryBuilder().build(inputStream);
+      sqlSession = sqlSessionFactory.openSession();
+      return sqlSession.insert(
+          "net.bitacademy.java72.step07.v01.BoardDao.insert",
+          board);
       
     } catch (Exception e) {
       e.printStackTrace();
       return 0;
+      
     } finally {
-      try {stmt.close();} catch (Exception e) {}
-      dbPool.returnConnection(con);
+      sqlSession.close();
     }
   }
 
