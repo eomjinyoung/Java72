@@ -74,9 +74,9 @@ public class BoardApp {
         // 입력 받은 내용으로 게시물을 변경한다.
         int count = boardDao.update(board);
         if (count == 0) {
-          System.out.println("입력 실패!");
+          System.out.println("변경 실패!");
         } else {
-          System.out.println("입력 성공!");
+          System.out.println("변경 성공!");
         }
         
       } else if (command.equals("delete")) {

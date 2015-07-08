@@ -199,7 +199,12 @@ v09.BoardApp
     => Board
     => DTO(Data Transfer Object), VO(Value Object)    
   
-  
+v10.BoardApp
+  - Persistence Framework 사용
+  - MyBatis 프레임워크 사용
+  - SQL Mapper
+  - www.mybatis.org
+    
   
   
   
