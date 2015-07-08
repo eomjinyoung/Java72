@@ -209,7 +209,17 @@ v01.BoardApp
   - 1) mybatis 설정 파일 준비
   - 2) SQL문을 담고 있는 파일 준비
   - 3) mybatis가 제공하는 객체를 사용하여 질의를 수행
+
+v02.BoardApp
+  - Mybatis <resultmap> 활용
+    => resultType의 프로퍼티와 이름을 같게 하기 위해 별명을 부여할 필요가 없다.
     
+  - Value Object의 별명 활용
+  <typeAliases>
+    <typeAlias type="net.bitacademy.java72.step07.v02.Board"
+               alias="Board"/>
+  </typeAliases>
+      
   
   
   
