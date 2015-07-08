@@ -193,7 +193,11 @@ v08.BoardApp
     => 적은 자원을 효율적으로 사용하기 위해 객체를 공유하는 기법  
   - 필요한 객체를 외부에서 제공(주입; Dependency Injection(DI) => IoC)
   
-  
+v09.BoardApp
+  - BoardDao에 있는 출력 관련 코드를 BoardApp으로 옮긴다.
+  - 두 클래스가 데이터를 주고 받을 수 있도록 값을 전달할 때 사용하는 객체 추가
+    => Board
+    => DTO(Data Transfer Object), VO(Value Object)    
   
   
   
