@@ -26,6 +26,7 @@ public class Board implements Serializable {
   protected String  attachFile1;
   protected String  attachFile2;
   protected String  attachFile3;
+  protected String  password;
   
   public int getNo() {
     return no;
@@ -74,6 +75,12 @@ public class Board implements Serializable {
   }
   public void setAttachFile3(String attachFile3) {
     this.attachFile3 = attachFile3;
+  }
+  public String getPassword() {
+    return password;
+  }
+  public void setPassword(String password) {
+    this.password = password;
   }
   
   
