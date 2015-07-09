@@ -220,7 +220,14 @@ v02.BoardApp
                alias="Board"/>
   </typeAliases>
       
-  
+v03.BoardApp
+  - 사용자가 입력한 명령어를 처리하는 코드를 메서드로 분리
+    => 코드를 유지보수하기 쉽게 만든다.
+
+v04.BoardApp    
+  - Command 패턴의 활용
+    => 메서드 정도의 코드를 객체화 시키는 것.
+      
   
   
   
