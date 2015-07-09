@@ -227,6 +227,23 @@ v03.BoardApp
 v04.BoardApp    
   - Command 패턴의 활용
     => 메서드 정도의 코드를 객체화 시키는 것.
+    => 새로 메서드를 추가하는 것이 아니라 클래스를 추가한다.
+  - BoardList, BoardInsert, BoardDelete, BoardUpdate,
+    Quit, Hello
+
+v05.BoardApp
+  - 객체 생성을 자동화하기 
+  - Properties 파일 도입 
+
+
+
+
+
+
+
+
+
+
       
   
   
