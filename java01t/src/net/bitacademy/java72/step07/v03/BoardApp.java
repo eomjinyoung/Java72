@@ -55,6 +55,9 @@ public class BoardApp {
       } else if (command.equals("quit")) {
         quit();
       
+      } else if (command.equals("hello")) {
+        hello();
+      
       } else {
         System.out.println("해당 명령을 지원하지 않습니다!");
       }
@@ -63,6 +66,13 @@ public class BoardApp {
     } while (!command.toLowerCase().equals("quit"));
     
     scanner.close();
+  }
+
+  private static void hello() {
+    System.out.print("이름은? ");
+    String name = scanner.nextLine();
+    System.out.printf("%s님 환영합니다!\n", name);
+    
   }
 
   private static void quit() {

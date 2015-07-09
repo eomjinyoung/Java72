@@ -8,7 +8,7 @@ import net.bitacademy.java72.step07.v02.BoardDao;
 
 public class BoardList implements Command {
   BoardDao boardDao;
-
+  
   public void setBoardDao(BoardDao boardDao) {
     this.boardDao = boardDao;
   }
