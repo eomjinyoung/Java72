@@ -234,6 +234,21 @@ v04.BoardApp
 v05.BoardApp
   - 객체 생성을 자동화하기 
   - Properties 파일 도입 
+  - Class.newInstance()를 사용하여 객체 생성
+  - Method.invoke()를 사용하여 메서드 호출
+
+v06.BoardApp
+  - 애노테이션을 이용한 객체 관리 
+  
+
+
+
+
+
+
+
+
+  
 
 
 
