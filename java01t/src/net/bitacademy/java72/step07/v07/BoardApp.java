@@ -30,29 +30,46 @@ public class BoardApp {
     Object commandWorker = null;
     
     do {
-      System.out.print("명령> ");
-      command = scanner.nextLine().toLowerCase();
+      try {
+        System.out.print("명령> ");
+        command = scanner.nextLine().toLowerCase();
+        
+        HashMap<String,Object> paramMap = 
+            new HashMap<String,Object>();
+        paramMap.put("inputScanner", scanner);
       
-      HashMap<String,Object> paramMap = 
-          new HashMap<String,Object>();
-      paramMap.put("inputScanner", scanner);
-      
-      commandWorker = commandMap.get(command);
-      Set<Method> methods = null;
-      Method temp = null;
-      if (commandWorker != null) {
-        //@RequestMapping이 붙어있는 메서드를 찾아서 호출한다.
-        methods = ReflectionUtils.getMethods(
-            commandWorker.getClass(), 
-            ReflectionUtils.withAnnotation(RequestMapping.class));
-        temp = (Method)methods.toArray()[0];
-        try {
+        commandWorker = commandMap.get(command);
+        Set<Method> methods = null;
+        Method temp = null;
+        if (commandWorker != null) {
+          /*
+          Method[] methodList = 
+              commandWorker.getClass().getMethods();
+          for (Method m : methodList) {
+            RequestMapping anno = m.getAnnotation(RequestMapping.class);
+            if (anno != null) {
+              try {
+                m.invoke(commandWorker, paramMap);
+                break;
+              } catch (Exception e) {
+                System.out.println("메서드 호출 중 오류!");
+              }
+            }
+          }*/
+        
+        
+          //@RequestMapping이 붙어있는 메서드를 찾아서 호출한다.
+        
+          methods = ReflectionUtils.getMethods(
+              commandWorker.getClass(), 
+              ReflectionUtils.withAnnotation(RequestMapping.class));
+          temp = (Method)methods.toArray()[0];
           temp.invoke(commandWorker, paramMap);
-        } catch (Exception e) {
-          System.out.println("명령어 실행 중 오류 발생!");
+        } else {
+          System.out.println("해당 명령을 지원하지 않습니다!");
         }
-      } else {
-        System.out.println("해당 명령을 지원하지 않습니다!");
+      } catch (Exception e) {
+        System.out.println("명령어 실행 중 오류 발생!");
       }
       
     } while (!command.toLowerCase().equals("quit"));
