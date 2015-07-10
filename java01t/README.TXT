@@ -211,7 +211,7 @@ v01.BoardApp
   - 3) mybatis가 제공하는 객체를 사용하여 질의를 수행
 
 v02.BoardApp
-  - Mybatis <resultmap> 활용
+  - Mybatis <resultMap> 활용
     => resultType의 프로퍼티와 이름을 같게 하기 위해 별명을 부여할 필요가 없다.
     
   - Value Object의 별명 활용
