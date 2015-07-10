@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import net.bitacademy.java72.step07.v04.Command;
 
-//@Command("stress")
+@CommandProcessor("stress")
 public class Stress implements Command {
 
   @Override
