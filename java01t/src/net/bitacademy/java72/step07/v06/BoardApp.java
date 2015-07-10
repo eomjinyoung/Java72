@@ -6,10 +6,12 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.Set;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.reflections.Reflections;
 
 import net.bitacademy.java72.step07.v02.BoardDao;
 import net.bitacademy.java72.step07.v04.Command;
@@ -77,17 +79,10 @@ public class BoardApp {
       
       Class<?> clazz = null;
       Object obj = null;
-      Method method = null;
       
       for (Entry<Object, Object> entry : props.entrySet()) {
         clazz = Class.forName((String)entry.getValue());
-        obj = clazz.newInstance();
-        try {
-          method = clazz.getMethod(
-            "setBoardDao", BoardDao.class);
-          method.invoke(obj, boardDao);
-        } catch (Exception e) {}
-        
+        obj = createInstance(clazz);
         commandMap.put(
             (String)entry.getKey(), (Command)obj);
       }
@@ -98,9 +93,40 @@ public class BoardApp {
   }
   
   private static void prepareCommandFromAnnotation() {
-    
+    try {
+      Reflections reflections = new Reflections(
+          "net.bitacademy.java72.step07.v06");
+      
+      Set<Class<?>> commands = 
+          reflections.getTypesAnnotatedWith(
+              CommandProcessor.class);
+      
+      Object obj = null;
+      CommandProcessor anno = null;
+      for (Class<?> clazz : commands) {
+        obj = createInstance(clazz);
+        anno = clazz.getAnnotation(
+            CommandProcessor.class);
+        commandMap.put(anno.value(), (Command)obj);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
+  private static Object createInstance(Class<?> clazz) 
+      throws Exception {
+    Object obj = clazz.newInstance();
+    
+    Method method = null;
+    try {
+      method = clazz.getMethod(
+        "setBoardDao", BoardDao.class);
+      method.invoke(obj, boardDao);
+    } catch (Exception e) {}
+    
+    return obj;
+  }
   
 
 
