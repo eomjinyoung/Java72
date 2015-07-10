@@ -270,7 +270,7 @@ v07.BoardApp
   - Command 인터페이스 제거
   - 명령어를 처리하는 메서드를 지정하는 애노테이션을 정의한다.
     => RequestMapping
-
+  - BoardApp은 RequestMapping이 붙은 메서드를 호출한다.
 
 
 
