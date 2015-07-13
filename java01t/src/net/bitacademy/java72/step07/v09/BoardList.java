@@ -3,9 +3,6 @@ package net.bitacademy.java72.step07.v09;
 import java.util.List;
 import java.util.Map;
 
-import net.bitacademy.java72.step07.v02.Board;
-import net.bitacademy.java72.step07.v02.BoardDao;
-
 @Controller("list")
 public class BoardList {
   BoardDao boardDao;

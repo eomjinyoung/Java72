@@ -3,9 +3,6 @@ package net.bitacademy.java72.step07.v09;
 import java.util.Map;
 import java.util.Scanner;
 
-import net.bitacademy.java72.step07.v02.Board;
-import net.bitacademy.java72.step07.v02.BoardDao;
-
 @Controller("insert")
 public class BoardInsert {
 
