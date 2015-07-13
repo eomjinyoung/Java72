@@ -308,7 +308,12 @@ v09.BoardApp
      명령어의 이름을 디렉토리 경로 형식으로 만든다.
      => BoardXxxx 클래스의 @Controller 값을 변경한다.
          
- 
+v09.member
+- 반복 훈련
+  => Member 테이블의 데이터를 다루는 
+     명령 클래스와 DAO를 생성  
+  => MemberDao, MemberList, MemberInsert, MemberUpdate,
+     MemberDelete
 
 
 
