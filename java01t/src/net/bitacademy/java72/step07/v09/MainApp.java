@@ -17,7 +17,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.reflections.Reflections;
 
-public class BoardApp {
+public class MainApp {
   static Scanner scanner;
   static HashMap<String,Object> beanContainer;
   
