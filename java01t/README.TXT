@@ -302,7 +302,13 @@ v09.BoardApp
   5) BoardDao에 @Repository 애노테이션 적용한다.
   6) BoardApp에서 @Repository가 붙은 클래스에 대해
      객체를 생성하도록 변경한다.
-
+  7) 각 객체의 의존 객체를 주입하는 메서드를 만든다.
+     => injectDependency()
+  8) 향후 명령어 확장을 고려하여,
+     명령어의 이름을 디렉토리 경로 형식으로 만든다.
+     => BoardXxxx 클래스의 @Controller 값을 변경한다.
+         
+ 
 
 
 

@@ -3,7 +3,7 @@ package net.bitacademy.java72.step07.v09;
 import java.util.Map;
 import java.util.Scanner;
 
-@Controller("delete")
+@Controller("board/delete.do")
 public class BoardDelete {
   BoardDao boardDao;
   

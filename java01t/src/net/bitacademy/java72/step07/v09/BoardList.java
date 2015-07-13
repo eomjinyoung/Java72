@@ -3,7 +3,7 @@ package net.bitacademy.java72.step07.v09;
 import java.util.List;
 import java.util.Map;
 
-@Controller("list")
+@Controller("board/list.do")
 public class BoardList {
   BoardDao boardDao;
   

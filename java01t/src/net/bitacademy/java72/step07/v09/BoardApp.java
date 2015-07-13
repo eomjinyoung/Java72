@@ -19,7 +19,6 @@ import org.reflections.Reflections;
 
 public class BoardApp {
   static Scanner scanner;
-  static BoardDao boardDao;
   static HashMap<String,Object> beanContainer;
   
   @SuppressWarnings("unchecked")
@@ -92,10 +91,6 @@ public class BoardApp {
           if (dependency != null) {
             // 셋터를 호출하여 의존 객체를 주입한다. 
             m.invoke(obj, dependency);
-            System.out.printf("%s.%s(%s)\n",
-                obj.getClass().getName(),
-                m.getName(),
-                dependency.getClass().getName());
           }
         }
       } catch (Exception e) {}

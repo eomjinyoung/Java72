@@ -3,7 +3,7 @@ package net.bitacademy.java72.step07.v09;
 import java.util.Map;
 import java.util.Scanner;
 
-@Controller("insert")
+@Controller("board/insert.do")
 public class BoardInsert {
 
   BoardDao boardDao;
