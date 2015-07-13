@@ -283,9 +283,25 @@ v08.BoardApp
     3) BoardApp 클래스를 변경한다.
        => setBoardDao()를 호출하는 부분을 변경한다.
 
-
-
-  
+v09.BoardApp
+- 작업 절차
+  1) CommandProcessor --> Controller로 이름 변경
+     => 스프링 프레임워크 흉내내기
+     => 의존 객체를 주입할 때 
+         파라미터 타입을 자동으로 분석한다.  
+  2) commandMap --> beanContainer로 이름 변경
+     => 명령처리 객체뿐만아니라,
+        다른 일반 객체동 통합 관리한다.
+  3) v02.BoardDao를 v09로 복사한다.
+     => BoardDao.xml 파일 변경
+     => mybatis-config.xml 파일 변경  
+  4) DAO도 애노테이션으로 객체를 관리한다.
+     => DAO는 BoardList와 목적을 달리한다.
+     => 목적을 명확히 보여주는 애노테이션을 추가로 정의한다.
+     => @Repository 정의
+  5) BoardDao에 @Repository 애노테이션 적용한다.
+  6) BoardApp에서 @Repository가 붙은 클래스에 대해
+     객체를 생성하도록 변경한다.
 
 
 

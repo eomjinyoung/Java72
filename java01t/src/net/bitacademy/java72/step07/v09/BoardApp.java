@@ -1,7 +1,12 @@
 package net.bitacademy.java72.step07.v09;
 
+import static org.reflections.ReflectionUtils.getMethods;
+import static org.reflections.ReflectionUtils.withAnnotation;
+import static org.reflections.ReflectionUtils.withParametersCount;
+
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -11,8 +16,6 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.reflections.Reflections;
-
-import static org.reflections.ReflectionUtils.*;
 
 public class BoardApp {
   static Scanner scanner;
@@ -76,13 +79,20 @@ public class BoardApp {
           obj.getClass(), 
           withAnnotation(Autowired.class),
           withParametersCount(1));
+        Parameter parameter = null;
+        Object dependency = null;
+        
         for (Method m : methods) {
           // 셋터의 파라미터 정보를 추출한다.
+          parameter = m.getParameters()[0];
           
           // 셋터의 파라미터에 맞는 객체를 찾는다.
+          dependency = findObject(parameter.getType());
           
-          // 셋터를 호출하여 의존 객체를 주입한다. 
-          //m.invoke(obj, boardDao);
+          if (dependency != null) {
+            // 셋터를 호출하여 의존 객체를 주입한다. 
+            m.invoke(obj, dependency);
+          }
         }
       } catch (Exception e) {}
     }
@@ -112,9 +122,9 @@ public class BoardApp {
           reflections.getTypesAnnotatedWith(
               Repository.class);
       
-      Object obj = null;
       Repository anno = null;
       String value = null;
+      
       for (Class<?> clazz : daoList) {
         anno = clazz.getAnnotation(
             Repository.class);
@@ -139,7 +149,6 @@ public class BoardApp {
           reflections.getTypesAnnotatedWith(
               Controller.class);
       
-      Object obj = null;
       Controller anno = null;
       String value = null;
       
@@ -158,23 +167,18 @@ public class BoardApp {
     }
   }
 
-  @SuppressWarnings("unchecked")
-  private static Object createInstance(Class<?> clazz) 
+  private static Object findObject(Class<?> clazz) 
       throws Exception {
-    Object obj = clazz.newInstance();
+    Collection<Object> objList = 
+        beanContainer.values();
     
-    Set<Method> methods = null;
-    try {
-      methods = getMethods(clazz, 
-        withAnnotation(Autowired.class),
-        withParameters(BoardDao.class),
-        withParametersCount(1));
-      for (Method m : methods) {
-        m.invoke(obj, boardDao);
+    for (Object obj : objList) {
+      if (clazz.isInstance(obj)) {
+        return obj;
       }
-    } catch (Exception e) {}
+    }
     
-    return obj;
+    return null;
   }
   
 
