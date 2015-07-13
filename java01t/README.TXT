@@ -272,8 +272,16 @@ v07.BoardApp
     => RequestMapping
   - BoardApp은 RequestMapping이 붙은 메서드를 호출한다.
 
-
-
+v08.BoardApp
+  - 의존 객체 자동 주입을 위한 애노테이션 정의
+    => @Autowired
+    => 이 애노테이션이 붙은 경우 의존 객체를 주입한다.
+  - 작업 절차
+    1) @Autowired 애노테이션을 정의한다.
+    2) BoardXxxx 명령처리 클래스에 적용한다.
+       => setBoardDao() 메서드 시그너처 위에 선언한다.
+    3) BoardApp 클래스를 변경한다.
+       => setBoardDao()를 호출하는 부분을 변경한다.
 
 
 
