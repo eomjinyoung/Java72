@@ -87,8 +87,14 @@ dependencies {
 - 각 클래스를 의미있는 패키지로 분류한다.
   control : 명령어를 처리하는 클래스를 두는 패키지
   dao: DAO를 두는 패키지
-  domain: VO를 두는 패키지 
-  
+  domain: VO를 두는 패키지
+- mybatis 관련 XML 파일은 resources 폴더에 둔다.
+  src/main/resources/net/bitacademy/java72/dao 폴더에 복사한다. 
+- mybatis-config.xml 변경
+- BoardDao.xml과 MemberDao.xml의 네임스페이스 값 변경.
+- BoardDao.java와 MemberDao.java 변경
+  => 클래스 패키지 import.
+  => SQL 아이디를 변경한다.  
 
 
 

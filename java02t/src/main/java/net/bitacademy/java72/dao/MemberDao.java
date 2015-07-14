@@ -5,9 +5,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import net.bitacademy.java72.step07.v09.Autowired;
-import net.bitacademy.java72.step07.v09.member.Member;
-import net.bitacademy.java72.step07.v09.Repository;
+import net.bitacademy.java72.annotation.Autowired;
+import net.bitacademy.java72.annotation.Repository;
+import net.bitacademy.java72.domain.Member;
 
 @Repository
 public class MemberDao {
@@ -21,12 +21,9 @@ public class MemberDao {
   public List<Member> list() {
     SqlSession sqlSession = null;
     try {
-      // SqlSessionFactory 클래스로부터 실제 SQL 작업을 수행할 SqlSession을 얻는다.
       sqlSession = sqlSessionFactory.openSession();
-
-      // SqlSession을 사용하여 SQL 맵퍼 파일에 있는 SQL문을 실행한다.
       return sqlSession.selectList(
-          "net.bitacademy.java72.step07.v09.member.MemberDao.list");
+          "net.bitacademy.java72.dao.MemberDao.list");
       
     } catch (Exception e) {
       e.printStackTrace();
@@ -42,7 +39,7 @@ public class MemberDao {
     try {
       sqlSession = sqlSessionFactory.openSession();
       int count = sqlSession.delete(
-          "net.bitacademy.java72.step07.v09.member.MemberDao.delete",
+          "net.bitacademy.java72.dao.MemberDao.delete",
           no);
       sqlSession.commit();
       return count;
@@ -61,7 +58,7 @@ public class MemberDao {
     try {
       sqlSession = sqlSessionFactory.openSession();
       int count = sqlSession.update(
-          "net.bitacademy.java72.step07.v09.member.MemberDao.update",
+          "net.bitacademy.java72.dao.MemberDao.update",
           member);
       sqlSession.commit();
       return count;
@@ -80,7 +77,7 @@ public class MemberDao {
     try {
       sqlSession = sqlSessionFactory.openSession();
       int count = sqlSession.insert(
-          "net.bitacademy.java72.step07.v09.member.MemberDao.insert",
+          "net.bitacademy.java72.dao.MemberDao.insert",
           member);
       sqlSession.commit();
       return count;
@@ -99,7 +96,7 @@ public class MemberDao {
     try {
       sqlSession = sqlSessionFactory.openSession();
       return sqlSession.selectOne(
-          "net.bitacademy.java72.step07.v09.member.MemberDao.get",
+          "net.bitacademy.java72.dao.MemberDao.get",
           no);
       
     } catch (Exception e) {

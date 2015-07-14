@@ -3,9 +3,11 @@ package net.bitacademy.java72.control;
 import java.util.Map;
 import java.util.Scanner;
 
-import net.bitacademy.java72.step07.v09.Autowired;
-import net.bitacademy.java72.step07.v09.Controller;
-import net.bitacademy.java72.step07.v09.RequestMapping;
+import net.bitacademy.java72.annotation.Autowired;
+import net.bitacademy.java72.annotation.Controller;
+import net.bitacademy.java72.annotation.RequestMapping;
+import net.bitacademy.java72.dao.MemberDao;
+import net.bitacademy.java72.domain.Member;
 
 @Controller("member/insert.do")
 public class MemberInsert {

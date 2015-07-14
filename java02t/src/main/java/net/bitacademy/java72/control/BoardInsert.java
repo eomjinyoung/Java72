@@ -3,6 +3,12 @@ package net.bitacademy.java72.control;
 import java.util.Map;
 import java.util.Scanner;
 
+import net.bitacademy.java72.annotation.Autowired;
+import net.bitacademy.java72.annotation.Controller;
+import net.bitacademy.java72.annotation.RequestMapping;
+import net.bitacademy.java72.dao.BoardDao;
+import net.bitacademy.java72.domain.Board;
+
 @Controller("board/insert.do")
 public class BoardInsert {
 

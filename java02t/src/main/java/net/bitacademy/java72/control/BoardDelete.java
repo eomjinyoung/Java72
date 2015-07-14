@@ -3,6 +3,11 @@ package net.bitacademy.java72.control;
 import java.util.Map;
 import java.util.Scanner;
 
+import net.bitacademy.java72.annotation.Autowired;
+import net.bitacademy.java72.annotation.Controller;
+import net.bitacademy.java72.annotation.RequestMapping;
+import net.bitacademy.java72.dao.BoardDao;
+
 @Controller("board/delete.do")
 public class BoardDelete {
   BoardDao boardDao;
