@@ -9,6 +9,13 @@ compileJava {
   sourceCompatibility = 1.8 
 }
 
+// jar 파일 설정
+jar {
+	manifest {
+	  attributes 'Main-Class': 'net.bitacademy.java72.MainApp'
+	}
+}
+
 // 의존 라이브러리를 다운로드 받을 서버를 설정 
 repositories {
   mavenCentral() // https://repo1.maven.org/maven2/
