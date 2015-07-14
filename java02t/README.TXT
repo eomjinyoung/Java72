@@ -112,8 +112,19 @@ dependencies {
   => 만약 메인 클래스를 찾지 못하면 오류 발생!
 - jar 파일을 만들 때 어떤 클래스가 main() 를 갖고 있는 
   클래스인지 설정한다.
+  또한 의존 라이브러리 파일도 jar 파일에 포함시킨다.
+// jar 파일 설정
+jar {
+  manifest {
+     attributes 'Main-Class': 'net.bitacademy.java72.MainApp'
+  }
+  from { // 의존 라이브러리 파일을 jar 파일에 통합하라!
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+} 
        
-
+[step03]
+- 스프링 프레임워크를 이용한 빈 관리하기 
 
 
 
