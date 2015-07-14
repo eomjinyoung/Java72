@@ -1,6 +1,14 @@
 apply plugin: 'eclipse'
 apply plugin: 'java'
 
+// 소스 파일의 문자 집합과 자바 버전을 지정한다.
+// 문자 집합을 지정하지 않으면, 윈도OS는 MS-949로 간주한다.
+compileJava {
+  options.encoding = 'UTF-8' // 소스 파일의 문자 집합
+  // 컴파일 할 때 지정된 버전의 문법으로 제한한다. 
+  sourceCompatibility = 1.8 
+}
+
 // 의존 라이브러리를 다운로드 받을 서버를 설정 
 repositories {
   mavenCentral() // https://repo1.maven.org/maven2/
