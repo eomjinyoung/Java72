@@ -95,6 +95,11 @@ dependencies {
 - BoardDao.java와 MemberDao.java 변경
   => 클래스 패키지 import.
   => SQL 아이디를 변경한다.  
+- MainApp.java를 변경한다.
+  => 클래스를 찾아서 객체를 생성하는 코드 부분.
+     패키지 이름을 변경한다.
+     
+     
 
 
 
