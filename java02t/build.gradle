@@ -1,2 +1,27 @@
 apply plugin: 'eclipse'
 apply plugin: 'java'
+
+// 의존 라이브러리를 다운로드 받을 서버를 설정 
+repositories {
+  mavenCentral() // https://repo1.maven.org/maven2/
+}
+
+// 가져올 라이브러리를 지정한다.
+// 라이브러리 검색: www.mvnrepository.com
+dependencies {
+  compile 'mysql:mysql-connector-java:5.1.36'
+  compile 'org.mybatis:mybatis:3.3.0'
+  compile 'org.reflections:reflections:0.9.10'
+  
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+
+
+
+
+
+
+
+
+

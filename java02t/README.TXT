@@ -1,4 +1,4 @@
-[step01]
+[Gradle 프로젝트 만들기]
 1) 일반 프로젝트를 만든다.
 2) 그래들 요구에 맞추어 폴더를 생성한다.
 3) 프로젝트 설정 파일(.project)에 
@@ -54,12 +54,41 @@
     => 자세한 것은 gradle.org의 문서를 참조하라! 
 
 [의존 라이브러리 관리 방법]
-       
+1) 의존 라이브러리를 다운로드 받을 서버를 지정한다.
+repositories {
+  mavenCentral() // https://repo1.maven.org/maven2/
+}       
 
+2) 가져올 라이브러리를 지정한다.
+=> 라이브러리 검색: www.mvnrepository.com
+dependencies {
+  // 문법1
+  라이브러리관리정책(ex:compile, testCompile, providedCompild,...)  
+    group: '그룹명', 
+    name: '라이브러리명',
+    version: '버전'
+  // 문법2
+  compile '그룹명:라이브러리명:버전'
+  
+  //예) 
+  compile 
+        group: 'org.hibernate', 
+        name: 'hibernate-core', 
+        version: '3.6.7.Final'
+  compile 'org.hibernate:hibernate-core:3.6.7.Final'
+}
+=> 라이브러리 관리 정책
+  - compile: 컴파일할 때 사용하고 또한 배치 파일에 포함하라.
+  - testCompile: 단위 테스트를 실행할 때 사용하는 라이브러리.
+  - providedCompile: 컴파일 할 때 사용, 배치에서 제외.
 
-
-
-
+[step01]
+- java01 프로젝트에 만든 프로그래밍을 그래들 프로젝트로 포팅.
+- 각 클래스를 의미있는 패키지로 분류한다.
+  control : 명령어를 처리하는 클래스를 두는 패키지
+  dao: DAO를 두는 패키지
+  domain: VO를 두는 패키지 
+  
 
 
 
