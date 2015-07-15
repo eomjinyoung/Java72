@@ -133,10 +133,71 @@ jar {
 - 스프링 프레임워크를 이용한 빈 관리하기 
 1) 스프링 프레임워크 라이브러리 추가 
 2) 스프링 IoC 컨테이너 생성
+  appContext = new ClassPathXmlApplicationContext(
+        "application-context.xml" );
+3) 스프링 설정 파일 작성
+  src/main/java/application-context.xml 파일 생성
+4) 특정 패키지를 스캔하여 클래스를 찾도록 설정한다.
+  <context:component-scan 
+      base-package="net.bitacademy.java72"/> 
+5) 기존에 만든 클래스를 스프링 프레임워크에 맞게끔 변경한다.
+   우리가 만든 애노테이션 대신 스프링 애노테이션을 사용한다.
+   => BoardDao, MemberDao, BoardXxxx, MemberXxxx
+6) Mybatis와 스프링 연동 의존 라이브러리 추가한다.
+   => 스프링과 Mybatis를 연결해주는 의존 라이브러리를 추가한다.
+      mvnrepository.com 검색하라!
+7) Mybatis 설정을 스프링 설정 파일로 옮긴다.          
+   => application-context.xml 파일에 설정 태그 추가.
+      www.mybatis.org에서 문서를 참고하라!
+      
+   => SqlSessionFactory 객체 생성 
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+    </bean> 
+    
+   => SqlSessionFactory가 사용할 데이터소스 준비
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" 
+          value="com.mysql.jdbc.Driver"/>
+      <property name="url" 
+          value="jdbc:mysql://localhost:3306/java72db"/>
+      <property name="username" value="java72"/>
+      <property name="password" value="java72"/>
+    </bean>   
 
-
-
-
+   => mybatis SQL 맵퍼 파일에서 사용할 typeAlias 옮긴다.
+      <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- VO에 객체에 대해 별명을 자동으로 붙이기 -->
+        <property name="typeAliasesPackage" 
+                  value="net.bitacademy.java72.domain" />
+      </bean>
+   
+   => SQL문이 보관된 파일(SQL 맵퍼)의 경로를 
+      스프링 설정 파일로 옮긴다.
+     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- VO에 객체에 대해 별명을 자동으로 붙이기 -->
+        <property name="typeAliasesPackage" 
+            value="net.bitacademy.java72.domain" />
+        <!-- SQL 맵퍼 파일의 경로를 지정한다. -->
+        <property name="mapperLocations" 
+            value="classpath*:net/bitacademy/java72/**/*Dao.xml"/>
+      </bean>
+   
+8) 항상 의존 라이브러리를 추가하면, 
+   Gradle을 사용하여 .classpath 파일을 변경하라.  
+   => 오류 뜨는가?
+   => spring-jdbc 의존 라이브러리를 추가하라! 
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
 
 
