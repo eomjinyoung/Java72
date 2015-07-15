@@ -122,11 +122,17 @@ jar {
     configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
   }
 } 
-       
+
 [step03]
+- 빈(객체) 관리 기능을 별도의 클래스로 분리하자.
+  => MainApp에서 빈 관리(객체 생성과 소멸) 코드를 추출하여
+     ApplicationContext 클래스로 옮긴다.
+            
+       
+[step04]
 - 스프링 프레임워크를 이용한 빈 관리하기 
 1) 스프링 프레임워크 라이브러리 추가 
-
+2) 스프링 IoC 컨테이너 생성
 
 
 
