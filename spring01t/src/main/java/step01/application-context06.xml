@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+  
+  <!-- 프로퍼티의 값은 자동으로 셋터의 파라미터 타입으로
+       자동 변환된다. 단, String과 원시 타입만 가능하다. -->
+  <bean id="c1" class="step01.Car">
+    <property name="model">
+      <value>티코</value>
+    </property>
+    <property name="cc">
+      <value>900</value>
+    </property>
+    <!-- String을 java.util.Date 타입으로 변환할 수 없다.
+         실행 오류 발생! -->
+    <!--  
+    <property name="outDate">
+      <value>2015-07-15</value>
+    </property>
+    -->
+  </bean>
+  
+  <bean id="c2" class="step01.Car">
+    <property name="model" value="소나타"/>
+    <property name="cc" value="1998"/>
+  </bean>
+  
+</beans>
+
+
+
+
+
+

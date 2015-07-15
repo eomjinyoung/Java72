@@ -45,9 +45,28 @@ Test04.java
 
 Test05.java
   - 생성자 호출하는 방법
+  <bean id="c14" class="step01.Car">
+    <constructor-arg type="java.lang.String" 
+        value="티코" index="0"/>
+    <constructor-arg type="int" value="900" index="1"/>
+  </bean>
   
-
-
+Test06.java
+  - 셋터 호출하는 방법
+  <bean id="c2" class="step01.Car">
+    <property name="model" value="소나타"/>
+    <property name="cc" value="1998"/>
+  </bean>
+  
+Test07.java
+  - <bean>의 속성을 이용하여 생성자 및 셋터 호출하기
+  1) <beans> 태그에 다음 네임스페이스를 추가한다.
+     => XML 스키마 위치 정보는 추가할 필요 없다.
+  <beans ...
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:p="http://www.springframework.org/schema/p"
+    ...>
+  
 
 
 

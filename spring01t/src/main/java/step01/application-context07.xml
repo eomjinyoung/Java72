@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+  
+  <!-- 생성자 지정 
+        c:생성자의파라미터명="값" -->
+  <bean id="c1" class="step01.Car"
+        c:model="티코"/>  
+  <bean id="c2" class="step01.Car"
+        c:cc="800"/>
+  <bean id="c3" class="step01.Car"
+        c:model="소나타" c:cc="1998"/>
+  <bean id="c4" class="step01.Car"
+        c:_0="그랜저" c:_1="3000"/>
+        
+  <!-- 프로퍼티 지정하기 -->
+  <bean id="c5" class="step01.Car" p:model="티코"/>         
+  <bean id="c6" class="step01.Car" p:cc="800"/>
+  <bean id="c7" class="step01.Car" 
+        p:model="소나타" p:cc="1998"/>
+</beans>
+
+
+
+
+
+

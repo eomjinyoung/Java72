@@ -10,6 +10,10 @@ public class Car {
   public Car() {
     System.out.println("Car()");
   }
+  public Car(int cc) {
+    System.out.println("Car(int)");
+    this.cc = cc;
+  }
   public Car(String model) {
     System.out.println("Car(String)");
     this.model = model;
