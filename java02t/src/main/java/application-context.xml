@@ -16,7 +16,8 @@
       base-package="net.bitacademy.java72"/>
   
   <!-- SqlSessionFactory 객체 생성하라! -->
-  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+  <bean id="sqlSessionFactory" 
+        class="org.mybatis.spring.SqlSessionFactoryBean">
     <property name="dataSource" ref="dataSource" />
     <!-- VO에 객체에 대해 별명을 자동으로 붙이기 -->
     <property name="typeAliasesPackage" 

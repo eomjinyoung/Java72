@@ -96,11 +96,21 @@ Test14.java
     => makeCar() 호출하기
 
 Test15.java
-  - 스프링 프레임워크의 규칙에 따라 만든 
+  - 스프링 프레임워크의 규칙(FactoryBean)에 따라 만든 
     팩토리 클래스를 사용하여 객체를 생성한다.
+  - 스프링 프레임워크는 객체를 생성하려 할 때
+    클래스의 타입을 검사한다.
+    만약 클래스가 FactoryBean 구현체라면,
+    FactoryBean 객체를 저장하는 것이 아니라
+    FactoryBean의 getObject()가 리턴한 값을 저장한다.
 
-
-
+Test16.java
+  - 빈의 생성 정책
+    => singleton : 오직 한 개만. (기본)
+                   getBean()이 리턴하는 객체가 동일하다. 
+    => prototype : 매번 생성.
+                   getBean()이 리턴하는 객체는 다르다.
+                   getBean()을 호출할 때 매번 생성한다.
 
 
 
