@@ -112,6 +112,37 @@ Test16.java
                    getBean()이 리턴하는 객체는 다르다.
                    getBean()을 호출할 때 매번 생성한다.
 
+Test17.java
+  - 날짜 속성의 값 설정하기
+  - 문자열을 java.util.Date 객체로 만들어주는 
+    SimpleDateFormat 클래스를 사용한다. 
+
+Test18.java
+  - 커스텀 프로퍼티 에디터를 만들어 스프링에 등록한다.
+  - 커스텀 프로퍼티 에디터?
+    문자열을 특정 타입의 객체로 만들어주는 도구다.
+  - 커스텀 프로퍼티 에디터를 설정했을 때 이점?
+    => 그냥 문자열로 값을 넣으면 자동으로 원하는 타입의
+       객체로 만들어주기 때문에 코딩이 편하다. 
+  - 방법
+  1) 프로퍼티 에디터 등록기를 만든다
+    => MyCustomPropertyEditorRegistrar 클래스 작성
+  2) 스프링에 프로퍼티 에디터 등록기를 추가한다.
+    => 스프링 설정 파일에 다음 설정 추가
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+      <property name="propertyEditorRegistrars">
+        <list>
+          <bean class="step04.MyCustomPropertyEditorRegistrar"/>
+        </list>
+      </property>
+    </bean>
+  
+
+
+
+
+
+
 
 
 
