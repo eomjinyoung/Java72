@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+  
+  <bean id="c1" class="step02.Car">
+    <property name="tires">
+      <array>
+        <bean class="step02.Tire" 
+          p:maker="금호1" p:width="185" p:diameter="17.5"/>
+        <bean class="step02.Tire" 
+          p:maker="금호2" p:width="185" p:diameter="17.5"/>
+        <bean class="step02.Tire" 
+          p:maker="금호3" p:width="185" p:diameter="17.5"/>
+        <bean class="step02.Tire" 
+          p:maker="금호4" p:width="185" p:diameter="17.5"/>    
+      </array>
+    </property>
+  </bean> 
+  
+  <bean id="c2" class="step02.Car">
+    <property name="tires">
+      <list>
+        <bean class="step02.Tire" 
+          p:maker="금호1" p:width="185" p:diameter="17.5"/>
+        <bean class="step02.Tire" 
+          p:maker="금호2" p:width="185" p:diameter="17.5"/>
+        <bean class="step02.Tire" 
+          p:maker="금호3" p:width="185" p:diameter="17.5"/>
+        <bean class="step02.Tire" 
+          p:maker="금호4" p:width="185" p:diameter="17.5"/>    
+      </list>
+    </property>
+  </bean> 
+  
+  <bean id="spareTire" class="step02.Tire" 
+          p:maker="한국타이어" 
+          p:width="105" 
+          p:diameter="17.5"/>
+  
+  <!-- 자바 코드
+    Tire spareTire = new Tire();
+    
+    Car c3 = new Car();
+    c3.setTires(new Tire[]{
+      new Tire(), new Tire(), 
+      new Tire(), new Tire(), spareTire 
+    });
+   -->
+  <bean id="c3" class="step02.Car">
+    <property name="tires">
+      <array>
+        <bean class="step02.Tire" 
+          p:maker="금호1" p:width="185" p:diameter="17.5"/>
+        <bean class="step02.Tire" 
+          p:maker="금호2" p:width="185" p:diameter="17.5"/>
+        <bean class="step02.Tire" 
+          p:maker="금호3" p:width="185" p:diameter="17.5"/>
+        <bean class="step02.Tire" 
+          p:maker="금호4" p:width="185" p:diameter="17.5"/>
+        <ref bean="spareTire"/>  
+      </array>
+    </property>
+  </bean> 
+</beans>
+
+
+
+
+
+

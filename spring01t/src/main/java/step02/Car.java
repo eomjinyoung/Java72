@@ -1,12 +1,20 @@
 package step02;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Car {
   String  model;
   int     cc;
   Date    outDate;
   Engine  engine;
+  Tire[]  tires;
+  List<String>  cds;
+  Set<String> cds2;
+  Map<String,String> optionMap;
   
   public Car() {
     System.out.println("Car()");
@@ -32,9 +40,9 @@ public class Car {
   
   @Override
   public String toString() {
-    return "Car [model=" + model + ", cc=" + cc + ", outDate=" + outDate + ", engine=" + engine + "]";
+    return "Car [model=" + model + ", cc=" + cc + ", outDate=" + outDate + ", engine=" + engine + ", tires="
+        + Arrays.toString(tires) + ", cds=" + cds + ", cds2=" + cds2 + ", optionMap=" + optionMap + "]";
   }
-  
   public String getModel() {
     return model;
   }
@@ -58,6 +66,30 @@ public class Car {
   }
   public void setEngine(Engine engine) {
     this.engine = engine;
+  }
+  public Tire[] getTires() {
+    return tires;
+  }
+  public void setTires(Tire[] tires) {
+    this.tires = tires;
+  }
+  public List<String> getCds() {
+    return cds;
+  }
+  public void setCds(List<String> cds) {
+    this.cds = cds;
+  }
+  public Set<String> getCds2() {
+    return cds2;
+  }
+  public void setCds2(Set<String> cds2) {
+    this.cds2 = cds2;
+  }
+  public Map<String, String> getOptionMap() {
+    return optionMap;
+  }
+  public void setOptionMap(Map<String, String> optionMap) {
+    this.optionMap = optionMap;
   }
   
   

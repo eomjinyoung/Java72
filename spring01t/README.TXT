@@ -72,10 +72,18 @@ Test08.java
   - Engine 클래스 작성
   - Car 클래스에 Engine 프로퍼티 추가    
 
+Test09.java
+  - 컬렉션 타입(배열이나 Collection 구현체) 중 배열 타입의 
+    프로퍼티 값 설정하기
 
+Test10.java
+  - 컬렉션 타입 중 List 타입의 프로퍼티 값 설정하기
 
+Test11.java
+  - 컬렉션 타입 중 Set 타입의 프로퍼티 값 설정하기
 
-
+Test12.java
+  - 맵 타입 프로퍼티 값 설정하기 
 
 
 
