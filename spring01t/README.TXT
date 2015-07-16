@@ -66,7 +66,11 @@ Test07.java
     xmlns:c="http://www.springframework.org/schema/c"
     xmlns:p="http://www.springframework.org/schema/p"
     ...>
-  
+
+Test08.java
+  - 의존 객체 주입하기
+  - Engine 클래스 작성
+  - Car 클래스에 Engine 프로퍼티 추가    
 
 
 
