@@ -169,9 +169,19 @@ Test20.java
         </property>
     </bean>
 
+Test21.java
+  - 애노테이션을 이용하여 의존 객체를 자동 주입하기 
+    => @Autowired를 setEngine()에 붙인다.
+  - @Autowired 애노테이션이 동작하려면,
+    이 애노테이션을 처리하는 객체를 스프링에 등록해야 한다.
 
+Test22.java    
+  - @Autowired는 셋터 메서드에 붙이지만,
+    인스턴스 변수에 붙일 수도 있다.
 
-
+Test23.java
+  - @Autowired는 필수이다.
+    => 만약 주입할 의존 객체를 못 찾으면 예외 발생한다.
 
 
 
