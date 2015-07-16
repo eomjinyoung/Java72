@@ -137,9 +137,27 @@ Test18.java
       </property>
     </bean>
   
-
-
-
+Test19.java
+  - 직접 커스텀 프로퍼티 에디터 등록하기
+  - 방법
+  1) 날짜 커스텀 프로퍼티 에디터 생성한다.
+     => MyCustomDateEditor 클래스 작성
+  2) 스프링 설정 파일에 등록한다.
+  <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+    <property name="customEditors">
+      <map>
+        <entry key="java.util.Date" 
+               value="step04.MyCustomDateEditor"/>
+      </map>
+    </property>
+  </bean>
+    
+Test20.java
+  - Engine 타입의 프로퍼티 값을 문자열로 등록하기.
+  - 방법
+  1) 문자열을 Engine 타입의 객체로 바꿔주는 변환기를 만든다.
+     => CustomEngineEditor 클래스 작성
+  2) 스프링 설정 파일에 등록한다.
 
 
 

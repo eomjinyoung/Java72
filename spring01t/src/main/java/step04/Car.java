@@ -6,12 +6,22 @@ public class Car {
   String  model;
   int     cc;
   Date    outDate;
+  Engine  engine;
+  
   
   @Override
   public String toString() {
-    return "Car [model=" + model + ", cc=" + cc + ", outDate=" + outDate + "]";
+    return "Car [model=" + model + ", cc=" + cc + ", outDate=" + outDate + ", engine=" + engine + "]";
   }
-  
+
+  public Engine getEngine() {
+    return engine;
+  }
+
+  public void setEngine(Engine engine) {
+    this.engine = engine;
+  }
+
   public String getModel() {
     return model;
   }

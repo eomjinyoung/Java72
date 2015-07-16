@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+  
+  <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+    <property name="customEditors">
+      <map>
+        <entry key="java.util.Date" 
+               value="step04.MyCustomDateEditor"/>
+        <entry key="step04.Engine" 
+               value="step04.MyCustomEngineEditor"/>       
+      </map>
+    </property>
+  </bean>
+    
+  <bean id="c1" class="step04.Car">
+    <property name="model" value="티코"/>
+    <property name="cc" value="800"/>
+    <property name="outDate" value="2015-07-16"/>  
+    <property name="engine" value="현대,350,16"/>
+    <!-- engine 프로퍼티 값 설정하기 -->
+    <!--  
+    <property name="engine">
+      <bean class="step04.Engine">
+        <property name="maker" value="BMW"/>
+        <property name="hp" value="500"/>
+        <property name="valves" value="16"/>
+      </bean>
+    </property>
+    --> 
+  </bean>
+  
+  
+</beans>
+
+
+
+
+
