@@ -158,7 +158,16 @@ Test20.java
   1) 문자열을 Engine 타입의 객체로 바꿔주는 변환기를 만든다.
      => CustomEngineEditor 클래스 작성
   2) 스프링 설정 파일에 등록한다.
-
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+          <map>
+            <entry key="java.util.Date" 
+                   value="step04.MyCustomDateEditor"/>
+            <entry key="step04.Engine" 
+                   value="step04.MyCustomEngineEditor"/>       
+          </map>
+        </property>
+    </bean>
 
 
 
