@@ -9,20 +9,48 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-  
+  <!-- 자바코드
+    Engine e1 = new Engine();
+    e1.setMaker("현대");
+    e1.setHp(200);
+    e1.setValvels(16);
+   -->
   <bean id="e1" class="step02.Engine">
     <property name="maker" value="현대"/>
     <property name="hp" value="200"/>
     <property name="valves" value="16"/>
   </bean>
   
+  <!-- 자바코드
+    Engine e2 = new Engine();
+    e2.setMaker("BMW");
+    e2.setHp(500);
+    e2.setValvels(16);
+   -->
   <bean id="e2" class="step02.Engine">
     <property name="maker" value="BMW"/>
     <property name="hp" value="500"/>
     <property name="valves" value="16"/>
   </bean>
   
-  <bean id="c1" class="step02.Car"/>  
+  <!-- 자바 코드
+    Car c1 = new Car();
+    c1.setEngine(e2);
+   -->
+  <bean id="c1" class="step02.Car">
+    <property name="model" value="티코"/>
+    <property name="engine">
+      <ref bean="e2"/>
+    </property>
+  </bean> 
+  
+  <bean id="c2" class="step02.Car">
+    <property name="model" value="소나타"/>
+    <property name="engine" ref="e1"/>
+  </bean> 
+  
+  <bean id="c3" class="step02.Car" 
+    p:model="그랜저" p:engine-ref="e2"/>
   
 </beans>
 
