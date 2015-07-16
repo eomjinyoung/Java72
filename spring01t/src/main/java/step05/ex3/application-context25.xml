@@ -10,6 +10,18 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
   
+  <bean id="e1" class="step05.ex3.Engine">
+    <property name="maker" value="BMW"/>
+    <property name="hp" value="500"/>
+    <property name="valves" value="16"/>
+  </bean>
+  
+  <bean id="e2" class="step05.ex3.Engine">
+    <property name="maker" value="현대"/>
+    <property name="hp" value="250"/>
+    <property name="valves" value="16"/>
+  </bean>
+  
   <bean id="c1" class="step05.ex3.Car">
     <property name="model" value="티코"/>
     <property name="cc" value="800"/>
