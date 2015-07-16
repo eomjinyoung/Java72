@@ -3,12 +3,16 @@ package step05.ex4;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Car {
   String  model;
   int     cc;
   Date    outDate;
-  @Autowired(required=false) Engine  engine;
+  
+  @Autowired(required=false) 
+  @Qualifier("e2") 
+  Engine  engine;
   
   
   @Override

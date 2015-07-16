@@ -10,7 +10,7 @@ public class Test26 {
   public static void main(String[] args) {
     ApplicationContext iocContainer = 
         new ClassPathXmlApplicationContext(
-            "step05/ex3/application-context25.xml");
+            "step05/ex4/application-context26.xml");
     
     System.out.println(iocContainer.getBean("c1"));
     

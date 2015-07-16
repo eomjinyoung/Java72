@@ -16,28 +16,13 @@
     <property name="valves" value="16"/>
   </bean>
   
-  <bean id="e2" class="step05.ex4.Engine">
-    <property name="maker" value="현대"/>
-    <property name="hp" value="250"/>
-    <property name="valves" value="16"/>
-  </bean>
-  
   <bean id="c1" class="step05.ex4.Car">
     <property name="model" value="티코"/>
     <property name="cc" value="800"/>
   </bean>
  
-  <!-- 애노테이션을 처리할 객체를 직접 등록하지 말고,
-       간접적으로 등록하자! 
-       다음 설정은 애노테이션을 처리하는 
-       모든 BeanPostProcessor 객체를 등록한다.-->
   <context:annotation-config/>
-       
-  <!--  
-  <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
-  <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
-  <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
-  --> 
+  
 </beans>
 
 
