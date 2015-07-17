@@ -29,12 +29,29 @@ public class BoardServer {
         socket = serverSocket.accept();
         System.out.println("클라이언트가 연결되었음.");
         
+        // 3. 클라이언트와 입출력을 수행할 도구를 준비한다.
+        in = new Scanner(socket.getInputStream());
+        out = new PrintStream(socket.getOutputStream());
         
+        // 4. 클라이언트가 보낸 명령을 받아서 
+        //    처리한 후 응답 결과를 보낸다.
+        String command = null;
+        do {
+          try {
+            command = in.nextLine();
+            out.println("엄진영==>" + command);
+            out.println();
+          } catch (Exception e) {
+            break;
+          }
+        } while (!command.equals("quit"));
       }
     } catch (Exception e) {
       
     } finally {
-      
+      in.close();
+      out.close();
+      try {socket.close();} catch (Exception e) {}
       try {serverSocket.close();} catch (Exception e) {}
     }
   }
