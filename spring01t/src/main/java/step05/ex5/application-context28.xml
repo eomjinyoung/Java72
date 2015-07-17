@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+  <context:annotation-config/>
+  
+  <bean id="e1" class="step05.ex5.Engine">
+    <property name="maker" value="BMW"/>
+    <property name="hp" value="500"/>
+    <property name="valves" value="16"/>
+  </bean>
+  
+  <bean id="e2" class="step05.ex5.Engine">
+    <property name="maker" value="현대"/>
+    <property name="hp" value="250"/>
+    <property name="valves" value="16"/>
+  </bean>
+  
+  <bean id="c1" class="step05.ex5.Car">
+    <property name="model" value="티코"/>
+    <property name="cc" value="800"/>
+  </bean>
+ 
+</beans>
+
+
+
+
+

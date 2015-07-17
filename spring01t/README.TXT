@@ -208,8 +208,26 @@ Test27.java
     스프링에 어떤 기능을 사용하고 싶다면,
     해당 기능을 처리하는 객체를 등록하라!
 
-
-
+Test28.java
+  - @Resource = @Autowired + @Qualifier
+  
+Test29.java
+  - 빈 자동 생성 애노테이션
+  - @Component : 자동으로 생성할 객체를 지정한다.
+    => 클래스의 역할을 더 상세히 지정하는 방법
+    => @Controller: 사용자와 상호작용하는 역할
+    => @Service: 업무 관련 로직을 처리하는 역할
+    => @Repository: 데이터 관련 로직을 처리하는 역할(DAO)
+  - 이 애노테이션이 동작하려면,
+    1) 애노테이션을 처리할 객체를 등록해야 한다.
+        <context:annotation-config/>
+    2) 애노테이션이 붙은 클래스를 찾아야 한다.
+       => 이 태그를 선언하면 annotation-config 태그는
+          선언할 필요가 없다. 자동으로 포함한다.
+        <context:component-scan base-package="step06"/>
+  - 애노테이션으로 빈을 생성할 때,
+    빈의 이름을 주지 않으면 
+    클래스 이름(첫 알파벳은 소문자)을 빈의 이름으로 사용한다.      
 
 
 
