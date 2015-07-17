@@ -20,35 +20,42 @@ public class BoardClient {
     Socket socket = null;
     
     try {
+      // 서버에 연결한다.
+      socket = new Socket(host, port);
+      
+      // 입출력 도구를 준비한다.
+      in = new Scanner(
+          socket.getInputStream());
+      out = new PrintStream(
+          socket.getOutputStream());
+      
+      // 사용자 입력을 받을 도구 준비
       prompt = new Scanner(System.in);
       
       String command = null;
       String response = null;
       do {
+        //1. 사용자로부터 명령어를 입력 받는다.
         System.out.print("명령> ");
         command = prompt.nextLine();
         
-        socket = new Socket(host, port);
-        in = new Scanner(socket.getInputStream());
-        out = new PrintStream(socket.getOutputStream());
-        
+        //2. 서버에 명령어를 보낸다.
         out.println(command);
         
+        //3. 서버로부터 응답을 읽는다.
         while (!(response = in.nextLine()).equals("")) {
           System.out.println(response);
         }
-        
-        in.close();
-        out.close();
-        try {socket.close();} catch (Exception e) {}
-        
       } while (!command.equals("quit"));
       
     } catch (Exception e) {
       e.printStackTrace();
       
     } finally {
+      in.close();
+      out.close();
       try {prompt.close();} catch (Exception e) {}
+      try {socket.close();} catch (Exception e) {}
     }
   }
   

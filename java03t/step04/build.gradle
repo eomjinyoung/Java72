@@ -1,0 +1,48 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+
+// 소스 파일의 문자 집합과 자바 버전을 지정한다.
+// 문자 집합을 지정하지 않으면, 윈도OS는 MS-949로 간주한다.
+compileJava {
+  options.encoding = 'UTF-8' // 소스 파일의 문자 집합
+  // 컴파일 할 때 지정된 버전의 문법으로 제한한다. 
+  sourceCompatibility = 1.8 
+}
+
+// jar 파일 설정
+jar {
+  manifest {
+     attributes 'Main-Class': 'net.bitacademy.java72.MainApp'
+  }
+  from { // 의존 라이브러리 파일을 jar 파일에 통합하라!
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}
+
+// 의존 라이브러리를 다운로드 받을 서버를 설정 
+repositories {
+  mavenCentral() // https://repo1.maven.org/maven2/
+}
+
+// 가져올 라이브러리를 지정한다.
+// 라이브러리 검색: www.mvnrepository.com
+dependencies {
+  compile 'mysql:mysql-connector-java:5.1.36'
+  compile 'org.mybatis:mybatis:3.3.0'
+  compile 'org.reflections:reflections:0.9.10'
+  compile 'org.springframework:spring-context:4.1.7.RELEASE'
+  compile 'org.mybatis:mybatis-spring:1.2.3'
+  compile 'org.springframework:spring-jdbc:4.1.7.RELEASE'
+  
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+
+
+
+
+
+
+
+
+

@@ -19,11 +19,15 @@ public class BoardSkel extends Thread {
       out = new PrintStream(socket.getOutputStream());
       
       String command = null;
-      try {
-        command = in.nextLine();
-        out.println("엄진영==>" + command);
-        out.println();
-      } catch (Exception e) {}
+      do {
+        try {
+          command = in.nextLine();
+          out.println("엄진영==>" + command);
+          out.println();
+        } catch (Exception e) {
+          break;
+        }
+      } while (!command.equals("quit"));
       
     } catch (Exception e) {
       e.printStackTrace();
