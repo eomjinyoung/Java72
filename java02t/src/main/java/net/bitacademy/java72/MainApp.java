@@ -21,7 +21,7 @@ public class MainApp {
   public static void main(String[] args) {
     scanner = new Scanner(System.in);
     appContext = new ClassPathXmlApplicationContext(
-        "application-context.xml" // 스프링 설정 파일 경로
+        "classpath*:net/bitacademy/java72/application-context.xml" // 스프링 설정 파일 경로
         );
     
     String command = null;
