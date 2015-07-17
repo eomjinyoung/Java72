@@ -1,11 +1,19 @@
 package net.bitacademy.java72.server;
 
 import java.io.PrintStream;
+import java.net.Socket;
 import java.util.Scanner;
 
 public class BoardSkel extends Thread {
+  Socket socket;
+  
+  public BoardSkel(Socket socket) {
+    this.socket = socket;
+  }
   @Override
   public void run() {
+    Scanner in = null;
+    PrintStream out = null;
     try {
       in = new Scanner(socket.getInputStream());
       out = new PrintStream(socket.getOutputStream());

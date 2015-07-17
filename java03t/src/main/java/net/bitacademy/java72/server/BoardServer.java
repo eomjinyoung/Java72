@@ -14,9 +14,7 @@ public class BoardServer {
   
   public void service() {
     ServerSocket serverSocket = null;
-    Socket socket = null;
-    Scanner in = null;
-    PrintStream out = null;
+    
     
     try {
       // 1. 클라이언트의 연결을 기다린다.
