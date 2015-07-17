@@ -1,13 +1,17 @@
 package net.bitacademy.java72;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class StudentSelector {
 
   public static void main(String[] args) throws Exception {
     String[] students = new String[]{
-        "변재민", "김다혜","주형진","이규호", "송한나","김다솔", 
-        "배재준", "진혜란","이승호","강슬기","정채훈","방재경"
+        "진혜란", "강슬기", "최승인", "주형진"
+        /*
+        "최승인", "김다혜","주형진","이규호", "송한나","김다솔", 
+        "배재준", "진혜란","김지수","강슬기","정채훈","방재경"
+        */
         /*
         "이재훈","송문혁","최종혁","최승인","박재광","김슬기",
         "김웅찬","김지수","김경직","한영주","김홍규","김형진",
@@ -31,9 +35,12 @@ public class StudentSelector {
     }
     
     int no = 0;
+    Scanner scan = new Scanner(System.in);
+    String s = null;
     while (list.size() > 0) {
       no = (int)(Math.random() * list.size());
       System.out.println(list.remove(no));
+      s = scan.nextLine();
     }
     
     /*int no = -1;
