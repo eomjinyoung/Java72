@@ -2,11 +2,17 @@ package net.bitacademy.java72.server;
 
 import java.net.ServerSocket;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class BoardServer {
+  ApplicationContext appContext;
   int port;
   
   public BoardServer(int port) {
     this.port = port;
+    appContext = new ClassPathXmlApplicationContext(
+        "net/bitacademy/java72/application-context.xml");
   }
   
   public void service() {
@@ -17,7 +23,9 @@ public class BoardServer {
       System.out.println("서버 실행 중...");
       
       while (true) {
-        new BoardSkel(serverSocket.accept()).start();
+        new BoardSkel( 
+              serverSocket.accept(),
+              appContext).start();
       }
     } catch (Exception e) {
       
