@@ -1,6 +1,7 @@
 package net.bitacademy.java72.control;
 
 import java.io.PrintStream;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,10 @@ import org.springframework.stereotype.Controller;
 
 import net.bitacademy.java72.annotation.RequestMapping;
 import net.bitacademy.java72.dao.BoardDao;
+import net.bitacademy.java72.domain.Board;
 
-@Controller("board/delete.do")
-public class BoardDelete {
+@Controller("board/list.do")
+public class BoardList {
   BoardDao boardDao;
   
   @Autowired
@@ -18,17 +20,17 @@ public class BoardDelete {
     this.boardDao = boardDao;
   }
 
+  // 명령어가 들어 왔을 때 호출될 메서드를 지정한다.
   @RequestMapping
-  public void delete(Map<String, Object> paramMap) {
+  public void list(Map<String, Object> paramMap) {
     PrintStream out = (PrintStream)paramMap.get("out");
-    int no = Integer.parseInt((String)paramMap.get("no"));
-    
-    int count = boardDao.delete(no);
-    
-    if (count == 0) {
-      out.println("삭제 실패!");
-    } else {
-      out.println("삭제 성공!");
+    List<Board> boards = boardDao.list();
+    for (Board board : boards) {
+      out.printf("%d, %s, %s, %d\n", 
+          board.getNo(),
+          board.getTitle(),
+          board.getCreateDate(),
+          board.getViewCount());
     }
   }
 
