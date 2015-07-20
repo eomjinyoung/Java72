@@ -1,7 +1,7 @@
 package net.bitacademy.java72.control;
 
+import java.io.PrintStream;
 import java.util.Map;
-import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,27 +22,19 @@ public class MemberInsert {
 
   @RequestMapping
   public void insert(Map<String, Object> paramMap) {
-    Scanner scanner = (Scanner)paramMap.get("inputScanner");
+    PrintStream out = (PrintStream)paramMap.get("out");
     
     Member member = new Member();
-
-    System.out.print("이름? ");
-    member.setName(scanner.nextLine());
-
-    System.out.print("이메일? ");
-    member.setEmail(scanner.nextLine());
-
-    System.out.print("전화? ");
-    member.setTel(scanner.nextLine());
-    
-    System.out.print("암호? ");
-    member.setPassword(scanner.nextLine());
+    member.setName((String)paramMap.get("name"));
+    member.setEmail((String)paramMap.get("email"));
+    member.setTel((String)paramMap.get("tel"));
+    member.setPassword((String)paramMap.get("password"));
 
     int count = memberDao.insert(member);
     if (count == 0) {
-      System.out.println("입력 실패!");
+      out.println("입력 실패!");
     } else {
-      System.out.println("입력 성공!");
+      out.println("입력 성공!");
     }
   }
 

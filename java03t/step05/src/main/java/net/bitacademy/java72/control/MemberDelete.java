@@ -1,7 +1,7 @@
 package net.bitacademy.java72.control;
 
+import java.io.PrintStream;
 import java.util.Map;
-import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +20,16 @@ public class MemberDelete {
 
   @RequestMapping
   public void delete(Map<String, Object> paramMap) {
-    Scanner scanner = (Scanner)paramMap.get("inputScanner");
-    System.out.print("삭제할 회원 번호? ");
-    int no = Integer.parseInt(scanner.nextLine());
+    PrintStream out = (PrintStream)paramMap.get("out");
+    int no = Integer.parseInt((String)paramMap.get("no"));
     
-    memberDao.delete(no);
+    int count = memberDao.delete(no);
     
+    if (count == 0) {
+      out.println("삭제 실패!");
+    } else {
+      out.println("삭제 성공!");
+    }
   }
 
 }

@@ -1,5 +1,6 @@
 package net.bitacademy.java72.control;
 
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Map;
 
@@ -21,9 +22,10 @@ public class MemberList {
 
   @RequestMapping
   public void list(Map<String, Object> paramMap) {
+    PrintStream out = (PrintStream)paramMap.get("out");
     List<Member> members = memberDao.list();
     for (Member member : members) {
-      System.out.printf("%d, %s, %s, %s, %s\n", 
+      out.printf("%d, %s, %s, %s, %s\n", 
           member.getNo(),
           member.getName(),
           member.getEmail(),

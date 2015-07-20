@@ -35,7 +35,7 @@
   </update>
   
   <select id="get" parameterType="int" resultMap="MemberMap">
-    SELECT mno, mname, email, tel, pwd
+    SELECT mno, mname, email, tel, pwd, cre_dt
     FROM member
     WHERE mno=#{value}
   </select>

@@ -1,7 +1,7 @@
 package net.bitacademy.java72.control;
 
+import java.io.PrintStream;
 import java.util.Map;
-import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,41 +22,21 @@ public class MemberUpdate {
   
   @RequestMapping
   public void update(Map<String, Object> paramMap) {
-    Scanner scanner = (Scanner)paramMap.get("inputScanner");
-    System.out.print("변경할 회원 번호? ");
-    int no = Integer.parseInt(scanner.nextLine());
+    PrintStream out = (PrintStream)paramMap.get("out");
     
-    Member member = memberDao.get(no);
-    
-    System.out.printf("이름(%s)? ", member.getName());
-    String newName = scanner.nextLine();
-    if (newName.length() > 0) {
-      member.setName(newName);
-    }
-    
-    System.out.printf("이메일(%s)? ", member.getEmail());
-    String newEmail = scanner.nextLine();
-    if (newEmail.length() > 0) {
-      member.setEmail(newEmail);
-    }
-    
-    System.out.printf("전화(%s)? ", member.getTel());
-    String newTel = scanner.nextLine();
-    if (newTel.length() > 0) {
-      member.setTel(newTel);
-    }
-    
-    System.out.printf("암호(*****)? ", member.getPassword());
-    String newPassword = scanner.nextLine();
-    if (newPassword.length() > 0) {
-      member.setPassword(newPassword);
-    }
+    Member member = new Member();
+    member.setNo(Integer.parseInt(
+        (String)paramMap.get("no")));
+    member.setName((String)paramMap.get("name"));
+    member.setEmail((String)paramMap.get("email"));
+    member.setTel((String)paramMap.get("tel"));
+    member.setPassword((String)paramMap.get("password"));
     
     int count = memberDao.update(member);
     if (count == 0) {
-      System.out.println("변경 실패!");
+      out.println("변경 실패!");
     } else {
-      System.out.println("변경 성공!");
+      out.println("변경 성공!");
     }
 
   }
