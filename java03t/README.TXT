@@ -35,8 +35,40 @@
  [step05]
  - C/S 환경을 BoardApp 프로젝트에 적용
  
-
-
+ [step06]
+ - BoardApp C/S를 웹 애플리케이션으로 전환하기
+   1) 웹 애플리케이션 의존 라이브러리 추가
+     apply plugin: 'war'
+     ...
+     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+   
+   2) BoardServer 및 BoardSkel, BoardClient를 제거한다.
+   3) 웹 애플리케이션 규칙에 따라 웹 브라우저의 요청을 
+      받아서 처리할 클래스를 만든다. 
+      => 스프링 프레임워크를 준비한다.
+      => 요청에 해당하는 클래스를 찾아서 실행한다.
+      => DispatcherServlet
+   4) 의존 라이브러리 추출
+      => build.gradle 파일에 다음 명령 추가
+         task copyToLib(type: Copy) {
+              into "$buildDir/output/libs"
+              from configurations.runtime
+         }
+      => gradle build 수행 
+         clean
+         eclipse
+         copyToLib
+   4) 톰캣 서버에 배치
+      => ${tomcat_home}/webapps/web01 폴더 생성
+         * /web01 폴더를 웹 애플리케이션 루트라고 한다.
+         * 다른 말로 컨텍스트 루트라고 한다.
+      => ${contextRoot}/WEB-INF/classes 폴더 생성
+      => 클래스 파일을 classes 폴더에 복사
+      => ${contextRoot}/WEB-INF/lib 폴더 생성
+         의존 라이브러리 파일을 lib 폴더에 복사
+         serverlt-api는 제외한다.(이미 톰캣 서버에 있다.)
+         
+         
 
 
 
