@@ -1,6 +1,6 @@
 package net.bitacademy.java72.control;
 
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class BoardDetail {
 
   @RequestMapping
   public void detail(Map<String, Object> paramMap) {
-    PrintStream out = (PrintStream)paramMap.get("out");
+    PrintWriter out = (PrintWriter)paramMap.get("out");
     int no = Integer.parseInt((String)paramMap.get("no"));
     
     Board board = boardDao.get(no);

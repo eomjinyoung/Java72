@@ -1,6 +1,6 @@
 package net.bitacademy.java72.control;
 
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +23,7 @@ public class BoardList {
   // 명령어가 들어 왔을 때 호출될 메서드를 지정한다.
   @RequestMapping
   public void list(Map<String, Object> paramMap) {
-    PrintStream out = (PrintStream)paramMap.get("out");
+    PrintWriter out = (PrintWriter)paramMap.get("out");
     List<Board> boards = boardDao.list();
     for (Board board : boards) {
       out.printf("%d, %s, %s, %d\n", 

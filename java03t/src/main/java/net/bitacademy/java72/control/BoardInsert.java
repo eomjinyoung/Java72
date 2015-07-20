@@ -1,6 +1,6 @@
 package net.bitacademy.java72.control;
 
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class BoardInsert {
 
   @RequestMapping
   public void insert(Map<String, Object> paramMap) {
-    PrintStream out = (PrintStream)paramMap.get("out");
+    PrintWriter out = (PrintWriter)paramMap.get("out");
     
     Board board = new Board();
     board.setTitle((String)paramMap.get("title"));
