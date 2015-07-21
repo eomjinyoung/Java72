@@ -1,34 +1,39 @@
 package net.bitacademy.java72.control;
 
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
-import net.bitacademy.java72.annotation.RequestMapping;
+import net.bitacademy.java72.context.MyApplicationContext;
 import net.bitacademy.java72.dao.MemberDao;
 import net.bitacademy.java72.domain.Member;
 
-@Controller("member/insert.do")
-public class MemberInsert {
+public class MemberInsert extends GenericServlet {
+  private static final long serialVersionUID = 1L;
 
-  MemberDao memberDao;
-  
-  @Autowired
-  public void setMemberDao(MemberDao memberDao) {
-    this.memberDao = memberDao;
-  }
+  @Override
+  public void service(
+      ServletRequest request, 
+      ServletResponse response) throws ServletException, IOException {
+    MyApplicationContext context = 
+        MyApplicationContext.getInstance();
 
-  @RequestMapping
-  public void insert(Map<String, Object> paramMap) {
-    PrintWriter out = (PrintWriter)paramMap.get("out");
+    MemberDao memberDao = 
+        (MemberDao)context.getBean("memberDao");
+    
+    response.setContentType("text/plain;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    
     
     Member member = new Member();
-    member.setName((String)paramMap.get("name"));
-    member.setEmail((String)paramMap.get("email"));
-    member.setTel((String)paramMap.get("tel"));
-    member.setPassword((String)paramMap.get("password"));
+    member.setName(request.getParameter("name"));
+    member.setEmail(request.getParameter("email"));
+    member.setTel(request.getParameter("tel"));
+    member.setPassword(request.getParameter("password"));
 
     int count = memberDao.insert(member);
     if (count == 0) {

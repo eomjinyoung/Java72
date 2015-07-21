@@ -19,6 +19,42 @@
     <servlet-name>BoardList</servlet-name>
     <servlet-class>net.bitacademy.java72.control.BoardList</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>BoardInsert</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardInsert</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BoardDetail</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardDetail</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BoardUpdate</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardUpdate</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BoardDelete</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardDelete</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberList</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberList</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberInsert</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberInsert</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberDetail</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberDetail</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberUpdate</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberUpdate</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberDelete</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberDelete</servlet-class>
+  </servlet>
   
   <!-- 서블릿 클래스에 URL을 연결 -->
   <servlet-mapping>
@@ -36,6 +72,42 @@
   <servlet-mapping>
     <servlet-name>BoardList</servlet-name>
     <url-pattern>/board/list.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BoardInsert</servlet-name>
+    <url-pattern>/board/insert.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BoardDetail</servlet-name>
+    <url-pattern>/board/detail.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BoardUpdate</servlet-name>
+    <url-pattern>/board/update.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BoardDelete</servlet-name>
+    <url-pattern>/board/delete.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberList</servlet-name>
+    <url-pattern>/member/list.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberInsert</servlet-name>
+    <url-pattern>/member/insert.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberDetail</servlet-name>
+    <url-pattern>/member/detail.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberUpdate</servlet-name>
+    <url-pattern>/member/update.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberDelete</servlet-name>
+    <url-pattern>/member/delete.do</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

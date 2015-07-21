@@ -1,28 +1,34 @@
 package net.bitacademy.java72.control;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
-import net.bitacademy.java72.annotation.RequestMapping;
+import net.bitacademy.java72.context.MyApplicationContext;
 import net.bitacademy.java72.dao.MemberDao;
 import net.bitacademy.java72.domain.Member;
 
-@Controller("member/list.do")
-public class MemberList {
-  MemberDao memberDao;
-  
-  @Autowired
-  public void setMemberDao(MemberDao memberDao) {
-    this.memberDao = memberDao;
-  }
+public class MemberList extends GenericServlet {
+  private static final long serialVersionUID = 1L;
 
-  @RequestMapping
-  public void list(Map<String, Object> paramMap) {
-    PrintWriter out = (PrintWriter)paramMap.get("out");
+  @Override
+  public void service(
+      ServletRequest request, 
+      ServletResponse response) throws ServletException, IOException {
+    MyApplicationContext context = 
+        MyApplicationContext.getInstance();
+
+    MemberDao memberDao = 
+        (MemberDao)context.getBean("memberDao");
+    
+    response.setContentType("text/plain;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    
     List<Member> members = memberDao.list();
     for (Member member : members) {
       out.printf("%d, %s, %s, %s, %s\n", 
