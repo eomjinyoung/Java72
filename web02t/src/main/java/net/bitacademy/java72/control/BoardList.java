@@ -1,30 +1,34 @@
 package net.bitacademy.java72.control;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
-import net.bitacademy.java72.annotation.RequestMapping;
+import net.bitacademy.java72.context.MyApplicationContext;
 import net.bitacademy.java72.dao.BoardDao;
 import net.bitacademy.java72.domain.Board;
 
-@Controller("board/list.do")
-public class BoardList {
-  BoardDao boardDao;
-  
-  @Autowired
-  public void setBoardDao(BoardDao boardDao) {
-    this.boardDao = boardDao;
-  }
+public class BoardList extends GenericServlet {
+  private static final long serialVersionUID = 1L;
 
-  // 명령어가 들어 왔을 때 호출될 메서드를 지정한다.
-  @RequestMapping
-  public void list(Map<String, Object> paramMap) {
-    PrintWriter out = (PrintWriter)paramMap.get("out");
+  @Override
+  public void service(
+      ServletRequest request, 
+      ServletResponse response) throws ServletException, IOException {
+    MyApplicationContext context = 
+        MyApplicationContext.getInstance();
+    
+    BoardDao boardDao = (BoardDao)context.getBean("boardDao");
+    
     List<Board> boards = boardDao.list();
+    
+    response.setContentType("text/plain;charset=UTF-8");
+    PrintWriter out = response.getWriter();
     for (Board board : boards) {
       out.printf("%d, %s, %s, %d\n", 
           board.getNo(),
@@ -33,5 +37,4 @@ public class BoardList {
           board.getViewCount());
     }
   }
-
 }

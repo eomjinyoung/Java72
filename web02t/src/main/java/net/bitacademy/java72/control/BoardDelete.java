@@ -20,6 +20,7 @@ public class BoardDelete {
 
   @RequestMapping
   public void delete(Map<String, Object> paramMap) {
+    
     PrintWriter out = (PrintWriter)paramMap.get("out");
     int no = Integer.parseInt((String)paramMap.get("no"));
     

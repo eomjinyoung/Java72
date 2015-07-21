@@ -8,6 +8,15 @@ compileJava {
   sourceCompatibility = 1.8 
 }
 
+eclipse {
+  wtp {
+    facet {
+      facet name: 'jst.web', version: '3.1'
+      facet name: 'jst.java', version: '1.8'
+    }
+  }
+}
+
 repositories {
   mavenCentral() // https://repo1.maven.org/maven2/
 }

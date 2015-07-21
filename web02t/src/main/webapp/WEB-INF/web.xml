@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>web01t</display-name>
+  <display-name>web02t</display-name>
+  
+  <!-- 서블릿 클래스 등록 -->
+  <servlet>
+    <servlet-name>servlet.HelloWorld3</servlet-name>
+    <servlet-class>servlet.HelloWorld3</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>servlet.HelloWorld4</servlet-name>
+    <servlet-class>servlet.HelloWorld4</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>servlet.HelloWorld5</servlet-name>
+    <servlet-class>servlet.HelloWorld5</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BoardList</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardList</servlet-class>
+  </servlet>
+  
+  <!-- 서블릿 클래스에 URL을 연결 -->
+  <servlet-mapping>
+    <servlet-name>servlet.HelloWorld3</servlet-name>
+    <url-pattern>/hello3</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>servlet.HelloWorld4</servlet-name>
+    <url-pattern>/hello4</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>servlet.HelloWorld5</servlet-name>
+    <url-pattern>/hello5</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BoardList</servlet-name>
+    <url-pattern>/board/list.do</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
