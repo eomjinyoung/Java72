@@ -116,13 +116,49 @@
 
 6. BoardApp의 모든 컨트롤러를 서블릿을 변환하라!     
 
+[HTTP 프로토콜]
+- 프로토콜?
+  클라이언트와 서버 사이에 주고 받는 데이터 형식
+- HTTP 프로토콜 Connectionless 방식이다.
+- Connectionless?
+  연결 -> 요청 -> 응답 -> 연결끊기
+  => 단점: 매번 요청할 때마다 연결해야 한다.
+  => 장점: 계속 연결되어 있지 않기 때문에, 
+           적은 자원으로 더 많은 클라이언트 요청을 처리할 수 있다.
+- 웹 브라우저 --> 웹 서버: 요청 프로토콜
+request line(\r\n)
+*[general | request | entity] header(\r\n)
+\r\n
+entity
+
+* request line 형식
+method sp request-URI sp HTTP-version(\r\n)
+
+* header 형식
+header-name: value
+
+예)
+GET /web02t/board/list.do HTTP/1.1(\r\n)
+Host: localhost:9999(\r\n)
+(\r\n)
 
 
+- 웹 서버 --> 웹 브라우저: 응답 프로토콜
+status line(\r\n)
+*[general | response | entity] header(\r\n)
+\r\n
+entity(message body)       
 
+* status line 형식
+HTTP-version sp status-code sp status-phrase(\r\n)
 
-       
-   
-   
+예)
+HTTP/1.1 200 OK(\r\n)
+Content-type: text/plain;charset=UTF(\r\n)   
+...
+(\r\n)
+20, aaa, ddd, 2015-07-22
+...   
    
    
    
