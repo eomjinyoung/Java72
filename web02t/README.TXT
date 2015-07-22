@@ -164,8 +164,13 @@ Content-type: text/plain;charset=UTF(\r\n)
   => util.MyWebBrowser
 
 [step03: HTML로 UI 꾸미기]
-     
-   
+Test01.html
+  => HTML 구조
+  => 1) DOCTYPE 선언 : <!DOCTYPE...>
+  <HTML>
+  => 2) HTML 문서의 정보: <HEAD>...</HEAD>
+  => 3) HTML 문서의 본문: <BODY>...</BODY>
+  </HTML>
    
    
    
