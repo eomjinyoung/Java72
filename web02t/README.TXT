@@ -116,7 +116,7 @@
 
 6. BoardApp의 모든 컨트롤러를 서블릿을 변환하라!     
 
-[HTTP 프로토콜]
+[step02: HTTP 프로토콜]
 - 프로토콜?
   클라이언트와 서버 사이에 주고 받는 데이터 형식
 - HTTP 프로토콜 Connectionless 방식이다.
@@ -159,7 +159,12 @@ Content-type: text/plain;charset=UTF(\r\n)
 (\r\n)
 20, aaa, ddd, 2015-07-22
 ...   
-   
+
+- 미니 웹 브라우저 만들기
+  => util.MyWebBrowser
+
+[step03: HTML로 UI 꾸미기]
+     
    
    
    
