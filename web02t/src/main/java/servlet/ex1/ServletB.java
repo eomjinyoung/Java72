@@ -1,4 +1,4 @@
-package servlet;
+package servlet.ex1;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,8 +9,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/step03/servleta")
-public class ServletA extends GenericServlet {
+@WebServlet("/step03/servletb")
+public class ServletB extends GenericServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -23,10 +23,10 @@ public class ServletA extends GenericServlet {
     out.println("<html>");
     out.println("<head>");
     out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>페이지 A</title>");  
+    out.println("  <title>페이지 B</title>");  
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>페이지 A</h1>");
+    out.println("<h1>페이지 BBBBBBBBBBB</h1>");
     out.println("</body>");
     out.println("</html>");
   }
