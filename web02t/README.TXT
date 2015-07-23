@@ -165,7 +165,8 @@ Content-type: text/plain;charset=UTF(\r\n)
 
 [step03: HTML로 UI 꾸미기]
 => webapp/html/*.html
-=> 
+=> Base64Generator.java
+   => 바이너리 데이터를 Base64 형식의 문자열로 변환해 주는 클래스.
    
    
    
