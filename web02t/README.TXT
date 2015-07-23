@@ -171,7 +171,10 @@ Content-type: text/plain;charset=UTF(\r\n)
 => MIME Type: Multi-purpose Internet Mail Extension
    - 메일에 첨부되는 콘텐츠의 타입을 지정하기 위해 만든 문법
    - 현재는 웹 등에서 널리 사용되고 있다. 
-      
+
+[step04: 화면이동]
+- Refresh와 Redirect를 이용한 화면이동 기법
+       
    
    
    

@@ -77,7 +77,7 @@ public class MemberDetail extends GenericServlet {
       out.printf("<tr><th>암호</th>"
           + "<td>"
           + "<input type='text' name='password'>"
-          + "</td></tr>\n"
+          + "</td></tr>\n" 
           , member.getPassword());
     } else {
       out.println("<tr><td>"
