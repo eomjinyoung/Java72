@@ -1,4 +1,4 @@
-package servlet.ex1;
+package servlet.ex2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/step04/ex1/servletb")
+@WebServlet("/step04/ex2/servletb")
 public class ServletB extends GenericServlet {
   private static final long serialVersionUID = 1L;
 

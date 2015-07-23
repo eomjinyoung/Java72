@@ -24,20 +24,33 @@ public class BoardInsert extends GenericServlet {
     
     BoardDao boardDao = (BoardDao)context.getBean("boardDao");
       
-    response.setContentType("text/plain;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-    
     Board board = new Board();
     board.setTitle(request.getParameter("title"));
     board.setContent(request.getParameter("content"));
     board.setPassword(request.getParameter("password"));
 
     int count = boardDao.insert(board);
+
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    out.println("<html>");
+    out.println("<head>");
+    out.println("  <meta charset='UTF-8'>");
+    out.println("  <meta http-equiv='Refresh'"
+        + " content='1;url=list.do'>");
+    out.println("  <title>입력 결과</title>");  
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>입력 결과</h1>");
+    
     if (count == 0) {
-      out.println("입력 실패!");
+      out.println("<p>입력 실패!</p>");
     } else {
-      out.println("입력 성공!");
+      out.println("<p>입력 성공!</p>");
     }
+    
+    out.println("</body>");
+    out.println("</html>");
   }
 
 }

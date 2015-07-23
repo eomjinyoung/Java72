@@ -24,9 +24,6 @@ public class BoardUpdate extends GenericServlet {
     
     BoardDao boardDao = (BoardDao)context.getBean("boardDao");
       
-    response.setContentType("text/plain;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-    
     Board board = new Board();
     board.setNo(Integer.parseInt(request.getParameter("no")));
     board.setTitle(request.getParameter("title"));
@@ -35,11 +32,27 @@ public class BoardUpdate extends GenericServlet {
     
     // 입력 받은 내용으로 게시물을 변경한다.
     int count = boardDao.update(board);
+    
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    out.println("<html>");
+    out.println("<head>");
+    out.println("  <meta charset='UTF-8'>");
+    out.println("  <meta http-equiv='Refresh'"
+        + " content='1;url=list.do'>");
+    out.println("  <title>변경 결과</title>");  
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>변경 결과</h1>");
+    
     if (count == 0) {
-      out.println("변경 실패!");
+      out.println("<p>변경 실패!</p>");
     } else {
-      out.println("변경 성공!");
+      out.println("<p>변경 성공!</p>");
     }
+    
+    out.println("</body>");
+    out.println("</html>");
 
   }
 

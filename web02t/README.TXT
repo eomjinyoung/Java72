@@ -174,7 +174,11 @@ Content-type: text/plain;charset=UTF(\r\n)
 
 [step04: 화면이동]
 - Refresh와 Redirect를 이용한 화면이동 기법
-       
+- servlet.ex1
+  => Refresh 적용 전
+  => 화면을 이동하고 싶으면 직접 요청해야 한다.
+- servlet.ex2
+  => <meta> 태그를 이용한 페이지 자동 요청하기.      
    
    
    

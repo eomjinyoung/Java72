@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/step03/servleta")
+@WebServlet("/step04/ex1/servleta")
 public class ServletA extends GenericServlet {
   private static final long serialVersionUID = 1L;
 
