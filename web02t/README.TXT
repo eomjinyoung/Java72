@@ -167,7 +167,11 @@ Content-type: text/plain;charset=UTF(\r\n)
 => webapp/html/*.html
 => Base64Generator.java
    => 바이너리 데이터를 Base64 형식의 문자열로 변환해 주는 클래스.
-   
+=> BoardApp의 출력에 HTML, CSS 적용
+=> MIME Type: Multi-purpose Internet Mail Extension
+   - 메일에 첨부되는 콘텐츠의 타입을 지정하기 위해 만든 문법
+   - 현재는 웹 등에서 널리 사용되고 있다. 
+      
    
    
    
