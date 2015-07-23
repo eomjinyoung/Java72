@@ -46,6 +46,7 @@ public class BoardList extends GenericServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>게시물 목록</h1>");
+    out.println("<p><a href='form.html'>새 글</a></p>");
     out.println("<table>");
     out.println("  <tr>");
     out.println("    <th>번호</th> ");
@@ -56,10 +57,11 @@ public class BoardList extends GenericServlet {
     for (Board board : boards) {
       out.printf("<tr>"
           + "<td>%d</td>"
-          + "<td>%s</td>"
+          + "<td><a href='detail.do?no=%d'>%s</a></td>"
           + "<td>%s</td>"
           + "<td>%d</td>"
           + "</tr>\n" 
+        , board.getNo()
         , board.getNo()
         , board.getTitle()
         , board.getCreateDate()
