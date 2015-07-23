@@ -52,10 +52,10 @@ public class BoardDetail extends GenericServlet {
     if (board != null) {
       out.printf("<tr><th>번호</th>"
           + "<td>"
-          + "<input type='text' name='no' value='%d'>"
+          + "<input type='text' readonly"
+          + " name='no' value='%d'>"
           + "</td></tr>\n" 
           , board.getNo());
-      
       out.printf("<tr><th>제목</th>"
           + "<td>"
           + "<input type='text' name='title' value='%s'>"
@@ -77,9 +77,11 @@ public class BoardDetail extends GenericServlet {
     }
     out.println("<tr>");
     out.println("  <th></th>");
-    out.println("  <td>"
+    out.printf("  <td>"
         + "<input type='submit' value='변경'>"
-        + "</td>");
+        + "<a href='delete.do?no=%d'>삭제</a>"
+        + "</td>"
+        , board.getNo());
     out.println("</tr>");
     out.println("</table>");
     out.println("</form>");
