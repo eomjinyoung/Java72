@@ -187,7 +187,9 @@ Content-type: text/plain;charset=UTF(\r\n)
   => 웹 브라우저에 출력하는 것 없이 다른 화면으로 이동하는
      효과를 거둘 수 있다.     
 [step05: GET과 POST 방식의 차이점 이해]
-   
+ex1.LogIn
+- GET 방식으로 서버에 값을 보내는 방법
+- 서버에서 값을 꺼내는 방법   
    
    
    
