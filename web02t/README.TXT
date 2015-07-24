@@ -185,11 +185,96 @@ Content-type: text/plain;charset=UTF(\r\n)
   => Redirect를 이용한 화면 이동
   => Redirect는 웹 브라우저에게 콘텐츠를 보내지 않는다.
   => 웹 브라우저에 출력하는 것 없이 다른 화면으로 이동하는
-     효과를 거둘 수 있다.     
+     효과를 거둘 수 있다.   
+     
+       
 [step05: GET과 POST 방식의 차이점 이해]
 ex1.LogIn
 - GET 방식으로 서버에 값을 보내는 방법
 - 서버에서 값을 꺼내는 방법   
+- GET 요청 프로토콜 형식
+method sp request-uri sp http-version(CRLF) <== request line: 
+header-name : value(CRLF) <== header(0개이상): 
+(CRLF):  <== empty line
+
+- GET 요청 프로토콜 예 
+GET /web02t/step05/ex1/LogIn?id=aaa&pwd=bbb HTTP/1.1
+Host: localhost:9999
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36
+HTTPS: 1
+Referer: http://localhost:9999/web02t/step05/ex1/form.html
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4
+   
+- 특징  
+  => GET 요청은 데이터를 Request-URI에 붙여서 보낸다.
+  => 단점
+  1) 웹 브라우저의 주소 창에 데이터가 보인다. 
+     => 중요 정보가 노출될 수 있다. 
+  2) 보통 웹 브라우저는 URL을 임시 보관한다.
+     => 다른 사람이 URL을 입력할 때 기존에 입력한 
+        URL을 보여줄 수 있다.
+  3) URL은 문자열로 구성된다.
+     => 바이너리 데이터 전송 불가!
+  4) 각 웹 서버마다 요청 헤더의 크기가 제한되어있다.
+     예) 톰캣서버는 8KB, IIS6는 16KB
+     => 대용량의 데이터를 전송할 수 없다.
+  => 장점
+  1) URL에 서버에 보내는 데이터가 포함되기 때문에
+     다른 사람에게 전달하기 쉽다.
+     예) 검색 결과, 게시물 조회 등.
+  2) 즐겨 찾기에 추가할 수 있다.     
+   
+- POST 요청 프로토콜 형식
+method sp request-uri sp http-version(CRLF) <== request line
+header-name: value(CRLF)  <== 0개 이상
+(CRLF)
+message-body  <== 서버에 보내는 데이터
+
+- POST 요청 프로토콜 예
+POST /web02t/step05/ex1/LogIn2 HTTP/1.1
+Host: localhost:9999
+Content-Length: 16
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Origin: http://localhost:9999
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36
+HTTPS: 1
+Content-Type: application/x-www-form-urlencoded
+Referer: http://localhost:9999/web02t/step05/ex1/form2.html
+Accept-Encoding: gzip, deflate
+Accept-Language: ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4
+
+id=aaab&pwd=bbbb 
+
+- 특징
+  => 데이터를 message-body 영역에 붙여서 보낸다.
+  => 장점
+  1) 바이너리 데이터 전송 가능(단, multipart/form-data형식)
+  2) 대용량 데이터 전송 가능(서버에서 허락하는 한도 안에서는)
+  3) 웹 브라우저 주소 창에 노출되지 않는다.
+  => 단점
+  1) 즐겨 찾기에 추가할 때 데이터가 제외된다.
+     => 검색어나 게시물 번호가 저장되지 않기 때문에
+        도움이 안된다.
+    
+- CRLF: 타자기의 줄 바꿈을 흉내 냄.
+  1) CR(Carrage Return): 0d
+  2) LF(Line Feed) : 0a   
+  3) 윈도는 CRLF, 유닉스는 LF만 사용한다.
+  
+- BoardApp의 등록과 변경 폼에 POST 방식 적용
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    
    

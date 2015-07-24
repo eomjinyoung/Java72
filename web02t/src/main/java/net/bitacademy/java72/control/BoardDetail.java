@@ -47,7 +47,7 @@ public class BoardDetail extends GenericServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>게시물 상세보기</h1>");
-    out.println("<form action='update.do' method='get'>");
+    out.println("<form action='update.do' method='post'>");
     out.println("<table>");
     if (board != null) {
       out.printf("<tr><th>번호</th>"
@@ -66,6 +66,10 @@ public class BoardDetail extends GenericServlet {
           + " rows='5' cols='50'>%s</textarea>"
           + "</td></tr>\n"
           , board.getContent());
+      out.printf("<tr><th>암호</th>"
+          + "<td>"
+          + "<input type='password' name='password'>"
+          + "</td></tr>\n");
       out.printf("<tr><th>조회수</th><td>%d</td></tr>\n"
           , board.getViewCount());
       out.printf("<tr><th>등록일</th><td>%s</td></tr>\n"

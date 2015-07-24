@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>새 글</h1>
-<form action='insert.do' method='get'>
+<form action='insert.do' method='post'>
 <table>
 <tr>
   <th>제목</th>
@@ -18,6 +18,10 @@
   <td><textarea name='content' 
         placeholder="내용을 입력하세요."
         rows='5' cols='50'></textarea></td>
+</tr>
+<tr>
+  <th>암호</th>
+  <td><input type='password' name='password'></td>
 </tr>
 <tr>
   <th></th>

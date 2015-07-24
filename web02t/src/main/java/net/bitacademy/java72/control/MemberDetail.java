@@ -48,7 +48,7 @@ public class MemberDetail extends GenericServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>회원 상세보기</h1>");
-    out.println("<form action='update.do' method='get'>");
+    out.println("<form action='update.do' method='post'>");
     out.println("<table>");
     if (member != null) {
       out.printf("<tr><th>번호</th>"
@@ -76,7 +76,7 @@ public class MemberDetail extends GenericServlet {
           , member.getCreateDate());
       out.printf("<tr><th>암호</th>"
           + "<td>"
-          + "<input type='text' name='password'>"
+          + "<input type='password' name='password'>"
           + "</td></tr>\n" 
           , member.getPassword());
     } else {
