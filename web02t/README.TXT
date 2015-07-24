@@ -179,7 +179,14 @@ Content-type: text/plain;charset=UTF(\r\n)
   => 화면을 이동하고 싶으면 직접 요청해야 한다.
 - servlet.ex2
   => <meta> 태그를 이용한 페이지 자동 요청하기.      
-   
+- servlet.ex3
+  => 응답 헤더에 Refresh 정보를 둔다.
+- servlet.ex4
+  => Redirect를 이용한 화면 이동
+  => Redirect는 웹 브라우저에게 콘텐츠를 보내지 않는다.
+  => 웹 브라우저에 출력하는 것 없이 다른 화면으로 이동하는
+     효과를 거둘 수 있다.     
+[step05: GET과 POST 방식의 차이점 이해]
    
    
    
