@@ -284,8 +284,16 @@ id=aaab&pwd=bbbb
   => service() 메서드의 파라미터 값을 자동으로 형변환 하기
   => HttpGenericServlet 추상 클래스 정의
   => LogIn 서블릿은 이 추상 클래스를 상속 받는다.
-3) servlet.ex4 :
+4) servlet.ex4 :
   => GET과 POST를 자동 구분하기
+  => HttpGenericServlet 추상 클래스에 
+     doGet(), doPost() 메서드 추가
+5) servlet.ex5:
+  => 자바에서 제공해 주는 HttpServlet 클래스를 상속 받음.
+6) BoardApp의 모든 서블릿을 HttpServlet 클래스를 상속 받도록
+   변경할 것.
+       
+
      
    
    
