@@ -265,8 +265,17 @@ id=aaab&pwd=bbbb
   3) 윈도는 CRLF, 유닉스는 LF만 사용한다.
   
 - BoardApp의 등록과 변경 폼에 POST 방식 적용
-   
-   
+
+- 한글 깨지는 현상
+  입력(ISO-8859-1)  ---> Unicode ---> 출력(ISO-8859-1)
+  1) 읽어 들인 글자를 올바르게 Unicode로 바꾸기
+     최초로 getParameter()를 호출하기 전에,
+     request.setCharacterEncoding("UTF-8")을 호출하라!
+  2) 출력 스트림을 얻기 전에 출력할 문자표를 설정하라.
+     response.setContentType("text/html;charset=UTF-8");    
+
+- BoardApp에 한글 처리 추가하라!
+  => BoardInsert, BoardUpdate, MemberInsert, MemberUpdate   
    
    
    

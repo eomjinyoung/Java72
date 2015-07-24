@@ -20,6 +20,9 @@ public class BoardUpdate extends GenericServlet {
   public void service(
       ServletRequest request, 
       ServletResponse response) throws ServletException, IOException {
+    
+    request.setCharacterEncoding("UTF-8");
+    
     MyApplicationContext context = 
         MyApplicationContext.getInstance();
     
