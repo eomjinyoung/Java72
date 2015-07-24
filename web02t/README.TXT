@@ -277,7 +277,16 @@ id=aaab&pwd=bbbb
 - BoardApp에 한글 처리 추가하라!
   => BoardInsert, BoardUpdate, MemberInsert, MemberUpdate   
    
-   
+[step06: GET과 POST를 구분해서 처리하기]
+1) servlet.ex1.LogIn : GET과 POST를 구분하지 않는다.
+2) servlet.ex2.LogIn : POST 요청에 대해서만 처리한다.
+3) servlet.ex3 :
+  => service() 메서드의 파라미터 값을 자동으로 형변환 하기
+  => HttpGenericServlet 추상 클래스 정의
+  => LogIn 서블릿은 이 추상 클래스를 상속 받는다.
+3) servlet.ex4 :
+  => GET과 POST를 자동 구분하기
+     
    
    
    
