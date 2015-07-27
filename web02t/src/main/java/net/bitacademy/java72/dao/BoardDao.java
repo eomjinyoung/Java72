@@ -20,15 +20,12 @@ public class BoardDao {
 
   public List<Board> list() {
     SqlSession sqlSession = null;
-    try {
+    // 예외를 처리하기 위해 try를 사용하는 것이 아니다.
+    // finally 에서 자원을 해제하기 위함이다.
+    try { 
       sqlSession = sqlSessionFactory.openSession();
       return sqlSession.selectList(
           "net.bitacademy.java72.dao.BoardDao.list");
-      
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null;
-      
     } finally {
       sqlSession.close();
     }
@@ -43,11 +40,6 @@ public class BoardDao {
           no);
       sqlSession.commit();
       return count;
-      
-    } catch (Exception e) {
-      e.printStackTrace();
-      return 0;
-      
     } finally {
       sqlSession.close();
     }
@@ -62,10 +54,6 @@ public class BoardDao {
           board);
       sqlSession.commit();
       return count;
-      
-    } catch (Exception e) {
-      e.printStackTrace();
-      return 0;
       
     } finally {
       sqlSession.close();
@@ -82,10 +70,6 @@ public class BoardDao {
       sqlSession.commit();
       return count;
       
-    } catch (Exception e) {
-      e.printStackTrace();
-      return 0;
-      
     } finally {
       sqlSession.close();
     }
@@ -98,10 +82,6 @@ public class BoardDao {
       return sqlSession.selectOne(
           "net.bitacademy.java72.dao.BoardDao.get",
           no);
-      
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null;
       
     } finally {
       sqlSession.close();

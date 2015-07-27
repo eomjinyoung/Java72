@@ -25,10 +25,6 @@ public class MemberDao {
       return sqlSession.selectList(
           "net.bitacademy.java72.dao.MemberDao.list");
       
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null;
-      
     } finally {
       sqlSession.close();
     }
@@ -43,10 +39,6 @@ public class MemberDao {
           no);
       sqlSession.commit();
       return count;
-      
-    } catch (Exception e) {
-      e.printStackTrace();
-      return 0;
       
     } finally {
       sqlSession.close();
@@ -63,10 +55,6 @@ public class MemberDao {
       sqlSession.commit();
       return count;
       
-    } catch (Exception e) {
-      e.printStackTrace();
-      return 0;
-      
     } finally {
       sqlSession.close();
     }
@@ -82,10 +70,6 @@ public class MemberDao {
       sqlSession.commit();
       return count;
       
-    } catch (Exception e) {
-      e.printStackTrace();
-      return 0;
-      
     } finally {
       sqlSession.close();
     }
@@ -98,10 +82,6 @@ public class MemberDao {
       return sqlSession.selectOne(
           "net.bitacademy.java72.dao.MemberDao.get",
           no);
-      
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null;
       
     } finally {
       sqlSession.close();

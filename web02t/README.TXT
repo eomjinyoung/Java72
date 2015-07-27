@@ -293,7 +293,41 @@ id=aaab&pwd=bbbb
 6) BoardApp의 모든 서블릿을 HttpServlet 클래스를 상속 받도록
    변경할 것.
        
-
+[step07: 예외 처리]
+예외처리
+1) 예외 종류
+  => 시스템 예외(Error 계열):
+      - JVM이 처리하는 예외로서 개발자가 다루는 대상이 아님.
+  => 애플리케이션 예외(Exception 계열)
+      - 애플리케이션에서 발생하는 예외로서
+        개발자가 처리해야 한다.
+      - RuntimeException 예외
+        : 애플리케이션 예외를 최상위 호출자에게
+          조용히 전달할 때 사용.
+예제1: 예외 발생하지 않는 경우.
+  => A.main() --> B.m() --> C.m() --> D.m()
+예제2: 애플리케이션 예외가 발생하는 경우
+  => A.main() --> B.m2() --> C.m2() --> D.m2()
+  => D.m2()에서 발생하는 예외를 처리하기 위해
+     중간의 메서드들은 반드시 throws Exception을 
+     선언해야 한다.
+예제3: RuntimeException을 통해 조용히 상위 호출자에게
+       예외 전달하기.
+  => RuntimeException은 메서드 선언부에 
+     throws 절을 넣지 않아도 된다.
+  => 중간 호출자(메서드)를 간결하게 만들 수 있다.   
+         
+2) DAO에서 예외처리 하던 것을 호출자에게 위임한다.
+  => mybatis의 SqlSession 메서드는 
+     RuntimeException 계열의 예외를 던진다.
+     따라서 mybatis의 메서드를 사용할 때 굳이
+     메서드 선언부에 throws 절을 넣을 필요가 없다.
+  => BoardDao, MemberDao
+  
+* try ... finally 
+  => 예외가 발생하면 어차피 호출자에게 전달할 것인데,
+     try 블록을 사용하는 이유는 무엇인가?
+     => finally를 사용하여 자원을 해제하기 위해.   
      
    
    
