@@ -20,7 +20,8 @@ public class BoardInsert extends HttpServlet {
       HttpServletRequest request, 
       HttpServletResponse response) throws ServletException, IOException {
     
-    request.setCharacterEncoding("UTF-8");
+    // 필터로 대체한다.
+    //request.setCharacterEncoding("UTF-8");
     
     MyApplicationContext context = 
         MyApplicationContext.getInstance();

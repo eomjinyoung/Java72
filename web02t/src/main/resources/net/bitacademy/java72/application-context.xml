@@ -33,7 +33,7 @@
     <property name="driverClassName" 
         value="com.mysql.jdbc.Driver"/>
     <property name="url" 
-        value="jdbc:mysql://localhost:3306/java72dbx"/>
+        value="jdbc:mysql://localhost:3306/java72db"/>
     <property name="username" value="java72"/>
     <property name="password" value="java72"/>
   </bean>

@@ -47,6 +47,11 @@ public class BoardList extends HttpServlet {
     out.println("<head>");
     out.println("  <meta charset='UTF-8'>");
     out.println("  <title>게시물 목록</title>");
+
+    RequestDispatcher rd = 
+        request.getRequestDispatcher("/header");
+    rd.include(request, response);
+    
     out.println("  <style>");
     out.println("    table {");
     out.println("      border-collapse: collapse;");
@@ -81,6 +86,10 @@ public class BoardList extends HttpServlet {
         , board.getViewCount());
     }
     out.println("</table>");
+    
+    rd = request.getRequestDispatcher("/footer");
+    rd.include(request, response);
+    
     out.println("</body>");
     out.println("</html>");
   }

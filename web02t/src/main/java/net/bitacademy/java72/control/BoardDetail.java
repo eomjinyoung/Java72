@@ -47,6 +47,11 @@ public class BoardDetail extends HttpServlet {
     out.println("<head>");
     out.println("  <meta charset='UTF-8'>");
     out.println("  <title>게시물 상세보기</title>");
+
+    RequestDispatcher rd = 
+        request.getRequestDispatcher("/header");
+    rd.include(request, response);
+    
     out.println("  <style>");
     out.println("    table {");
     out.println("      border-collapse: separate;");
@@ -102,6 +107,10 @@ public class BoardDetail extends HttpServlet {
     out.println("</table>");
     out.println("</form>");
     out.println("<p><a href='list.do'>목록</a><p>");
+
+    rd = request.getRequestDispatcher("/footer");
+    rd.include(request, response);
+    
     out.println("</body>");
     out.println("</html>");
   }
