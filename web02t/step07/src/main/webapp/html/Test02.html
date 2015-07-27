@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test02</title>
+
+<!-- 태그의 모양을 설정하자! => CSS 기술 -->
+<style type="text/css">
+h1 {
+  border-color: red;
+  border-width: 1px;
+  border-style: solid;
+}
+
+h2,h3,h4,h5,h6,p {
+  border: 2px dotted blue; /* 값 순서는 상관없다.*/
+}
+
+i,b,strong {
+  border: green dashed 4px; /* 값 순서는 상관없다.*/
+}
+</style>
+
+</head>
+<body>
+<!-- 제목(header)을 출력할 때 사용하는 엘리먼트 -->
+<h1>제목1</h1>
+<h2>제목2</h2>
+<h3>제목3</h3>
+<h4>제목4</h4>
+<h5>제목5</h5>
+<h6>제목6</h6>
+
+<!-- 문단(paragraph>을 표현할 때 사용 
+문단 앞 뒤로 한 줄 띄운다.
+-->
+<p>
+다음과 같이 <b>엘리먼트</b> 안에 <b>주석</b>을 달 수 없다. (점(.)을 -로 생각하라.)
+<!--  
+<p <!.. 주석 ..>> okok </p>
+-->
+<br><br><i>* 엘리먼트의 대표적인 배치 방식</i>
+<br><br>1) <strong>block</strong>: 한 줄 전체를 점유함.
+<br>   예) h1, h2, ..., div, ul, ol, p 등 
+<br><br>2) <strong>inline</strong>: 줄 안에 포함됨.
+<br>   예) i, a, address, b, span 등 
+</p>
+
+</body>
+</html>
