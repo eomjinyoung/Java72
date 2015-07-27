@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+
+<!-- 태그의 모양을 설정하자! => CSS 기술 -->
+<style type="text/css">
+
+a {
+  display:inline-block;
+  text-decoration: none;
+  /* border: 1px solid gray; */
+  
+  /* 테두리 바깥 쪽에 여백 주기
+     주의! 위 아래 여백은 겹쳐진다.
+   */
+  margin: 5px;
+  
+  padding: 5px;
+  
+  font-weight: bold;
+  
+  background-color: DeepSkyBlue;
+  color: white;
+  border-radius: 5px;
+}
+
+/* 태그의 특정 상태를 나타내는 문법: pseudo selector */
+a:HOVER { /* 마우스 커서가 링크 위에 있을 때*/
+	background-color: MediumBlue;
+	color: white;
+}
+
+a:LINK { /* 링크를 방문하기 전 */
+	color: blue;
+}
+
+a:VISITED { /* 방문한 적이 있는 사이트 */
+	color: white;
+}
+
+ul {
+  list-style: square;
+}
+
+dt {
+  /* border: 1px solid red; */
+  background-color:yellow;
+  padding-left: 20px;
+  margin-right: 800px;
+}
+
+table {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 5px;
+  /* border: 1px solid black; */
+}
+
+tr:NTH-CHILD(odd) {
+  background-color: green;
+}
+
+tr:FIRST-CHILD {
+  background-color: yellow;
+  border-bottom: 1px solid black;
+}
+
+</style>
+
+</head>
+<body>
+<!-- 테이블 만들기 
+border 속성: 테이블 테두리와 셀 테두리의 두께를 지정한다.
+* 참고
+속성의 값을 지정할 때 쌍 따옴표(" ") 또는 따옴표(' ') 모두 사용 가능.
+-->
+<table>
+  <tr> <!--  table row -->
+    <th>번호</th> <!-- table header -->
+    <th>이름</th>
+    <th>이메일</th>
+    <th>전화번호</th>
+  </tr>
+  <tr>
+    <td>1</td> <!-- table data -->
+    <td>홍길동</td>
+    <td>hong@test.com</td>
+    <td>111-1111</td>
+  </tr>
+  <tr>
+    <td>2</td> 
+    <td>임꺽정</td>
+    <td>leem@test.com</td>
+    <td>111-2222</td>
+  </tr>
+  <tr>
+    <td>3</td>   
+    <td>유관순</td>
+    <td>yoo@test.com</td>
+    <td>111-3333</td>
+  </tr>
+  <tr>
+    <td>4</td>   
+    <td>신채호</td>
+    <td>shin@test.com</td>
+    <td>111-4444</td>
+  </tr>
+  <tr>
+    <td>5</td>   
+    <td>안중근</td>
+    <td>ahn@test.com</td>
+    <td>111-5555</td>
+  </tr>
+  <tr>
+    <td>6</td>   
+    <td>윤봉길</td>
+    <td>yoon@test.com</td>
+    <td>111-6666</td>
+  </tr>
+  <tr>
+    <td>7</td>   
+    <td>김구</td>
+    <td>kim@test.com</td>
+    <td>111-7777</td>
+  </tr>
+  <tr>
+    <td>8</td>   
+    <td>안창호</td>
+    <td>ahn@test2.com</td>
+    <td>111-8888</td>
+  </tr>
+</table>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
