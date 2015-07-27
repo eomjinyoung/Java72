@@ -340,8 +340,37 @@ id=aaab&pwd=bbbb
 - 포워딩 대상 서블릿으로 데이터(또는 객체) 보내기
   ServletRequest 보관소에 저장하여 보낸다.
    
+[step09: include]
+- 다른 서블릿의 실행 결과를 포함하는 방법
+- 여러 서블릿의 실행 결과를 합쳐서 페이지를 만들 경우 사용.
+1) 페이지 꼬리말 서블릿 만들기
+   => FooterServlet
+2) 페이지 머리말 서블릿 만들기
+   => HeaderServlet
+3) 목록과 상세 페이지에 꼬리말과 머리말을 포함한다.
+   => BoardList, BoardDetail, MemberList, MemberDetail
    
-   
+[step10: Filter 활용]
+- 서블릿 실행 전/후에 특정 작업을 끼워 넣는 기술이다.
+- 소스 코드 변경없이 web.xml의 선언 순서를 바꿈으로써
+  필터 실행 순서를 조종할 수 있다.
+- Design Patterns에 소개된 방법중
+  "Chain of Responsibility" 설계 기법을 적용한 예이다.
+  즉, 기능을 삽입하고 삭제하기가 매우 쉽다.
+- javax.servlet.Filter 인터페이스를 구현하면 된다.
+- 배치 방법
+  => web.xml에 필터를 등록하고, 
+     어떤 URL에 대해서 끼워 넣을 건지 지정한다.    
+실습1)
+  => MyServlet, MyFilter1, MyFilter2, MyFilter3
+
+실습2)
+  => BoardInsert, BoardUpdate, MemberInsert, MemberUpdate를 
+    실행하기 전에 클라이언트가 보낸 데이터의 문자표를 지정한다.
+  => CharacterEncodingFilter 클래스 작성
+  => web.xml에 적용하기
+  => BoardInsert, BoardUpdate, MemberInsert, MemberUpdate 클래스에서
+     request.setCharacterEncoding() 제거하기    
    
    
    
