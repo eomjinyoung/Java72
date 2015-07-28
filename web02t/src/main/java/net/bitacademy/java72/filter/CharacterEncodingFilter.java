@@ -10,7 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 public class CharacterEncodingFilter implements Filter {
-
+  FilterConfig filterConfig;
   
   @Override
   public void init(FilterConfig filterConfig) 
@@ -18,6 +18,7 @@ public class CharacterEncodingFilter implements Filter {
     // 필터 객체를 생성한 후에 바로 호출된다.
     // 필터가 작업하는데 필요한 자원을 
     // 준비하는 코드를 작성하라!
+    this.filterConfig = filterConfig;
   }
 
   @Override
@@ -27,7 +28,8 @@ public class CharacterEncodingFilter implements Filter {
       FilterChain chain)
       throws IOException, ServletException {
     // 서블릿 또는 다음 필터 호출 전 해야할 일
-    request.setCharacterEncoding("UTF-8");
+    request.setCharacterEncoding(
+        filterConfig.getInitParameter("encoding"));
     
     // 서블릿 또는 다음 필터 호출
     // FilterChain 객체에게 다음 필터를 

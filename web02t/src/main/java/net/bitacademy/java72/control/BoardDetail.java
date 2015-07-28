@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.bitacademy.java72.context.MyApplicationContext;
+import org.springframework.context.ApplicationContext;
+
 import net.bitacademy.java72.dao.BoardDao;
 import net.bitacademy.java72.domain.Board;
 
@@ -20,8 +21,9 @@ public class BoardDetail extends HttpServlet {
   protected void doGet(
       HttpServletRequest request, 
       HttpServletResponse response) throws ServletException, IOException {
-    MyApplicationContext context = 
-        MyApplicationContext.getInstance();
+    ApplicationContext context = 
+        (ApplicationContext)this.getServletContext()
+           .getAttribute("beanContainer");
     
     BoardDao boardDao = (BoardDao)context.getBean("boardDao");
       

@@ -371,10 +371,30 @@ id=aaab&pwd=bbbb
   => web.xml에 적용하기
   => BoardInsert, BoardUpdate, MemberInsert, MemberUpdate 클래스에서
      request.setCharacterEncoding() 제거하기    
+- 필터 초기화 파라미터
+  => 필터에서 사용할 상수 값을 외부 파일(web.xml)에 두고
+     필요할 때 꺼내서 쓴다.
+  => web.xml에 필터가 사용할 상수 값을 두기.
+
+
    
+[step11: ServletContextListener]
+- 서블릿 컨테이너도 다양한 상황에 대해 이벤트를 발생시킨다.
+  예) 서버가 시작되었을 때 이벤트 발생.
+      서버가 종료될 때 이벤트 발생
+      사용자의 요청이 들어왔을 때 이벤트 발생
+      세션이 준비되었을 때 이벤트 발생
+      ...   
+- ServletContextListener는 
+  서블릿 컨테이너가 시작하거나 종료할 때 발생되는 
+  이벤트를 처리하는 클래스가 따라야 하는 규칙이다.
+  즉, 시작/종료 보고를 받고 싶으면
+  이 인터페이스 구현하라! 
+  1) ContextLoaderListener 클래스 작성  
+  2) contextInitialized() 메서드를 구현한다.
+  3) web.xml에 스프링 설정 파일의 경로를 등록한다.
    
-   
-   
+    
    
    
    
