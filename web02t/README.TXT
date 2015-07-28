@@ -397,6 +397,10 @@ id=aaab&pwd=bbbb
 [step12: 로그인 화면 만들기]
 1) 로그인 화면 만들기: /auth/LoginForm.html
 2) 로그인 처리 서블릿 만들기: LoginServlet 클래스 작성
+3) 사용자 인증 메서드 추가: MemberDao.exist() 메서드 작성
+4) 사용자 조회 SQL 추가: MemberDao.xml에 select문 추가
+
+
    
    
    
