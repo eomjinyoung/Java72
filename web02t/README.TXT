@@ -394,7 +394,9 @@ id=aaab&pwd=bbbb
   2) contextInitialized() 메서드를 구현한다.
   3) web.xml에 스프링 설정 파일의 경로를 등록한다.
    
-    
+[step12: 로그인 화면 만들기]
+1) 로그인 화면 만들기: /auth/LoginForm.html
+2) 로그인 처리 서블릿 만들기: LoginServlet 클래스 작성
    
    
    
