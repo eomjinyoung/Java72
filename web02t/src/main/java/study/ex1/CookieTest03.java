@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/study/ex1/test02")
-public class CookieTest02 extends HttpServlet {
+@WebServlet("/study/ex2/test03")
+public class CookieTest03 extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -25,7 +25,7 @@ public class CookieTest02 extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     out.println("<html><body>");
-    out.println("<h1>CookieTest02</h1>");
+    out.println("<h1>CookieTest03</h1>");
     
     if (cookieList != null) {
       for (Cookie cookie : cookieList) {

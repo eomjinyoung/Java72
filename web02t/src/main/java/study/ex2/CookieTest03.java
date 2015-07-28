@@ -1,4 +1,4 @@
-package study.ex1;
+package study.ex2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/study/ex1/test02")
-public class CookieTest02 extends HttpServlet {
+@WebServlet("/study/exx/cookie03")
+public class CookieTest03 extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override

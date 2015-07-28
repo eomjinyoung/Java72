@@ -400,20 +400,18 @@ id=aaab&pwd=bbbb
 3) 사용자 인증 메서드 추가: MemberDao.exist() 메서드 작성
 4) 사용자 조회 SQL 추가: MemberDao.xml에 select문 추가
 
-[step13: 로그인 화면 업그레이드]
-- 로그인 화면에 이메일 저장 기능을 추가한다.
-- 쿠키를 이용하여 이메일 저장 기능 구현하기.
+[step13: 쿠키 다루기]
 - 쿠키(Cookie)?
-  => 웹 브라우저에 보관하는 데이터
+  => 웹 서버가 웹 브라우저에 임시적으로 맡기는 데이터
   => 문자열만 가능
-  => 웹 서버가 저장할 데이터를 응답 헤더에 실어서 보냄
-- 쿠키 보내기
-  1) 쿠키 생성 
-  Cookie cookie = new Cookie("name", "hong");
-  2) 응답 헤더에 싣는다. 
-  response.addCookie(cookie);
-  -------------------------------
-  응답 프로토콜 예)
+  => 응답 헤더에 쿠키 정보를 실어서 보냄
+- 실습1)
+  1) 웹 브라우저에게 쿠키 보내기
+    => 쿠키 생성 
+       Cookie cookie = new Cookie("name", "hong");
+    => 응답 헤더에 싣는다. 
+       response.addCookie(cookie);
+    => 응답 프로토콜 예)
 HTTP/1.1 200 OK
 Server: Apache-Coyote/1.1
 Set-Cookie: name=hong
@@ -421,13 +419,13 @@ Content-Type: text/html;charset=UTF-8
 Content-Length: 53
 Date: Tue, 28 Jul 2015 03:41:14 GMT
 
-  3) 웹 브라우저는 서버로부터 받은 쿠키 정보를 
-     메모리에 보관한다. 
+    => 웹 브라우저는 서버로부터 받은 쿠키 정보를 
+        메모리에 보관한다. 
      => 웹 브라우저를 끄면 쿠키 정보가 사라진다.
-- 쿠키를 받은 웹 브라우저의 다음 행동
-  => 서버에 요청할 때마다
-     그 서버가 맡긴 쿠키를 요청 헤더에 실어서 다시 보낸다.
-요청 프로토콜 예)
+  2) 웹 브라우저에서 웹 서버로 쿠키 보내기 
+    => 서버에 요청할 때마다 그 서버가 맡긴 쿠키를 
+       요청 헤더에 실어서 다시 보낸다.
+    => 요청 프로토콜 예)
 GET /web02t/study/ex1/test01 HTTP/1.1
 Host: localhost:9999
 Connection: keep-alive
@@ -439,9 +437,19 @@ Accept-Encoding: gzip, deflate, sdch
 Accept-Language: ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4
 Cookie: name=hong; age=20   
 
-
-   
-   
+-실습2)
+  => 다른 경로의 서블릿에게도 쿠키를 전달하기
+  => 쿠키에 경로 정보를 추가하라!
+  cookie.setPath(URL);
+  
+-실습3)
+  => 쿠키의 유효기간 설정하기
+  => 쿠키에 유효기간을 설정하면 웹 브라우저를 종료하더라도
+     유지된다. 왜? 메모리가 아닌 하드 디스크에 저장되기 때문이다.   
+  => 유효기간이 지난다면?
+     삭제한다. 계속 감시하는 것이 아니라,
+     서버에 보내려는 시점에 유효기간을 검사하고,
+     유효기간이 지났다고 판단되면 그 때 삭제한다.   
    
    
    

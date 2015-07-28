@@ -1,4 +1,4 @@
-package study.ex1;
+package study.ex3;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/study/ex1/test02")
-public class CookieTest02 extends HttpServlet {
+@WebServlet("/study/ex3/cookie01")
+public class CookieTest01 extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -19,21 +19,17 @@ public class CookieTest02 extends HttpServlet {
       HttpServletRequest request, 
       HttpServletResponse response) throws ServletException, IOException {
     
-    //요청 헤더에 들어 있는 쿠키 정보 꺼내기
-    Cookie[] cookieList = request.getCookies();
+    Cookie cookie1 = new Cookie("name", "kim");
+    Cookie cookie2 = new Cookie("age", "40");
+    cookie2.setMaxAge(30);
+    
+    response.addCookie(cookie1);
+    response.addCookie(cookie2);
     
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     out.println("<html><body>");
-    out.println("<h1>CookieTest02</h1>");
-    
-    if (cookieList != null) {
-      for (Cookie cookie : cookieList) {
-        out.printf("<p>%s=%s</p>\n", 
-            cookie.getName(), cookie.getValue());
-      }
-    }
-    
+    out.println("<h1>CookieTest01</h1>");
     out.println("</body></html>");
   }
 }
