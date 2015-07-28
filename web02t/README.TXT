@@ -400,6 +400,45 @@ id=aaab&pwd=bbbb
 3) 사용자 인증 메서드 추가: MemberDao.exist() 메서드 작성
 4) 사용자 조회 SQL 추가: MemberDao.xml에 select문 추가
 
+[step13: 로그인 화면 업그레이드]
+- 로그인 화면에 이메일 저장 기능을 추가한다.
+- 쿠키를 이용하여 이메일 저장 기능 구현하기.
+- 쿠키(Cookie)?
+  => 웹 브라우저에 보관하는 데이터
+  => 문자열만 가능
+  => 웹 서버가 저장할 데이터를 응답 헤더에 실어서 보냄
+- 쿠키 보내기
+  1) 쿠키 생성 
+  Cookie cookie = new Cookie("name", "hong");
+  2) 응답 헤더에 싣는다. 
+  response.addCookie(cookie);
+  -------------------------------
+  응답 프로토콜 예)
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Set-Cookie: name=hong
+Content-Type: text/html;charset=UTF-8
+Content-Length: 53
+Date: Tue, 28 Jul 2015 03:41:14 GMT
+
+  3) 웹 브라우저는 서버로부터 받은 쿠키 정보를 
+     메모리에 보관한다. 
+     => 웹 브라우저를 끄면 쿠키 정보가 사라진다.
+- 쿠키를 받은 웹 브라우저의 다음 행동
+  => 서버에 요청할 때마다
+     그 서버가 맡긴 쿠키를 요청 헤더에 실어서 다시 보낸다.
+요청 프로토콜 예)
+GET /web02t/study/ex1/test01 HTTP/1.1
+Host: localhost:9999
+Connection: keep-alive
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4
+Cookie: name=hong; age=20   
+
 
    
    
