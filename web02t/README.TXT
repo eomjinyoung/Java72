@@ -392,8 +392,12 @@ id=aaab&pwd=bbbb
   이 인터페이스 구현하라! 
   1) ContextLoaderListener 클래스 작성  
   2) contextInitialized() 메서드를 구현한다.
+    => 스프링 컨테이너를 ServletContext에 보관한다.
   3) web.xml에 스프링 설정 파일의 경로를 등록한다.
-   
+
+- ServletContext에 보관된 스프링 빈 컨테이너를 사용하도록
+  서블릿을 모두 변경한다.
+    
 [step12: 로그인 화면 만들기]
 1) 로그인 화면 만들기: /auth/LoginForm.html
 2) 로그인 처리 서블릿 만들기: LoginServlet 클래스 작성
