@@ -485,6 +485,29 @@ Cookie: name=hong; age=20
   => referer 요청 헤더 처리
      => 로그인 처리 후 원래 페이지로 리다이렉트 시키기.   
    
+[step15: 파일 업로드]
+1. 파일 업로드 폼을 만든다.
+  => /upload/uploadForm.html
+  => 파일은 <input type="file" name="photo">
+  => 파일을 서버에 보내려면 form의 인코딩 형식을
+     multipart/form-data 로 설정해야 한다.
+
+2. 멀티파트 데이터 처리하는 서블릿 만들기
+  => 멀티파트 형식으로 전송된 데이터를 
+     getParameter()로 꺼낼 수 없다.
+  => 멀티파트 형식에 따라 데이터를 잘라서 써야한다.
+     => apache의 fileupload 라이브러리를 사용하자!     
+
+
+
+
+
+
+
+
+
+
+
    
    
    
