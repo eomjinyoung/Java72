@@ -457,7 +457,31 @@ Cookie: name=hong; age=20
   => /webapp/auth/LoginForm.html 파일 삭제
   => doPost()에서 이메일 쿠키 정보 출력하도록 변경    
    
-   
+[step14: 세션 다루기]
+-실습1) study.ex1.*
+  => ServletReqeust를 이용하여 서블릿끼리 데이터 공유하기 
+     => 실패!
+     => ServletRequest는 매 요청마다 생성되고 
+        응답한 후 소멸된다.
+-실습2) study.ex2.*
+  => ServletContext를 이용하여 서블릿끼리 데이터 공유하기
+     => 여러 요청이 공유하기 때문에 데이터를 덮어쓰는 문제 발생
+
+-실습3) study.ex3.*
+  => HttpSession을 이용하여 서블릿끼리 데이터 공유하기
+  => request.getSession() 내부 프로세스
+     요청 헤더에 세션ID를 담은 쿠키가 있는가?
+        => no: HttpSession 객체를 생성하여 리턴한다.
+        => yes: 세션ID가 유효한가?
+           => no: HttpSession 객체를 생성하여 리턴한다.
+           => yes: 기존 HttpSession 객체를 리턴한다.
+         
+-실습4) 세션을 로그인 서블릿에 적용하기
     
+   
+   
+   
+   
+   
    
    

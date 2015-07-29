@@ -10,6 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationContext;
 
@@ -115,7 +116,13 @@ public class LoginServlet extends HttpServlet {
     Member member = null;
     try {
       member = memberDao.exist(email, password);
+      
+      HttpSession session = request.getSession();
+          
       if (member == null) {
+        //로그인 실패할 때, 세션 객체를 무효화시킨다.
+        session.invalidate();
+        
         response.setHeader("Refresh", 
             "1;url=login.do");
         response.setContentType("text/html;charset=UTF-8");
@@ -130,6 +137,7 @@ public class LoginServlet extends HttpServlet {
         out.println("</html>");
         
       } else {
+        session.setAttribute("member", member);
         response.sendRedirect("../board/list.do");
         return;
       }

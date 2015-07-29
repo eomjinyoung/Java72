@@ -66,6 +66,10 @@ public class MemberList extends HttpServlet {
     out.println("  </style>");
     out.println("</head>");
     out.println("<body>");
+    
+    rd = request.getRequestDispatcher("/loginInfo");
+    rd.include(request, response);
+    
     out.println("<h1>회원 목록</h1>");
     out.println("<p><a href='form.html'>새 회원</a></p>");
     out.println("<table>");

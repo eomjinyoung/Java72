@@ -66,6 +66,10 @@ public class BoardList extends HttpServlet {
     out.println("  </style>");
     out.println("</head>");
     out.println("<body>");
+    
+    rd = request.getRequestDispatcher("/loginInfo");
+    rd.include(request, response);
+    
     out.println("<h1>게시물 목록</h1>");
     out.println("<p><a href='form.html'>새 글</a></p>");
     out.println("<table>");

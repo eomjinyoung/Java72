@@ -67,6 +67,10 @@ public class MemberDetail extends HttpServlet {
     out.println("  </style>");
     out.println("</head>");
     out.println("<body>");
+    
+    rd = request.getRequestDispatcher("/loginInfo");
+    rd.include(request, response);
+    
     out.println("<h1>회원 상세보기</h1>");
     out.println("<form action='update.do' method='post'>");
     out.println("<table>");
