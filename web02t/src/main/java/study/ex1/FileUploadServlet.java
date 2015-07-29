@@ -1,4 +1,4 @@
-package net.bitacademy.java72.control;
+package study.ex1;
 
 import java.io.File;
 import java.io.IOException;
