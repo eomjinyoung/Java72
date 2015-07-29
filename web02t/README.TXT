@@ -477,7 +477,13 @@ Cookie: name=hong; age=20
            => yes: 기존 HttpSession 객체를 리턴한다.
          
 -실습4) 세션을 로그인 서블릿에 적용하기
-    
+  => LoginServlet 변경: HttpSession에 로그인 정보 저장
+  => LoginInfoServlet 추가: 로그인 정보 출력하는 서블릿 
+  => BoardList, BoardDetail, MemberList, MemberDetail
+     클래스에서 LoginInfoServlet을 인클루드한다.
+  => LogoutServlet 추가: 로그아웃 기능 추가
+  => referer 요청 헤더 처리
+     => 로그인 처리 후 원래 페이지로 리다이렉트 시키기.   
    
    
    
