@@ -1,17 +1,16 @@
-package study.ex3;
+package study.ex1;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/study/ex3/cookie01")
-public class CookieTest01 extends HttpServlet {
+@WebServlet("/study/ex1/servlet1")
+public class Servlet1 extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -19,20 +18,22 @@ public class CookieTest01 extends HttpServlet {
       HttpServletRequest request, 
       HttpServletResponse response) throws ServletException, IOException {
     
-    Cookie cookie1 = new Cookie("name", "kim");
-    Cookie cookie2 = new Cookie("age", "40");
-    cookie2.setMaxAge(30);
+    String name = request.getParameter("name");
+    String age = request.getParameter("age");
     
-    response.addCookie(cookie1);
-    response.addCookie(cookie2);
+    request.setAttribute("name", name);
+    request.setAttribute("age", age);
     
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     out.println("<html><body>");
-    out.println("<h1>CookieTest01</h1>");
+    out.printf("<p>이름:%s</p>\n", name);
+    out.printf("<p>나이:%s</p>\n", age);
     out.println("</body></html>");
+    
   }
 }
+
 
 
 

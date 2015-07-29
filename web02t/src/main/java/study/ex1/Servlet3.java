@@ -5,13 +5,12 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/study/ex2/test03")
-public class CookieTest03 extends HttpServlet {
+@WebServlet("/study/ex1/servlet3")
+public class Servlet3 extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -19,24 +18,23 @@ public class CookieTest03 extends HttpServlet {
       HttpServletRequest request, 
       HttpServletResponse response) throws ServletException, IOException {
     
-    //요청 헤더에 들어 있는 쿠키 정보 꺼내기
-    Cookie[] cookieList = request.getCookies();
+    String name = null;
+    String age = null;
+    int weight = 0;
+    int height = 0;
     
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     out.println("<html><body>");
-    out.println("<h1>CookieTest03</h1>");
-    
-    if (cookieList != null) {
-      for (Cookie cookie : cookieList) {
-        out.printf("<p>%s=%s</p>\n", 
-            cookie.getName(), cookie.getValue());
-      }
-    }
-    
+    out.printf("<p>이름:%s</p>\n", name);
+    out.printf("<p>나이:%s</p>\n", age);
+    out.printf("<p>몸무게:%d</p>\n", weight);
+    out.printf("<p>키:%d</p>\n", height);
     out.println("</body></html>");
+    
   }
 }
+
 
 
 
