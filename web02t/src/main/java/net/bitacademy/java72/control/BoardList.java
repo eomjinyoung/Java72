@@ -1,7 +1,6 @@
 package net.bitacademy.java72.control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -32,6 +31,20 @@ public class BoardList extends HttpServlet {
     List<Board> boards = null;
     try {
       boards = boardDao.list();
+
+      // JSP에서 사용할 수 있도록 ServletRequest 보관소에 담는다.
+      request.setAttribute("boards", boards);
+      
+      // JSP로 출력을 위임한다.
+      RequestDispatcher rd = 
+          request.getRequestDispatcher(
+              "/board/BoardList.jsp");
+      
+      // include는 요청하는 쪽에서 콘텐츠 타입을 설정해야 한다.
+      response.setContentType("text/html;charset=UTF-8");
+      
+      rd.include(request, response);
+      
     } catch (Exception e) {
       RequestDispatcher rd = 
           request.getRequestDispatcher("/error");
@@ -42,63 +55,6 @@ public class BoardList extends HttpServlet {
       rd.forward(request, response);
       return;
     }
-    
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>게시물 목록</title>");
-
-    RequestDispatcher rd = 
-        request.getRequestDispatcher("/header");
-    rd.include(request, response);
-    
-    out.println("  <style>");
-    out.println("    table {");
-    out.println("      border-collapse: collapse;");
-    out.println("    }");
-    out.println("    th, td {");
-    out.println("      border: 1px solid black;");
-    out.println("      padding: 5px;");
-    out.println("    }");
-    out.println("  </style>");
-    out.println("</head>");
-    out.println("<body>");
-    
-    rd = request.getRequestDispatcher("/loginInfo");
-    rd.include(request, response);
-    
-    out.println("<h1>게시물 목록</h1>");
-    out.println("<p><a href='form.html'>새 글</a></p>");
-    out.println("<table>");
-    out.println("  <tr>");
-    out.println("    <th>번호</th> ");
-    out.println("    <th>제목</th> ");
-    out.println("    <th>등록일</th>");
-    out.println("    <th>조회수</th>");
-    out.println("  </tr>");
-    for (Board board : boards) {
-      out.printf("<tr>"
-          + "<td>%d</td>"
-          + "<td><a href='detail.do?no=%d'>%s</a></td>"
-          + "<td>%s</td>"
-          + "<td>%d</td>"
-          + "</tr>\n" 
-        , board.getNo()
-        , board.getNo()
-        , board.getTitle()
-        , board.getCreateDate()
-        , board.getViewCount());
-    }
-    out.println("</table>");
-    
-    rd = request.getRequestDispatcher("/footer");
-    rd.include(request, response);
-    
-    out.println("</body>");
-    out.println("</html>");
   }
 }
 
