@@ -11,38 +11,40 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
 
-import net.bitacademy.java72.dao.MemberDao;
-import net.bitacademy.java72.domain.Member;
+import net.bitacademy.java72.dao.BoardDao;
+import net.bitacademy.java72.domain.Board;
 import net.bitacademy.java72.util.MultipartDataProcessor;
 
-public class MemberInsert extends HttpServlet {
+public class BoardUpdate extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
   protected void doPost(
       HttpServletRequest request, 
       HttpServletResponse response) throws ServletException, IOException {
-
+    
+    // 필터로 대체한다.
+    //request.setCharacterEncoding("UTF-8");
+    
     ApplicationContext context = 
         (ApplicationContext)this.getServletContext()
            .getAttribute("beanContainer");
     
-    MemberDao memberDao = 
-        (MemberDao)context.getBean("memberDao");
-
+    BoardDao boardDao = (BoardDao)context.getBean("boardDao");
+    
     try {
       Map<String,String> paramMap = 
           MultipartDataProcessor.toParamMap(
               "/files", request);
       
-      Member member = new Member();
-      member.setName(paramMap.get("name"));
-      member.setEmail(paramMap.get("email"));
-      member.setTel(paramMap.get("tel"));
-      member.setPassword(paramMap.get("password"));
-      member.setPhoto(paramMap.get("photo"));
-
-      memberDao.insert(member);
+      Board board = new Board();
+      board.setNo(Integer.parseInt(paramMap.get("no")));
+      board.setTitle(paramMap.get("title"));
+      board.setContent(paramMap.get("content"));
+      board.setPassword(paramMap.get("password"));
+      board.setAttachFile1(paramMap.get("file1"));
+      
+      boardDao.update(board);
       
     } catch (Exception e) {
       RequestDispatcher rd = 
@@ -54,7 +56,6 @@ public class MemberInsert extends HttpServlet {
       rd.forward(request, response);
       return;
     }
-    
     response.sendRedirect("list.do");
   }
 
