@@ -19,8 +19,8 @@
   </select>
   
   <insert id="insert" parameterType="Board">
-    INSERT INTO board10(title,content,pwd,cre_dt)
-    values(#{title},#{content},#{password}, now())
+    INSERT INTO board10(title,content,pwd,cre_dt,att_file1)
+    values(#{title},#{content},#{password},now(),#{attachFile1})
   </insert>
   
   <delete id="delete" parameterType="int">
@@ -30,12 +30,13 @@
   <update id="update" parameterType="Board">
     UPDATE board10 SET 
       title=#{title},
-      content=#{content} 
+      content=#{content},
+      att_file1=#{attachFile1}  
     WHERE bno=#{no}      
   </update>
   
   <select id="get" parameterType="int" resultMap="BoardMap">
-    SELECT bno, title, content, cre_dt
+    SELECT bno, title, content, cre_dt, att_file1
     FROM board10
     WHERE bno=#{value}
   </select>

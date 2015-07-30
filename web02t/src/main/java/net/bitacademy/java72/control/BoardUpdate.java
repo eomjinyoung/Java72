@@ -1,6 +1,7 @@
 package net.bitacademy.java72.control;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import org.springframework.context.ApplicationContext;
 
 import net.bitacademy.java72.dao.BoardDao;
 import net.bitacademy.java72.domain.Board;
+import net.bitacademy.java72.util.MultipartDataProcessor;
 
 public class BoardUpdate extends HttpServlet {
   private static final long serialVersionUID = 1L;
@@ -29,15 +31,21 @@ public class BoardUpdate extends HttpServlet {
            .getAttribute("beanContainer");
     
     BoardDao boardDao = (BoardDao)context.getBean("boardDao");
-      
-    Board board = new Board();
-    board.setNo(Integer.parseInt(request.getParameter("no")));
-    board.setTitle(request.getParameter("title"));
-    board.setContent(request.getParameter("content"));
-    board.setPassword(request.getParameter("password"));
     
     try {
+      Map<String,String> paramMap = 
+          MultipartDataProcessor.toParamMap(
+              "/files", request);
+      
+      Board board = new Board();
+      board.setNo(Integer.parseInt(paramMap.get("no")));
+      board.setTitle(paramMap.get("title"));
+      board.setContent(paramMap.get("content"));
+      board.setPassword(paramMap.get("password"));
+      board.setAttachFile1(paramMap.get("file1"));
+      
       boardDao.update(board);
+      
     } catch (Exception e) {
       RequestDispatcher rd = 
           request.getRequestDispatcher("/error");

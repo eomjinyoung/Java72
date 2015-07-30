@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>새 글</h1>
-<form action='insert.do' method='post'>
+<form action='insert.do' method='post'
+  enctype='multipart/form-data'>
 <table>
 <tr>
   <th>제목</th>
@@ -22,6 +23,10 @@
 <tr>
   <th>암호</th>
   <td><input type='password' name='password'></td>
+</tr>
+<tr>
+  <th>첨부파일</th>
+  <td><input type='file' name='file1'></td>
 </tr>
 <tr>
   <th></th>

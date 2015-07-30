@@ -34,10 +34,7 @@ public class BoardDetail extends HttpServlet {
     } catch (Exception e) {
       RequestDispatcher rd = 
           request.getRequestDispatcher("/error");
-
-      //ServletRequest에 전달할 객체를 저장한다.
       request.setAttribute("error", e);
-      
       rd.forward(request, response);
       return;
     }
@@ -70,7 +67,8 @@ public class BoardDetail extends HttpServlet {
     rd.include(request, response);
     
     out.println("<h1>게시물 상세보기</h1>");
-    out.println("<form action='update.do' method='post'>");
+    out.println("<form action='update.do' "
+        + "method='post' enctype='multipart/form-data'>");
     out.println("<table>");
     if (board != null) {
       out.printf("<tr><th>번호</th>"
@@ -97,6 +95,12 @@ public class BoardDetail extends HttpServlet {
           , board.getViewCount());
       out.printf("<tr><th>등록일</th><td>%s</td></tr>\n"
           , board.getCreateDate());
+      out.printf("<tr><th>첨부파일</th>"
+          + "<td><a href='../files/%s'>%s</a>"
+          + "<input type='file' name='file1'>"
+          + "</td></tr>\n"
+          , board.getAttachFile1()
+          , board.getAttachFile1());
     } else {
       out.println("<tr><td>"
           + "해당 번호의 게시물을 찾을 수 없습니다."
