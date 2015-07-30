@@ -526,7 +526,13 @@ Cookie: name=hong; age=20
 3) HttpJspPage 인터페이스
    => HttpJspPage ---> JspPage ---> Servlet
 
-
+- BoardList에 JSP 적용하기
+1) 헤더 부분 JSP로 만들기
+   HeaderServlet --> /Header.jsp
+2) 풋터 부분 JSP로 만들기
+   FooterServlet --> /Footer.jsp
+3) 로그인 정보 부분 JSP로 만들기
+   LoginInfoServlet --> /LoginInfo.jsp   
 
 
  
