@@ -506,9 +506,25 @@ Cookie: name=hong; age=20
   => 게시판 첨부파일 추가
   => 회원 정보에 사진 추가
   
+[step16: JSP를 활용하여 화면 출력을 쉽게 하자]
+- JSP 구동 원리
+1) /jsp/hello.jsp 작성
+2) 웹 브라우저에서 JSP 요청
+3) JSP 엔진이 hello.jsp를 가지고 
+   hello_jsp.java 파일을 생성한다.
+   => 파일 위치
+      .tmp0/work/.../jsp/hello_jsp.java
+4) 컴파일된 클래스 파일을 실행한다.
 
-
-
+- JSP 엔진이 만든 클래스
+1) Servlet 객체이다.
+   => hello_jsp ---> HttpJspBase(Tomcat) ---> HttpServlet --->...
+       
+2) JSP 파일을 가지고 서블릿 클래스를 만들 때는 
+   => 반드시 javax.servlet.jsp.HttpJspPage 인터페이스를 
+      구현해야 한다.
+3) HttpJspPage 인터페이스
+   => HttpJspPage ---> JspPage ---> Servlet
 
 
 
