@@ -8,11 +8,9 @@
 <head>
   <meta charset='UTF-8'>
   <title>게시물 목록</title>
-<%
-RequestDispatcher rd = 
-request.getRequestDispatcher("/header");
-rd.include(request, response);
-%>
+  
+  <jsp:include page="/Header.jsp"/>
+  
   <style>
     table {
       border-collapse: collapse;
@@ -24,10 +22,9 @@ rd.include(request, response);
   </style>
 </head>
 <body>
-<%
-rd = request.getRequestDispatcher("/loginInfo");
-rd.include(request, response);
-%>
+
+<jsp:include page="/LoginInfo.jsp"/>
+
 <h1>게시물 목록(by JSP)</h1>
 <p><a href='form.html'>새 글</a></p>
 <table>
@@ -60,10 +57,9 @@ for (Board board : boards) {
 }
 %>  
 </table>
-<%
-rd = request.getRequestDispatcher("/footer");
-rd.include(request, response);
-%>
+
+<jsp:include page="/Footer.jsp"/>
+
 </body>
 </html>
 
