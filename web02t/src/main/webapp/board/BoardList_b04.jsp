@@ -1,8 +1,8 @@
+<%@ page import="net.bitacademy.java72.domain.Board"%>
+<%@ page import="java.util.List"%>
 <%@ page language="java" 
           contentType="text/html; charset=UTF-8"
           pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
-           prefix="c"%>         
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
 
 <jsp:include page="/LoginInfo.jsp"/>
 
-<h1>게시물 목록(by JSP with EL, JSTL)</h1>
+<h1>게시물 목록(by JSP)</h1>
 <p><a href='form.html'>새 글</a></p>
 <table>
   <tr>
@@ -34,14 +34,23 @@
     <th>등록일</th>
     <th>조회수</th>
   </tr>
-<c:forEach var="board" items="${boards}">
+<jsp:useBean id="boards" 
+  type="java.util.List<Board>"
+  scope="request"/>
+<%
+/*
+List<Board> boards = 
+  (List<Board>)request.getAttribute("boards");
+*/
+for (Board board : boards) {%>
   <tr>
-    <td>${board.no}</td>
-    <td><a href='detail.do?no=${board.no}'>${board.title}</a></td>
-    <td>${board.createDate}</td>
-    <td>${board.viewCount}</td>
+    <td><%=board.getNo()%></td>
+    <td><a href='detail.do?no=<%=board.getNo()%>'><%=
+    board.getTitle()%></a></td>
+    <td><%=board.getCreateDate()%></td>
+    <td><%=board.getViewCount()%></td>
   </tr>
-</c:forEach>
+<%}%>  
 </table>
 
 <jsp:include page="/Footer.jsp"/>
