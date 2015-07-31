@@ -34,14 +34,9 @@
     <th>등록일</th>
     <th>조회수</th>
   </tr>
-<jsp:useBean id="boards" 
-  type="java.util.List<Board>"
-  scope="request"/>
 <%
-/*
 List<Board> boards = 
   (List<Board>)request.getAttribute("boards");
-*/
 for (Board board : boards) {%>
   <tr>
     <td><%=board.getNo()%></td>
