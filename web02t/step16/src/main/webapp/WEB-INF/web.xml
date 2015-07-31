@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>web02t</display-name>
+  
+  <!-- ServletContext 도구를 통해 꺼내는 파라미터 값 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>net/bitacademy/java72/application-context.xml</param-value>
+  </context-param>
+  
+  <!-- 서블릿 컨테이너의 보고를 받을 객체를 등록한다. -->
+  <listener>
+    <listener-class>net.bitacademy.java72.listener.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- 필터 클래스 등록 -->
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>net.bitacademy.java72.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  
+  <!-- 필터를 꼽을 URL 지정 -->
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <!-- 서블릿 클래스 등록 -->
+  <servlet>
+    <servlet-name>BoardList</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardList</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BoardInsert</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardInsert</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BoardDetail</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardDetail</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BoardUpdate</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardUpdate</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BoardDelete</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.BoardDelete</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberList</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberList</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberInsert</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberInsert</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberDetail</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberDetail</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberUpdate</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberUpdate</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MemberDelete</servlet-name>
+    <servlet-class>net.bitacademy.java72.control.MemberDelete</servlet-class>
+  </servlet>
+  
+  <!-- 서블릿 클래스에 URL을 연결 -->
+  <servlet-mapping>
+    <servlet-name>BoardList</servlet-name>
+    <url-pattern>/board/list.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BoardInsert</servlet-name>
+    <url-pattern>/board/insert.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BoardDetail</servlet-name>
+    <url-pattern>/board/detail.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BoardUpdate</servlet-name>
+    <url-pattern>/board/update.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BoardDelete</servlet-name>
+    <url-pattern>/board/delete.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberList</servlet-name>
+    <url-pattern>/member/list.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberInsert</servlet-name>
+    <url-pattern>/member/insert.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberDetail</servlet-name>
+    <url-pattern>/member/detail.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberUpdate</servlet-name>
+    <url-pattern>/member/update.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberDelete</servlet-name>
+    <url-pattern>/member/delete.do</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
