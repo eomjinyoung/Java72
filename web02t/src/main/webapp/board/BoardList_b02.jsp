@@ -39,11 +39,11 @@ List<Board> boards =
   (List<Board>)request.getAttribute("boards");
 for (Board board : boards) {%>
   <tr>
-    <td><%=board.getNo()%></td>
-    <td><a href='detail.do?no=<%=board.getNo()%>'><%=
-    board.getTitle()%></a></td>
-    <td><%=board.getCreateDate()%></td>
-    <td><%=board.getViewCount()%></td>
+    <td><%out.print(board.getNo());%></td>
+    <td><a href='detail.do?no=<%out.print(board.getNo());%>'><%
+    out.print(board.getTitle());%></a></td>
+    <td><%out.print(board.getCreateDate());%></td>
+    <td><%out.print(board.getViewCount());%></td>
   </tr>
 <%}%>  
 </table>

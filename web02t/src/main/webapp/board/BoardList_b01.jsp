@@ -37,15 +37,25 @@
 <%
 List<Board> boards = 
   (List<Board>)request.getAttribute("boards");
-for (Board board : boards) {%>
-  <tr>
-    <td><%=board.getNo()%></td>
-    <td><a href='detail.do?no=<%=board.getNo()%>'><%=
-    board.getTitle()%></a></td>
-    <td><%=board.getCreateDate()%></td>
-    <td><%=board.getViewCount()%></td>
-  </tr>
-<%}%>  
+for (Board board : boards) {
+  out.println("<tr>"
+      + "<td>" 
+      + board.getNo() 
+      + "</td>"
+      + "<td><a href='detail.do?no="
+      + board.getNo()
+      + "'>"
+      + board.getTitle()
+      + "</a></td>"
+      + "<td>"
+      + board.getCreateDate()
+      + "</td>"
+      + "<td>"
+      + board.getViewCount()
+      + "</td>"
+      + "</tr>");
+}
+%>  
 </table>
 
 <jsp:include page="/Footer.jsp"/>
