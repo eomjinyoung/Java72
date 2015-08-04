@@ -1,27 +1,25 @@
 package net.bitacademy.java72.control;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/auth/logout.do")
-public class LogoutServlet extends HttpServlet {
-  private static final long serialVersionUID = 1L;
+import org.springframework.stereotype.Controller;
+
+import net.bitacademy.java72.annotation.RequestMapping;
+
+@Controller("/auth/logout.do")
+public class LogoutServlet {
   
-  @Override
-  protected void service(
+  @RequestMapping
+  public String logout(
       HttpServletRequest request, 
-      HttpServletResponse response) throws ServletException, IOException {
+      HttpServletResponse response) {
     
     HttpSession session = request.getSession();
-    session.invalidate(); // 세션을 무효화시킴.
+    session.invalidate(); 
     
-    response.sendRedirect("login.do");
+    return "redirect:login.do";
   }
 
 }

@@ -18,6 +18,9 @@
   </style>
 </head>
 <body>
+
+<jsp:include page="/LoginInfo.jsp"/>
+
 <h1>게시물 상세보기(with EL)</h1>
 <form action='update.do' 
       method='post' enctype='multipart/form-data'>
