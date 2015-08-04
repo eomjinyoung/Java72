@@ -1,61 +1,42 @@
 package net.bitacademy.java72.control;
 
-import java.io.IOException;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+import net.bitacademy.java72.annotation.RequestMapping;
 import net.bitacademy.java72.dao.MemberDao;
 import net.bitacademy.java72.domain.Member;
 import net.bitacademy.java72.util.MultipartDataProcessor;
 
-public class MemberUpdate extends HttpServlet {
-  private static final long serialVersionUID = 1L;
-
-  @Override
-  protected void doPost(
-      HttpServletRequest request, 
-      HttpServletResponse response) throws ServletException, IOException {
+@Controller("/member/update.do")
+public class MemberUpdate {
+  @Autowired MemberDao memberDao;
   
-    ApplicationContext context = 
-        (ApplicationContext)this.getServletContext()
-           .getAttribute("beanContainer");
-
-    MemberDao memberDao = 
-        (MemberDao)context.getBean("memberDao");
+  @RequestMapping
+  public String update(
+      HttpServletRequest request, 
+      HttpServletResponse response) throws Exception {
+  
+    Map<String,String> paramMap = 
+        MultipartDataProcessor.toParamMap(
+            "/files", request);
     
-    try {
-      Map<String,String> paramMap = 
-          MultipartDataProcessor.toParamMap(
-              "/files", request);
-      
-      Member member = new Member();
-      member.setNo(Integer.parseInt(
-          paramMap.get("no")));
-      member.setName(paramMap.get("name"));
-      member.setEmail(paramMap.get("email"));
-      member.setTel(paramMap.get("tel"));
-      member.setPassword(paramMap.get("password"));
-      member.setPhoto(paramMap.get("photo"));
-      
-      memberDao.update(member);
-    } catch (Exception e) {
-      RequestDispatcher rd = 
-          request.getRequestDispatcher("/error");
-
-      //ServletRequest에 전달할 객체를 저장한다.
-      request.setAttribute("error", e);
-      
-      rd.forward(request, response);
-      return;
-    }
-    response.sendRedirect("list.do");
+    Member member = new Member();
+    member.setNo(Integer.parseInt(
+        paramMap.get("no")));
+    member.setName(paramMap.get("name"));
+    member.setEmail(paramMap.get("email"));
+    member.setTel(paramMap.get("tel"));
+    member.setPassword(paramMap.get("password"));
+    member.setPhoto(paramMap.get("photo"));
+    
+    memberDao.update(member);
+    return "redirect:list.do";
   }
 
 }

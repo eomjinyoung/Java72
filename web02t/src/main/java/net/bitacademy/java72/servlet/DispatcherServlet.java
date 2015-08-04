@@ -67,12 +67,15 @@ public class DispatcherServlet extends HttpServlet {
           request, 
           response);
       
-      RequestDispatcher rd = 
-          request.getRequestDispatcher(viewUrl);
-      
-      response.setContentType("text/html;charset=UTF-8");
-      rd.include(request, response);
-      
+      if (viewUrl.startsWith("redirect:")) {
+        response.sendRedirect(viewUrl.substring(9));
+      } else {
+        RequestDispatcher rd = 
+            request.getRequestDispatcher(viewUrl);
+        
+        response.setContentType("text/html;charset=UTF-8");
+        rd.include(request, response);
+      }
     } catch (Exception e) {  
       RequestDispatcher rd = 
           request.getRequestDispatcher("/Error.jsp");
