@@ -1,5 +1,6 @@
 package net.bitacademy.java72.listener;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -22,7 +23,10 @@ public class ContextLoaderListener
     
     // 스프링 빈 컨테이너를 ServletContext 보관소에 저장한다.
     // => 다른 서블릿들이 꺼내서 사용할 수 있도록 저장한다.
-    sce.getServletContext().setAttribute(
+    ServletContext servletContext = 
+        sce.getServletContext();
+    
+    servletContext.setAttribute(
         "beanContainer", appContext);
     
     System.out.println("contextInitialized()");

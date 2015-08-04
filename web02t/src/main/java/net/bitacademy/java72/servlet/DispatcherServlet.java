@@ -8,6 +8,7 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,10 +29,16 @@ public class DispatcherServlet extends HttpServlet {
       HttpServletResponse response) throws ServletException, IOException {
     
     // 스프링 빈 컨테이너 얻기
+    ServletContext servletContext = 
+                    this.getServletContext();
+    ApplicationContext appContext = 
+      (ApplicationContext)servletContext.getAttribute(
+                                          "beanContainer");
+    /*
     ApplicationContext appContext = 
         (ApplicationContext)this.getServletContext()
                           .getAttribute("beanContainer");
-    
+    */ 
     /* 서블릿 경로 알아내기
      * http://localhost:9999/web02/board/list.do
      * http: --> 프로토콜, 스키마 
@@ -55,7 +62,7 @@ public class DispatcherServlet extends HttpServlet {
       
       requestHandler = (Method)methods.toArray()[0];
       
-      String viewUrl = (String)requestHandler.invoke(
+      String viewUrl = (String)requestHandler.invoke( 
           pageController, /* 인스턴스 */
           request, 
           response);
