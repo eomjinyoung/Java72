@@ -1,4 +1,4 @@
-[Gradle 웹 프로젝트 만들기]
+ [Gradle 웹 프로젝트 만들기]
 1. web02t 프로젝트 생성
 2. src 폴더 생성
 3. src/main/webapp 폴더 추가
@@ -534,8 +534,12 @@ Cookie: name=hong; age=20
 3) 로그인 정보 부분 JSP로 만들기
    LoginInfoServlet --> /LoginInfo.jsp   
 
+[step17: Front Controller의 도입]
+- 클라이언트의 모든 요청을 받는 서블릿
+- 기존 컨트롤러는 서블릿이 될 필요가 없다.
+- 기존 컨트롤러의 공통 기능을 수행한다.
+- 기존 컨트롤러를 "페이지 컨트롤러"라 부른다.
 
- 
 
 
    
