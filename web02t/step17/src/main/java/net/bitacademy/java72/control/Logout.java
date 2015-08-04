@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import net.bitacademy.java72.annotation.RequestMapping;
 
 @Controller("/auth/logout.do")
-public class LogoutServlet {
+public class Logout {
   
   @RequestMapping
   public String logout(
