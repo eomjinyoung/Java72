@@ -13,7 +13,7 @@ import net.bitacademy.java72.dao.MemberDao;
 import net.bitacademy.java72.domain.Member;
 
 @Controller("/auth/login.do")
-public class LoginServlet {
+public class Login {
   @Autowired MemberDao memberDao;
   
   @RequestMapping
