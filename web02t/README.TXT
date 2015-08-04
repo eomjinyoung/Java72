@@ -541,6 +541,7 @@ Cookie: name=hong; age=20
 - 기존 컨트롤러를 "페이지 컨트롤러"라 부른다.
 1) 프론트 컨트롤러 만들기
   => DispatcherServlet 클래스 작성
+2) 기존의 서블릿 클래스를 POJO로 바꾸기
 
 
    
