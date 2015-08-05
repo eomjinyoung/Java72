@@ -1,7 +1,5 @@
 package net.bitacademy.java72;
 
-import java.util.ArrayList;
-
 public class StudentSelector2 {
 
   public static void main(String[] args) throws Exception {
