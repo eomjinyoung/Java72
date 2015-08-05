@@ -553,7 +553,15 @@ Cookie: name=hong; age=20
 - 프론트 컨트롤러 변경
 - 페이지 컨트롤러 변경
 
-   
+[step19: 스프링 MVC 적용]
+1) Spring MVC 프레임워크 의존 라이브러리 추가
+2) DispatcherServlet를 스프링 클래스로 적용
+   => web.xml 변경
+   => application-context.xml을 WEB-INF/conf/ 폴더로 이동
+3) CharacterEncodingFilter를 스프링 클래스로 교체
+   => web.xml 변경
+4) @RequestMapping을 스프링 애노테이션으로 교체
+   => ...control 패키지의 클래스들 변경   
    
    
    

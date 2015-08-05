@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+  <!-- 
+    @Component, @Controller, @Service, @Repository가 
+    붙은 클래스를 찾아서 객체를 생성한다.
+    @Autowired가 붙은 메서드에 대해 의존 객체를 주입한다.
+   -->
+  <context:component-scan 
+      base-package="net.bitacademy.java72"/>
+  
+  <!-- SqlSessionFactory 객체 생성하라! -->
+  <bean id="sqlSessionFactory" 
+        class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <!-- VO에 객체에 대해 별명을 자동으로 붙이기 -->
+    <property name="typeAliasesPackage" 
+        value="net.bitacademy.java72.domain" />
+    <!-- SQL 맵퍼 파일의 경로를 지정한다. -->
+    <property name="mapperLocations" 
+        value="classpath*:net/bitacademy/java72/**/*Dao.xml"/>
+  </bean>
+  
+  <!-- mybatis-config.xml의 데이터소스 부분을 대체 -->
+  <bean id="dataSource" 
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" 
+        value="com.mysql.jdbc.Driver"/>
+    <property name="url" 
+        value="jdbc:mysql://localhost:3306/java72db"/>
+    <property name="username" value="java72"/>
+    <property name="password" value="java72"/>
+  </bean>
+  
+</beans>
+
+
+
+
+
+
