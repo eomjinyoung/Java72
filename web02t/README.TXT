@@ -543,7 +543,7 @@ Cookie: name=hong; age=20
   => DispatcherServlet 클래스 작성
 2) 기존의 서블릿 클래스를 POJO로 바꾸기
 
-
+[step18: 리플렉션 API - 메서드의 파라미터 분석]
    
    
    
