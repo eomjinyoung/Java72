@@ -1,7 +1,6 @@
 package net.bitacademy.java72.control;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +16,9 @@ public class BoardDetail {
 
   @RequestMapping
   public String detail(
-      HttpServletRequest request, 
-      HttpServletResponse response)  {
+      int no,
+      HttpServletRequest request)  {
 
-      int no = Integer.parseInt(request.getParameter("no"));
       Board board = boardDao.get(no);
       request.setAttribute("board", board);
     

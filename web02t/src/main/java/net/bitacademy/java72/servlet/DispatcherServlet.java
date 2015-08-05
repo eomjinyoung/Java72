@@ -5,6 +5,8 @@ import static org.reflections.ReflectionUtils.withAnnotation;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -56,16 +58,23 @@ public class DispatcherServlet extends HttpServlet {
       
       // @RequestMapping 붙은 메서드 알아내기
       Method requestHandler = null;
+      
+      @SuppressWarnings("unchecked")
       Set<Method> methods = getMethods(
           pageController.getClass(), 
           withAnnotation(RequestMapping.class));
       
       requestHandler = (Method)methods.toArray()[0];
       
+      // 메서드의 파라미터를 분석하여
+      // 메서드를 호출할 때 전달할 파라미터 값을 준비한다.
+      Object[] paramValues = 
+          prepareMethodParameterValues(
+              request, requestHandler);
+      
       String viewUrl = (String)requestHandler.invoke( 
           pageController, /* 인스턴스 */
-          request, 
-          response);
+          paramValues);
       
       if (viewUrl.startsWith("redirect:")) {
         response.sendRedirect(viewUrl.substring(9));
@@ -83,6 +92,67 @@ public class DispatcherServlet extends HttpServlet {
       rd.forward(request, response);
       return;
     } 
+  }
+
+  private Object[] prepareMethodParameterValues(
+      HttpServletRequest request, Method m) {
+    //0. 파라미터 값을 담을 보관소 준비
+    ArrayList<Object> paramValues = new ArrayList<Object>();
+    
+    //1. 호출할 메서드의 파라미터 정보를 추출한다.
+    Parameter[] params = m.getParameters();
+    
+    String paramName = null;
+    Class<?> paramType = null;
+    Object paramValue = null;
+    
+    for (Parameter p : params) {
+      paramName = p.getName();
+      paramType = p.getType();
+      
+      //2. 파라미터에 해당하는 데이터를 준비한다.
+      paramValue = getParameterValue(
+          request, paramType, paramName);
+      paramValues.add(paramValue);
+    }
+    
+    //3. 준비한 파라미터 값을 배열로 만들어 리턴한다.
+    return paramValues.toArray();
+  }
+
+  private Object getParameterValue(
+      HttpServletRequest request, 
+      Class<?> paramType, 
+      String paramName) {
+    
+    String value = request.getParameter(paramName);
+    
+    if (paramType.isPrimitive()) {
+      switch (paramType.getName()) {
+      case "int":
+        return Integer.parseInt(value);
+      case "long":
+        return Long.parseLong(value);
+      case "short":
+        return Short.parseShort(value);
+      case "byte":
+        return Byte.parseByte(value);
+      case "float":
+        return Float.parseFloat(value); 
+      case "double":
+        return Double.parseDouble(value);
+      case "boolean":
+        return Boolean.parseBoolean(value);
+      default: //"char"
+        return value.charAt(0);
+      }
+      
+    } else if (paramType == HttpServletRequest.class) {
+      return request;
+      
+    } else {
+      return null;
+    }
   }
 }
 
