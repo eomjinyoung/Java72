@@ -50,7 +50,7 @@
   <td><input type='password' name='password'></td></tr>
 <tr>
   <th>사진</th>
-  <td><img class='photo' src='../files/${member.photo}'><input type='file' name='photo'></td></tr>
+  <td><img class='photo' src='../files/${member.photo}'><input type='file' name='file1'></td></tr>
 <tr>
   <th></th>
   <td><input type='submit' value='변경'><a href='delete.do?no=${member.no}'>삭제</a></td></tr>
