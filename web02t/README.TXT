@@ -563,10 +563,28 @@ Cookie: name=hong; age=20
 4) @RequestMapping을 스프링 애노테이션으로 교체
    => ...control 패키지의 클래스들 변경   
    
-   
-   
-   
-   
+[step20: 스프링 MVC 적용2]
+- CRUD 기능을 한 클래스로 묶는다.   
+  => BoardController, MemberController, AuthController 클래스 생성
+- DAO 클래스 제거 => Mybatis의 자동화 기능 사용.
+  => 개발자는 더이상 DAO 클래스의 반복적인 코드를
+     작성할 필요가 없다.
+     Mybatis에서 자동으로 처리한다.
+     단지 SQL 맵퍼 파일에 선언된 name 스페이스의 이름과
+     인터페이스의 이름을 같게 하라.
+     물론 SQL 아이디의 이름과 메서드 이름을 같게 하라.   
+  => 기존의 Dao 클래스를 인터페이스로 선언한다.
+1) BoardDao
+  => 인터페이스로 바꾼다.
+  => BoardDao.xml(SQL 맵퍼파일)에 선언된 네임스페이스 이름과
+     인터페이스 이름을 같게 하라.
+  => SQL 아이디의 이름과 인터페이스 메서드 이름을 같게하라.
+  => SQL 맵퍼 파일과 DAO 인터페이스를 연결해 줄 객체를
+     스프링 설정 파일에 추가한다.
+     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" 
+             value="net.bitacademy.java72.dao" />
+      </bean>
    
    
    

@@ -27,6 +27,12 @@
         value="classpath*:net/bitacademy/java72/**/*Dao.xml"/>
   </bean>
   
+  <!-- SQL 맵퍼와 인터페이스 연동을 관리하는 객체 -->
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  <property name="basePackage" 
+	       value="net.bitacademy.java72.dao" />
+	</bean>
+  
   <!-- mybatis-config.xml의 데이터소스 부분을 대체 -->
   <bean id="dataSource" 
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
