@@ -585,7 +585,22 @@ Cookie: name=hong; age=20
         <property name="basePackage" 
              value="net.bitacademy.java72.dao" />
       </bean>
-   
+2) MemberDao
+  => 인터페이스로 바꾼다.
+  => Mybatis의 SQL 맵퍼와 자동으로 연동하려면
+     메서드의 파라미터가 반드시 SQL 맵퍼 파일과 일치해야 한다. 
+  => exist(email, password) --> exist(map) 바꾼다.
+3) AuthController
+  => MemberDao.exist(map)을 호출하도록 변경한다.  
+  
+  
+  
+  
+  
+  
+  
+  
+     
    
    
    
