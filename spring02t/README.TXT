@@ -27,7 +27,12 @@
   => return(ModelAndView), parameter(Map)
 .. 등
 
+[step02: 트랜잭션 다루기1 - auto commit]
+- DML SQL문(insert,update,delete)을 실행한 후 자동으로
+  commit한다.
 
+* 커밋(commit)
+- 임시 테이블의 작업 결과를 실제 테이블에 적용하는 것.  
 
 
 
