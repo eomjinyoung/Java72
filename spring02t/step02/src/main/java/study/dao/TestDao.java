@@ -28,19 +28,14 @@ public class TestDao {
   
   public void insert(Test01 test01, Test02 test02) {
     SqlSession sqlSession = 
-        sqlSessionFactory.openSession(false);
+        sqlSessionFactory.openSession(true);
     try {
       sqlSession.insert(
           "study.dao.TestDao.insert1", test01);
       sqlSession.insert(
           "study.dao.TestDao.insert2", test02);
-      sqlSession.commit();
       
     } catch (Exception e) {
-      sqlSession.rollback(); // 마지막 커밋 상태로 만든다.
-      // 마지막 커밋 상태?
-      // - 임시 DB에 저장된 중간 작업결과를 취소한다.
-      
       e.printStackTrace();
       
     } finally {
