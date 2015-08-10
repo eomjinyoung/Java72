@@ -24,6 +24,20 @@ public class TestServiceImpl implements TestService {
       test1Dao.insert(test01); 
       test2Dao.insert(test02); 
   }
+  
+  @Transactional(
+      propagation=Propagation.REQUIRED,
+      rollbackFor=Exception.class)
+  public void m1(Test01 test01) throws Exception {
+    test1Dao.insert(test01);
+  }
+  
+  @Transactional(
+      propagation=Propagation.REQUIRED,
+      rollbackFor=Exception.class)
+  public void m2(Test02 test02) throws Exception {
+    test2Dao.insert(test02);
+  }
 }
 
 
