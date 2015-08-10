@@ -14,7 +14,7 @@
   <context:component-scan base-package="study"/>
   
   <!-- @Transactional 애노테이션을 처리할 BeanPostProcessor 등록하기 -->
-  <tx:annotation-driven transaction-manager="transactionManager"/>
+  <tx:annotation-driven transaction-manager="txManager"/>
   
   <!-- 멀티파트 데이터를 처리할 객체를 준비한다. -->
   <bean id="multipartResolver"

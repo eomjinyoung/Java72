@@ -5,13 +5,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import study.service.sm.TestServiceImpl;
 import study.vo.Test01;
 import study.vo.Test02;
 
 @Service
 public class TxTestService {
-  @Autowired TestServiceImpl testService;
+  @Autowired TestService testService;
   
   @Transactional(
       propagation=Propagation.REQUIRED,
