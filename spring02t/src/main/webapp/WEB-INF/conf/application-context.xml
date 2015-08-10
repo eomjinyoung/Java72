@@ -16,11 +16,31 @@
     <property name="maxUploadSize" value="2000000"/>
 	</bean>
 	
-	<!-- SqlSessionFactory 객체 준비 -->
-	<bean id="sqlSessionFactory"
-	      class="study.util.SqlSessionFactoryFactoryBean">
-    <property name="configLocation"
-              value="study/dao/mybatis-config.xml"/>
+	<!-- SqlSessionFactory 객체 생성하라! -->
+  <bean id="sqlSessionFactory" 
+        class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <property name="typeAliasesPackage" 
+        value="net.bitacademy.java72.domain" />
+    <property name="mapperLocations" 
+        value="classpath*:net/bitacademy/java72/**/*Dao.xml"/>
+  </bean>
+  
+  <!-- mybatis-config.xml의 데이터소스 부분을 대체 -->
+  <bean id="dataSource" 
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" 
+        value="com.mysql.jdbc.Driver"/>
+    <property name="url" 
+        value="jdbc:mysql://localhost:3306/java72db"/>
+    <property name="username" value="java72"/>
+    <property name="password" value="java72"/>
+  </bean>
+  
+  <!-- 스프링의 트랜잭션 관리자 등록 -->
+  <bean id="txManager" 
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
   </bean>
 </beans>
 

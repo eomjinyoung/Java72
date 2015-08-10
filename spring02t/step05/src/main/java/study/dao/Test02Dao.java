@@ -1,5 +1,7 @@
 package study.dao;
 
+import javax.servlet.ServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,27 +13,24 @@ import study.vo.Test02;
 public class Test02Dao {
   @Autowired SqlSessionFactory sqlSessionFactory;
   
-  ThreadLocal<SqlSession> sqlSessionBox = 
-      new ThreadLocal<SqlSession>();
-  
-  public void insert(Test02 test02) {
+  public void insert(Test02 test02, ServletRequest request) {
     SqlSession sqlSession = 
         sqlSessionFactory.openSession(false);
-    
-    sqlSessionBox.set(sqlSession);
-    
+    request.setAttribute("Test02Dao.sqlSession", sqlSession);
     sqlSession.insert(
           "study.dao.Test02Dao.insert", test02);
   }
   
-  public void commit() {
-    SqlSession sqlSession = sqlSessionBox.get();
+  public void commit(ServletRequest request) {
+    SqlSession sqlSession = 
+        (SqlSession)request.getAttribute("Test02Dao.sqlSession");
     sqlSession.commit();
     sqlSession.close();
   }
   
-  public void rollback() {
-    SqlSession sqlSession = sqlSessionBox.get();
+  public void rollback(ServletRequest request) {
+    SqlSession sqlSession = 
+        (SqlSession)request.getAttribute("Test02Dao.sqlSession");
     sqlSession.rollback();
     sqlSession.close();
   }

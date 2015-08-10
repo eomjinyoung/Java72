@@ -24,18 +24,18 @@ public class TestController {
     try {
       Test01 t1 = new Test01();
       t1.setTitle(title1);
-      test1Dao.insert(t1);
+      test1Dao.insert(t1, request);
       
       Test02 t2 = new Test02();
       t2.setTitle(title2);
-      test2Dao.insert(t2);
+      test2Dao.insert(t2, request);
       
-      test1Dao.commit();
-      test2Dao.commit();
+      test1Dao.commit(request);
+      test2Dao.commit(request);
       
     } catch (Exception e) {
-      test1Dao.rollback();
-      test2Dao.rollback();
+      test1Dao.rollback(request);
+      test2Dao.rollback(request);
     }
     
     return "/study/Insert.jsp";

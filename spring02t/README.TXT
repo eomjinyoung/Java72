@@ -73,15 +73,19 @@
 
 [step06: 트랜잭션 다루기5 - 각 스레드 별로 SqlSession 객체 관리] 
 - ServletRequest를 사용하는 대신에 ThreadLocal을 사용한다.
+1) DAO 클래스 변경
+  => sqlSession 객체를 담을 ThreadLocal 변수를 선언한다.
+  => commit(), rollback()에서 ThreadLocal 변수에 
+     보관된 SqlSession 객체를 사용한다.
+2) TestController 클래스 변경
+  => 각 요청 별로 SqlSession을 저장하기 위해
+     ServletRequest를 전달할 필요가 없다. 
+     ThreadLocal 객체에 의해 자동 처리된다.
 
-
-
-
-
-
-
-
+[step07: 트랜잭션 다루기6 - Mybatis-Spring 라이브러리 사용하기]
 1) 스프링 설정 파일 변경
+  => Mybatis-Spring 연동 객체를 등록한다.
+  
   => 트랜잭션을 다루는 객체를 등록한다.
   => application-context.xml
   <bean id="txManager" 
