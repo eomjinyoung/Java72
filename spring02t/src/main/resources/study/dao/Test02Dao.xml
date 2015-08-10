@@ -2,14 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="study.dao.TestDao">
+<mapper namespace="study.dao.Test02Dao">
   
-  <insert id="insert1" parameterType="Test01">
-    INSERT INTO test01(title)
-    values(#{title})
-  </insert>
-  
-  <insert id="insert2" parameterType="Test02">
+  <insert id="insert" parameterType="Test02">
     INSERT INTO test02(title)
     values(#{title})
   </insert>
