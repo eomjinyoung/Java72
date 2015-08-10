@@ -84,18 +84,41 @@
 
 [step07: 트랜잭션 다루기6 - Mybatis-Spring 라이브러리 사용하기]
 1) 스프링 설정 파일 변경
+  => application-context.xml
   => Mybatis-Spring 연동 객체를 등록한다.
+  bean id="sqlSessionFactory" 
+        class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <property name="typeAliasesPackage" 
+        value="study.vo" />
+    <property name="mapperLocations" 
+        value="classpath*:study/dao/*Dao.xml"/>
+  </bean>
+  
+  => DB커넥션풀 객체도 스프링에서 관리한다.
+  <bean id="dataSource" 
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" 
+        value="com.mysql.jdbc.Driver"/>
+    <property name="url" 
+        value="jdbc:mysql://localhost:3306/java72db"/>
+    <property name="username" value="java72"/>
+    <property name="password" value="java72"/>
+  </bean>
   
   => 트랜잭션을 다루는 객체를 등록한다.
-  => application-context.xml
   <bean id="txManager" 
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource"/>
   </bean>
+  
 2) DAO 클래스 변경
-  => auto commit을 false로 설정한다.
-  => 모든 작업이 성공했을 때만 commit() 호출.
-  => 실패하면 rollback() 호출
+  => Test01Dao, Test02Dao 클래스 변경
+  => commit, rollback은 DAO를 사용하는 페이지 컨트롤러에서
+     처리할 것이다. 관련 코드를 삭제한다.
+
+3) TestController에서 스프링 트랜잭션 관리자를 이용하여
+   DAO의 트랜잭션을 관리한다.  
 
 
 
