@@ -49,6 +49,28 @@
   자동 커밋을 비활성화시키면 commit() 호출하기 전에는
   DB에 작업 결과를 반영하지 않는다.
 
+[step04: 트랜잭션 다루기3 - 두 개 이상의 DAO를 사용할 때]
+1) DAO
+  => 테이블 당 한 개의 DAO 만들기
+  => 기존의 TestDao를 Test01Dao와 Test02Dao로 쪼갠다.
+2) Sql Mapper 파일
+  => 테이블 당 한 개의 Sql Mapper 파일 만든다.
+  => 기존의 TestDao.xml 파일을 Test01Dao.xml과 Test02Dao.xml로 쪼갠다.
+3) 페이지 컨트롤러에서 트랜잭션을 관리
+  => TestController 클래스 변경
+
+* 문제점:
+  => 각각의 DAO가 별도로 Mybatis(SqlSessionFactory)를 
+         관리하기 때문에  트랜잭션을 다루기가 어렵다.  
+  
+[step05: 트랜잭션 다루기4 - Mybatis(SqlSessionFactory) 공유]
+1) 
+
+
+
+
+
+
 
 
 

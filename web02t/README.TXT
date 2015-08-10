@@ -593,10 +593,21 @@ Cookie: name=hong; age=20
 3) AuthController
   => MemberDao.exist(map)을 호출하도록 변경한다.  
   
+[step21: 트랜잭션 다루기]
+* 트랜잭션(transaction)
+  => 여러 개의 작업을 한 단위의 작업으로 묶은 것.
+  => 묶인 작업을 모두 성공했을 때 작업을 완료(commit)한다.
+  => 만약 하나라도 실패하면 중간에 작업했던 것을 취소(rollback)한다.  
+
+* DBMS의 트랜잭션
+  => DML 작업(insert,update,delete)은  임시 테이블에 저장된다.
+  => 사용자가 commit을 요청할 때 비로서 임시 테이블의 작업 결과를
+     실제 테이블에 적용한다.
+  => 만약 사용자가 rollback을 요청하면 임시 테이블에 저장된 작업 결과를
+     삭제한다.   
   
-  
-  
-  
+* 실습
+  => spring02t/study2 참조  
   
   
   
