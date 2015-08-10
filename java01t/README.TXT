@@ -315,7 +315,14 @@ v09.member
   => MemberDao, MemberList, MemberInsert, MemberUpdate,
      MemberDelete
 
-
+[step08: ThreadLocal]
+1) ex1
+  => ThreadLocal 사용 전
+  => 인스턴스를 여러 스레드가 공유할 때 문제 발생!
+  => 해결 책? 스레드 마다 값을 관리하기
+2) ex2
+  => ThreadLocal 사용 후 
+  => ThreadLocal에 저장한 값은 각 스레드에서 개별적으로 관리한다. 
 
 
 

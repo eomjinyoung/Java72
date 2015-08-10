@@ -64,8 +64,15 @@
          관리하기 때문에  트랜잭션을 다루기가 어렵다.  
   
 [step05: 트랜잭션 다루기4 - Mybatis(SqlSessionFactory) 공유]
-1) 
+1) SqlSessionFactoryFactoryBean 클래스 작성
+  => 스프링 빈 컨테이너가 SqlSessionFactory를 관리할 수 있도록
+     FactoryBean 구현체를 만든다.
+2) DAO 클래스에 SqlSessionFactory 객체 주입
+  => 기존의 각 DAO에서 개별적으로 관리하던 SqlSessionFactory를
+     스프링으로부터 주입 받는 방식으로 변경한다.
 
+[step06: 트랜잭션 다루기5 - 각 스레드 별로 SqlSession 객체 관리] 
+- ServletRequest를 사용하는 대신에 ThreadLocal을 사용한다.
 
 
 

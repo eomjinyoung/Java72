@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.beans.factory.FactoryBean;
 
 public class SqlSessionFactoryFactoryBean
-  implements FactoryBean<SqlSessionFactory> {
+      implements FactoryBean<SqlSessionFactory> {
   
   String configLocation;
   

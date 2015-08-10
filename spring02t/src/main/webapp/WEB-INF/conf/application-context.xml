@@ -16,6 +16,12 @@
     <property name="maxUploadSize" value="2000000"/>
 	</bean>
 	
+	<!-- SqlSessionFactory 객체 준비 -->
+	<bean id="sqlSessionFactory"
+	      class="study.util.SqlSessionFactoryFactoryBean">
+    <property name="configLocation"
+              value="study/dao/mybatis-config.xml"/>
+  </bean>
 </beans>
 
 
