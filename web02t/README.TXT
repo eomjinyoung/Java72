@@ -607,12 +607,43 @@ Cookie: name=hong; age=20
      삭제한다.   
   
 * 실습
-  => spring02t/study2 참조  
+  => spring02t/study2 참조
+
+0) 의존 라이브러리 추가
+  => aspectjweaver 라이브러리 추가
+      
+1) web.xml 파일 설정
+  => ContextLoaderListener 및 컨텍스트 파라미터 설정
+  => DispatcherServlet의 설정 파일 이름 변경
+
+2) dispatch-servlet.xml 파일 생성
+  => 기존의 application-context.xml 파일을 복사한다.
+  => 웹 관련 객체 설정만 남겨두고 나머지는 제거한다.  
+
+3) application-context.xml 파일 변경
+  => 웹 관련 객체 설정을 제외한다.
+  => 트랜잭션과 관련된 설정 추가
+  => DataSource 객체는 JNDI에서 찾도록 설정을 변경한다.   
+
+4) service 컴포넌트 추가
+  => 인터페이스 생성: 
+     BoardService, MemberService, AuthService
+  => 구현체 생성: 
+     BoardServiceImpl, MemberServiceImpl, AuthServiceImpl 
   
-  
-  
-     
+5) 페이지 컨트롤러 변경
+  => DAO를 사용하는 대신 Service 객체를 사용하도록 변경한다.
+       
    
+  
+  
+  
+  
+  
+  
+  
+  
+  
    
    
    
