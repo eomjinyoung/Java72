@@ -201,8 +201,25 @@
 3) Service 컴포넌트에서 트랜잭션 관련 애노테이션 제거하기
   => TestServiceImpl 클래스 변경
   
-
-
+[step13: DB 커넥션풀(DataSource)을 관리는 서블릿 컨테이너에게 맡기기]
+1) 톰캣 서버에 DataSource 설정하기
+      <Resource name="jdbc/java72db" 
+         auth="Container" 
+         type="javax.sql.DataSource"
+         maxTotal="100" 
+         maxIdle="30" 
+         maxWaitMillis="10000"
+         url="jdbc:mysql://localhost:3306/java72db"
+         driverClassName="com.mysql.jdbc.Driver"
+         username="java72" password="java72"/> 
+    
+2) 스프링 설정 파일 변경
+  => 직접 DB 커넥션을 관리하지 않고,
+     서블릿 컨테이너가 관리하는 커넥션풀을 이용한다.
+  => 설정 파일에 다음을 추가한다.   
+  <jee:jndi-lookup id="dataSource" 
+        jndi-name="java:comp/env/jdbc/java72db"/>
+   
 
    
 
