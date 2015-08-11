@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+
+<!-- 태그의 모양을 설정하자! => CSS 기술 -->
+<style type="text/css">
+
+a {
+  display:inline-block;
+  text-decoration: none;
+  /* border: 1px solid gray; */
+  
+  /* 테두리 바깥 쪽에 여백 주기
+     주의! 위 아래 여백은 겹쳐진다.
+   */
+  margin: 5px;
+  
+  padding: 5px;
+  
+  font-weight: bold;
+  
+  background-color: DeepSkyBlue;
+  color: white;
+  border-radius: 5px;
+}
+
+/* 태그의 특정 상태를 나타내는 문법: pseudo selector */
+a:HOVER { /* 마우스 커서가 링크 위에 있을 때*/
+	background-color: MediumBlue;
+	color: white;
+}
+
+a:LINK { /* 링크를 방문하기 전 */
+	color: blue;
+}
+
+a:VISITED { /* 방문한 적이 있는 사이트 */
+	color: white;
+}
+
+ul {
+  list-style: square;
+}
+
+dt {
+  /* border: 1px solid red; */
+  background-color:yellow;
+  padding-left: 20px;
+  margin-right: 800px;
+}
+
+table {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 5px;
+  /* border: 1px solid black; */
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- 입력폼 만들기
+=> action 속성 지정하기 
+=> method를 get로 지정하기. 지정하지 않으면 기본이 get이다.
+ -->
+<form action="http://www.naver.com" method="get">
+이름: <input type="text" name="name"><br>
+이메일: <input type="email" name="email"><br>
+아이디: <input type="text" name="id"><br>
+암호: <input type="password" name="pwd"><br>
+<input type="submit" value="회원가입">
+<input type="reset">  
+</form>
+
+
+<h1>네이버 검색</h1>
+<form action="http://search.naver.com/search.naver" 
+      method="get">
+<!-- 서버에 데이터를 보내되, 화면에 출력하지 않게 함.
+  type="hidden"
+ -->      
+  <input type="hidden" name="where" value="nexearch">
+  <input type="hidden" name="sm" value="top_hty">
+  <input type="hidden" name="fbm" value="1">
+  <input type="hidden" name="ie" value="UTF-8">
+  <input type="text" name="query">
+  <input type="submit" value="검색">
+</form>
+<!-- 
+* URL 분석 및 용어 정리 
+http://search.naver.com/search.naver?where=nexearch&query=%EC%97%84%EC%A7%84%EC%98%81&sm=top_hty&fbm=1&ie=utf8
+1) 프로토콜 이름
+http
+2) 서버 주소
+search.naver.com(:80 포트번호가 생략됨)
+ 
+3) 서버 애플리케이션 주소
+/search.naver
+4) Query String
+where=nexearch&query=%EC%97%84%EC%A7%84%EC%98%81&sm=top_hty&fbm=1&ie=utf8 
+ -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
