@@ -174,3 +174,47 @@
   => 호출자: X
      => X
 
+[step12: 트랜잭션 다루기11 - XML과 AOP로 트랜잭션 설정하기]
+0) 준비
+  => aspectj weaver 의존 라이브러리 추가
+  
+1) 트랜잭션 정책 설정하기
+  <tx:advice id="txAdvice" transaction-manager="txManager">
+    <tx:attributes>
+      <tx:method name="get*" read-only="true" />
+      <tx:method name="list*" read-only="true" />
+      <tx:method name="*" propagation="REQUIRED"/>
+    </tx:attributes>
+  </tx:advice>
+
+2) 트랜잭션을 적용할 대상 지정하기
+  <aop:config>
+    <!-- 적용할 클래스나 메서드 정의 -->
+    <aop:pointcut id="serviceOperation"
+      expression="execution(* study.service..*Service.*(..))" />
+    
+    <!-- 트랜잭션 규칙을 적용 -->
+    <aop:advisor pointcut-ref="serviceOperation" 
+                 advice-ref="txAdvice" />
+  </aop:config>
+
+3) Service 컴포넌트에서 트랜잭션 관련 애노테이션 제거하기
+  => TestServiceImpl 클래스 변경
+  
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
