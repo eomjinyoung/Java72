@@ -220,8 +220,29 @@
   <jee:jndi-lookup id="dataSource" 
         jndi-name="java:comp/env/jdbc/java72db"/>
    
+[step14: DB 관련 객체를 공용 IoC 컨테이너에서 관리하자]
+1) 공용 IoC 컨테이너 준비
+  => 웹 애플리케이션이 시작될 때 준비되어야 한다.
+     => 프론트 컨트롤러가 시작하기 전에 준비되어야 한다.
+  => ServletContextListener 구현체를 만들면 된다.
+     => 스프링에서 이 구현체를 제공한다.
+     => ContextLoaderListener 사용한다.
+  => web.xml에 다음 설정을 추가한다.
+2) ServletContextLoader 리스너 추가 및 설정 파일 경로 추가
+    <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/conf/application-context.xml</param-value>
+    </context-param>
+  
+    <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+3) 기존의 DispatcherServlet을 위한 설정 파일은
+     dispatch-servlet.xml로 변경한다.    
 
-   
+4) 기존에 있던 application-context.xml 파일에서
+   웹 관련 객체들은 dispatch-servlet.xml로 옮긴다.      
 
 
 
