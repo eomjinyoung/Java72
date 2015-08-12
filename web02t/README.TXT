@@ -650,7 +650,9 @@ Cookie: name=hong; age=20
   => 이전 리턴 값: /board/BoardList.jsp
   => 변경 후 리턴 값: board/BoardList  
   
-  
+[step23: CSS 다루기]  
+1) CSS 사용법 
+2) BoardApp에 부트스트랩 적용
   
   
   
