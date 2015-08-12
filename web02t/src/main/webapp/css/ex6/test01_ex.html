@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex6 - test01</title>
+<style>
+div {
+  border: 1px solid gray;
+  margin: 10px;
+} 
+
+.aside {
+  float: left;
+  width: 180px;
+  height: 300px;
+  margin-top: 0px;
+}
+
+.section {
+  margin-left: 200px;
+}
+
+.footer {
+  clear: left;
+  text-align: center;
+}
+
+#photoDiv {
+  border: 1px dashed red;
+  position: fixed;
+  left: 100px;
+  top: 15px;
+}
+
+#photo {
+  border: 1px solid gray;
+  box-shadow: 5px 5px 5px gray;
+  width: 120px;
+}
+
+#photoDiv > button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.header {
+
+}
+.header > img {
+  position: relative;
+  left: -10px;
+  height: 30px;
+}
+
+</style>
+</head>
+<body>
+  <div class="header">
+    <img src="logo.jpg">
+    <span>세계 최고의 프로그래밍 전문 교육기관 "비트캠프"</span>
+  </div>
+  <div class="aside">
+    <ul>
+      <li>학생 관리</li>
+      <li>강사 관리</li>
+      <li>과정 관리</li>
+      <li>교육장 관리</li>
+      <li>수강신청 관리</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h1>회원목록</h1>
+    <table border='1'>
+	    <tr id="tr1"> <th>번호</th> <th>이름</th> <th>이메일</th> <th>전화번호</th>  </tr>
+	    <tr id="tr2"> <td>1</td> <td>홍길동</td> <td>hong@test.com</td> <td>111-1111</td> </tr>
+	    <tr id="tr3"> <td>2</td> <td>임꺽정</td> <td>leem@test.com</td> <td>111-2222</td> </tr>
+	    <tr id="tr4"> <td>3</td> <td>유관순</td> <td>yoo@test.com</td> <td>111-3333</td> </tr>
+	  </table>
+  </div>
+  
+  <div class="footer">
+    <address>서울 서초구 비트 캠프</address>
+  </div>
+  
+  <div id='photoDiv'>
+    <img id='photo' src='images.jpg'>
+    <button type='button' 
+      onclick="document.getElementById('photoDiv').style.display='none';">X</button>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
