@@ -653,7 +653,7 @@ Cookie: name=hong; age=20
 [step23: CSS 다루기]  
 1) CSS 사용법 
 2) BoardApp에 부트스트랩 적용
-  
+3) JavaScript 프로그래밍  
   
   
   
