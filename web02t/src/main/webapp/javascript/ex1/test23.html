@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>조건문</h1>
+
+<script type="text/javascript">
+"use strict";
+
+//if ~ else ~
+// 주의!
+//if ~ else if ~ else : else if 문법은 없다.
+
+//1) if ~ 
+if (38 < 100)
+  console.log("okok1");
+console.log("--------------------------");
+
+//2) if ~ else
+if (38 > 100)
+  console.log('okok2');
+else 
+  console.log('okok3');  
+console.log("--------------------------");
+
+//3) if { ... } : 여러 개의 문자을 묶을 때
+if (10 < 20) {
+	console.log('okok4');
+	console.log('okok5');
+}
+console.log("--------------------------");
+
+//4) if {} else {}
+if (10 > 20) {
+	console.log('okok6');
+	console.log('okok7');
+} else {
+	console.log('okok8');
+	console.log('okok9');
+}
+console.log("--------------------------");
+
+//5) if문 중첩하기
+//=> 항상 else 은 가장 가까운 if 문에 묶인다.
+var age = 5;
+if (age > 7)
+	if (age >= 8 && age < 14)
+		console.log('초등생');
+else // 이 else 문은 두 번째 if 문 소속이다.
+	console.log('유치원생');
+console.log("--------------------------");
+
+//6) if문의 중첩2
+var age = 67; // 같은 이름의 변수를 다시 선언해도 문제 없다.
+if (age < 8)
+  console.log('유치원생');
+else 
+  if (age >= 8 && age < 14) 
+	console.log('초등생');
+  else 
+    if (age >= 14 && age < 19)
+	  console.log('청소년');
+	else 
+	  if (age >= 19 && age < 65)
+	    console.log('성인');
+	  else 
+	    console.log('노인');
+   
+console.log("--------------------------");
+
+//7) if문의 중첩3
+var age = 67; // 같은 이름의 변수를 다시 선언해도 문제 없다.
+if (age < 8) {
+  console.log('유치원생');
+} else 
+  if (age >= 8 && age < 14) { 
+	console.log('초등생');
+  } else 
+    if (age >= 14 && age < 19) {
+	  console.log('청소년');
+	} else 
+	  if (age >= 19 && age < 65) {
+	    console.log('성인');
+	  } else { 
+	    console.log('노인');
+	  }
+   
+console.log("--------------------------");
+
+//8) if문의 중첩4
+var age = 67; // 같은 이름의 변수를 다시 선언해도 문제 없다.
+if (age < 8) {
+  console.log('유치원생');
+} else if (age >= 8 && age < 14) { 
+  console.log('초등생');
+} else if (age >= 14 && age < 19) {
+  console.log('청소년');
+} else if (age >= 19 && age < 65) {
+  console.log('성인');
+} else { 
+  console.log('노인');
+}
+   
+console.log("--------------------------");
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
