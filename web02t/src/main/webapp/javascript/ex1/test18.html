@@ -20,6 +20,31 @@ for (var i in arr1) {
 }
 console.log("-----------------------------");
 
+//2) 
+var arr2 = [10, 20, 30];
+arr2[7] = 80;
+arr2[99] = 1000;
+console.log(arr2.length);
+console.log(arr2);
+console.log("-----------------------------");
+for (var i in arr2) {
+	if (i > 7) break;
+	console.log(arr2[i]);
+}
+console.log("-----------------------------");
+for (var i = 0; i < 8; i++) {
+  console.log(arr2[i]);
+}
+console.log("-----------------------------");
+
+//3) pop()의 활용: 배열에서 값을 꺼낸다. 꺼낸 값은 배열에서 제거한다.
+var arr3 = [100, 90, 80, 70];
+console.log(arr3.pop());
+console.log(arr3.pop());
+console.log(arr3.pop());
+console.log(arr3.pop());
+console.log(arr3.pop());
+console.log("-----------------------------");
 
 </script>
 
