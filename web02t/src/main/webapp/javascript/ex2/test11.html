@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수 레퍼런스2</h1>
+
+<script type="text/javascript">
+// 함수 주소를 파라미터 값으로 전달할 수 있다.
+function plus(a, b) {
+	return a + b;
+}
+
+function minus(a, b) {
+	return a - b;
+}
+
+function multiple(a, b) {
+	return a * b;
+}
+
+function divide(a, b) {
+	return a / b;
+}
+
+function compute(a, b, func) {
+	console.log(func(a, b));
+}
+
+compute(10, 20, plus);
+compute(10, 20, minus);
+compute(10, 20, multiple);
+compute(10, 20, divide);
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
