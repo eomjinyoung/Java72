@@ -5,13 +5,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>함수 파라미터</h1>
+<h1>함수 파라미터2</h1>
 
 <script type="text/javascript">
-// 함수 파라미터 값은 변수의 개수와 상관없이 넘길 수 있다.
-// => 이런 이유로 인해 오버로딩 문법이 불가능하다.
+// 같은 이름의 함수를 또 정의하면 기존 함수를 덮어쓴다.
+// => 오버로딩 불가!
 function plus(a, b) {
 	return a + b;
+}
+
+function plus(a) { // 앞의 함수를 덮어쓴다.
+	return a + a;
 }
 
 console.log( plus(10, 20));

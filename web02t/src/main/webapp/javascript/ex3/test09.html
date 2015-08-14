@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>생성자 함수2</h1>
+
+<script type="text/javascript">
+// 생성자 함수 만들기  
+// => 바깥에서 객체를 생성한 후, 
+//    바로 생성자 함수를 호출한다.
+// => 생성자 함수와 일반 함수를 구분하기 위해
+//    암무적으로 함수 이름을 대문자로 시작한다.
+//    그리고 명사 형태로 이름을 짓는다.
+
+function Calculator() {
+	// 함수를 호출할 때 객체 주소를 준다면,
+	// 그 객체 주소는 빌트인 변수 this에 보관된다.
+	this.result = 0;
+	this.plus = function(value) {
+		return this.result += value;	
+	};
+	this.minus = function(value) {
+		return this.result -= value;
+	}
+}
+
+var obj1 = new Calculator();
+var obj2 = new Calculator();
+var obj3 = new Calculator();
+var obj4 = new Calculator();
+
+obj1.plus(10);
+obj1.plus(20);
+obj1.minus(17);
+
+obj2.plus(10);
+obj2.minus(2);
+
+obj3.plus(100);
+obj3.plus(200);
+
+obj4.minus(30);
+obj4.plus(7);
+
+console.log(obj1.result);
+console.log(obj2.result);
+console.log(obj3.result);
+console.log(obj4.result);
+</script>
+</body>
+</html>
+
+
+
+
+

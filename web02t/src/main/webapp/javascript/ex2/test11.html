@@ -25,8 +25,11 @@ function divide(a, b) {
 	return a / b;
 }
 
-function compute(a, b, func) {
-	console.log(func(a, b));
+function compute(a, b, cb) {
+	//이렇게 직접 함수를 호출하기 않고,
+	//다른 함수에 의해 호출되는 함수를 콜백("callback")함수라고 부른다.
+	//
+	console.log(cb(a, b));
 }
 
 compute(10, 20, plus);
