@@ -1,7 +1,14 @@
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<h1>${param.name}님 반갑습니다.</h1>
-<%
-Thread.sleep(10000);
-%> 
+<table border='1'>
+<tr>
+  <th>제목</th> 
+  <td>${param.title}</td>
+</tr>
+<tr>
+  <th>내용</th>
+  <td><textarea 
+    rows='5' cols='50'>${param.content}</textarea></td>
+</tr>
+</table>
