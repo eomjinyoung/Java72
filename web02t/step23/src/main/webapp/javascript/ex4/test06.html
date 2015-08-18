@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>cross browsing 문제</h1>
+ 
+<button id='btn1' type="button">버튼1</button>
+	 
+<script type="text/javascript">
+var e = document.getElementById('btn1');
+
+//onclick 프로퍼티는 모든 웹 브라우저에서 지원한다.
+//그러나 addEventListener()는 IE8 이하에서 
+//지원하지 않는다.
+
+if (e.addEventListener) {
+	e.addEventListener('click', function(event) {
+		alert('okok');
+	});
+} else { // <= IE8
+	e.attachEvent('onclick', function() {
+		var event = window.event;
+		alert('오호라...');
+	})
+}
+</script>
+</body>
+</html>
+
+
+
+
+

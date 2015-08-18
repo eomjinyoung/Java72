@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>엘리먼트 찾기: getElementsByTagName()</h1>
+<h2 id='h01'>제목1</h2>
+<h2 id='h02'>제목2</h2>
+<h2 id='h03'>제목3</h2>
+<h2 id='h04'>제목4</h2>
+
+<script type="text/javascript">
+//엘리먼트의 이름으로 찾기
+var el = document.getElementsByTagName('h2');
+console.log(el);
+console.log(typeof el); // object
+console.log(el.constructor); // 생성자: HTMLCollection()
+
+// 리턴 값 el은 배열이 아니라 HTMLCollection 객체이다.
+// => for... in... 반복문을 사용하지 말라!
+// => for 기본 형식을 사용하라!
+for (var i = 0; i < el.length; i++) {
+	console.log(el[i].innerHTML);
+}
+</script>
+</body>
+</html>
+
+
+
+
+

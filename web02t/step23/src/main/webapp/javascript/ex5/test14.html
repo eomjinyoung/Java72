@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>속성 추가하기</h1>
+<div id='d1'></div> 
+
+<script type="text/javascript">
+"use strict";
+
+// 엘리먼트에 없는 속성 추가하기. 즉 사용자 속성 추가하기
+// => "객체.속성명 = 값;" 형식으로는 기존 속성의 값만 설정할 수 있다.
+//    새 속성은 추가할 수 없다.
+// => 해결책: setAttributre()를 사용하라!
+
+var e = document.createElement('a');
+e.href='http://www.daum.net'; // 속성 추가
+//e.no = "20"; //추가 안됨.
+e.setAttribute('no', '20');
+e.innerHTML = '다음';
+
+var e2 = document.querySelector('#d1');
+e2.appendChild(e); 
+
+</script>
+</body>
+</html>
+
+
+
+
+

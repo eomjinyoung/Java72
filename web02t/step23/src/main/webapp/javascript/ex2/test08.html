@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수 빌트인 파라미터  arguments 배열2</h1>
+
+<script type="text/javascript">
+// arguments 빌트인 변수와 일반 파라미터 변수를 섞어 쓸 수 있다. 
+// => 파라미터 변수가 있더라도 모든 값은 arguments에 저장된다.
+function plus(a) {
+	return a + arguments[1];
+}
+
+console.log( plus(10, 20));
+console.log( plus(10, 20, 30));
+console.log( plus(10, 20, 30, 40));
+console.log( plus()); // NaN
+
+</script>
+</body>
+</html>
+
+
+
+
+

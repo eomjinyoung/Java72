@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>변수의 데이터형</h1>
+
+<script type="text/javascript">
+"use strict";
+// 자바스크립트는 동적 바인딩을 지원한다.
+// * 정적 바인딩(static binding)? 
+//   => 변수를 선언할 때 데이터형 확정한다. 예) 자바, C/C++, C# 등
+//   => 실행 중에 다른 데이터형으로 변경할 수 없다.
+// * 동적 바인딩(dynamic binding)?
+//   => 값을 변수에 할당하는 순간 데이터형이 결정된다. 예) 스크립트 류.
+//   => 실행 중에 다른 타입의 데이터를 넣으면 데이터형이 변경된다.
+
+var a;
+a = "홍길동";
+console.log(a, typeof a);
+
+a = 20;
+console.log(a, typeof a);
+
+a = 3.14;
+console.log(a, typeof a);
+
+a = true;
+console.log(a, typeof a);
+
+a = new Object();
+console.log(a, typeof a);
+
+a = function() {};
+console.log(a, typeof a);
+
+a = null;
+console.log(a, typeof a);
+
+var b;
+console.log(typeof b);
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Object의 기타 함수들</h1>
+
+<script type="text/javascript">
+//1) Object.prototype.hasOwnProperty(프로퍼티명)
+var obj1 = {
+	name: "홍길동",
+	plus: function(a, b) {return a + b;}
+};
+
+console.log(obj1.hasOwnProperty('name'));
+console.log(obj1.hasOwnProperty('plus'));
+console.log(obj1.hasOwnProperty('toString'));
+console.log(obj1.hasOwnProperty('age'));
+console.log("-------------------------------------");
+
+//2) Object.prototype.propertyIsEnumerable(프로퍼티명)
+//=> for..in 을 통해서 조회할 수 있냐?
+console.log(obj1.propertyIsEnumerable('name'));
+console.log(obj1.propertyIsEnumerable('plus'));
+console.log(obj1.propertyIsEnumerable('toString'));
+console.log(obj1.propertyIsEnumerable('age'));
+console.log("-------------------------------------");
+for (var propName in obj1) {
+	console.log(propName, obj1[propName]);
+}
+console.log("-------------------------------------");
+</script>
+</body>
+</html>
+
+
+
+
+

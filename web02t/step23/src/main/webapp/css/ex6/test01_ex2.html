@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex6 - test01</title>
+<style>
+div {
+  border: 1px solid gray;
+  margin: 10px;
+} 
+
+.aside {
+  position: absolute; 
+  /* absolute의 기준점은 absolute, relative 조상을 기준으로
+     자리를 잡는다. 만약 없다면 body를 기준으로 잡는다.*/ 
+  left: 8px;
+  top: 45px;
+  
+  background-color: yellow;
+  margin: 0px;
+  
+    width: 10px;
+  height: 10px;
+  overflow: hidden;
+}
+
+/* .aside:hover {
+  width: 180px;
+  height: 300px;
+} */
+
+.section {
+  position: absolute;
+  left: 200px;
+  top: 45px;
+  margin: 0px;
+
+}
+
+.footer {
+  position: absolute;
+  left: 8px;
+  top: 350px;
+  width: 580px;
+  clear: left;
+  margin: 0px;
+}
+
+.main {
+  position: relative;
+  width: 600px;
+  margin: 0px auto;
+}
+</style>
+</head>
+<body>
+<div class='main'>
+  <div class="header">
+    <img src="http://www.bitacademy.net/images/join_head/bit_logo.gif">
+    <span>세계 최고의 프로그래밍 전문 교육기관 "비트캠프"</span>
+  </div>
+  <div id='menu' class="aside" 
+    onclick="var e = document.getElementById('menu'); e.style.width='180px'; e.style.height='300px';">
+    <ul>
+      <li>학생 관리</li>
+      <li>강사 관리</li>
+      <li>과정 관리</li>
+      <li>교육장 관리</li>
+      <li>수강신청 관리</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h1>회원목록</h1>
+    <table border='1'>
+	    <tr id="tr1"> <th>번호</th> <th>이름</th> <th>이메일</th> <th>전화번호</th>  </tr>
+	    <tr id="tr2"> <td>1</td> <td>홍길동</td> <td>hong@test.com</td> <td>111-1111</td> </tr>
+	    <tr id="tr3"> <td>2</td> <td>임꺽정</td> <td>leem@test.com</td> <td>111-2222</td> </tr>
+	    <tr id="tr4"> <td>3</td> <td>유관순</td> <td>yoo@test.com</td> <td>111-3333</td> </tr>
+	  </table>
+  </div>
+  
+  <div class="footer">
+    <address>서울 서초구 비트 캠프</address>
+  </div>
+  
+  <img src='images.jpg'>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
