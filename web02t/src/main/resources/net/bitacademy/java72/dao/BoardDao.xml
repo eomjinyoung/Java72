@@ -12,7 +12,7 @@
     <result column="att_file3" property="attachFile3" />
   </resultMap>
   
-  <select id="list" resultMap="BoardMap">
+  <select id="list" parameterType="map" resultMap="BoardMap">
     SELECT bno, title, cre_dt, views
     FROM board10
     ORDER BY bno desc

@@ -57,7 +57,6 @@
   </c:when>
   <c:otherwise>다음</c:otherwise>
 </c:choose>
-
 </div>
 
 <jsp:include page="/Footer.jsp"/>

@@ -46,6 +46,21 @@
 </c:forEach>
 </table>
 
+<div>
+<c:choose>
+  <c:when test="${not empty prevPageNo}">
+    <a href='list.do?pageNo=${prevPageNo}&pageSize=${pageSize}'>이전</a>
+  </c:when>
+  <c:otherwise>이전</c:otherwise>
+</c:choose>
+<c:choose>
+  <c:when test="${not empty nextPageNo}">
+    <a href='list.do?pageNo=${nextPageNo}&pageSize=${pageSize}'>다음</a>
+  </c:when>
+  <c:otherwise>다음</c:otherwise>
+</c:choose>
+</div>
+
 <jsp:include page="/Footer.jsp"/>
 
 </body>

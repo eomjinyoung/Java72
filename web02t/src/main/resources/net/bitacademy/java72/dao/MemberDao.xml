@@ -10,10 +10,16 @@
     <result column="cre_dt"   property="createDate" />
   </resultMap>
   
-  <select id="list" resultMap="MemberMap">
+  <select id="list" parameterType="map" resultMap="MemberMap">
     SELECT mno, mname, email, tel, cre_dt
     FROM member
     ORDER BY mname asc
+    LIMIT #{startIndex},#{pageSize} 
+  </select>
+  
+  <select id="countAll" resultType="int">
+    SELECT count(*)
+    FROM member
   </select>
   
   <insert id="insert" parameterType="Member">
