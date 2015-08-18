@@ -21,19 +21,19 @@ public class MemberController {
   @Autowired MemberService memberService;
   @Autowired ServletContext sc;
   
-  @RequestMapping("/delete.do")
+  @RequestMapping("/delete")
   public String delete(int no) {
     memberService.delete(no);
     return "redirect:list.do";
   }
   
-  @RequestMapping("/detail.do")
+  @RequestMapping("/detail")
   public String detail(int no, Model model) {
     model.addAttribute("member", memberService.get(no));
     return "member/MemberDetail";
   }
 
-  @RequestMapping("/insert.do")
+  @RequestMapping("/insert")
   public String insert(
       Member member,
       @RequestParam MultipartFile file1) throws Exception {
@@ -49,7 +49,7 @@ public class MemberController {
     return "redirect:list.do";
   }
   
-  @RequestMapping("/list.do")
+  @RequestMapping("/list")
   public String list(
       @RequestParam(required=false, defaultValue="1") 
       int pageNo,
@@ -77,7 +77,7 @@ public class MemberController {
     return "member/MemberList";
   }
   
-  @RequestMapping("/update.do")
+  @RequestMapping("/update")
   public String update(
       Member member,
       @RequestParam MultipartFile file1) throws Exception {
@@ -92,6 +92,16 @@ public class MemberController {
     
     memberService.update(member);
     return "redirect:list.do";
+  }
+  
+  @RequestMapping("/existEmail")
+  public String existEmail(String email, Model model) {
+     if (memberService.existEmail(email)) {
+       model.addAttribute("result", "yes");
+     } else {
+       model.addAttribute("result", "no");
+     }
+     return "member/existEmail";
   }
 }
 

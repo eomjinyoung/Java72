@@ -14,7 +14,9 @@
   <td><input type='text' name='name' placeholder="예)홍길동"></td></tr>
 <tr>
   <th>이메일</th>
-  <td><input type='text' name='email' placeholder="예)hong@test.com"></td></tr>
+  <td><input type='text' name='email' placeholder="예)hong@test.com">
+  <span id='checkResult'></span>
+  </td></tr>
 <tr>
   <th>전화</th>
   <td><input type='text' name='tel' placeholder="예)010-1111-2222"></td></tr>
@@ -31,5 +33,42 @@
 </table>
 </form>
 
+<script type="text/javascript">
+var e = document.querySelector('input[name=email]');
+var eCheckResult = document.querySelector('#checkResult');
+
+e.addEventListener('keyup', function(event) {
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+	  if (xhr.readyState == 4) {
+		  //서버의 응답
+		  /*
+		  {
+			  "result": "yes"
+		  }
+		  */
+	    var obj = JSON.parse(xhr.responseText);
+		  if (obj.result == 'yes') {
+			  eCheckResult.innerHTML = '이미 존재하는 이메일입니다.';
+		  } else {
+			  eCheckResult.innerHTML = '사용할 수 있는 이메일입니다.';
+		  }
+	  }
+	};
+	xhr.open('GET', 
+			'existEmail.do?email=' 
+			+ encodeURIComponent(e.value), 
+			true);
+	xhr.send();
+});
+
+</script>
 </body>
 </html>
+
+
+
+
+
+
+

@@ -12,6 +12,7 @@ public interface MemberService {
   Member get(int no);
   Member getUser(String email, String password);
   int countAll();
+  boolean existEmail(String email);
 }
 
 

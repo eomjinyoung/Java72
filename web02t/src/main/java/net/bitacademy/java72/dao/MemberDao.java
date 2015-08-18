@@ -13,6 +13,7 @@ public interface MemberDao {
   Member get(int no);
   Member exist(Map<String,String> map);
   int countAll();
+  int countEmail(String email);
 }
 
 

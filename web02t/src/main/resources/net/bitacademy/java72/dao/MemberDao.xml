@@ -53,6 +53,14 @@
     FROM member
     WHERE email=#{email} and pwd=#{password}
   </select>
+  
+  <select id="countEmail" 
+      parameterType="string" 
+      resultType="int">
+    SELECT count(*)
+    FROM member
+    WHERE email = #{value}
+  </select>
 </mapper>
 
 

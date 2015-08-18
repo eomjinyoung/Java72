@@ -65,6 +65,15 @@ public class MemberServiceImpl implements MemberService {
     return memberDao.countAll();
   }
 
+  @Override
+  public boolean existEmail(String email) {
+    if (memberDao.countEmail(email) > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
 
 
