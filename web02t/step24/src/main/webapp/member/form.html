@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>회원 상세보기</h1>
+<form action='insert.do' method='post'
+  enctype='multipart/form-data'>
+<table>
+<tr>
+  <th>이름</th>
+  <td><input type='text' name='name' placeholder="예)홍길동"></td></tr>
+<tr>
+  <th>이메일</th>
+  <td><input type='text' name='email' placeholder="예)hong@test.com"></td></tr>
+<tr>
+  <th>전화</th>
+  <td><input type='text' name='tel' placeholder="예)010-1111-2222"></td></tr>
+<tr>
+  <th>암호</th>
+  <td><input type='password' name='password'></td></tr>
+<tr>
+  <th>사진</th>
+  <td><input type='file' name='file1'></td></tr>
+<tr>
+  <th></th>
+  <td><input type='submit' value='등록'>
+      <input type='reset' value='취소'></td></tr>
+</table>
+</form>
+
+</body>
+</html>

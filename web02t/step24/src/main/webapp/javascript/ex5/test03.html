@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>엘리먼트 찾기: getElementsByClassName()</h1>
+<h2 id='h01' class='c1'>제목1</h2>
+<h2 id='h02' class='c2'>제목2</h2>
+<h2 id='h03' class='c1 c2'>제목3</h2>
+<h2 id='h04' class='c1'>제목4</h2>
+
+<script type="text/javascript">
+//엘리먼트의 class 값으로 찾기
+var el = document.getElementsByClassName('c1');
+
+for (var i = 0; i < el.length; i++) {
+	console.log(el[i].innerHTML);
+}
+</script>
+</body>
+</html>
+
+
+
+
+

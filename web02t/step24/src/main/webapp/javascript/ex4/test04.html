@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>이벤트 처리: addEventListener()</h1>
+ 
+<button id='btn1' type="button">버튼1</button>
+<button id='btn2' type="button">버튼2</button>
+	 
+<script type="text/javascript">
+var e = document.getElementById('btn1');
+var e2 = document.getElementById('btn2');
+
+//addEventListener('이벤트명', 콜백함수);
+//=> 콜백 함수는 가능한 익명 함수로 만들라!
+//=> 다른 곳에서 호출하지 않을 것이다.
+//=> 함수를 별도로 정의한 다음 
+//   addEventListener()로 등록하는 것 보다,
+//   addEventListener() 호출 가까이에 
+//   이벤트 처리 함수를 만드는 것이 코드 유지보수에 더 좋다.
+
+//1) 이벤트 처리 함수 별도 정의
+function btn1Click(event) {
+	alert('okok');
+}
+
+e.addEventListener('click', btn1Click);
+
+
+//2) 이벤트 처리 함수를 익명 함수로 만든다.
+e2.addEventListener('click', function(event) {
+	alert('오호라.. 코드가 가까이에 있네. 좋은 걸~~~~');
+});
+</script>
+</body>
+</html>
+
+
+
+
+

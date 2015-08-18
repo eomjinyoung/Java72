@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수</h1>
+
+<script type="text/javascript">
+//1) 함수 만들기 1
+//function 함수명(파라미터명, ...) { ... }
+//=> 자바스크립트는 데이터형이 없기 때문에 리턴 타입이 없다.
+//=> 파라미터 변수 선언 시 var를 붙이지 않는다.
+//=> 내부 빌트인 변수 arguments 배열을 통해 모든 파라미터 값을 다룰 수 있다.
+//=> 파라미터 변수의 개수와 상관없이 값을 넘길 수 있다.
+//   => 빌트인 변수 arguments가 있기 때문.
+
+function plus(a, b) {
+	return a + b;
+}
+
+var sum = plus(10, 20);
+console.log(sum);
+
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수 빌트인 파라미터  arguments 배열</h1>
+
+<script type="text/javascript">
+// 모든 함수는 파라미터 값을 저장하고 있는 빌트인 변수 
+// "arguments" 배열이 있다.
+function plus() {
+	return arguments[0] + arguments[1];
+}
+
+console.log( plus(10, 20));
+console.log( plus(10, 20, 30));
+console.log( plus(10, 20, 30, 40));
+console.log( plus()); // NaN
+
+</script>
+</body>
+</html>
+
+
+
+
+
