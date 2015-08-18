@@ -1,6 +1,8 @@
 package net.bitacademy.java72.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,18 @@ public class BoardServiceImpl implements BoardService {
   @Autowired BoardDao boardDao;
   
   @Override
-  public List<Board> list() {
-    return boardDao.list();
+  public List<Board> list(int pageNo, int pageSize) {
+    int startIndex = (pageNo - 1) * pageSize;
+    if (startIndex < 0) {
+      startIndex = 0;
+    }
+    
+    Map<String,Object> paramMap = 
+        new HashMap<String,Object>();
+    paramMap.put("startIndex", startIndex);
+    paramMap.put("pageSize", pageSize);
+    
+    return boardDao.list(paramMap);
   }
 
   @Override
@@ -38,4 +50,14 @@ public class BoardServiceImpl implements BoardService {
     return boardDao.get(no);
   }
 
+  @Override
+  public int countAll() {
+    return boardDao.countAll();
+  }
 }
+
+
+
+
+
+

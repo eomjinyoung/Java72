@@ -16,6 +16,12 @@
     SELECT bno, title, cre_dt, views
     FROM board10
     ORDER BY bno desc
+    LIMIT #{startIndex},#{pageSize} 
+  </select>
+  
+  <select id="countAll" resultType="int">
+    SELECT count(*)
+    FROM board10
   </select>
   
   <insert id="insert" parameterType="Board">

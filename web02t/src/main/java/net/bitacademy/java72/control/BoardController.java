@@ -53,8 +53,31 @@ public class BoardController {
   }
   
   @RequestMapping("/list.do")
-  public String list(Model model) {
-    model.addAttribute("boards", boardService.list());
+  public String list(
+      @RequestParam(required=false, defaultValue="1") 
+      int pageNo,
+      @RequestParam(required=false, defaultValue="3")
+      int pageSize,
+      Model model) {
+    
+    if (pageNo > 1) { // 이전 페이가 있다면
+      model.addAttribute("prevPageNo", pageNo - 1);
+    }
+
+    int totalCount = boardService.countAll();
+    int lastPageNo = totalCount / pageSize;
+    if ((totalCount % pageSize)  > 0) {
+      lastPageNo++;
+    }
+    
+    if (pageNo < lastPageNo) { // 다음 페이지가 있다면
+      model.addAttribute("nextPageNo", pageNo + 1);
+    }
+    
+    model.addAttribute("pageSize", pageSize);
+    
+    model.addAttribute("boards", 
+        boardService.list(pageNo, pageSize));
     return "board/BoardList";
   }
   

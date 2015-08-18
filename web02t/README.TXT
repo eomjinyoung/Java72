@@ -655,7 +655,14 @@ Cookie: name=hong; age=20
 2) BoardApp에 부트스트랩 적용
 3) JavaScript 프로그래밍: webapp/javascript
 4) JSON 사용 : webapp/javascript/ex6/step04
-5) BoardApp에 AJAX 적용하기 
+ 
+[step24: 페이징 처리]
+1) BoardDao.xml 변경
+2) BoardDao 인터페이스의 list() 변경
+3) BoardService 인터페이스 변경
+4) BoardServiceImpl 클래스 변경 
+5) BoardController 클래스 변경
+* 멤버도 게시판과 같이 처리한다.
   
   
   
