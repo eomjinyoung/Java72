@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>화면에 엘리먼트 보이기: appendChild()</h1>
+<div id='d1'></div> 
+
+<script type="text/javascript">
+"use strict";
+
+var e = document.createElement('p');
+e.innerHTML = '오호라... 엘리먼트 생성하였네...';
+
+var e2 = document.querySelector('#d1');
+e2.appendChild(e); // 막내 자식으로 추가한다.
+
+</script>
+</body>
+</html>
+
+
+
+
+

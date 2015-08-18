@@ -651,9 +651,11 @@ Cookie: name=hong; age=20
   => 변경 후 리턴 값: board/BoardList  
   
 [step23: CSS 다루기]  
-1) CSS 사용법 
+1) CSS 사용법 :  webapp/css
 2) BoardApp에 부트스트랩 적용
-3) JavaScript 프로그래밍  
+3) JavaScript 프로그래밍: webapp/javascript
+4) JSON 사용 : webapp/javascript/ex6/step04
+5) BoardApp에 AJAX 적용하기 
   
   
   
