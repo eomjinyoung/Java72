@@ -1,6 +1,6 @@
 var tbody = $('#listTable tbody');
 
-$.getJSON('list.json', {name:'okok'}, function(result) {
+$.getJSON('list.json', function(result) {
   $('#pageNo').text(result.pageNo);
   
   var obj = result.data;

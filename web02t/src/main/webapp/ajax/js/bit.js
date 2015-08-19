@@ -41,6 +41,26 @@ function bit(value) {
   
   return obj;
 } 
+
+bit.getXMLHttpRequest = function() {
+  var xhr = null;
+  if (window.XMLHttpRequest || window.ActiveXObject) {
+     if (window.ActiveXObject) {
+        try {
+           xhr = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch(e) {
+           xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+     } else {
+        xhr = new XMLHttpRequest();
+     }
+  } else {
+     alert("Your browser doesn't support XMLHTTPRequest...");
+     return null;
+  }
+  return xhr;
+};
+
 bit.toQueryString = function(obj) {
   if (obj == null || obj == undefined) {
     return null;
@@ -59,7 +79,7 @@ bit.toQueryString = function(obj) {
 };
 
 bit.ajax = function(url, settings) {
-  var xhr = new XMLHttpRequest();
+  var xhr = bit.getXMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && settings.success) {
       if (settings.dataType == 'json') {
