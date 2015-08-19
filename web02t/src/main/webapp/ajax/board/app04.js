@@ -6,7 +6,7 @@ $.getJSON('list.json', function(result) {
   var obj = result.data;
   var trList = document.querySelectorAll('.data-row');
   for (var i = 0; i < trList.length; i++) {
-    //tbody.removeChild(trList[i]); 
+    tbody.removeChild(trList[i]); 
   } 
   
   var tr;

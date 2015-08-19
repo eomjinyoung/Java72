@@ -4,38 +4,54 @@ function bit(value) {
     obj = [document.createElement(
         value.substring(1, value.length - 1))];
   } else {
-    obj = [document.querySelector(value)];
+    var el = document.querySelectorAll(value); 
+    obj = [];
+    for (var i = 0; i < el.length; i++) {
+      obj[i] = el[i]; 
+    }
   }
   
   obj.html = function(content) {
-    this[0].innerHTML = content;
+    for (var i = 0; i < this.length; i++) {
+      this[i].innerHTML = content;
+    }
     return this;
   };
   
   obj.text = function(content) {
-    this[0].textContent = content;
+    for (var i = 0; i < this.length; i++) {
+      this[i].textContent = content;
+    }
     return this;
   };
   
   obj.addClass = function(className) {
-    if (this[0].className != '')
-      this[0].className = '';
-    this[0].className += ' ' + className;
+    for (var i = 0; i < this.length; i++) {
+      if (this[i].className != '')
+        this[i].className = '';
+      this[i].className += ' ' + className;
+    }
     return this;
   };
   
   obj.append = function(child) {
-    this[0].appendChild(child[0]);
+    for (var i = 0; i < this.length; i++) {
+      for (var j = 0; j < child.length; j++) {
+        this[i].appendChild(child[j]);
+      }
+    }
     return this;
   };
   
   obj.appendTo = function(parent) {
-    parent[0].appendChild(this[0]);
+    parent.append(this);
     return this;
   };
   
   obj.attr = function(attrName, value) {
-    this[0].setAttribute(attrName, value);
+    for (var i = 0; i < this.length; i++) {
+      this[i].setAttribute(attrName, value);
+    }
     return this;
   };
   
