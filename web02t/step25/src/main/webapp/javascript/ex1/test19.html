@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>배열3</h1>
+
+<script type="text/javascript">
+"use strict";
+
+// 배열에서 값을 꺼내는 함수: each()
+function each(arr, callback) {
+	for (var i = 0; i < arr.length; i++) {
+		callback(arr[i], i);
+	}
+}
+
+var arr1 = ["홍길동","임꺽정","유관순","김원봉","김구"];
+
+function f1(value, index) {
+	console.log(value, index);
+}
+
+each(arr1, f1);
+console.log("--------------------------");
+
+arr1.forEach(f1);
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

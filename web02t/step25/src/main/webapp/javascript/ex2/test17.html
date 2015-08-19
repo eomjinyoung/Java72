@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>익명 함수5</h1>
+
+<script type="text/javascript">
+// 익명 함수를 파라미터 값으로 전달할 수 있다.
+function compute(a, b, func) {
+	console.log(func(a, b));
+}
+
+compute(10, 20, function(a, b){
+	return a + b;
+});
+compute(10, 20, function(a, b){return a - b;});
+compute(10, 20, function(a, b){return a * b;});
+compute(10, 20, function(a, b){return a / b;});
+
+
+</script>
+</body>
+</html>
+
+
+
+
+

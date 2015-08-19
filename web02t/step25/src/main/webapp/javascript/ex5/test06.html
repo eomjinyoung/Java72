@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>엘리먼트 콘텐츠 변경</h1>
+<h2 id='h01' class='c1'>제목1</h2>
+<h2 id='h02' class='c2'>제목2</h2>
+<h2 id='h03' class='c1 c2'>제목3</h2>
+<h2 id='h04' class='c1'>제목4</h2>
+<input id='input01' type='text' value='okok'><br>
+<textarea id='ta' cols='50' rows='3'>내용입니다.</textarea>
+
+<script type="text/javascript">
+"use strict";
+
+// 폼 항목은 value 속성을 통해 값을 설정하라!
+alert('잠깐!');
+var e = document.querySelector('#h01');
+e.textContent = '오호라...';
+
+alert('잠깐2!');
+e = document.querySelector('#h02');
+e.innerHTML = '우헤헤';
+
+alert('잠깐3!');
+e = document.querySelector('#input01');
+//e.innerHTML = '내용 입력...';
+e.value = '값 변경했다.';
+
+alert('잠깐4!');
+e = document.querySelector('#ta');
+//e.innerHTML = '오호라.. 내용일세';
+e.value = 'value 속성으로 값 바꾸기';
+
+</script>
+</body>
+</html>
+
+
+
+
+

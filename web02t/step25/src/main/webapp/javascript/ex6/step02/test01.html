@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>AJAX: 동기 요청 방식의 문제점</h1>
+<div id='d1'></div>
+
+<script type="text/javascript">
+var e = document.querySelector('#d1');
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'test01.jsp?name=홍길동', false);
+
+//서버로부터 응답을 받으면 리턴한다.
+//만약 받지 못한다면 타임아웃 될 때까지 리턴하지 않고 대기한다.
+//=> 사용자의 행위에 반응하지 않는 페이지를 만들게 된다.
+xhr.send();
+e.innerHTML = xhr.responseText;
+
+</script>
+
+<address>이 페이지의 모든 권리는 자바 72기에 있습니다.</address>
+</body>
+</html>
+
+
+
+
+
