@@ -55,6 +55,12 @@ function bit(value) {
     return this;
   };
   
+  obj.remove = function() {
+    for (var i = 0; i < this.length; i++) {
+      this[i].parentElement.removeChild(this[i]);
+    }
+  };
+  
   return obj;
 } 
 

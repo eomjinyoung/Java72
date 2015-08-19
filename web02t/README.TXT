@@ -686,8 +686,13 @@ Cookie: name=hong; age=20
 => ajax를 사용하기 쉽게 함수 만들기: bit.ajax()
 => /webapp/ajax/js/bit.js 변경
 
-4) 
+4) getJSON() 함수 추가
+=> ajax를 사용하기 쉽게 함수 만들기: bit.getJSON()
+=> /webapp/ajax/js/bit.js 변경
   
+5) document.querySelectorAll() 함수 처리
+
+6) jQuery 도입
   
   
    
