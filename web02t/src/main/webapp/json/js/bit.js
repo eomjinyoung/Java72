@@ -59,7 +59,27 @@ function bit(value) {
     for (var i = 0; i < this.length; i++) {
       this[i].parentElement.removeChild(this[i]);
     }
+    return this;
   };
+  
+  obj.removeAttr = function(attrName) {
+    for (var i = 0; i < this.length; i++) {
+      this[i].removeAttribute(attrName);
+    }
+    return this;
+  };
+  
+  obj.click = function(listener) {
+    for (var i = 0; i < this.length; i++) {
+      if (this[i].addEventListener) {//크롬,사파리,파폭,IE >= 9
+        this[i].addEventListener('click', listener);
+      } else { // IE <= 8
+        this[i].attachEvent('onclick', listener);
+      }
+    }
+    return this;
+  };
+  
   
   return obj;
 } 
