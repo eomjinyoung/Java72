@@ -692,7 +692,21 @@ Cookie: name=hong; age=20
   
 5) document.querySelectorAll() 함수 처리
 
-6) jQuery 도입
+6) 페이지 이벤트 처리
+app0601: 
+=> 이전, 다음 버튼의 상태 변경
+=> 이전, 다음 버튼의 링크 정보 설정
+
+app0602:
+=> bit.js 변경 : removeAttr(), click() 함수 추가
+=> removeAttr(), click() 사용
+
+app0603: 
+=> Back-end 개발
+  => json.BoardController 클래스 추가
+  => /WEB-INF/jsp/json/board/BoardList.jsp 파일 추가
+=> Front-end 벼경
+  => app.js에서 서버 URL 변경
   
   
    
