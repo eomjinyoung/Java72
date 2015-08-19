@@ -3,6 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.input-error {
+  border: 1px solid red;
+}
+
+.duplicate {
+  color: red;
+}
+
+.success {
+  color: blue;
+}
+</style>
 </head>
 <body>
 <h1>회원 상세보기</h1>
@@ -49,8 +62,12 @@ e.addEventListener('keyup', function(event) {
 		  */
 	    var obj = JSON.parse(xhr.responseText);
 		  if (obj.result == 'yes') {
+			  e.className = 'input-error';
+			  eCheckResult.className = 'duplicate';
 			  eCheckResult.innerHTML = '이미 존재하는 이메일입니다.';
 		  } else {
+			  e.className = '';
+			  eCheckResult.className = 'success';
 			  eCheckResult.innerHTML = '사용할 수 있는 이메일입니다.';
 		  }
 	  }
