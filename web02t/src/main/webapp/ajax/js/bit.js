@@ -47,13 +47,13 @@ bit.toQueryString = function(obj) {
   }
   
   var queryString = '';
-  for (var propName in settings.data) {
+  for (var propName in obj) {
     if (queryString.length > 0) {
       queryString += '&';
     }
     queryString += propName 
       + '=' 
-      + encodeURIComponent(settings.data[propName]);
+      + encodeURIComponent(obj[propName]);
   }
   return queryString;
 };
@@ -61,7 +61,7 @@ bit.toQueryString = function(obj) {
 bit.ajax = function(url, settings) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4) {
+    if (xhr.readyState == 4 && settings.success) {
       if (settings.dataType == 'json') {
         settings.success(JSON.parse(xhr.responseText));
       } else {
@@ -87,7 +87,32 @@ bit.ajax = function(url, settings) {
   }
 };
 
+bit.getJSON = function(url, arg1, arg2) {
+  var settings = {
+      method: 'GET',
+      dataType: 'json'
+  };
+  
+  if (arguments.length == 3) {
+    settings.data = arg1;
+    settings.success = arg2;
+    bit.ajax(url, settings);
+    
+  } else if (arguments.length == 2) {
+    if (typeof arg1 == 'function') {
+      settings.success = arg1;
+    } else {
+      settings.data = arg1;
+    }
+    bit.ajax(url, settings);
+  }
+}
+
 var $ = bit;
+
+
+
+
 
 
 
