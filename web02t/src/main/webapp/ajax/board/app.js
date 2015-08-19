@@ -1,10 +1,9 @@
 var tbody = $('#listTable tbody');
 
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function() {
-  if (xhr.readyState == 4) {
-    var result = JSON.parse(xhr.responseText);
-
+$.ajax('list.json', {
+  method: 'GET',
+  dataType: 'json',
+  success: function(result) {
     $('#pageNo').text(result.pageNo);
     
     var obj = result.data;
@@ -25,12 +24,7 @@ xhr.onreadystatechange = function() {
       $('<td>').text(obj[i].viewCount).appendTo(tr);
     }
   }
-};
-xhr.open('GET', 'list.json', true);
-xhr.send();
-
-
-
+});
 
 
 

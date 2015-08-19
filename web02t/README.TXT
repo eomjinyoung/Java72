@@ -664,7 +664,29 @@ Cookie: name=hong; age=20
 5) BoardController 클래스 변경
 * 멤버도 게시판과 같이 처리한다.
   
-  
+[step25: AJAX를 이용한 이메일 중복 검사]
+1) MemberDao.xml 변경
+2) MemberDao 인터페이스 변경  
+3) MemberService 인터페이스 및 구현체 변경
+4) MemberController 클래스 변경
+
+[step26: BoardApp을 back-end server와 front-end로 분리]
+1) javascript 기본 API를 사용하여 게시물 목록 페이지 만들기 
+=> /webapp/ajax/board.html
+=> /webapp/ajax/app.js (백업: app01.js)
+=> /webapp/ajax/common.css
+=> bootstrap 도입
+
+2) 간편 라이브러리 만들기
+=> DOM API를 쓰기 좋게 포장하기
+=> /webapp/ajax/js/bit.js
+=> /webapp/ajax/app.js 변경 (백업: app02.js)
+
+3) AJAX 함수 추가
+=> ajax를 사용하기 쉽게 함수 만들기: bit.ajax()
+=> /webapp/ajax/js/bit.js 변경
+
+4) 
   
   
   
