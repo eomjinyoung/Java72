@@ -1,41 +1,29 @@
-var tbody = document.querySelector('#listTable tbody');
+var tbody = $('#listTable tbody');
 
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
   if (xhr.readyState == 4) {
-  	var obj = JSON.parse(xhr.responseText);
-  		
-  	var trList = document.querySelectorAll('.data-row');
-  	for (var i = 0; i < trList.length; i++) {
-  	  tbody.removeChild(trList[i]);	
-  	}
-  	
-  	var tr, td;
-  	for (var i in obj) {
-  		tr = document.createElement('tr');
-  		tr.className = 'data-row';
-  		
-  		td = document.createElement('td');
-  		td.innerHTML = obj[i].no;
-  		tr.appendChild(td);
-  		
-  		td = document.createElement('td');
-      td.innerHTML = 
-        '<a href="detail.do?no=' 
-        + obj[i].no + '">' 
-        + obj[i].title + '</a>';
-      tr.appendChild(td);
-  	        
-      td = document.createElement('td');
-      td.innerHTML = obj[i].createDate;
-      tr.appendChild(td);
-      
-      td = document.createElement('td');
-      td.innerHTML = obj[i].viewCount;
-      tr.appendChild(td);
-      
-      tbody.appendChild(tr);
-  	}
+    var result = JSON.parse(xhr.responseText);
+
+    $('#pageNo').text(result.pageNo);
+    
+    var obj = result.data;
+    var trList = document.querySelectorAll('.data-row');
+    for (var i = 0; i < trList.length; i++) {
+      tbody.removeChild(trList[i]); 
+    }
+    
+    var tr;
+    for (var i in obj) {
+      tr = $('<tr>').addClass('data-row').appendTo(tbody);
+      $('<td>').text(obj[i].no).appendTo(tr);
+      $('<td>').append($('<a>')
+                  .attr('href', 'detail.do?no=' + obj[i].no)
+                  .text(obj[i].title))
+               .appendTo(tr);
+      $('<td>').text(obj[i].createDate).appendTo(tr);
+      $('<td>').text(obj[i].viewCount).appendTo(tr);
+    }
   }
 };
 xhr.open('GET', 'list.json', true);
