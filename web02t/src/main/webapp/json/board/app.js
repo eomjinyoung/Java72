@@ -44,6 +44,7 @@ function listBoard(pageNo, pageSize) {
         tr = $('<tr>').addClass('data-row').appendTo(tbody);
         $('<td>').text(obj[i].no).appendTo(tr);
         $('<td>').append($('<a>')
+                    .addClass('titleLink')
                     .attr('href', 'detail.do?no=' + obj[i].no)
                     .text(obj[i].title))
                  .appendTo(tr);
@@ -69,6 +70,11 @@ function listBoard(pageNo, pageSize) {
       } else {
         nextBtn.attr('disabled', 'disabled');
       }
+      
+      $('.titleLink').click(function(event){
+        event.preventDefault();
+        alert('okok');
+      });
   });
 }
 
