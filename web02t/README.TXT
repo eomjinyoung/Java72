@@ -672,23 +672,23 @@ Cookie: name=hong; age=20
 
 [step26: BoardApp을 back-end server와 front-end로 분리]
 1) javascript 기본 API를 사용하여 게시물 목록 페이지 만들기 
-=> /webapp/ajax/board.html
-=> /webapp/ajax/app.js (백업: app01.js)
-=> /webapp/ajax/common.css
+=> /webapp/json/board.html
+=> /webapp/json/app.js (백업: app01.js)
+=> /webapp/json/common.css
 => bootstrap 도입
 
 2) 간편 라이브러리 만들기
 => DOM API를 쓰기 좋게 포장하기
-=> /webapp/ajax/js/bit.js
-=> /webapp/ajax/app.js 변경 (백업: app02.js)
+=> /webapp/json/js/bit.js
+=> /webapp/json/app.js 변경 (백업: app02.js)
 
 3) AJAX 함수 추가
 => ajax를 사용하기 쉽게 함수 만들기: bit.ajax()
-=> /webapp/ajax/js/bit.js 변경
+=> /webapp/json/js/bit.js 변경
 
 4) getJSON() 함수 추가
 => ajax를 사용하기 쉽게 함수 만들기: bit.getJSON()
-=> /webapp/ajax/js/bit.js 변경
+=> /webapp/json/js/bit.js 변경
   
 5) document.querySelectorAll() 함수 처리
 
@@ -711,7 +711,8 @@ app0603:
 [step27: 페이지 컨트롤러에서 직접 JSON 데이터 출력하기]
 => Google json 라이브러리 다운로드
    => build.gradle에 의존 라이브러리 정보 설정
-=> json.BoardController.list() 변경 
+=> /json/board/*, /json/board/*
+=> json.BoardController, json.MemberController 
   
    
    

@@ -13,6 +13,7 @@ public class Member implements Serializable {
   protected String  tel;
   protected Date    createDate;
   protected String  photo;
+  protected String  yyyyMMdd;
   
   @Override
   public String toString() {
@@ -61,8 +62,14 @@ public class Member implements Serializable {
   }
   public void setCreateDate(Date createDate) {
     this.createDate = createDate;
+    this.yyyyMMdd = createDate.toString();
   }
-  
+  public String getYyyyMMdd() {
+    return yyyyMMdd; 
+  }
+  public void setYyyyMMdd(String yyyyMMdd) {
+    this.setCreateDate(Date.valueOf(yyyyMMdd));
+  }
   
   
 }
