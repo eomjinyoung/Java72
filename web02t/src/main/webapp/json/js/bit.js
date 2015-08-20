@@ -80,6 +80,12 @@ function bit(value) {
     return this;
   };
   
+  obj.val = function(value) {
+    for (var i = 0; i < this.length; i++) {
+      this[i].value = value;
+    }
+    return this;
+  };
   
   return obj;
 } 

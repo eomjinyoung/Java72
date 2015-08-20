@@ -45,7 +45,8 @@ function listBoard(pageNo, pageSize) {
         $('<td>').text(obj[i].no).appendTo(tr);
         $('<td>').append($('<a>')
                     .addClass('titleLink')
-                    .attr('href', 'detail.do?no=' + obj[i].no)
+                    .attr('bno', obj[i].no)
+                    .attr('href', '#')
                     .text(obj[i].title))
                  .appendTo(tr);
         $('<td>').text(obj[i].yyyyMMdd).appendTo(tr);
@@ -73,8 +74,22 @@ function listBoard(pageNo, pageSize) {
       
       $('.titleLink').click(function(event){
         event.preventDefault();
-        alert('okok');
+        detailBoard(this.getAttribute('bno'));
       });
+  });
+}
+
+function detailBoard(no) {
+  $.getJSON('detail.do?no=' + no, function(result) {
+    var data = result.data;
+    $('#fNo').val(data.no);
+    $('#fTitle').val(data.title);
+    $('#fContent').val(data.content);
+    $('#fCreateDate').text(data.yyyyMMdd);
+    $('#fViewCount').text(data.viewCount);
+    $('#fAttachFile')
+      .text(data.attachFile1)
+      .attr('href', '../../files/' + data.attachFile1);
   });
 }
 

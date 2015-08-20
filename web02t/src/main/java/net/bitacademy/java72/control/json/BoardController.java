@@ -7,20 +7,16 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.gson.Gson;
-
 import net.bitacademy.java72.domain.Board;
 import net.bitacademy.java72.service.BoardService;
 import net.bitacademy.java72.util.MultipartUtils;
+import net.bitacademy.java72.util.ResponseFactory;
 
 @Controller("json.BoardController")
 @RequestMapping("/json/board")
@@ -36,9 +32,12 @@ public class BoardController {
   }
   
   @RequestMapping("/detail.do")
-  public String detail(int no, Model model) {
-    model.addAttribute("board", boardService.get(no));
-    return "board/BoardDetail";
+  public ResponseEntity<String> detail(int no) {
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    result.put("data", boardService.get(no));
+    
+    return ResponseFactory.createResponse(result);
   }
 
   @RequestMapping("/insert.do")
@@ -88,14 +87,7 @@ public class BoardController {
     result.put("data", 
         boardService.list(pageNo, pageSize));
     
-    HttpHeaders headers = new HttpHeaders();
-    headers.add("Content-type"
-        , "text/plain;charset=UTF-8");
-    
-    return new ResponseEntity<String>(
-        new Gson().toJson(result), 
-        headers,
-        HttpStatus.OK);
+    return ResponseFactory.createResponse(result);
   }
   
   @RequestMapping("/update.do")
