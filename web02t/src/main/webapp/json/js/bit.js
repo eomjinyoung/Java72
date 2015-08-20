@@ -1,6 +1,8 @@
 function bit(value) {
   var obj;
-  if (value.charAt(0) == '<') {
+  if (value instanceof HTMLElement ) {
+    obj = [value];
+  } else if (value.charAt(0) == '<') {
     obj = [document.createElement(
         value.substring(1, value.length - 1))];
   } else {
@@ -49,6 +51,10 @@ function bit(value) {
   };
   
   obj.attr = function(attrName, value) {
+    if (arguments.length == 1) {
+      return this[0].getAttribute(attrName);
+    }
+    
     for (var i = 0; i < this.length; i++) {
       this[i].setAttribute(attrName, value);
     }
@@ -70,6 +76,15 @@ function bit(value) {
   };
   
   obj.click = function(listener) {
+    if (arguments.length == 0) {
+      var evt = document.createEvent("MouseEvents");
+      evt.initMouseEvent("click", true, true, window);
+      for (var i = 0; i < this.length; i++) {
+        this[i].dispatchEvent(evt);
+      }
+      return this;
+    }
+    
     for (var i = 0; i < this.length; i++) {
       if (this[i].addEventListener) {//크롬,사파리,파폭,IE >= 9
         this[i].addEventListener('click', listener);
@@ -101,6 +116,8 @@ function bit(value) {
     }
     return this;
   };
+  
+  
   
   return obj;
 } 

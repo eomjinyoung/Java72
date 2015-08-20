@@ -9,7 +9,7 @@ listBoard(currPageNo, pageSize);
 var prevBtn = $('#prevBtn');
 prevBtn.click(function(event) {
   event.preventDefault();
-  if (this.getAttribute('disabled') == 'disabled') {
+  if ($(this).attr('disabled') == 'disabled') {
     return;
   }
 
@@ -20,7 +20,7 @@ prevBtn.click(function(event) {
 var nextBtn = $('#nextBtn');
 nextBtn.click(function(event) {
   event.preventDefault();
-  if (this.getAttribute('disabled') == 'disabled') {
+  if ($(this).attr('disabled') == 'disabled') {
     return;
   }
   //다음 페이지 목록 가져오기
@@ -126,6 +126,7 @@ function deleteBoard(no) {
     if (result.data == 'success') {
       alert('삭제 성공입니다.');
       listBoard(currPageNo, pageSize);
+      $('#cancelBtn').click();
     } else {
       alert('삭제할 수 없습니다.');
     }
@@ -146,6 +147,7 @@ function updateBoard() {
         if (result.data == 'success') {
           alert('변경 성공입니다.');
           listBoard(currPageNo, pageSize);
+          $('#cancelBtn').click();
         } else {
           alert('변경할 수 없습니다.');
         }
@@ -167,9 +169,7 @@ function insertBoard() {
         if (result.data == 'success') {
           alert('입력 성공입니다.');
           listBoard(1, pageSize);
-          $('#fTitle').val('');
-          $('#fContent').val('');
-          $('#fPassword').val('');
+          $('#cancelBtn').click();
         } else {
           alert('입력할 수 없습니다.');
         }
