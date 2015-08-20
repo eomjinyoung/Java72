@@ -1,6 +1,9 @@
 var currPageNo = 1;
 var pageSize = 3;
 
+$('.my-view').css('display', 'none');
+$('.my-new').css('display', '');
+
 listBoard(currPageNo, pageSize);
 
 var prevBtn = $('#prevBtn');
@@ -34,6 +37,18 @@ var updateBtn = $('#updateBtn');
 updateBtn.click(function(event) {
   event.preventDefault();
   updateBoard();
+});
+
+var insertBtn = $('#insertBtn');
+insertBtn.click(function(event) {
+  event.preventDefault();
+  insertBoard();
+});
+
+var cancelBtn = $('#cancelBtn');
+cancelBtn.click(function(event) {
+  $('.my-view').css('display', 'none');
+  $('.my-new').css('display', '');
 });
 
 function listBoard(pageNo, pageSize) {
@@ -86,6 +101,8 @@ function listBoard(pageNo, pageSize) {
       $('.titleLink').click(function(event){
         event.preventDefault();
         detailBoard(this.getAttribute('bno'));
+        $('.my-view').css('display', '');
+        $('.my-new').css('display', 'none');
       });
   });
 }
@@ -131,6 +148,30 @@ function updateBoard() {
           listBoard(currPageNo, pageSize);
         } else {
           alert('변경할 수 없습니다.');
+        }
+      }
+    });
+}
+
+function insertBoard() {
+  $.ajax('insert.do',
+    {
+      method: 'POST',
+      dataType: 'json',
+      data: {
+        title: $('#fTitle').val(),
+        content: $('#fContent').val(),
+        password: $('#fPassword').val()
+      },
+      success: function(result) {
+        if (result.data == 'success') {
+          alert('입력 성공입니다.');
+          listBoard(1, pageSize);
+          $('#fTitle').val('');
+          $('#fContent').val('');
+          $('#fPassword').val('');
+        } else {
+          alert('입력할 수 없습니다.');
         }
       }
     });

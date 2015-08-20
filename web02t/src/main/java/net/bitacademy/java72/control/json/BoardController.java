@@ -1,6 +1,5 @@
 package net.bitacademy.java72.control.json;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import net.bitacademy.java72.domain.Board;
 import net.bitacademy.java72.service.BoardService;
-import net.bitacademy.java72.util.MultipartUtils;
 import net.bitacademy.java72.util.ResponseFactory;
 
 @Controller("json.BoardController")
@@ -50,10 +48,11 @@ public class BoardController {
   }
 
   @RequestMapping("/insert.do")
-  public String insert(
+  public ResponseEntity<String> insert(
       Board board,
-      @RequestParam MultipartFile file1) throws Exception {
+      @RequestParam(required=false) MultipartFile file1) throws Exception {
       
+      /*
       String filename = MultipartUtils.getFilename(
                             file1.getOriginalFilename());
       File newPath = new File(
@@ -62,9 +61,19 @@ public class BoardController {
       file1.transferTo(newPath);
 
       board.setAttachFile1(filename);
-      boardService.insert(board);
+      */
+    
+      int count = boardService.insert(board);
       
-      return "redirect:list.do";
+      Map<String,Object> result = 
+          new HashMap<String,Object>();
+      if (count > 0) {
+        result.put("data", "success");
+      } else {
+        result.put("data", "failure");
+      }
+      
+      return ResponseFactory.createResponse(result);
   }
   
   @RequestMapping("/list.do")

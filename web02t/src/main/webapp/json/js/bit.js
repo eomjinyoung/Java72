@@ -91,6 +91,17 @@ function bit(value) {
     return this;
   };
   
+  obj.css = function(propertyName, value) {
+    if (arguments.length == 1) { // getter 역할을 수행한다.
+      return this[0].style[propertyName];
+    }
+    
+    for (var i = 0; i < this.length; i++) {
+      this[i].style[propertyName] = value;
+    }
+    return this;
+  };
+  
   return obj;
 } 
 
