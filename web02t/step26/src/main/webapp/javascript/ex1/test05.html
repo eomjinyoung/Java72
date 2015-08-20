@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>strict 모드</h1>
+
+<script type="text/javascript">
+// 변수 선언 없이 필요할 때 마구 사용하면,
+// 소스 코드 해석 및 관리가 힘들다.
+// => strict 모드 제공
+// => 엄격한 문법 검사를 수행하도록 설정하면
+//    변수 선언없이 사용할 수 없다.
+// => 문법: 다음 문자열을 <script>태그 제일 처음에 두어라!
+//         물론 중간에 주석은 상관없다.
+//    "use strict"
+
+"use strict";
+
+var a;
+a = 20;
+
+//예전에는  그냥 변수명을 사용하였다.
+b = 30; // 오류 발생!
+
+console.log(a, b);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+

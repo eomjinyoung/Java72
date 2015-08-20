@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+* {
+	margin: 20px;
+}
+div, body {
+	border: 1px solid red;
+}
+</style>
+</head>
+<body>
+<h1>submit 이벤트: 폼 값 유효성 검증2</h1>
+
+<form id='form1' method='get'
+	onsubmit="return checkForm();">
+이름: <input id='name' type='text' name='name'><br>
+나이: <input id='age' type='text' name='age'><br>
+전화: <input id='tel' type='text' name='tel'><br>
+<input type='submit' value='등록'>
+</form>
+
+<script type="text/javascript">
+function checkForm() {
+	if (document.getElementById('name').value == ''
+		|| document.getElementById('tel').value == '') {	
+	  alert('이름과 전화는 필수 항목입니다');
+	  return false;	
+	}
+}
+</script>
+</body>
+</html>
+
+
+
+
+

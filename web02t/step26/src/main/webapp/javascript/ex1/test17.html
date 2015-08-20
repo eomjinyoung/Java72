@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>배열</h1>
+
+<script type="text/javascript">
+"use strict";
+
+//1) 배열 생성1
+var arr1 = new Array();
+arr1.push("홍길동");
+arr1.push(100);
+arr1.push(90);
+arr1.push(100);
+arr1.push("임꺽정");
+arr1.push(90);
+arr1.push(90);
+arr1.push(80);
+
+console.log(arr1.length);
+console.log(typeof arr1);
+console.log("-------------------------");
+for (var i = 0; i < arr1.length; i++) {
+	console.log(arr1[i]);
+}	
+console.log("-------------------------");
+
+//2)배열 만들기2
+var arr2 = []; // 배열 생성 단축문법
+arr2.push("홍길동");
+arr2[1] = 100;
+arr2.push(90);
+arr2[3] = 80;
+arr2[4] = "임꺽정";
+arr2.push(100);
+arr2[6] = 50;
+arr2[7] = 30;
+
+console.log(arr2.length);
+console.log(typeof arr2);
+console.log("-------------------------");
+for (var i = 0; i < arr2.length; i++) {
+	console.log(arr2[i]);
+}	
+console.log("-------------------------");
+
+//3)배열 만들기3
+var arr3 = ["홍길동", 10, 20, 30, "임꺽정", 40, 50, 60]; 
+
+console.log(arr3.length);
+console.log(typeof arr3);
+console.log("-------------------------");
+for (var i = 0; i < arr3.length; i++) {
+	console.log(arr3[i]);
+}	
+console.log("-------------------------");
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

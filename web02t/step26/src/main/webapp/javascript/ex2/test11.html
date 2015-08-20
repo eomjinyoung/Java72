@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수 레퍼런스2</h1>
+
+<script type="text/javascript">
+// 함수 주소를 파라미터 값으로 전달할 수 있다.
+function plus(a, b) {
+	return a + b;
+}
+
+function minus(a, b) {
+	return a - b;
+}
+
+function multiple(a, b) {
+	return a * b;
+}
+
+function divide(a, b) {
+	return a / b;
+}
+
+function compute(a, b, cb) {
+	//이렇게 직접 함수를 호출하기 않고,
+	//다른 함수에 의해 호출되는 함수를 콜백("callback")함수라고 부른다.
+	//
+	console.log(cb(a, b));
+}
+
+compute(10, 20, plus);
+compute(10, 20, minus);
+compute(10, 20, multiple);
+compute(10, 20, divide);
+
+
+</script>
+</body>
+</html>
+
+
+
+
+

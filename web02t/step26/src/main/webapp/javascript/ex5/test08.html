@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>스타일 설정하기</h1>
+<h2 id='h01' class='c1'>제목1</h2>
+<h2 id='h02' class='c2'>제목2</h2>
+<h2 id='h03' class='c1 c2'>제목3</h2>
+<h2 id='h04' class='c1'>제목4</h2>
+<div id='d1'></div>
+<div id='d2'></div>
+<div id='d3'></div>
+
+<script type="text/javascript">
+"use strict";
+
+var e1 = document.querySelector('#h01');
+var e2 = document.querySelector('#h02');
+var e3 = document.querySelector('#h03');
+
+e1.style['background-color'] = 'red';
+e2.style.backgroundColor = '#0000ff';
+
+alert('잠깐!');
+e3.style.display = 'none'; // 감추기 
+
+alert('잠깐!');
+e3.style.display = ''; // 보이기
+</script>
+</body>
+</html>
+
+
+
+
+
