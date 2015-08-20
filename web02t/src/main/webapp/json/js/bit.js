@@ -81,6 +81,10 @@ function bit(value) {
   };
   
   obj.val = function(value) {
+    if (arguments.length == 0) { // getter 역할을 수행한다.
+      // 값을 리턴할 때는 첫 번째 엘리먼트의 값만 리턴한다.
+      return this[0].value;
+    }
     for (var i = 0; i < this.length; i++) {
       this[i].value = value;
     }

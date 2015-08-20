@@ -4,8 +4,6 @@ var pageSize = 3;
 listBoard(currPageNo, pageSize);
 
 var prevBtn = $('#prevBtn');
-var nextBtn = $('#nextBtn');
-
 prevBtn.click(function(event) {
   event.preventDefault();
   if (this.getAttribute('disabled') == 'disabled') {
@@ -16,6 +14,7 @@ prevBtn.click(function(event) {
   listBoard(currPageNo - 1, pageSize);
 });
 
+var nextBtn = $('#nextBtn');
 nextBtn.click(function(event) {
   event.preventDefault();
   if (this.getAttribute('disabled') == 'disabled') {
@@ -23,6 +22,12 @@ nextBtn.click(function(event) {
   }
   //다음 페이지 목록 가져오기
   listBoard(currPageNo + 1, pageSize);
+});
+
+var deleteBtn = $('#deleteBtn');
+deleteBtn.click(function(event) {
+  event.preventDefault();
+  deleteBoard($('#fNo').val());
 });
 
 function listBoard(pageNo, pageSize) {
@@ -90,6 +95,17 @@ function detailBoard(no) {
     $('#fAttachFile')
       .text(data.attachFile1)
       .attr('href', '../../files/' + data.attachFile1);
+  });
+}
+
+function deleteBoard(no) {
+  $.getJSON('delete.do?no=' + no, function(result) {
+    if (result.data == 'success') {
+      alert('삭제 성공입니다.');
+      listBoard(currPageNo, pageSize);
+    } else {
+      alert('삭제할 수 없습니다.');
+    }
   });
 }
 

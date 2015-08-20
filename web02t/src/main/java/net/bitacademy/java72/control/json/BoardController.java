@@ -26,9 +26,18 @@ public class BoardController {
 
   
   @RequestMapping("/delete.do")
-  public String delete(int no) {
-    boardService.delete(no);
-    return "redirect:list.do";
+  public ResponseEntity<String> delete(int no) {
+    int count = boardService.delete(no);
+
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    if (count > 0) {
+      result.put("data", "success");
+    } else {
+      result.put("data", "failure");
+    }
+    
+    return ResponseFactory.createResponse(result);
   }
   
   @RequestMapping("/detail.do")
