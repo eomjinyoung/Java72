@@ -1,15 +1,22 @@
 package net.bitacademy.java72.control.json;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.Gson;
 
 import net.bitacademy.java72.domain.Board;
 import net.bitacademy.java72.service.BoardService;
@@ -53,14 +60,16 @@ public class BoardController {
   }
   
   @RequestMapping("/list.do")
-  public String list(
+  public ResponseEntity<String> list(
       @RequestParam(required=false, defaultValue="1") 
       int pageNo,
       @RequestParam(required=false, defaultValue="3")
-      int pageSize,
-      Model model) {
+      int pageSize) {
     
-    model.addAttribute("pageNo", pageNo);
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    
+    result.put("pageNo", pageNo);
     
     int totalCount = boardService.countAll();
     int lastPageNo = totalCount / pageSize;
@@ -69,16 +78,24 @@ public class BoardController {
     }
     
     if (pageNo < lastPageNo) { // 다음 페이지가 있다면
-      model.addAttribute("isNextPage", true);
+      result.put("isNextPage", true);
     } else {
-      model.addAttribute("isNextPage", false);
+      result.put("isNextPage", false);
     }
     
-    model.addAttribute("pageSize", pageSize);
+    result.put("pageSize", pageSize);
     
-    model.addAttribute("boards", 
+    result.put("data", 
         boardService.list(pageNo, pageSize));
-    return "json/board/BoardList";
+    
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Content-type"
+        , "text/plain;charset=UTF-8");
+    
+    return new ResponseEntity<String>(
+        new Gson().toJson(result), 
+        headers,
+        HttpStatus.OK);
   }
   
   @RequestMapping("/update.do")

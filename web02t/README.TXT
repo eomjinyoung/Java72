@@ -708,6 +708,10 @@ app0603:
 => Front-end 벼경
   => app.js에서 서버 URL 변경
   
+[step27: 페이지 컨트롤러에서 직접 JSON 데이터 출력하기]
+=> Google json 라이브러리 다운로드
+   => build.gradle에 의존 라이브러리 정보 설정
+=> json.BoardController.list() 변경 
   
    
    

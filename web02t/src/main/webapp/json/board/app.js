@@ -47,7 +47,7 @@ function listBoard(pageNo, pageSize) {
                     .attr('href', 'detail.do?no=' + obj[i].no)
                     .text(obj[i].title))
                  .appendTo(tr);
-        $('<td>').text(obj[i].createDate).appendTo(tr);
+        $('<td>').text(obj[i].yyyyMMdd).appendTo(tr);
         $('<td>').text(obj[i].viewCount).appendTo(tr);
       }
       

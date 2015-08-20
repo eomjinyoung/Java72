@@ -27,6 +27,7 @@ public class Board implements Serializable {
   protected String  attachFile2;
   protected String  attachFile3;
   protected String  password;
+  protected String  yyyyMMdd;
   
   public int getNo() {
     return no;
@@ -51,6 +52,7 @@ public class Board implements Serializable {
   }
   public void setCreateDate(Date createDate) {
     this.createDate = createDate;
+    this.yyyyMMdd = createDate.toString();
   }
   public int getViewCount() {
     return viewCount;
@@ -81,6 +83,12 @@ public class Board implements Serializable {
   }
   public void setPassword(String password) {
     this.password = password;
+  }
+  public String getYyyyMMdd() {
+    return yyyyMMdd; 
+  }
+  public void setYyyyMMdd(String yyyyMMdd) {
+    this.setCreateDate(Date.valueOf(yyyyMMdd));
   }
   
   
