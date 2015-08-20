@@ -30,6 +30,12 @@ deleteBtn.click(function(event) {
   deleteBoard($('#fNo').val());
 });
 
+var updateBtn = $('#updateBtn');
+updateBtn.click(function(event) {
+  event.preventDefault();
+  updateBoard();
+});
+
 function listBoard(pageNo, pageSize) {
   $.getJSON('list.do', 
     {
@@ -107,6 +113,27 @@ function deleteBoard(no) {
       alert('삭제할 수 없습니다.');
     }
   });
+}
+
+function updateBoard() {
+  $.ajax('update.do',
+    {
+      method: 'POST',
+      dataType: 'json',
+      data: {
+        no: $('#fNo').val(),
+        title: $('#fTitle').val(),
+        content: $('#fContent').val()
+      },
+      success: function(result) {
+        if (result.data == 'success') {
+          alert('변경 성공입니다.');
+          listBoard(currPageNo, pageSize);
+        } else {
+          alert('변경할 수 없습니다.');
+        }
+      }
+    });
 }
 
 

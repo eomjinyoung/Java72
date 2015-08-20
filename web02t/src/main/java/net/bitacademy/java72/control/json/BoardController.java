@@ -100,10 +100,11 @@ public class BoardController {
   }
   
   @RequestMapping("/update.do")
-  public String boardUpdate (
+  public ResponseEntity<String> boardUpdate (
       Board board,
-      @RequestParam MultipartFile file1) throws Exception {
+      @RequestParam(required=false) MultipartFile file1) throws Exception {
 
+    /*
     String filename = MultipartUtils.getFilename(
         file1.getOriginalFilename());
     File newPath = new File(
@@ -112,9 +113,18 @@ public class BoardController {
     file1.transferTo(newPath);
     
     board.setAttachFile1(filename);
-    boardService.update(board);
+    */
+    int count = boardService.update(board);
 
-    return "redirect:list.do";
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    if (count > 0) {
+      result.put("data", "success");
+    } else {
+      result.put("data", "failure");
+    }
+    
+    return ResponseFactory.createResponse(result);
   }
 }
 
