@@ -86,8 +86,15 @@
 </tr>  
 {{/each}}
 </script>
-    
-<script src="board.js"></script>
+
+<script>
+$('<script>')
+  .attr('src', contextRoot + '/json2/sub/board.js')
+  .attr('async', true)
+  .attr('type', 'text/javascript')
+  .appendTo('#content');
+</script>    
+
 
 
 

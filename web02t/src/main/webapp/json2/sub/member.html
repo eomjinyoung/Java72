@@ -88,7 +88,13 @@
 {{/each}}
 </script>
 
-<script src="member.js"></script>
+<script>
+$('<script>')
+  .attr('src', contextRoot + '/json2/sub/member.js')
+  .attr('async', true)
+  .attr('type', 'text/javascript')
+  .appendTo('#content');
+</script> 
 
 
 

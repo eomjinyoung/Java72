@@ -730,6 +730,21 @@ app0603:
      /webapp/json/board/*
      /webapp/json/member/*
    
+[step30: main 페이지를 기준으로 메뉴 별 화면 로딩]
+=> /webapp/json2/* 실습 파일 참조
+
+
+
+
+
+
+
+
+
+
+
+
+
    
    
    

@@ -52,7 +52,7 @@ cancelBtn.click(function(event) {
 });
 
 function listBoard(pageNo, pageSize) {
-  $.getJSON('list.do', 
+  $.getJSON(contextRoot + '/json/member/list.do', 
     {
       pageNo: pageNo,
       pageSize: pageSize,
@@ -73,18 +73,12 @@ function listBoard(pageNo, pageSize) {
       // 이전, 다음 버튼 처리
       if (result.pageNo > 1) {
         prevBtn.removeAttr('disabled');
-        prevBtn.attr('href', 'list.do?pageNo=' 
-          + (result.pageNo - 1) 
-          + '&pageSize=' + result.pageSize); 
       } else {
         prevBtn.attr('disabled', 'disabled');
       }
       
       if (result.isNextPage) {
         nextBtn.removeAttr('disabled');
-        nextBtn.attr('href', 'list.do?pageNo=' 
-          + (result.pageNo + 1) 
-          + '&pageSize=' + result.pageSize);
       } else {
         nextBtn.attr('disabled', 'disabled');
       }
@@ -99,7 +93,7 @@ function listBoard(pageNo, pageSize) {
 }
 
 function detailBoard(no) {
-  $.getJSON('detail.do?no=' + no, function(result) {
+  $.getJSON(contextRoot + '/json/member/detail.do?no=' + no, function(result) {
     var data = result.data;
     $('#fNo').val(data.no);
     $('#fName').val(data.name);
@@ -107,12 +101,12 @@ function detailBoard(no) {
     $('#fTel').val(data.tel);
     $('#fCreateDate').text(data.yyyyMMdd);
     $('#fPhoto')
-      .attr('src', '../../files/' + data.photo);
+      .attr('src', contextRoot + '/files/' + data.photo);
   });
 }
 
 function deleteBoard(no) {
-  $.getJSON('delete.do?no=' + no, function(result) {
+  $.getJSON(contextRoot + '/json/member/delete.do?no=' + no, function(result) {
     if (result.data == 'success') {
       alert('삭제 성공입니다.');
       listBoard(currPageNo, pageSize);
@@ -124,7 +118,7 @@ function deleteBoard(no) {
 }
 
 function updateBoard() {
-  $.ajax('update.do',
+  $.ajax(contextRoot + '/json/member/update.do',
     {
       method: 'POST',
       dataType: 'json',
@@ -148,7 +142,7 @@ function updateBoard() {
 }
 
 function insertBoard() {
-  $.ajax('insert.do',
+  $.ajax(contextRoot + '/json/member/insert.do',
     {
       method: 'POST',
       dataType: 'json',
@@ -169,9 +163,6 @@ function insertBoard() {
       }
     });
 }
-
-//로그인 HTML 가져오기
-$('#header').load('../sub/login.html');
 
 
 
