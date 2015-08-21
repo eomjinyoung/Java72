@@ -4,9 +4,6 @@ var pageSize = 3;
 $('.my-view').css('display', 'none');
 $('.my-new').css('display', '');
 
-//사용자 정보 감추기
-$('#userInfo').css('display', 'none');
-
 listBoard(currPageNo, pageSize);
 
 var prevBtn = $('#prevBtn');
@@ -183,31 +180,11 @@ function insertBoard() {
     });
 }
 
-//로그인 정보 가져오기
-$.getJSON('../auth/loginInfo.do', function(result) {
-  if (result.state == 'yes') {  
-    $('#userName').text(result.data.name);
-    $('#userEmail').text(result.data.email);
-    $('#loginBtn').css('display', 'none');
-    $('#userInfo').css('display', '');
-  }
-});
+//로그인 HTML 가져오기
+$('#header').load('../sub/login.html');
 
-$('#loginBtn').click(function(event) {
-  event.preventDefault();
-  $.getJSON('../auth/setRefererUrl.do', 
-    {refererUrl: '../member/index.html'},
-    function(result) {
-      location.href = '../auth/index.html';
-  });
-});
-  
-$('#logoutBtn').click(function(event) {
-  event.preventDefault();
-  $.getJSON('../auth/logout.do', function(result) {
-    location.href = '../auth/index.html';
-  });
-});
+
+
   
   
   

@@ -8,7 +8,7 @@ $('#loginBtn').click(function(event) {
     function(result) {
       if (result.data == 'yes') {
         if (result.refererUrl != undefined) {
-          location.href = result.refererUrl; 
+          location.href = decodeURIComponent(result.refererUrl);
         } else {
           location.href = '../board/index.html';
         }
