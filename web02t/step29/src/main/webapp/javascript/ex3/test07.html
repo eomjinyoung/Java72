@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>객체 변수와 함수2</h1>
+
+<script type="text/javascript">
+// 객체 변수를 사용하면 
+// 각 객체 별로 데이터를 관리할 수 있다.
+
+var obj1 = {
+	result: 0,
+	plus: function(value) {
+		return this.result += value;	
+	},
+	minus: function(value) {
+		return this.result -= value;
+	}
+};
+
+var obj2 = {
+	result: 0,
+	plus: function(value) {
+		return this.result += value;	
+	},
+	minus: function(value) {
+		return this.result -= value;
+	}
+};
+
+var obj3 = {
+	result: 0,
+	plus: function(value) {
+		return this.result += value;	
+	},
+	minus: function(value) {
+		return this.result -= value;
+	}
+};
+
+var obj4 = {
+	result: 0,
+	plus: function(value) {
+		return this.result += value;	
+	},
+	minus: function(value) {
+		return this.result -= value;
+	}
+};
+
+obj1.plus(10);
+obj1.plus(20);
+obj1.minus(17);
+
+obj2.plus(10);
+obj2.minus(2);
+
+obj3.plus(100);
+obj3.plus(200);
+
+obj4.minus(30);
+obj4.plus(7);
+
+console.log(obj1.result);
+console.log(obj2.result);
+console.log(obj3.result);
+console.log(obj4.result);
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#earth {
+	position: absolute;
+	left: 200px;
+	top: 200px;
+}
+
+#moon {
+	position: absolute;
+	left: 300px;
+	top: 200px;	
+} 
+
+</style>
+</head>
+<body>
+<h1>스타일 설정하기2</h1>
+<h1 id='earth'>@</h1>
+<h2 id='moon'>0</h2> 
+
+<script type="text/javascript">
+"use strict";
+
+alert('잠깐!');
+
+var earth = document.querySelector('#earth');
+var moon = document.querySelector('#moon');
+
+var degree = 0;
+
+// 타이머 이벤트 설정
+// => 주어진 시간이 경과하면 리스너를 호출한다.
+window.setInterval(function(){
+	var x = Number(200) + Number(xCoordinate(degree));
+	var y = Number(200) + Number(yCoordinate(degree + 180));
+	
+	moon.style.left = x + 'px';
+	moon.style.top = y + 'px';
+	
+	degree += 10;
+	if (degree >= 360) 
+		degree = 0;
+}, 2000 / 36);
+
+
+function xCoordinate(degree) {
+	return (Math.cos(toRadian(degree)) * 100).toFixed(0);
+}
+
+function yCoordinate(degree) {
+	return (Math.sin(toRadian(degree)) * 100).toFixed(0);
+}
+
+function toRadian(degree) {
+	return Math.PI * (degree / 180);
+}
+</script>
+</body>
+</html>
+
+
+
+
+

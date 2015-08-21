@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Object의 기타 함수들</h1>
+
+<script type="text/javascript">
+//Object.defineProperty(프로퍼티 정보)
+//=> 객체에 프로퍼티를 추가한다.
+//=> 프로퍼티를 정밀하게 제어할 수 있다.
+var obj1 = {
+	name: "홍길동",
+	plus: function(a, b) {return a + b;}
+};
+
+//1)프로퍼티 추가 및 값 설정
+//=> defineProperty()로 프로퍼티를 추가하면,
+//   기본 속성이 readonly이다.
+//   또한 enumerable 할 수 없다.
+Object.defineProperty(obj1, 'age', {
+	/* 프로퍼티의 특징 선언*/
+	value: 30	
+});
+
+console.log(obj1);
+console.log(obj1.age);
+obj1.age = 40; // 값 변경 불가!
+console.log(obj1.age);
+console.log("---------------------");
+for (var propName in obj1) {
+	console.log(propName, obj1[propName]);
+}
+console.log("---------------------");
+
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>회원 목록</title>  
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+<div id='main' class='container'>  
+  
+<div id='header'></div>
+
+<div id='listDiv'>
+	<h1>회원 목록</h1>
+	<table id='listTable' class='table table-hover'>
+	  <thead>
+			<tr>
+		    <th>번호</th> 
+		    <th>이름</th> 
+		    <th>이메일</th>
+		    <th>전화</th>
+		    <th>가입일</th>
+		  </tr>
+		</thead>
+	  <tbody></tbody>
+	</table>
+	
+	<div>
+	  <a id='prevBtn' href='#' class="btn btn-default btn-sm">이전</a>
+	  <span id='pageNo'></span>
+	  <a id='nextBtn' href='#' class="btn btn-default btn-sm">다음</a>
+	</div>
+</div> <!-- listDiv  -->
+
+<div id='formDiv'>
+  <h2>게시물 상세보기</h2>
+	<form class="form-horizontal">
+	<div class="form-group my-view">
+    <label for="fNo" class="col-sm-2 control-label">번호</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="fNo" readonly>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fName" class="col-sm-2 control-label">이름</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="fName">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fEmail" class="col-sm-2 control-label">이메일</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="fEmail">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fTel" class="col-sm-2 control-label">전화</label>
+    <div class="col-sm-10">
+      <input type="tel" class="form-control" id="fTel">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fPassword" class="col-sm-2 control-label">암호</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="fPassword">
+    </div>
+  </div>
+  <div class="form-group my-view">
+    <label class="col-sm-2 control-label">등록일</label>
+    <div class="col-sm-10">
+      <p id='fCreateDate' class="form-control-static"></p>
+    </div>
+  </div>
+  <div class="form-group my-view">
+    <label class="col-sm-2 control-label">첨부파일</label>
+    <div class="col-sm-10">
+      <img id='fPhoto' class="form-control-static"></a>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button id='insertBtn' type='button' class="btn btn-default btn-sm my-new">등록</button>
+      <button id='updateBtn' type='button' class="btn btn-default btn-sm my-view">변경</button>
+      <button id='deleteBtn' type='button' class="btn btn-default btn-sm my-view">삭제</button>
+      <button id='cancelBtn' type='reset' class="btn btn-default btn-sm">취소</button>
+    </div>
+  </div>
+	</form>
+</div><!-- formDiv -->
+
+<div id='pageFooter'>
+<p>이 사이트의 모든 권리는 비트캠프의 
+    Java72기에 있습니다.</p>
+<address>서울시 서초구 서초동 비트캠프</address>
+</div>
+
+</div><!-- #main -->  
+
+
+<script id="template1" type="text/x-handlebars-template">
+{{#each data}}
+<tr class="data-row">
+  <td>{{no}}</td>
+  <td><a class="nameLink" no="{{no}}" href="#">{{name}}</a></td>
+  <td>{{email}}</td>
+  <td>{{tel}}</td>
+  <td>{{yyyyMMdd}}</td>
+</tr> 
+{{/each}}
+</script>
+    
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<script src='../js/handlebars-v3.0.3.js'></script>
+<script src="app.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+          

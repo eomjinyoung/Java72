@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+
+<!-- 태그의 모양을 설정하자! => CSS 기술 -->
+<style type="text/css">
+
+a {
+  display:inline-block;
+  text-decoration: none;
+  /* border: 1px solid gray; */
+  
+  /* 테두리 바깥 쪽에 여백 주기
+     주의! 위 아래 여백은 겹쳐진다.
+   */
+  margin: 5px;
+  
+  padding: 5px;
+  
+  font-weight: bold;
+  
+  background-color: DeepSkyBlue;
+  color: white;
+  border-radius: 5px;
+}
+
+/* 태그의 특정 상태를 나타내는 문법: pseudo selector */
+a:HOVER { /* 마우스 커서가 링크 위에 있을 때*/
+	background-color: MediumBlue;
+	color: white;
+}
+
+a:LINK { /* 링크를 방문하기 전 */
+	color: blue;
+}
+
+a:VISITED { /* 방문한 적이 있는 사이트 */
+	color: white;
+}
+
+ul {
+  list-style: square;
+}
+
+dt {
+  /* border: 1px solid red; */
+  background-color:yellow;
+  padding-left: 20px;
+  margin-right: 800px;
+}
+
+table {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 5px;
+  /* border: 1px solid black; */
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- 테이블 만들기 2
+=> 테이블의 기능을 상세히 정의하기 
+-->
+<table>
+  <caption>회원정보 테이블</caption>
+  <colgroup>
+    <col style="background-color:blue;">
+    <col style="font-weight:bold;"> <!-- 크롬에서 적용 안됨. -->
+    <col style="font-style:italic;"> <!-- 크롬에서 적용 안됨. -->
+    <col style="background-color:red;">
+  </colgroup>
+  <thead style="background-color:yellow">
+    <tr> 
+      <th>번호</th> 
+      <th>이름</th>
+      <th>이메일</th>
+      <th>전화번호</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> <!-- table data -->
+      <td>홍길동</td>
+      <td>hong@test.com</td>
+      <td>111-1111</td>
+    </tr>
+    <tr>
+      <td>2</td> 
+      <td>임꺽정</td>
+      <td>leem@test.com</td>
+      <td>111-2222</td>
+    </tr>
+    <tr>
+      <td>3</td>   
+      <td>유관순</td>
+      <td>yoo@test.com</td>
+      <td>111-3333</td>
+    </tr>
+  </tbody>
+  <tfoot style="background-color: lightgray ;"> <!-- tfoot은 기본 왼쪽 정렬이다. -->
+    <tr>
+      <td>번호</td>   
+      <td>이름</td>
+      <td>이메일</td>
+      <td>전화번호</td>
+    </tr>
+  </tfoot>
+</table>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

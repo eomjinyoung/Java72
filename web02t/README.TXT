@@ -727,6 +727,8 @@ app0603:
   => http://handlebarsjs.com/ 에서 라이브러리 파일 다운로드
   => /webapp/javascript/ex7/* 실습 예제 참고
   => board와 member에 적용   
+     /webapp/json/board/*
+     /webapp/json/member/*
    
    
    

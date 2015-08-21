@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>데이터형 변환</h1>
+
+<script type="text/javascript">
+"use strict";
+
+// 자바스크립트는 형 변환 연산자가 없다.
+// * 자바 : (데이터형)변수
+// 자바스크립트는 함수를 사용하여 값을 변환한다.
+
+// 1) Boolean() 함수: boolean 형으로 변환 
+console.log(Boolean(0)); //false
+console.log(Boolean(1)); //true
+console.log(Boolean(-1)); //true
+console.log(Boolean('')); //false
+console.log(Boolean(' ')); //true
+console.log(Boolean('true')); //true
+console.log(Boolean('false')); // true
+console.log(Boolean('hello')); // true
+console.log(Boolean(null)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean(NaN)); // false
+console.log("-------------------------------");
+
+//2) Number() 함수: 숫자로 데이터형을 바꾸기
+console.log(Number(true)); // 1
+console.log(Number(false)); // 0
+console.log(Number('')); // 0
+console.log(Number(' ')); // 0
+console.log(Number('12')); // 12
+console.log(Number('017')); // 17
+console.log(Number('true')); // NaN
+console.log(Number('false')); // NaN
+console.log(Number(null)); // 0
+console.log(Number(undefined)); // NaN
+console.log(Number(NaN)); // NaN
+console.log(Number('25000원')); // NaN
+console.log(Number('$2500')); // NaN
+console.log(Number([])); // 0
+console.log(Number([10])); // 10
+console.log(Number([10,20])); // NaN
+console.log(Number(["10"])); // 10
+console.log(Number({})); // NaN
+console.log("----------------------------------");
+
+//3) String() 함수: 문자열로 데이터형을 변경하기
+console.log(String(true)); // "true"
+console.log(String(false)); // "false"
+console.log(String(12)); // "12"
+console.log(String(null)); // "null"
+console.log(String(undefined)); // "undefined"
+console.log(String(NaN)); // "NaN"
+console.log(String([])); // ""
+console.log(String(["홍길동","임꺾정"])); // "홍길동,임꺽정"
+console.log(String({})); // ...
+console.log("----------------------------------");
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
