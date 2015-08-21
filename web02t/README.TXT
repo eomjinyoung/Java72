@@ -714,6 +714,8 @@ app0603:
 => /json/board/*, /json/board/*
 => json.BoardController, json.MemberController 
   
+[step28: jQuery 도입]
+=> 전체에 jQuery 적용
    
    
    

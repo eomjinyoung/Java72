@@ -3,52 +3,41 @@
 <head>
 <meta charset='UTF-8'>
 <title>로그인 폼</title>
-
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-
-
+<link rel="stylesheet" href="../css/common.css">
 <style type='text/css'>
-body {
-  font-size: small;
-}
-
-#main {
+.container {
   width: 400px;
-  margin: 0px auto;
 }
 
-.form-group label {
-
-}
-
-h1 {
-  text-align: center;
+#message {
+  color: red;
 }
 </style>
 </head>
 <body>
-<div id='main'>
+<div class='container'>
 <h1>로그인</h1>
-<form action='login.do' method='post' class="form-horizontal">
+<form class="form-horizontal">
   <div class="form-group">
-    <label for="email" class="col-sm-2 control-label">이메일</label>
-    <div class="col-sm-10">
+    <label for="email" class="col-sm-3 control-label">이메일</label>
+    <div class="col-sm-9">
       <input type="email" name='email' class="form-control" 
             id="email" placeholder="Email">
     </div>
   </div>
 
   <div class="form-group">
-    <label for="password" class="col-sm-2 control-label">암호</label>
-    <div class="col-sm-10">
+    <label for="password" class="col-sm-3 control-label">암호</label>
+    <div class="col-sm-9">
       <input type="password" name='password' class="form-control" 
         id="password" placeholder="Password">
     </div>
   </div>
   
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-3 col-sm-9">
       <div class="checkbox">
         <label>
           <input type="checkbox" name='saveEmail'> 이메일 기억하기
@@ -57,8 +46,9 @@ h1 {
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-primary">로그인</button>
+    <div class="col-sm-offset-2 col-sm-9">
+      <button id='loginBtn' type="button" class="btn btn-primary">로그인</button>
+      <span id='message'></span>
     </div>
   </div>
 </form>

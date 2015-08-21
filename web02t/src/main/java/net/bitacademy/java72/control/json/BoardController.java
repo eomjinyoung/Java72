@@ -23,7 +23,7 @@ public class BoardController {
   @Autowired ServletContext servletContext;
 
   
-  @RequestMapping("/delete.do")
+  @RequestMapping("/delete")
   public ResponseEntity<String> delete(int no) {
     int count = boardService.delete(no);
 
@@ -38,7 +38,7 @@ public class BoardController {
     return ResponseFactory.createResponse(result);
   }
   
-  @RequestMapping("/detail.do")
+  @RequestMapping("/detail")
   public ResponseEntity<String> detail(int no) {
     Map<String,Object> result = 
         new HashMap<String,Object>();
@@ -47,7 +47,7 @@ public class BoardController {
     return ResponseFactory.createResponse(result);
   }
 
-  @RequestMapping("/insert.do")
+  @RequestMapping("/insert")
   public ResponseEntity<String> insert(
       Board board,
       @RequestParam(required=false) MultipartFile file1) throws Exception {
@@ -76,7 +76,7 @@ public class BoardController {
       return ResponseFactory.createResponse(result);
   }
   
-  @RequestMapping("/list.do")
+  @RequestMapping("/list")
   public ResponseEntity<String> list(
       @RequestParam(required=false, defaultValue="1") 
       int pageNo,
@@ -108,7 +108,7 @@ public class BoardController {
     return ResponseFactory.createResponse(result);
   }
   
-  @RequestMapping("/update.do")
+  @RequestMapping("/update")
   public ResponseEntity<String> boardUpdate (
       Board board,
       @RequestParam(required=false) MultipartFile file1) throws Exception {
