@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>생성자 함수3</h1>
+
+<script type="text/javascript">
+// 객체를 생성할 때 마다 익명 함수를 계속 생성한다.
+// => 메모리 낭비!
+// => 해결책
+//    함수 객체의 prototype을 활용하기
+// prototype?
+// => 생성자 함수에 미리 정의된 빌트인 프로퍼티.
+// => 공유 변수나 함수를 보관소 역할.
+// => 같은 생성자에 의해 만들어진 객체는
+//    prototype을 공유한다.
+// => 즉 prototype에 변수나 함수를 저장하면
+//    같은 객체끼리는 그 변수나 함수를 사용할 수 있다.
+
+function Calculator() {
+	this.result = 0;
+}
+
+Calculator.prototype.plus = function(value) {
+	return this.result += value;	
+};
+
+Calculator.prototype.minus = function(value) {
+	return this.result -= value;
+};
+
+var obj1 = new Calculator();
+var obj2 = new Calculator();
+var obj3 = new Calculator();
+var obj4 = new Calculator();
+
+obj1.plus(10);
+obj1.plus(20);
+obj1.minus(17);
+
+obj2.plus(10);
+obj2.minus(2);
+
+obj3.plus(100);
+obj3.plus(200);
+
+obj4.minus(30);
+obj4.plus(7);
+
+console.log(obj1.result);
+console.log(obj2.result);
+console.log(obj3.result);
+console.log(obj4.result);
+</script>
+</body>
+</html>
+
+
+
+
+

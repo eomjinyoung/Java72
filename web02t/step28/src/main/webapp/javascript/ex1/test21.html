@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>비교연산자: ==와 ===, 암시적 형변환</h1>
+
+<script type="text/javascript">
+"use strict";
+
+var v1 = 42;
+var v2 = "42";
+
+// == 연산자
+// 데이터형이 다른 값을 비교할 때 
+// 자바스크립트에서 정한 규칙에 따라 데이터형을 맞춘 후에
+// 비교 연산을 수행한다. 
+if (v1 == v2) {
+	console.log("ok1");
+}
+
+// === 연산자
+// 같은 데이터형 끼리만 비교한다.
+// 데이터형이 다르면 무조건  false이다.
+if (v1 === v2) {
+	console.log("ok2");
+}
+
+// 자바스크립트의 암시적 형변환 규칙
+// 1) number와 string
+//    => string을 number로 바꾼다.
+
+// 2) x와 boolean
+//	  => boolean을 숫자로 바꾼다.
+//    => 그리고 비교 수행
+console.log("42" == true); 	//false
+console.log("1" == true);	//true
+
+// 3) null과 undefined
+console.log(null == undefined); // true
+console.log(null == false);		// false
+console.log(null == "");		// false
+console.log(null == 0);			// false
+
+console.log(undefined == null); // true
+console.log(undefined == false); // false
+console.log(undefined == "");		// false
+console.log(undefined == 0);		// false
+
+// 4) number, string 과 객체
+var v1 = 40;
+var v2 = "aaa";
+var obj1 = new Number(40);
+var obj2 = new String("aaa");
+console.log(typeof v1, typeof v2, typeof obj1, typeof obj2);
+// number, string, object, object
+
+console.log(v1, v2, obj1, obj2);
+// 40, aaa, Number..., String...
+
+if (v1 == obj1) { // true
+	console.log("ok1"); 
+}
+
+if (v1 === obj1) { // false
+	console.log("ok2");
+}
+
+if (v2 == obj2) { // true
+	console.log("ok3");
+}
+
+if (v2 === obj2) { // false
+	console.log("ok4");
+}
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

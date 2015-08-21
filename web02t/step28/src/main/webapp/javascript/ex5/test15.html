@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>엘리먼트 삭제하기</h1>
+<div id='d1'>
+  <p>
+    아~~~ <span id='t1'>대한민국</span>! 
+  </p>
+</div> 
+
+<script type="text/javascript">
+"use strict";
+
+var e = document.querySelector('#t1');
+var p = e.parentElement;
+p.removeChild(e);
+
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>JSON 데이터 다루기3</h1>
+<button id='btn1' type='button'>JSON 요청</button><br>
+<table id='t1' border='1'>
+<tr>
+  <th>번호</th>
+  <th>제목</th>
+  <th>작성자</th>
+  <th>조회수</th>
+</tr>
+</table>
+
+<script type="text/javascript">
+"use strict";
+
+// JSON 데이터를 가져와서 자바스크립트 객체로 만들어 사용한다.
+
+var table = document.querySelector('#t1');
+
+var btn = document.querySelector('#btn1');
+btn.onclick = function() {
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4) {
+			var obj = JSON.parse(xhr.responseText);
+			for (var i in obj) {
+				console.log(obj[i]);
+				var tr = document.createElement('tr');
+				var td = document.createElement('td');
+				td.innerHTML = obj[i].no;
+				tr.appendChild(td);
+				
+				var td = document.createElement('td');
+        td.innerHTML = obj[i].title;
+        tr.appendChild(td);
+		        
+        var td = document.createElement('td');
+        td.innerHTML = obj[i].writer;
+        tr.appendChild(td);
+        
+        var td = document.createElement('td');
+        td.innerHTML = obj[i].views;
+        tr.appendChild(td);
+        
+        table.appendChild(tr);
+			}
+		}
+	};
+	xhr.open('GET', 'test02.jsp', true);
+	xhr.send();
+};
+</script>
+
+<address>이 페이지의 모든 권리는 자바 72기에 있습니다.</address>
+</body>
+</html>
+
+
+
+
+

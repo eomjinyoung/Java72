@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>생성자 함수</h1>
+
+<script type="text/javascript">
+// 생성자 함수?
+// => 객체에 필요한 변수나 함수를 설정해준다.
+// => 별도의 문법이 있는 것은 아니다. 그냥 일반 함수이다.
+// => 단지 그 역할을 강조하기 위해 "생성자 함수"라는 이름을
+//    붙인 것이다.
+
+// 다음 함수는 생성자 함수라기 보다는
+// 팩토리 함수이다.
+function createCalculator() {
+	return {
+		result: 0,
+		plus: function(value) {
+			return this.result += value;	
+		},
+		minus: function(value) {
+			return this.result -= value;
+		}
+	};
+}
+
+var obj1 = createCalculator();
+var obj2 = createCalculator();
+var obj3 = createCalculator();
+var obj4 = createCalculator();
+
+obj1.plus(10);
+obj1.plus(20);
+obj1.minus(17);
+
+obj2.plus(10);
+obj2.minus(2);
+
+obj3.plus(100);
+obj3.plus(200);
+
+obj4.minus(30);
+obj4.plus(7);
+
+console.log(obj1.result);
+console.log(obj2.result);
+console.log(obj3.result);
+console.log(obj4.result);
+</script>
+</body>
+</html>
+
+
+
+
+

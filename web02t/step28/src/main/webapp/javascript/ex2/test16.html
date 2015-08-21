@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>익명 함수4</h1>
+
+<script type="text/javascript">
+// 클로저를 익명 함수로 만들기
+function getOperator(op) {
+	switch(op) {
+		case '+': 
+			return function(a, b) {return a + b;};
+		case '-': 
+			return function(a, b) {return a - b;};
+		case '*': 
+			return function(a, b) {return a * b;};
+		case '/': 
+			return function(a, b) {return a / b;};
+		default: return null;
+	}
+}
+
+var f = getOperator('+');
+console.log(f(10, 20));
+
+f = getOperator('-');
+console.log(f(10, 20));
+
+f = getOperator('*');
+console.log(f(10, 20));
+
+f = getOperator('/');
+console.log(f(10, 20));
+
+f = getOperator('%');
+console.log(f(10, 20));
+
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- 자바스크립트 태그의 적절한 위치
+=> head, body 태그에 놓는다.
+=> 최근에는 body 끝에 둔다.
+   이유?
+   - 프론트 엔드 쪽이 복잡해졌다.
+   - 자바스크립트의 크기가 커졌다. 
+   - 자바스크립트를 로딩하고 실행하는 시간이 오래 걸린다.
+   - body 본문의 콘텐츠가 늦게 출력된다.
+   => 그래서 body 본문을 먼저 출력하고, 자바스크립트를 로딩하는 방법을 사용!
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+alert("head에서 자바스크립트 실행");
+</script>
+</head>
+
+<body>
+<h1>본문</h1>
+
+<script type="text/javascript">
+alert("본문을 모두 로딩한 후 자바스크립트 실행!");
+</script>
+
+</body>
+</html>
+
+
+
+
+
