@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='UTF-8'>
-  <title>회원 목록</title>  
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="../css/common.css">
-</head>
-<body>
-<div id='main' class='container'>  
-  
-<div id='header'></div>
-
 <div id='listDiv'>
 	<h1>회원 목록</h1>
 	<table id='listTable' class='table table-hover'>
@@ -90,15 +76,6 @@
 	</form>
 </div><!-- formDiv -->
 
-<div id='pageFooter'>
-<p>이 사이트의 모든 권리는 비트캠프의 
-    Java72기에 있습니다.</p>
-<address>서울시 서초구 서초동 비트캠프</address>
-</div>
-
-</div><!-- #main -->  
-
-
 <script id="template1" type="text/x-handlebars-template">
 {{#each data}}
 <tr class="data-row">
@@ -110,15 +87,9 @@
 </tr> 
 {{/each}}
 </script>
-    
-<script src="../js/jquery-1.11.3.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/common.js"></script>
-<script src='../js/handlebars-v3.0.3.js'></script>
-<script src="app.js"></script>
 
-</body>
-</html>
+<script src="member.js"></script>
+
 
 
 

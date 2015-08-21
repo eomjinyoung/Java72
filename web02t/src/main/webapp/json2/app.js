@@ -2,9 +2,9 @@ $('#main > header').load('header.html');
 $('#main > footer').load('footer.html');
 
 $('#boardMenu').click(function(event) {
-  alert('게시판 관리');
+  $('#content').load('sub/board.html');
 });
 
 $('#memberMenu').click(function(event) {
-  alert('회원 관리');
+  $('#content').load('sub/member.html');
 });
