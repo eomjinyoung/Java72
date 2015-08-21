@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>익명 함수3</h1>
+
+<script type="text/javascript">
+// 익명 함수를 바로 호출하기 
+
+/*
+var f = function() {
+	console.log('hello');
+};
+f();
+*/
+
+// 단 한 번 만 호출할 것이라면 
+// 익명 함수를 정의하는 즉시 호출한다. 
+(function() {
+	console.log('hello');
+})();
+
+(function(name){
+	console.log(name + '님 반갑습니다.');
+})('홍길동');
+
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>객체 변수와 함수</h1>
+
+<script type="text/javascript">
+// 다른 멤버를 가리킬 때는 
+// 객체를 가리키는 this 레퍼런스를 사용한다.
+// => this를 생략할 수 없다.
+
+var obj1 = {
+	result: 0,
+	plus: function(value) {
+		return this.result += value;	
+	},
+	minus: function(value) {
+		return this.result -= value;
+	}
+};
+
+obj1.plus(10);
+obj1.plus(20);
+obj1.minus(17);
+console.log(obj1.result);
+</script>
+</body>
+</html>
+
+
+
+
+

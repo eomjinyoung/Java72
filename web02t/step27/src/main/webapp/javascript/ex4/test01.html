@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>이벤트 처리: onclick 프로퍼티</h1>
+<button id='btn1' type="button">버튼1</button>
+
+<script type="text/javascript">
+//onclick 프로퍼티?
+//=> click 이벤트가 발생했을 때 호출될 함수를 가리는 프로퍼티이다.
+
+//1) 클릭 이벤트를 다룰 대상을 찾는다.
+var e = document.getElementById('btn1');
+
+//2) onclick 프로퍼티에 함수를 등록한다.
+//=> 웹브라우저는 onclick이 가리키는 함수를 호출할 때
+//   이벤트 정보를 담은 객체를 파라미터로 넘긴다.
+//=> 이렇게 개발자가 등록한 함수를 시스템이 호출할 경우,
+//   그러한 함수를 "콜백(callback) 함수"라고 부른다.
+e.onclick = function(event) {
+	alert("오호라.. 눌렀네...");
+};
+</script>
+</body>
+</html>
+
+
+
+
+

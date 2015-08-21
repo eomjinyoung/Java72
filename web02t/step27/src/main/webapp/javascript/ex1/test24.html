@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>switch</h1>
+
+<script type="text/javascript">
+"use strict";
+
+//1)
+var level = 0;
+switch(level) {
+  case 0: 
+    console.log('손님입니다.');
+  case 1:
+    console.log('회원입니다.');
+  case 2:
+    console.log('관리자입니다.');
+  default:
+    console.log('권한이 없습니다.');
+}
+console.log("----------------------")
+
+//2) break 문 사용
+var level = 0;
+switch(level) {
+  case 0: 
+    console.log('손님입니다.');
+    break;
+  case 1:
+    console.log('회원입니다.');
+    break;
+  case 2:
+    console.log('관리자입니다.');
+    break;
+  default:
+    console.log('권한이 없습니다.');
+}
+console.log("----------------------")
+
+//3) 응용
+var v1 = [];
+switch(typeof v1) {
+  case 'number': 
+    console.log('숫자');
+  case 'string':
+    console.log('문자열');
+  case 'boolean':
+    console.log('논리');
+  default:
+    console.log('몰라~');
+}
+console.log("----------------------")
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
