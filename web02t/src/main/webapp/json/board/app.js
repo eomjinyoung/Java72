@@ -64,20 +64,11 @@ function listBoard(pageNo, pageSize) {
       var tbody = $('#listTable tbody');
       $('.data-row').remove();
       
-      var tr;
-      var obj = result.data;
-      for (var i in obj) {
-        tr = $('<tr>').addClass('data-row').appendTo(tbody);
-        $('<td>').text(obj[i].no).appendTo(tr);
-        $('<td>').append($('<a>')
-                    .addClass('titleLink')
-                    .attr('bno', obj[i].no)
-                    .attr('href', '#')
-                    .text(obj[i].title))
-                 .appendTo(tr);
-        $('<td>').text(obj[i].yyyyMMdd).appendTo(tr);
-        $('<td>').text(obj[i].viewCount).appendTo(tr);
-      }
+      // handlebars 라이브러리를 이용하여 테이블 tr 태그 생성
+      var source = $('#template1').html();
+      var template = Handlebars.compile(source);
+      var content = template(result);
+      $('#listTable tbody').html(content);
       
       // 이전, 다음 버튼 처리
       if (result.pageNo > 1) {

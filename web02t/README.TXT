@@ -717,6 +717,20 @@ app0603:
 [step28: jQuery 도입]
 => 전체에 jQuery 적용
 1) 로그인 및 로그아웃 처리
+
+[step29: 공통 코드 분리 및 로딩]
+1) 로그인 HTML 분리
+   => login.html, login.js   
+2) 로그인 HTML 로딩
+   => $(selector).load(url)
+3) HTML 템플릿 도입: 테이블 목록에서 tr 태그 생성을 간소화한다.
+  => http://handlebarsjs.com/ 에서 라이브러리 파일 다운로드
+  => /webapp/javascript/ex7/* 실습 예제 참고
+  => board와 member에 적용   
+   
+   
+   
+   
    
    
    
