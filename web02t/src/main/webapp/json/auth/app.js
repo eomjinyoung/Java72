@@ -7,7 +7,11 @@ $('#loginBtn').click(function(event) {
     },
     function(result) {
       if (result.data == 'yes') {
-        location.href = '../board/index.html';
+        if (result.refererUrl != undefined) {
+          location.href = result.refererUrl; 
+        } else {
+          location.href = '../board/index.html';
+        }
       } else {
         $('#message').text('이메일 또는 암호가 맞지 않습니다.');
       }

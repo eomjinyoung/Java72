@@ -93,6 +93,17 @@ public class AuthController {
     
     return ResponseFactory.createResponse(result);
   }
+  
+  @RequestMapping("/setRefererUrl")
+  public ResponseEntity<String> setRefererUrl(
+      String refererUrl,
+      HttpSession session) {
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    session.setAttribute("refererUrl", refererUrl);
+    result.put("data", "yes");
+    return ResponseFactory.createResponse(result);
+  }
 }
 
 
