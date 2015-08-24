@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.bitacademy.java72.dao.BoardDao">
+  <resultMap type="Board" id="BoardMap">
+    <id     column="bno"      property="no" />
+    <result column="cre_dt"   property="createDate" />
+    <result column="views"    property="viewCount" />
+    <result column="att_file1" property="attachFile1" />
+    <result column="att_file2" property="attachFile2" />
+    <result column="att_file3" property="attachFile3" />
+  </resultMap>
+  
+  <select id="list" parameterType="map" resultMap="BoardMap">
+    SELECT bno, title, cre_dt, views
+    FROM board10
+    ORDER BY bno desc
+    LIMIT #{startIndex},#{pageSize} 
+  </select>
+  
+  <select id="countAll" resultType="int">
+    SELECT count(*)
+    FROM board10
+  </select>
+  
+  <insert id="insert" parameterType="Board">
+    INSERT INTO board10(title,content,pwd,cre_dt,att_file1)
+    values(#{title},#{content},#{password},now(),#{attachFile1})
+  </insert>
+  
+  <delete id="delete" parameterType="int">
+    DELETE FROM board10 WHERE bno=#{value}
+  </delete>
+
+  <update id="update" parameterType="Board">
+    UPDATE board10 SET 
+      title=#{title},
+      content=#{content},
+      att_file1=#{attachFile1}  
+    WHERE bno=#{no}      
+  </update>
+  
+  <select id="get" parameterType="int" resultMap="BoardMap">
+    SELECT bno, title, content, cre_dt, att_file1
+    FROM board10
+    WHERE bno=#{value}
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

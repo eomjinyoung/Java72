@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+* {
+	margin: 20px;
+}
+div, body {
+	border: 1px solid red;
+}
+</style>
+</head>
+<body>
+<h1>stopPropagation()과 stopImmediatePropgation()</h1>
+<div id='d1'>d1
+	<div id='d11'>d11
+		<button id='btn1' type="button">버튼1</button>
+	</div>
+	<div id='d12'>d12
+		<button id='btn2' type="button">버튼2</button>
+	</div>		
+</div>
+
+<div id='d2'>d2
+	<div id='d21'>d21
+		<button id='btn3' type="button">버튼3</button>
+	</div>
+	<div id='d22'>d22
+		<button id='btn4' type="button">버튼4</button>
+	</div>		
+</div>
+
+<script type="text/javascript">
+//stopPropagation(): 이벤트가 부모로 전파되는 것을 막는다.
+//stopImmediatePropagation(): 
+//    다른 이벤트 리스너로 전파되는 것도 막는다.
+document.body.addEventListener('click', function() {
+	console.log('body...');
+});
+document.getElementById('d1').addEventListener('click', function() {
+	console.log('d1...');
+});
+document.getElementById('d11').addEventListener('click', function() {
+	console.log('d11...');
+});
+document.getElementById('d12').addEventListener('click', function() {
+	console.log('d12...');
+});
+document.getElementById('d2').addEventListener('click', function() {
+	console.log('d2...');
+}, true);
+document.getElementById('d21').addEventListener('click', function() {
+	console.log('d21...');
+}, true);
+document.getElementById('d22').addEventListener('click', function() {
+	console.log('d22...');
+}, true);
+document.getElementById('btn1').addEventListener('click', function(event) {
+	console.log('btn1...하나');
+	event.stopPropagation(); //부모로 이벤트가 전달되는 것을 막는다.
+});
+document.getElementById('btn1').addEventListener('click', function(event) {
+	console.log('btn1...둘');
+});
+document.getElementById('btn1').addEventListener('click', function(event) {
+	console.log('btn1...셋');
+});
+
+document.getElementById('btn2').addEventListener('click', function(event) {
+	console.log('btn2...하나');
+	event.stopImmediatePropagation();
+});
+document.getElementById('btn2').addEventListener('click', function(event) {
+	console.log('btn2...둘');
+});
+document.getElementById('btn2').addEventListener('click', function(event) {
+	console.log('btn2...셋');
+});
+
+
+
+
+document.getElementById('btn3').addEventListener('click', function(event) {
+	console.log('btn3...');
+});
+document.getElementById('btn4').addEventListener('click', function(event) {
+	console.log('btn4...');
+});
+</script>
+</body>
+</html>
+
+
+
+
+

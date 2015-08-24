@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>숫자 다루기</h1>
+
+<script type="text/javascript">
+"use strict";
+
+var v1 = 345.678;
+console.log(v1); // 345.678
+console.log(v1.toFixed(0)); // 346
+console.log(v1.toFixed(1)); // 345.7
+console.log(v1.toFixed(2)); // 345.68
+console.log(v1.toFixed(3)); // 345.678
+console.log(v1.toFixed(4)); // 345.6780
+console.log(v1.toFixed(5)); // 345.67800
+console.log("-------------------------");
+var f1 = 0.1;
+var f2 = 0.2;
+var f3 = 0.3;
+
+console.log(f1); // 0.1
+console.log(f2); // 0.2
+
+// 부동소수점 끼리 연산할 때 쓰레기 값이 붙을 수 있다.
+console.log((f1 + f2) == f3); // false
+console.log(f1 + f2); // 0.30000000000000..4
+
+// 비교할 때 쓰레기 값 크기 이내라면 같다고 간주하라!
+var x = (f1 + f2) - f3;
+if (x < Number.EPSILON) {
+	console.log('같다');
+}
+console.log("----------------------");
+
+// NaN(Not a Number)
+var v2 = 10 / "ok";
+console.log(v2);
+
+// 안타깝게도 NaN는 직접 값을 비교하여 알아 낼 수 없다.
+if (v2 == NaN) {
+	console.log("okok1");
+}
+
+// NaN 여부를 검사하려면 글로벌 함수 isNaN()를 사용하라!
+if (isNaN(v2)) {
+	console.log("okok2");
+}
+
+// 그러나 undefined의 경우는 값을 직접 비교하여 검사할 수 있다.
+var v3;
+if (v3 == undefined) {
+	console.log("okok^^");
+}
+console.log("-------------------------");
+
+// +무한대, -무한대
+var v4 = 1 / 0;
+var v5 = -1 / 0;
+console.log(v4, v5); // Infinity, -Infinity
+
+// 무한대 여부는 undefined의 경우처럼 상수 값을 사용하여 검사할 수 있다.
+console.log(v4 == Infinity); // true
+console.log(v5 == -Infinity); // true
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
