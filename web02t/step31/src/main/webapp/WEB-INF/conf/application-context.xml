@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+  <context:component-scan base-package="net.bitacademy.java72">
+    <context:exclude-filter type="annotation" 
+       expression="org.springframework.stereotype.Controller"/>
+  </context:component-scan>
+  
+  <!-- 스프링의 트랜잭션 관리자 등록 -->
+  <bean id="txManager" 
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+  
+  <!-- @Transactional 애노테이션을 처리할 BeanPostProcessor 등록하기 -->
+  <tx:annotation-driven transaction-manager="txManager"/>
+  
+  <!-- 데이터소스를 JNDI로 찾는다. -->
+  <jee:jndi-lookup id="dataSource" 
+        jndi-name="java:comp/env/jdbc/java72db"/>
+  
+  <!-- 트랜잭션 정책을 설정하기 -->
+  <tx:advice id="txAdvice" transaction-manager="txManager">
+    <tx:attributes>
+      <tx:method name="get*" read-only="true" />
+      <tx:method name="list*" read-only="true" />
+      <tx:method name="*" propagation="REQUIRED"/>
+    </tx:attributes>
+  </tx:advice>
+  
+  <!-- 트랜잭션을 적용할 클래스나 메서드를 설정한다. -->
+  <aop:config>
+    <!-- 적용할 클래스나 메서드 정의 -->
+    <aop:pointcut id="serviceOperation"
+      expression="execution(* net.bitacademy.java72.service..*Service.*(..))" />
+    
+    <!-- 트랜잭션 규칙을 적용 -->
+    <aop:advisor pointcut-ref="serviceOperation" 
+                 advice-ref="txAdvice" />
+  </aop:config>
+  
+  <!-- SqlSessionFactory 객체 생성하라! -->
+  <bean id="sqlSessionFactory" 
+        class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <!-- VO에 객체에 대해 별명을 자동으로 붙이기 -->
+    <property name="typeAliasesPackage" 
+        value="net.bitacademy.java72.domain" />
+    <!-- SQL 맵퍼 파일의 경로를 지정한다. -->
+    <property name="mapperLocations" 
+        value="classpath*:net/bitacademy/java72/**/*Dao.xml"/>
+  </bean>
+  
+  <!-- SQL 맵퍼와 인터페이스 연동을 관리하는 객체 -->
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  <property name="basePackage" 
+	       value="net.bitacademy.java72.dao" />
+	</bean>
+  
+  <!-- mybatis-config.xml의 데이터소스 부분을 대체 -->
+  <!--  
+  <bean id="dataSource" 
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" 
+        value="com.mysql.jdbc.Driver"/>
+    <property name="url" 
+        value="jdbc:mysql://localhost:3306/java72db"/>
+    <property name="username" value="java72"/>
+    <property name="password" value="java72"/>
+  </bean>
+  -->
+</beans>
+
+
+
+
+
+

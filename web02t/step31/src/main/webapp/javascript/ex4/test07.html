@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>onclick과 addEventListener()</h1>
+<button id='btn1' type="button">버튼1</button>
+
+<script type="text/javascript">
+var e = document.getElementById('btn1');
+
+// onclick과 addEventListener()를 섞어서
+// 이벤트 리스너를 등록할 때, 호출 순서는?
+// => 등록 순서대로 호출된다.
+
+e.addEventListener('click', function(event) {
+	alert("okok2");
+});
+e.onclick = function(event) {
+	alert("okok1");
+};
+e.addEventListener('click', function(event) {
+	alert("okok3");
+});
+</script>
+</body>
+</html>
+
+
+
+
+

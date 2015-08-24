@@ -752,6 +752,9 @@ app0603:
 => /webapp/json2/* 실습 파일 참조
 
 [step31: OOP 리팩토리 -> 중복 로딩 제거]
+=> common.js에 define(), requirejs() 함수 추가
+=> auth.js, board.js, member.js 변경
+=> auth.html, board.html, member.html 변경
 
 
 

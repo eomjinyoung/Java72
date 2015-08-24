@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>배열2</h1>
+
+<script type="text/javascript">
+"use strict";
+
+//1) 배열에 값 넣기
+var arr1 = ["홍길동", 100, 90, 80];
+arr1[4] = arr1[1] + arr1[2] + arr1[3];
+arr1[5] = arr1[4] / 3;
+
+for (var i in arr1) {
+	console.log(arr1[i]);
+}
+console.log("-----------------------------");
+
+//2) 
+var arr2 = [10, 20, 30];
+arr2[7] = 80;
+arr2[99] = 1000;
+console.log(arr2.length);
+console.log(arr2);
+console.log("-----------------------------");
+for (var i in arr2) {
+	if (i > 7) break;
+	console.log(arr2[i]);
+}
+console.log("-----------------------------");
+for (var i = 0; i < 8; i++) {
+  console.log(arr2[i]);
+}
+console.log("-----------------------------");
+
+//3) pop()의 활용: 배열에서 값을 꺼낸다. 꺼낸 값은 배열에서 제거한다.
+var arr3 = [100, 90, 80, 70];
+console.log(arr3.pop());
+console.log(arr3.pop());
+console.log(arr3.pop());
+console.log(arr3.pop());
+console.log(arr3.pop());
+console.log("-----------------------------");
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

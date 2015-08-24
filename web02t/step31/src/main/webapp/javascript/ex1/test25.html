@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>for..in..반복문</h1>
+
+<script type="text/javascript">
+"use strict";
+
+//for .. in.. 
+//문법:
+//for (var 변수 in 배열 또는 객체) { ... }
+
+//1) 배열일 경우
+var arr = [100, 200, 300];
+for (var i in arr) {
+  // 배열일 경우 i 변수의 값은 인덱스이다.
+  console.log(i, arr[i]);
+}
+console.log("----------------------------");
+
+//2) 객체인 경우
+var obj = new Object();
+obj.name = "홍길동";
+obj.kor = 100;
+obj.eng = 100;
+obj.math = 100;
+obj.sum = 300;
+obj.aver = 100;
+
+for (var i in obj) {
+  // 객체에 대해 반복문을 돌릴 경우,
+  // i 변수는 객체의 프로퍼티 이름이 된다.
+  console.log(i, obj[i]);
+}
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

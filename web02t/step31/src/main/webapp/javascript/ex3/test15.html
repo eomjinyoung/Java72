@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>객체 프로퍼티 제거</h1>
+
+<script type="text/javascript">
+// 프로퍼티 제거하기
+// => 단 configurable 속성이 true인 경우
+//    delete 연산자를 통해 프로퍼티를 제거할 수 있다.
+
+// 다음과 같이 일반적인 방법으로 프로퍼티를 추가할 경우,
+// writable, enumerable, configurable 모두 true이다.
+var obj1 = {
+	name: "홍길동",
+	plus: function(a, b) {return a + b;}
+};
+
+Object.defineProperty(obj1, 'age', {
+	value: 30,	
+	writable: true, /*기본은 false이다.*/
+	enumerable: true, /*기본은 false이다.*/
+	configurable: true  /*기본은 false이다.*/
+});
+
+console.log(obj1);
+
+delete obj1.name;
+delete obj1.age;
+
+console.log(obj1);
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+

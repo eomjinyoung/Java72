@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>AJAX: 비동기 요청</h1>
+<div id='d1'></div>
+
+<script type="text/javascript">
+var e = document.querySelector('#d1');
+
+var xhr = new XMLHttpRequest();
+
+//XMLHttpRequest 객체의 상태가 바뀔 때 마다 호출될 메서드를 등록한다.
+//=> 이벤트 리스너 등록하는 것과 같다.
+xhr.onreadystatechange = function() {
+	//상태1: 서버에 연결했을 때 
+	//상태2: 서버에 요청을 보낼 때
+	//상태3: 서버로부터 데이터를 받고 있을 때
+	//상태4: 서버로부터 데이터를 모두 받았을 때
+	if (xhr.readyState == 4) {
+	  console.log('오호라 서버에서 응답이 왔네?');
+		e.innerHTML = xhr.responseText;
+	}
+};
+
+//비동기 요청으로 설정하려면 세 번째 파라미터 값을 true로 설정하라.
+xhr.open('GET', 'test01.jsp?name=홍길동', true);
+
+// 별도의 스레드를 사용하여 서버에 요청한다.
+// => 서버로부터 응답을 기다리지 않고 바로 리턴한다.
+xhr.send();
+
+// 부질없는 짓이다. 서버의 응답을 기다리지 않은 상태에서
+// responseText 변수를 사용해봐야 의미없다.
+// 서버에서 응답하기 전까지 이 변수는 비어 있을 것이다.
+//e.innerHTML = xhr.responseText;
+
+</script>
+
+<address>이 페이지의 모든 권리는 자바 72기에 있습니다.</address>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>콘텐츠 생성하기: createTextNode()</h1>
+<div id='d1'></div> 
+
+<script type="text/javascript">
+"use strict";
+
+var e = document.createElement('p');
+//e.innerHTML = '오호라... 엘리먼트 생성하였네...';
+var text = document.createTextNode('오호라... 콘텐츠 생성');
+e.appendChild(text); // 콘텐츠를 태그에 붙인다.
+
+var e2 = document.querySelector('#d1');
+e2.appendChild(e); // 막내 자식으로 추가한다.
+
+</script>
+</body>
+</html>
+
+
+
+
+

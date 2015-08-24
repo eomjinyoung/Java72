@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수 파라미터2</h1>
+
+<script type="text/javascript">
+// 같은 이름의 함수를 또 정의하면 기존 함수를 덮어쓴다.
+// => 오버로딩 불가!
+function plus(a, b) {
+	return a + b;
+}
+
+function plus(a) { // 앞의 함수를 덮어쓴다.
+	return a + a;
+}
+
+console.log( plus(10, 20));
+console.log( plus(10, 20, 30));
+console.log( plus(10, 20, 30, 40));
+console.log( plus()); // NaN
+
+</script>
+</body>
+</html>
+
+
+
+
+
