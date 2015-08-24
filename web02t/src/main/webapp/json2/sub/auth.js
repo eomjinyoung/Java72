@@ -1,17 +1,13 @@
-//$('#loginBtn').on('click', function(event) {});
-$('#loginBtn').click(function(event) {
-  $.getJSON('login.do', 
+$('#login2Btn').click(function(event) {
+  event.preventDefault();
+  $.getJSON(contextRoot + '/json/auth/login.do', 
     {
       email: $('#email').val(),
       password: $('#password').val()
     },
     function(result) {
       if (result.data == 'yes') {
-        if (result.refererUrl != undefined) {
-          location.href = decodeURIComponent(result.refererUrl);
-        } else {
-          location.href = '../board/index.html';
-        }
+        $(document).trigger('login.success');
       } else {
         $('#message').text('이메일 또는 암호가 맞지 않습니다.');
       }

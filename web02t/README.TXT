@@ -607,8 +607,26 @@ Cookie: name=hong; age=20
      삭제한다.   
   
 * 실습
-  => spring02t/study2 참조
-
+  => spring02t/step13 참조
+1) 톰캣 서버에 DataSource 설정하기
+      <Resource name="jdbc/java72db" 
+         auth="Container" 
+         type="javax.sql.DataSource"
+         maxTotal="100" 
+         maxIdle="30" 
+         maxWaitMillis="10000"
+         url="jdbc:mysql://localhost:3306/java72db"
+         driverClassName="com.mysql.jdbc.Driver"
+         username="java72" password="java72"/> 
+    
+2) 스프링 설정 파일 변경
+  => 직접 DB 커넥션을 관리하지 않고,
+     서블릿 컨테이너가 관리하는 커넥션풀을 이용한다.
+  => 설정 파일에 다음을 추가한다.   
+  <jee:jndi-lookup id="dataSource" 
+        jndi-name="java:comp/env/jdbc/java72db"/>
+     
+* 실습
 0) 의존 라이브러리 추가
   => aspectjweaver 라이브러리 추가
       

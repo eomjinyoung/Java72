@@ -74,6 +74,7 @@
 	</bean>
   
   <!-- mybatis-config.xml의 데이터소스 부분을 대체 -->
+  <!--  
   <bean id="dataSource" 
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" 
@@ -83,6 +84,7 @@
     <property name="username" value="java72"/>
     <property name="password" value="java72"/>
   </bean>
+  -->
 </beans>
 
 

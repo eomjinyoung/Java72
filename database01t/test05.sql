@@ -4,6 +4,7 @@ create table member (
   email     varchar(100) not null,
   pwd       varchar(20) not null,
   tel       varchar(20),
+  photo     varchar(255),
   cre_dt    datetime not null
 );  
 
