@@ -89,7 +89,7 @@
 </script>
 
 <script>
-requirejs('member', function(member) {
+requirejs(['app/member'], function(member) {
   member.init();
   member.listBoard(1, 3);
 });

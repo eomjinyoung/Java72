@@ -1,5 +1,4 @@
-//window.moduleMap 객체에 board 모듈을 등록한다.
-define('board', function() {
+define(['jquery','handlebars','app/common'], function($, handlebars) {
   var currPageNo = 1;
   var pageSize = 3;
   
@@ -20,7 +19,7 @@ define('board', function() {
               
               // handlebars 라이브러리를 이용하여 테이블 tr 태그 생성
               var source = $('#template1').html();
-              var template = Handlebars.compile(source);
+              var template = handlebars.compile(source);
               var content = template(result);
               $('#listTable tbody').html(content);
               
