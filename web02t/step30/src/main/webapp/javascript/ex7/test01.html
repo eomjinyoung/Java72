@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id='d1'></div>
+
+<script id="t1" type="text/x-handlebars-template">
+<div class="entry">
+  <h1>{{title}}</h1>
+  <div class="body">
+    {{body}}
+  </div>
+</div>
+</script>
+
+<script type="text/javascript" src='jquery-1.11.3.js'></script>
+<script type="text/javascript" src='handlebars-v3.0.3.js'></script>
+<script>
+var templateSource = $('#t1').html();
+var template = Handlebars.compile(templateSource);
+var content = template({
+  title: 'okok',
+  body: 'hahaha'
+});
+
+$('#d1').html(content);
+</script>
+</body>
+</html>
+
+
+
+
+
+

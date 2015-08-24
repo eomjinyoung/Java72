@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>클로저와 로컬 변수</h1>
+
+<script type="text/javascript">
+// 클로저가 사용하는 바깥 함수의 로컬 변수는 
+// 클로저가 독립적으로 관리하는 메모리 영역에 복제된다. 
+function getCounter() {
+	var count = 0;
+	return function() {
+		return ++count;
+	};
+}
+
+var counter1 = getCounter();
+var counter2 = getCounter();
+
+console.log(counter1());
+console.log(counter1());
+console.log(counter1());
+
+console.log(counter2());
+console.log(counter2());
+console.log(counter2());
+
+</script>
+</body>
+</html>
+
+
+
+
+

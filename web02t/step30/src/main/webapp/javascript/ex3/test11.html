@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Object.create()</h1>
+
+<script type="text/javascript">
+//1)
+var obj1 = {}; // = new Object();
+console.log(obj1.toString()); // Object()에서 등록한 함수
+
+//2) 
+var obj2 = Object.create(null); // 아무것도 첨가되지 않은 빈 객체 생성.
+//console.log(obj2.toString()); // undefined 오류!
+
+
+//3)
+// Object의 기본 변수와 함수를 가진 객체를 생성한다.
+var obj3 = Object.create(Object.prototype); 
+console.log(obj3.toString());
+
+//4)
+//=> 원형 객체를 바탕으로 일반 객체를 복제할 때 사용한다.
+//=> 예) PPT 에디터에서 도형 복제하는 기능을 구현할 때 사용.
+var originObj = {
+	plus: function(a, b) {return a + b;},
+	minus: function(a, b) {return a - b;}
+};
+
+var obj4 = Object.create(originObj);
+console.log(obj4);
+console.log(obj4.plus(10, 20));
+console.log(obj4.minus(10, 20));
+
+</script>
+</body>
+</html>
+
+
+
+
+
