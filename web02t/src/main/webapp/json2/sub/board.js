@@ -156,8 +156,6 @@ define('board', function() {
           $('.my-new').css('display', '');
         });
         
-        this.listBoard(currPageNo, pageSize);
-      
       } /* init() */
   };
 });

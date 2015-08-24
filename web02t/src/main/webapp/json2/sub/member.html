@@ -89,11 +89,10 @@
 </script>
 
 <script>
-$('<script>')
-  .attr('src', contextRoot + '/json2/sub/member.js')
-  .attr('async', true)
-  .attr('type', 'text/javascript')
-  .appendTo('#content');
+requirejs('member', function(member) {
+  member.init();
+  member.listBoard(1, 3);
+});
 </script> 
 
 
