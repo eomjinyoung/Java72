@@ -756,6 +756,8 @@ app0603:
 => auth.js, board.js, member.js 변경
 => auth.html, board.html, member.html 변경
 
+[step32: requirejs를 도입하여 스크립트 중복 로딩 제거]
+1) 디렉토리 구조 변경
 
 
 

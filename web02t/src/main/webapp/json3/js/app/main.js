@@ -1,6 +1,5 @@
 define(['jquery'], function($) {
   $('#main > header').load('header.html');
-  /*
   $('#main > footer').load('footer.html');
   $('#content').load('sub/auth.html');
 
@@ -15,15 +14,18 @@ define(['jquery'], function($) {
   });
 
   $(document).on('login.success', function(event) {
+    //특정 모듈만 가져오기
+    var header = require('app/header');
+    header.loadLoginInfo();
     $('#content').load('sub/board.html');
-    loadLoginInfo();
   });
 
   $(document).on('logout.success', function(event) {
     $('#content').load('sub/auth.html');
-    loadLoginInfo();
+    var header = require('app/header');
+    header.loadLoginInfo();
   });
-  */
+
 });
 
 
