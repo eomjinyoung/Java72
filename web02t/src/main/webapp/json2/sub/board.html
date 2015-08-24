@@ -88,11 +88,10 @@
 </script>
 
 <script>
-$('<script>')
-  .attr('src', contextRoot + '/json2/sub/board.js')
-  .attr('async', true)
-  .attr('type', 'text/javascript')
-  .appendTo('#content');
+requirejs('board', function(board) {
+  board.init();
+  board.listBoard(1, 3);
+});
 </script>    
 
 
