@@ -9,9 +9,20 @@
 requirejs.config({
     baseUrl: 'js',
     paths: {
-        jquery: 'lib/jquery-1.11.3',
-        bootstrap: 'lib/bootstrap.min',
-        handlebars: 'lib/handlebars-v3.0.3'
+        'jquery': 'lib/jquery-1.11.3',
+        'bootstrap': 'lib/bootstrap.min',
+        'handlebars': 'lib/handlebars-v3.0.3',
+        'jquery.ui.widget': 'lib/vendor/jquery.ui.widget',
+        'load-image.all.min': 'lib/load-image.all.min',
+        'canvas-to-blob.min': 'lib/canvas-to-blob.min',
+        'jquery.iframe-transport': 'lib/jquery.iframe-transport',
+        'jquery.fileupload': 'lib/jquery.fileupload',
+        'jquery.fileupload-process': 'lib/jquery.fileupload-process',
+        'jquery.fileupload-image': 'lib/jquery.fileupload-image',
+        'jquery.fileupload-audio': 'lib/jquery.fileupload-audio',
+        'jquery.fileupload-video': 'lib/jquery.fileupload-video',
+        'jquery.fileupload-validate': 'lib/jquery.fileupload-validate',
+        'bootstrap.min': 'lib/bootstrap.min'
     }
 });
 

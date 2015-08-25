@@ -1,4 +1,21 @@
-define(['jquery','handlebars','app/common'],function($, handlebars){
+define([
+          'jquery',
+          'handlebars',
+          'bootstrap.min',
+          'jquery.ui.widget',
+          'canvas-to-blob.min',
+          'load-image.all.min',
+          'jquery.fileupload',
+          'jquery.iframe-transport',
+          'jquery.fileupload-process',
+          'jquery.fileupload-image',
+          'jquery.fileupload-audio',
+          'jquery.fileupload-video',
+          /*
+          'jquery.fileupload-validate',
+          */
+          'app/common'
+       ], function($, handlebars){
   var currPageNo = 1;
   var pageSize = 3;
   
@@ -161,10 +178,50 @@ define(['jquery','handlebars','app/common'],function($, handlebars){
         $('.my-new').css('display', '');
       });
       
+      
+      $('#fileupload').fileupload({
+        url: contextRoot + '/json/file/upload.do',
+        dataType: 'json',
+        maxFileSize: 10000000,
+        disableImageResize: /Android(?!.*Chrome)|Opera/
+          .test(window.navigator.userAgent),
+        previewMaxWidth: 100,
+        previewMaxHeight: 100,
+        previewCrop: true
+      }).on('fileuploadsubmit', function(e, data) {
+        // 서버에 일반 폼 데이터도 보내고 싶으면, submit 하기 전에
+        // 다음과 같이 formData 프로퍼티에 값을 설정하라!
+        /*
+        data.formData = {
+          data1: 'okok',
+          data2: 'nono'
+        };
+        */
+      }).on('fileuploaddone', function(e, data) {
+        console.log(data.result);
+        $.each(data.result.data, function (index, file) {
+            $('<img>')
+              .attr('src', file.url)
+              .css('width', '100px')
+              .appendTo('#files');
+            $('<span/>')
+            .text(file.name 
+                + '(' + file.originName + ')'
+                + ', ' + file.size)
+                .appendTo('#files');
+        });
+      }).on('fileuploadprogressall', function (e, data) {
+        var progress = parseInt(
+            data.loaded / data.total * 100, 10);
+        $('#progress .progress-bar').css(
+            'width',
+            progress + '%'
+        );
+      });
+      
     } //init()
   };
 });
-
 
 
 
