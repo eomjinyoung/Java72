@@ -110,13 +110,35 @@ $(function () {
     
   }).on('fileuploadprogressall', function (e, data) {
     console.log('fileuploadprogressall');
-    
+    var progress = parseInt(
+        data.loaded / data.total * 100, 10);
+    $('#progress .progress-bar').css(
+        'width',
+        progress + '%'
+    );
   }).on('fileuploaddone', function (e, data) {
     console.log('fileuploaddone');
-    
+    $.each(data.result.data, function (index, file) {
+      if (file.url) {
+        var link = $('<a>')
+            .attr('target', '_blank')
+            .prop('href', file.url);
+        $(data.context.children()[index]).wrap(link);
+      } else if (file.error) {
+        var error = $('<span class="text-danger"/>').text(file.error);
+        $(data.context.children()[index])
+            .append('<br>')
+            .append(error);
+      }
+    });  
   }).on('fileuploadfail', function (e, data) {
     console.log('fileuploadfail');
-    
+    $.each(data.files, function (index) {
+      var error = $('<span class="text-danger"/>').text('File upload failed.');
+      $(data.context.children()[index])
+          .append('<br>')
+          .append(error);
+    });
   }).prop('disabled', !$.support.fileInput)
     .parent()
     .addClass($.support.fileInput ? undefined : 'disabled');

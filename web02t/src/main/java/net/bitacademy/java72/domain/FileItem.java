@@ -8,6 +8,7 @@ public class FileItem implements Serializable {
   protected String  name;
   protected long    size;
   protected String  originName;
+  protected String  url;
   
   public String getName() {
     return name;
@@ -30,6 +31,19 @@ public class FileItem implements Serializable {
     this.originName = originName;
     return this;
   }
+  public String getUrl() {
+    return url;
+  }
+  public FileItem setUrl(String url) {
+    this.url = url;
+    return this;
+  }
   
   
 }
+
+
+
+
+
+
