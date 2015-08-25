@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import net.bitacademy.java72.domain.Board;
 import net.bitacademy.java72.service.BoardService;
-import net.bitacademy.java72.util.ResponseFactory;
 
 @Controller("json.BoardController")
 @RequestMapping("/json/board")
@@ -24,7 +22,7 @@ public class BoardController {
 
   
   @RequestMapping("/delete")
-  public ResponseEntity<String> delete(int no) {
+  public Object delete(int no) {
     int count = boardService.delete(no);
 
     Map<String,Object> result = 
@@ -35,20 +33,20 @@ public class BoardController {
       result.put("data", "failure");
     }
     
-    return ResponseFactory.createResponse(result);
+    return result;
   }
   
   @RequestMapping("/detail")
-  public ResponseEntity<String> detail(int no) {
+  public Object detail(int no) {
     Map<String,Object> result = 
         new HashMap<String,Object>();
     result.put("data", boardService.get(no));
     
-    return ResponseFactory.createResponse(result);
+    return result;
   }
 
   @RequestMapping("/insert")
-  public ResponseEntity<String> insert(
+  public Object insert(
       Board board,
       @RequestParam(required=false) MultipartFile file1) throws Exception {
       
@@ -73,11 +71,11 @@ public class BoardController {
         result.put("data", "failure");
       }
       
-      return ResponseFactory.createResponse(result);
+      return result;
   }
   
   @RequestMapping("/list")
-  public ResponseEntity<String> list(
+  public Object list(
       @RequestParam(required=false, defaultValue="1") 
       int pageNo,
       @RequestParam(required=false, defaultValue="3")
@@ -105,11 +103,11 @@ public class BoardController {
     result.put("data", 
         boardService.list(pageNo, pageSize));
     
-    return ResponseFactory.createResponse(result);
+    return result;
   }
   
   @RequestMapping("/update")
-  public ResponseEntity<String> boardUpdate (
+  public Object boardUpdate (
       Board board,
       @RequestParam(required=false) MultipartFile file1) throws Exception {
 
@@ -133,7 +131,7 @@ public class BoardController {
       result.put("data", "failure");
     }
     
-    return ResponseFactory.createResponse(result);
+    return result;
   }
 }
 

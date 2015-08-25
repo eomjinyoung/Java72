@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.bitacademy.java72.domain.Member;
 import net.bitacademy.java72.service.MemberService;
-import net.bitacademy.java72.util.ResponseFactory;
 
 @Controller("json.AuthController")
 @RequestMapping("/json/auth")
@@ -22,7 +20,7 @@ public class AuthController {
   @Autowired MemberService memberService;
   
   @RequestMapping(value="/login")
-  public ResponseEntity<String> login(
+  public Object login(
       String email, 
       String password,
       String saveEmail,
@@ -61,21 +59,21 @@ public class AuthController {
       }
     }
      
-    return ResponseFactory.createResponse(result);
+    return result;
   }
   
   @RequestMapping("/logout")
-  public ResponseEntity<String> logout(HttpSession session) {
+  public Object logout(HttpSession session) {
     session.invalidate(); 
     Map<String,Object> result = 
         new HashMap<String,Object>();
     result.put("data", "yes");
     
-    return ResponseFactory.createResponse(result);
+    return result;
   }
   
   @RequestMapping("/loginInfo")
-  public ResponseEntity<String> loginInfo(
+  public Object loginInfo(
       HttpSession session) {
     
     Map<String,Object> result = 
@@ -91,18 +89,18 @@ public class AuthController {
       result.put("data", member);
     }
     
-    return ResponseFactory.createResponse(result);
+    return result;
   }
   
   @RequestMapping("/setRefererUrl")
-  public ResponseEntity<String> setRefererUrl(
+  public Object setRefererUrl(
       String refererUrl,
       HttpSession session) {
     Map<String,Object> result = 
         new HashMap<String,Object>();
     session.setAttribute("refererUrl", refererUrl);
     result.put("data", "yes");
-    return ResponseFactory.createResponse(result);
+    return result;
   }
 }
 

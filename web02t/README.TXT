@@ -761,6 +761,56 @@ app0603:
 2) requirejs.org에서 라이브러리 파일 다운로드
 2) 기존 소스 변경
 
+[step33: Spring 프레임워크에 JSON 뷰 리졸버 도입]
+=> 클라이언트가 요청하는 것에 따라서 보낼 데이터를 선정하기
+1) DispatcherServlet 설정 파일 변경
+  => WEB-INF/conf/dispatch-servlet.xml 
+   <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <!-- 4.2.x 버전에서는  mediaTypes 프로퍼티가 readonly임. 
+        => 외부의 ContentNegotiationManager로 대체함.
+    -->
+    <!--  
+    <property name="mediaTypes">
+        <map>
+            <entry key="atom" value="application/atom+xml"/>
+            <entry key="html" value="text/html"/>
+            <entry key="json" value="application/json"/>
+        </map>
+    </property>
+    -->
+    <property name="contentNegotiationManager" 
+              ref="contentNegotiationManager"/>
+    <property name="viewResolvers">
+        <list>
+            <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+            <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                <property name="prefix" value="/WEB-INF/jsp/"/>
+                <property name="suffix" value=".jsp"/>
+            </bean>
+        </list>
+    </property>
+    <property name="defaultViews">
+        <list>
+            <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+        </list>
+    </property>
+  </bean>
+  
+  <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+    <property name="favorPathExtension" value="false" />
+    <property name="favorParameter" value="true" />
+    <property name="mediaTypes" >
+        <value>
+            json=application/json
+            xml=application/xml
+            html=text/html
+            atom=application/atom+xml
+        </value>
+    </property>
+  </bean>
+ 
+2) 페이지 컨트롤러 변경
+
 
 
 
