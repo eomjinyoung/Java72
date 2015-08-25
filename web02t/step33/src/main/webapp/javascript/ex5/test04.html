@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>엘리먼트 찾기: querySelector()</h1>
+<h2 id='h01' class='c1'>제목1</h2>
+<h2 id='h02' class='c2'>제목2</h2>
+<h2 id='h03' class='c1 c2'>제목3</h2>
+<h2 id='h04' class='c1'>제목4</h2>
+
+<script type="text/javascript">
+//css 셀렉터 문법으로 엘리먼트 찾기
+//1) 한 개의 엘리먼트 찾기
+var e = document.querySelector('#h02');
+console.log(e.innerHTML);
+console.log('-------------------------');
+
+//2) 여러 개의 엘리먼트 찾기
+// => querySelector()가 여러 개의 엘리먼트를 찾았다면,
+//    그 중 첫 번째 엘리먼트만 리턴한다.
+var el = document.querySelector('h2');
+for (var i = 0; i < el.length; i++) {
+	console.log(el[i].innerHTML);
+}
+console.log('-------------------------');
+console.log(el.innerHTML);
+</script>
+</body>
+</html>
+
+
+
+
+

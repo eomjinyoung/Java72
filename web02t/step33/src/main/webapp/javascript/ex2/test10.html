@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수 레퍼런스</h1>
+
+<script type="text/javascript">
+// 함수도 객체이기 때문에 변수를 통해 다룰 수 있다. 
+function plus() {
+	var sum = 0;
+	for (var i in arguments) {
+		sum += arguments[i];
+	}
+	return sum;
+}
+
+// 함수 이름은 곧 그 함수를 가리키는 레퍼런스이다.
+// 따라서 다음과 같이 다른 변수에게 함수 주소를 저장할 수 있다.
+var a = plus;
+var b = a;
+
+console.log( b(10, 20));
+console.log( b(10, 20, 30));
+console.log( b(10, 20, 30, 40));
+console.log( b()); // 0
+
+</script>
+</body>
+</html>
+
+
+
+
+

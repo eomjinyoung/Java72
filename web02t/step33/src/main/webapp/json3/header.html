@@ -1,0 +1,20 @@
+<div id='loginDiv'>
+  <a id='loginBtn' href='#' class='btn btn-primary btn-xs'>로그인</a>
+  <div id='userInfo'>
+    <span id='userName'></span>
+    (<span id='userEmail'></span>)
+    <a id='logoutBtn' href='#'class='btn btn-primary btn-xs'>로그아웃</a>
+  </div>
+</div>
+<script>
+// header.html을 다룰 자바스크립트 파일을 로딩한다.
+// app/header.js가 로딩되지 않았을 때만 로딩한다.
+requirejs(['app/header'], function(header) {
+  header.loadLoginInfo();
+});
+</script>
+
+
+
+
+

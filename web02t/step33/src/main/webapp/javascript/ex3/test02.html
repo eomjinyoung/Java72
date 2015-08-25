@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>객체 프로퍼티</h1>
+
+<script type="text/javascript">
+// 프로퍼티(property)?
+// 객체에 추가한 변수나 함수를 "프로퍼티(property)"라고 부른다.
+
+var obj1 = new Object();
+
+//1) 객체명.프로퍼티명
+// => 이 방법으로는 프로퍼티 이름으로에 공백이나 특수 문자를 넣을 수 없다. 
+obj1.name = "홍길동";
+obj1.age = 20;
+
+//2) 객체명['프로퍼티명'] 또는 객체명["프로퍼티명"]
+// => 이 방법은 프로퍼티 이름에 공백이나 특수 문자를 넣을 수 있다.
+obj1['kor'] = 100;
+obj1["eng"] = 90;
+obj1['오호라 ^^'] = "크크 되는구만.";
+
+console.log(obj1); 
+</script>
+</body>
+</html>
+
+
+
+
+

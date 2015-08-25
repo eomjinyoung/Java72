@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>이벤트 처리: onclick 프로퍼티2</h1>
+<!-- 이벤트 처리 코드를 HTML 태그에 넣을 수 있다.
+	그러나 가능한 간단한 코드를 넣도록 한다.-->
+<button id='btn1' type="button" 
+	onclick="alert('okok');">버튼1</button>
+
+<!--
+	onclick="alert('okok');"
+=> 위의 HTML 속성은 다음과 같이 click 이벤트를 처리할 
+   익명 함수를 자동 생성한다.
+=> 그리고 onclick 속성에 작성한 코드글 자동 생성한 
+   익명 함수에 복사한다.
+예)   
+e.onclick = function(event) {
+	alert('okok');
+};
+-->
+	 
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
+
+
+
+
+
