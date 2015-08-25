@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery File Upload Example</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/jquery.fileupload.css">
+</head>
+<body>
+<span class="btn btn-success fileinput-button">
+  <i class="glyphicon glyphicon-plus"></i>
+  <span>Select files...</span>
+	<input id="fileupload" 
+	       type="file" 
+	       name="file" 
+	       data-url="../../json/file/upload.do" 
+	       multiple>  
+</span>
+<br>
+<br>
+<div id="progress" class="progress">
+    <div class="progress-bar progress-bar-success"></div>
+</div>
+<br>
+<div id="files" class="files"></div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/vendor/jquery.ui.widget.js"></script>
+<script src="js/jquery.iframe-transport.js"></script>
+<script src="js/jquery.fileupload.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+$(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, obj) {
+          console.log(obj.result);
+          $.each(obj.result.data, function (index, file) {
+              $('<p/>')
+                .text(file.originName + ',' + file.size)
+                .appendTo('#files');
+          });
+        },
+        progressall: function (e, data) {
+          var progress = parseInt(data.loaded / data.total * 100, 10);
+          $('#progress .progress-bar').css(
+              'width',
+              progress + '%'
+          );
+        }
+    });
+});
+</script>
+</body> 
+</html>
