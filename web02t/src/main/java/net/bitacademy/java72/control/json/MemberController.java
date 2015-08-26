@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import net.bitacademy.java72.domain.Member;
 import net.bitacademy.java72.service.MemberService;
@@ -45,20 +44,7 @@ public class MemberController {
   }
 
   @RequestMapping("/insert")
-  public Object insert(
-      Member member,
-      @RequestParam(required=false) MultipartFile file1) throws Exception {
-    
-    /*
-    String filename = MultipartUtils.getFilename(
-        file1.getOriginalFilename());
-    File newPath = new File(sc.getRealPath("/files") 
-                        + "/" + filename);
-    file1.transferTo(newPath);
-    
-    member.setPhoto(filename);
-    */
-    
+  public Object insert(Member member) throws Exception {
     int count = memberService.insert(member);
     
     Map<String,Object> result = 
@@ -104,19 +90,7 @@ public class MemberController {
   }
   
   @RequestMapping("/update")
-  public Object update(
-      Member member,
-      @RequestParam(required=false) MultipartFile file1) throws Exception {
-    /*
-    String filename = MultipartUtils.getFilename(
-        file1.getOriginalFilename());
-    File newPath = new File(sc.getRealPath("/files") 
-                        + "/" + filename);
-    file1.transferTo(newPath);
-    
-    member.setPhoto(filename);
-    */
-    
+  public Object update(Member member) throws Exception {
     int count = memberService.update(member);
     
     Map<String,Object> result = 

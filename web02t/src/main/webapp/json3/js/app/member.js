@@ -70,7 +70,8 @@ define([
         $('#fEmail').val(data.email);
         $('#fTel').val(data.tel);
         $('#fCreateDate').text(data.yyyyMMdd);
-        $('#fPhoto')
+        $('#fPhoto').val(data.photo);
+        $('#photoImg')
           .attr('src', contextRoot + '/files/' + data.photo);
       });
     }, //detailBoard()
@@ -99,7 +100,8 @@ define([
             name: $('#fName').val(),
             email: $('#fEmail').val(),
             tel: $('#fTel').val(),
-            password: $('#fPassword').val()
+            password: $('#fPassword').val(),
+            photo: $('#fPhoto').val()
           },
           success: function(result) {
             if (result.data == 'success') {
@@ -123,7 +125,8 @@ define([
             name: $('#fName').val(),
             email: $('#fEmail').val(),
             tel: $('#fTel').val(),
-            password: $('#fPassword').val()
+            password: $('#fPassword').val(),
+            photo: $('#fPhoto').val()
           },
           success: function(result) {
             if (result.data == 'success') {
@@ -176,6 +179,8 @@ define([
       $('#cancelBtn').click(function(event) {
         $('.my-view').css('display', 'none');
         $('.my-new').css('display', '');
+        $('#files').html('');
+        $('#progress .progress-bar').css('width', '0%');
       });
       
       
@@ -199,6 +204,7 @@ define([
         */
       }).on('fileuploaddone', function(e, data) {
         console.log(data.result);
+        $('#files').html('');
         $.each(data.result.data, function (index, file) {
             $('<img>')
               .attr('src', file.url)
@@ -209,6 +215,7 @@ define([
                 + '(' + file.originName + ')'
                 + ', ' + file.size)
                 .appendTo('#files');
+            $('#fPhoto').val(file.name);
         });
       }).on('fileuploadprogressall', function (e, data) {
         var progress = parseInt(
