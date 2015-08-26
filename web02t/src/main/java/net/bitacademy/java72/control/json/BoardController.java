@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import net.bitacademy.java72.domain.Board;
 import net.bitacademy.java72.service.BoardService;
@@ -46,21 +45,7 @@ public class BoardController {
   }
 
   @RequestMapping("/insert")
-  public Object insert(
-      Board board,
-      @RequestParam(required=false) MultipartFile file1) throws Exception {
-      
-      /*
-      String filename = MultipartUtils.getFilename(
-                            file1.getOriginalFilename());
-      File newPath = new File(
-          servletContext.getRealPath("/files") 
-          + "/" + filename);
-      file1.transferTo(newPath);
-
-      board.setAttachFile1(filename);
-      */
-    
+  public Object insert(Board board) throws Exception {
       int count = boardService.insert(board);
       
       Map<String,Object> result = 
@@ -107,20 +92,8 @@ public class BoardController {
   }
   
   @RequestMapping("/update")
-  public Object boardUpdate (
-      Board board,
-      @RequestParam(required=false) MultipartFile file1) throws Exception {
+  public Object boardUpdate (Board board) throws Exception {
 
-    /*
-    String filename = MultipartUtils.getFilename(
-        file1.getOriginalFilename());
-    File newPath = new File(
-                    servletContext.getRealPath("/files") 
-                    + "/" + filename);
-    file1.transferTo(newPath);
-    
-    board.setAttachFile1(filename);
-    */
     int count = boardService.update(board);
 
     Map<String,Object> result = 
