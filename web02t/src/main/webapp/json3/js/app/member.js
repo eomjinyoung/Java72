@@ -5,13 +5,13 @@ define([
           'jquery.ui.widget',
           'jquery.iframe-transport',
           'jquery.fileupload',
+          /*
           'canvas-to-blob.min',
           'load-image.all.min',
           'jquery.fileupload-process',
           'jquery.fileupload-image',
           'jquery.fileupload-audio',
           'jquery.fileupload-video',
-          /*
           'jquery.fileupload-validate',
           */
           'app/common'
