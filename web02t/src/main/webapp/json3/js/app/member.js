@@ -1,19 +1,17 @@
 define([
           'jquery',
           'handlebars',
-          'bootstrap.min',
+          'bootstrap',
           'jquery.ui.widget',
           'jquery.iframe-transport',
           'jquery.fileupload',
-          /*
-          'canvas-to-blob.min',
-          'load-image.all.min',
+          'canvas-to-blob',
+          'load-image',
           'jquery.fileupload-process',
           'jquery.fileupload-image',
           'jquery.fileupload-audio',
           'jquery.fileupload-video',
           'jquery.fileupload-validate',
-          */
           'app/common'
        ], function($, handlebars){
   var currPageNo = 1;

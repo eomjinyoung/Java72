@@ -13,8 +13,14 @@ requirejs.config({
         'bootstrap': 'lib/bootstrap.min',
         'handlebars': 'lib/handlebars-v3.0.3',
         'jquery.ui.widget': 'lib/vendor/jquery.ui.widget',
-        'load-image.all.min': 'lib/load-image.all.min',
-        'canvas-to-blob.min': 'lib/canvas-to-blob.min',
+        'load-image.all': 'lib/load-image.all.min',
+        'load-image': 'lib/load-image',
+        'load-image-ios': 'lib/load-image-ios',
+        'load-image-orientation': 'lib/load-image-orientation',
+        'load-image-meta': 'lib/load-image-meta',
+        'load-image-exif': 'lib/load-image-exif',
+        'load-image-exif-map': 'lib/load-image-exif-map',
+        'canvas-to-blob': 'lib/canvas-to-blob.min',
         'jquery.iframe-transport': 'lib/jquery.iframe-transport',
         'jquery.fileupload': 'lib/jquery.fileupload',
         'jquery.fileupload-process': 'lib/jquery.fileupload-process',
@@ -22,7 +28,7 @@ requirejs.config({
         'jquery.fileupload-audio': 'lib/jquery.fileupload-audio',
         'jquery.fileupload-video': 'lib/jquery.fileupload-video',
         'jquery.fileupload-validate': 'lib/jquery.fileupload-validate',
-        'bootstrap.min': 'lib/bootstrap.min'
+        'bootstrap': 'lib/bootstrap.min'
     }
 });
 
