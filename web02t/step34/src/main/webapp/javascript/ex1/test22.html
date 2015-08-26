@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>||와 &&를 선택 연산자로 사용하기</h1>
+
+<script type="text/javascript">
+"use strict";
+
+//1) ||와 && 연산자의 기본 동작
+console.log(true || true); // true
+console.log(true || false); // true
+console.log(false || true);// true
+console.log(false || false); // false
+
+console.log(true && true); 	// true
+console.log(true && false); // false
+console.log(false && true);	// false
+console.log(false && false); // false
+
+//2) 선택 연산자로서의 ||
+//=> 두 피 연산자가 boolean형이 아닐 경우,
+//   선택 연산자로 사용된다.
+//=> 첫 번째 값을 boolean으로 바꾼다.
+//   true이면, 첫 번째 값을 리턴한다.
+//   false이면, 두 번째 값을 린턴한다.
+console.log(0	|| "hahaha"); // 'hahaha'
+console.log(42	|| "hahaha"); // 42
+console.log('42'|| "hahaha"); // '42'
+console.log(''	|| "hahaha"); // 'hahaha'
+console.log(' '	|| "hahaha"); // (sp)
+console.log('hello'	|| "hahaha"); // 'hello'
+console.log('true'	|| "hahaha"); // 'true'
+console.log('false'	|| "hahaha"); // 'false'
+console.log(true	|| "hahaha"); // true
+console.log(false	|| "hahaha"); // 'hahaha'
+console.log(null	|| "hahaha"); // 'hahaha'
+console.log(undefined	|| "hahaha"); // 'hahaha'
+console.log(NaN	|| "hahaha"); // 'hahaha'
+console.log("------------------------------");
+
+//3) 선택 연산자로서의 &&
+//=> 첫 번째 값을 boolean 바꾼 값
+//   false: 첫 번째 값을 리턴
+//   true: 두 번째 값을 리턴  
+console.log(0	&& "hahaha"); // 0
+console.log(42	&& "hahaha"); // 'hahaha'
+console.log('42'&& "hahaha"); // 'hahaha'
+console.log(''	&& "hahaha"); // 공백
+console.log(' '	&& "hahaha"); // 'hahaha'
+console.log('hello'	&& "hahaha"); // 'hahaha'
+console.log('true'	&& "hahaha"); // 'hahaha'
+console.log('false'	&& "hahaha"); // 'hahaha'
+console.log(true	&& "hahaha"); // 'hahaha'
+console.log(false	&& "hahaha"); // false
+console.log(null	&& "hahaha"); // null
+console.log(undefined	&& "hahaha"); // undefined
+console.log(NaN	&& "hahaha"); // NaN
+console.log("------------------------------");
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table id='mytable'>
+  <thead>
+    <tr>
+      <th>번호</th> <th>이름</th> <th>전화</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script id="t1" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+  <td>{{no}}</td>
+  <td>{{name}}</td>
+  <td>{{tel}}</td>
+</tr>
+{{/each}}
+</script>
+
+<script type="text/javascript" src='jquery-1.11.3.js'></script>
+<script type="text/javascript" src='handlebars-v3.0.3.js'></script>
+<script>
+var templateSource = $('#t1').html();
+var template = Handlebars.compile(templateSource);
+var result = template({
+  list: [
+    {no: 1, name:"홍길동", tel:"111-1111"},
+    {no: 2, name:"임꺽정", tel:"111-1112"},
+    {no: 3, name:"김원봉", tel:"111-1113"}]
+});
+$('#mytable tbody').html(result);
+</script>
+</body>
+</html>
+
+
+
+
+
+

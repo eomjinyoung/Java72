@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery File Upload Example</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/jquery.fileupload.css">
+<style>
+body {
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<span class="btn btn-success fileinput-button">
+  <i class="glyphicon glyphicon-plus"></i>
+  <span>Add files...</span>
+	<input id="fileupload" 
+	       type="file" 
+	       name="file" 
+	       multiple>  
+</span>
+<br>
+<br>
+<div id="progress" class="progress">
+    <div class="progress-bar progress-bar-success"></div>
+</div>
+<br>
+<div id="files" class="files"></div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/vendor/jquery.ui.widget.js"></script>
+<script src="js/load-image.all.min.js"></script>
+<script src="js/canvas-to-blob.min.js"></script>
+<script src="js/jquery.iframe-transport.js"></script>
+<script src="js/jquery.fileupload.js"></script>
+<script src="js/jquery.fileupload-process.js"></script>
+<script src="js/jquery.fileupload-image.js"></script>
+<script src="js/jquery.fileupload-audio.js"></script>
+<script src="js/jquery.fileupload-video.js"></script>
+<script src="js/jquery.fileupload-validate.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+$(function () {
+  var uploadButton = $('<button/>')
+	  .addClass('btn btn-primary')
+	  .prop('disabled', true)
+	  .text('Processing...')
+	  .on('click', function () {
+	      var $this = $(this),
+	          data = $this.data();
+	      $this
+	          .off('click')
+	          .text('Abort')
+	          .on('click', function () {
+	              $this.remove();
+	              data.abort();
+	          });
+	      data.submit().always(function () {
+	          $this.remove();
+	      });
+	  });
+  
+  
+  
+  $('#fileupload').fileupload({
+    url: '../../json/file/upload.do', 
+    dataType: 'json',
+    autoUpload: false,
+    maxFileSize: 10000000,
+    disableImageResize: /Android(?!.*Chrome)|Opera/
+      .test(window.navigator.userAgent),
+	  previewMaxWidth: 100,
+	  previewMaxHeight: 100,
+	  previewCrop: true
+	  
+  }).on('fileuploadadd', function (e, data) {
+    console.log('fileuploadadd');
+    data.context = $('<div/>').appendTo('#files');
+    $.each(data.files, function (index, file) {
+      var node = $('<p/>').append($('<span/>').text(file.name));
+      if (!index) {
+        node.append('<br>')
+            .append(uploadButton.clone(true)
+            .data(data));
+        }
+      node.appendTo(data.context);
+    });
+  }).on('fileuploadprocessalways', function (e, data) {
+    console.log('fileuploadprocessalways');
+    var index = data.index,
+        file = data.files[index],
+        node = $(data.context.children()[index]);
+    console.log(file);
+    if (file.preview) {
+      node.prepend('<br>')
+          .prepend(file.preview);
+    } 
+    if (file.error) {
+      node.append('<br>')
+          .append($('<span class="text-danger"/>').text(file.error));
+    }
+    if (index + 1 === data.files.length) {
+      data.context.find('button')
+          .text('Upload')
+          .prop('disabled', !!data.files.error);
+    }
+    
+  }).on('fileuploadprogressall', function (e, data) {
+    console.log('fileuploadprogressall');
+    var progress = parseInt(
+        data.loaded / data.total * 100, 10);
+    $('#progress .progress-bar').css(
+        'width',
+        progress + '%'
+    );
+  }).on('fileuploaddone', function (e, data) {
+    console.log('fileuploaddone');
+    $.each(data.result.data, function (index, file) {
+      if (file.url) {
+        var link = $('<a>')
+            .attr('target', '_blank')
+            .prop('href', file.url);
+        $(data.context.children()[index]).wrap(link);
+      } else if (file.error) {
+        var error = $('<span class="text-danger"/>').text(file.error);
+        $(data.context.children()[index])
+            .append('<br>')
+            .append(error);
+      }
+    });  
+  }).on('fileuploadfail', function (e, data) {
+    console.log('fileuploadfail');
+    $.each(data.files, function (index) {
+      var error = $('<span class="text-danger"/>').text('File upload failed.');
+      $(data.context.children()[index])
+          .append('<br>')
+          .append(error);
+    });
+  }).prop('disabled', !$.support.fileInput)
+    .parent()
+    .addClass($.support.fileInput ? undefined : 'disabled');
+  
+  /*
+    done: function (e, obj) {
+          console.log(obj.result);
+          $.each(obj.result.data, function (index, file) {
+              $('<p/>')
+                .text(file.originName + ',' + file.size)
+                .appendTo('#files');
+          });
+        },
+        progressall: function (e, data) {
+          var progress = parseInt(data.loaded / data.total * 100, 10);
+          $('#progress .progress-bar').css(
+              'width',
+              progress + '%'
+          );
+        }
+    });
+    */
+});
+</script>
+</body> 
+</html>

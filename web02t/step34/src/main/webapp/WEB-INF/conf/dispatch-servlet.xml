@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+  
+  <context:component-scan base-package="net.bitacademy.java72">
+    <context:exclude-filter type="annotation" 
+       expression="org.springframework.stereotype.Service"/>  
+  </context:component-scan>
+  
+  <!-- 멀티파트 데이터를 처리할 객체를 준비한다. -->
+  <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize" value="10000000"/>
+  </bean>
+  
+  <!-- 기존 뷰 리졸버를 대체한다. -->
+  <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <!-- 4.2.x 버전에서는  mediaTypes 프로퍼티가 readonly임. 
+        => 외부의 ContentNegotiationManager로 대체함.
+    -->
+    <!--  
+    <property name="mediaTypes">
+        <map>
+            <entry key="atom" value="application/atom+xml"/>
+            <entry key="html" value="text/html"/>
+            <entry key="json" value="application/json"/>
+        </map>
+    </property>
+    -->
+    <property name="contentNegotiationManager" 
+              ref="contentNegotiationManager"/>
+    <property name="viewResolvers">
+        <list>
+            <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+            <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                <property name="prefix" value="/WEB-INF/jsp/"/>
+                <property name="suffix" value=".jsp"/>
+            </bean>
+        </list>
+    </property>
+    <property name="defaultViews">
+        <list>
+            <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+        </list>
+    </property>
+  </bean>
+  
+  <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+    <property name="favorPathExtension" value="false" />
+    <property name="favorParameter" value="true" />
+    <property name="mediaTypes" >
+        <value>
+            json=application/json
+            xml=application/xml
+            html=text/html
+            atom=application/atom+xml
+        </value>
+    </property>
+  </bean>
+</beans>
+
+
+
+
+
+

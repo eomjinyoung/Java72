@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>변수의 범위3: 블록 로컬 변수</h1>
+
+<script type="text/javascript">
+"use strict";
+
+//1) 글로벌 블록: script 태그에 정의한 블록
+//=> 자바스크립트 블록 별로 변수를 관리하지 않는다.
+//=> 변수의 범위: 
+//   - 글로벌 변수: 페이지 전역에서 사용할 수 있는 변수
+//   - 로컬 변수: 함수 안에 선언된 변수
+//   - 객체 프로퍼티 변수: 객체를 통해서 사용
+var a = 20; // 글로벌 변수
+{
+	  var b = 30; // 글로벌 변수
+	  {
+		  var c = 40; // 글로벌 변수
+		  console.log(a, b, c);
+	  }
+	  console.log(a, b, c);
+}
+console.log(a, b, c);
+
+
+//2) 함수 블록
+function f1() {
+	var a = 100; // 로컬 변수
+	{
+		var b = 200; // 로컬 변수
+		{
+			var c = 300; // 로컬 변수
+		}
+	}
+	console.log("f1()--->", a, b, c);
+}
+
+f1();
+console.log("글로벌 --->", a, b, c);
+
+//3) 함수 블록2
+function f2() {
+	a = 1000; // 글로벌 변수를 가리킨다.
+	var b = 100; // 로컬 변수
+	console.log("f2()--->", a, b);
+	
+	//d = 3000; // 오류 발생!
+}
+
+f2(); 
+
+console.log("글로벌--->", a, b);
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

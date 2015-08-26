@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>onclick 프로퍼티와 addEventListener()</h1>
+ 
+<button id='btn1' type="button">버튼1</button>
+<button id='btn2' type="button">버튼2</button>
+	 
+<script type="text/javascript">
+var e = document.getElementById('btn1');
+var e2 = document.getElementById('btn2');
+
+//1) onclick을 통해 여러 개의 리스너 등록하기: 불가능!
+e.onclick = function(event) {
+	alert('okok1');	
+};
+
+// 기존의 이벤트 리스너를 덮어쓴다.
+e.onclick = function(event) {
+	alert('okok2');	
+};
+
+//2) addEventListener()는 여러 개의 리스너를 추가한다.
+e2.addEventListener('click', function(event) {
+	alert('오호라1');
+});
+
+e2.addEventListener('click', function(event) {
+	alert('오호라2');
+});
+
+e2.addEventListener('click', function(event) {
+	alert('오호라3');
+});
+</script>
+</body>
+</html>
+
+
+
+
+

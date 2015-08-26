@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+body {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Dotum", "Helvetica", "Arial", "Verdana", "sans-serif";
+  font-size: small;
+}
+
+#main {
+	width: 600px;
+}
+  
+#pageFooter {
+  font-size: 70%;
+  padding: 5px;
+  text-align: center;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>JSON 데이터 그대로 출력하기</h1>
+<button id='btn1' type='button'>JSON 요청</button><br>
+
+<script type="text/javascript">
+"use strict";
+
+var btn = document.querySelector('#btn1');
+btn.onclick = function() {
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4) {
+			console.log(xhr.responseText);
+		}
+	};
+	xhr.open('GET', '../../../json/board/list.do', true);
+	xhr.setRequestHeader('Accept', 'application/json');
+	xhr.send();
+};
+</script>
+
+<address>이 페이지의 모든 권리는 자바 72기에 있습니다.</address>
+</body>
+</html>
+
+
+
+
+

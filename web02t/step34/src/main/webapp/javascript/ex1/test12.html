@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>window 객체와 변수</h1>
+
+<script type="text/javascript">
+"use strict";
+// 글로벌 변수와 글로벌 함수는 기본으로 window 객체에 소속된다.
+var a = 20;
+console.log(window.a);
+
+window.a = 30;
+console.log(a);
+
+// window 객체 활용
+function f1() {
+	var a;
+	a = 100;
+	console.log(a, window.a);
+}
+
+f1();
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
