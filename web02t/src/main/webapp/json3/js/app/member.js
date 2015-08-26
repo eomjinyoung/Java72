@@ -181,6 +181,27 @@ define([
         $('#progress .progress-bar').css('width', '0%');
       });
       
+      $('#fEmail').keyup(function(event) {
+        $.getJSON(
+            contextRoot + '/json/member/existEmail.do',
+            {
+              email: $(this).val()
+            },
+            function(result) {
+              if (result.data == 'no') {
+                $('#message')
+                  .removeClass('my-message-warning')
+                  .addClass('my-message-success')
+                  .html('사용 가능합니다.');
+              } else {
+                $('#message')
+                  .removeClass('my-message-success')
+                  .addClass('my-message-warning')
+                  .html('이미 등록된 이메일입니다.');
+              }
+        });
+      });
+      
       
       $('#fileupload').fileupload({
         url: contextRoot + '/json/file/upload.do',
