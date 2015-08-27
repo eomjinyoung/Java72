@@ -30,7 +30,7 @@ http.createServer(
         doError(request, response);
       }
 
-}).listen(8888, '127.0.0.1');
+}).listen(8888);
 console.log('서버 가동 중...');
 
 function doForm(request, response) {
