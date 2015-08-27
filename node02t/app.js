@@ -1,10 +1,6 @@
-var bit = require('./bit.js');
 var mysql = require('mysql');
-var url = require('url');
-var querystring = require('querystring');
-
-bit.listen('8888');
-console.log('서버 가동 중...');
+var express = require('express');
+var bodyParser = require('body-parser');
 
 var pool = mysql.createPool({
   connectionLimit: 10,
@@ -15,28 +11,19 @@ var pool = mysql.createPool({
   database: 'java72db'
 });
 
-pool.on('connection', function(connection) {
-  console.log('커넥션 생성됨.');
+var app = express();
+
+//express에서 사용할 도우미 객체 등록
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
 });
 
-bit.get('/board/form.do', function(request, response) {
-  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
-  response.write('<html><head>\n');
-  response.write('<title>게시판</title></head>\n');
-  response.write('<body>\n');
-  response.write('<h1>새 게시글</h1>\n');
-  response.write('<form action="insert.do" method="post">\n');
-  response.write('제목: <input type="text" name="title"><br>\n');
-  response.write('내용: <textarea name="content"\n'); 
-  response.write('     rows="3" cols="20"></textarea><br>\n');
-  response.write('<button>등록</button>\n');
-  response.write('</form>\n');
-  response.write('</body></html>\n');
-  response.end();
-});
-
-bit.get('/board/list.do', function(request, response) {
-  var urlInfo = url.parse(request.url, true);
+app.get('/board/list.do', function (request, response) {
   pool.query(
     'select bno,title,cre_dt,views from board10'
         + ' order by bno desc', 
@@ -77,36 +64,42 @@ bit.get('/board/list.do', function(request, response) {
   });
 });
 
-bit.post('/board/insert.do', function(request, response) {
-  var messageBody = '';
-  request.on('data', function(data) {
-    messageBody += data;
-  });
-  
-  request.on('end', function() {
-    // '변수=값&변수=값&변수=값' 문자열 분석은 외부 객체에 맡기자.
-    var params = querystring.parse(messageBody);
-    pool.query(
-        'insert into board10(title,content,cre_dt)'
-          + ' values(?,?,now())',
-        [ params.title,
-          params.content],
-        function(err, rows) {
-          response.writeHead(200, {
-            'Content-Type': 'text/html;charset=UTF-8',
-            'Refresh': '0;url=list.do'      
-          });
-          response.end();
-      });
-  });
+app.get('/board/form.do', function(request, response) {
+  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
+  response.write('<html><head>\n');
+  response.write('<title>게시판</title></head>\n');
+  response.write('<body>\n');
+  response.write('<h1>새 게시글</h1>\n');
+  response.write('<form action="insert.do" method="post">\n');
+  response.write('제목: <input type="text" name="title"><br>\n');
+  response.write('내용: <textarea name="content"\n'); 
+  response.write('     rows="3" cols="20"></textarea><br>\n');
+  response.write('<button>등록</button>\n');
+  response.write('</form>\n');
+  response.write('</body></html>\n');
+  response.end();
 });
 
-bit.get('/board/view.do', function(request, response) {
-  var urlInfo = url.parse(request.url, true);
+app.post('/board/insert.do', function(request, response) {
+  pool.query(
+      'insert into board10(title,content,cre_dt)'
+        + ' values(?,?,now())',
+      [ request.body['title'],
+        request.body['content']],
+      function(err, rows) {
+        response.writeHead(200, {
+          'Content-Type': 'text/html;charset=UTF-8',
+          'Refresh': '0;url=list.do'      
+        });
+        response.end();
+    });
+});
+
+app.get('/board/view.do', function(request, response) {
   pool.query(
       'select bno,title,content,cre_dt,views'
       + ' from board10 where bno=?',
-      [urlInfo.query.no],
+      [request.query['no']],
       function(err, rows) {
     response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
     response.write('<html><head>\n');
@@ -137,35 +130,13 @@ bit.get('/board/view.do', function(request, response) {
   });
 });
 
-bit.post('/board/update.do', function(request, response) {
-  var messageBody = '';
-  request.on('data', function(data) {
-    messageBody += data;
-  });
-  
-  request.on('end', function() {
-    var params = querystring.parse(messageBody);
-    pool.query(
-        'update board10 set title=?,content=?'
-          + ' where bno=?',
-        [ params.title,
-          params.content,
-          params.no ],
-        function(err, rows) {
-          response.writeHead(200, {
-            'Content-Type': 'text/html;charset=UTF-8',
-            'Refresh': '0;url=list.do'      
-          });
-          response.end();
-      });
-  });
-});
-
-bit.get('/board/delete.do', function(request, response) {
-  var urlInfo = url.parse(request.url, true);
+app.post('/board/update.do', function(request, response) {
   pool.query(
-      'delete from board10 where bno=?',
-      [ urlInfo.query.no ],
+      'update board10 set title=?,content=?'
+        + ' where bno=?',
+      [ request.body['title'],
+        request.body['content'],
+        request.body['no']],
       function(err, rows) {
         response.writeHead(200, {
           'Content-Type': 'text/html;charset=UTF-8',
@@ -175,20 +146,22 @@ bit.get('/board/delete.do', function(request, response) {
     });
 });
 
-bit.error(function(request, response) {
-  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
-  response.write('<html><head>\n');
-  response.write('<title>요청 결과</title></head>\n');
-  response.write('<body>\n');
-  response.write('<p>지원하지 않는 URL입니다.</p>');
-  response.write('</body></html>\n');
-  response.end();
+app.get('/board/delete.do', function(request, response) {
+  pool.query(
+      'delete from board10 where bno=?',
+      [ request.query['no']],
+      function(err, rows) {
+        response.writeHead(200, {
+          'Content-Type': 'text/html;charset=UTF-8',
+          'Refresh': '0;url=list.do'      
+        });
+        response.end();
+    });
 });
 
+var server = app.listen(8888, function () {
+  var host = server.address().address;
+  var port = server.address().port;
 
-
-
-
-
-
-
+  console.log('서버 실행 중: http://%s:%s', host, port);
+});

@@ -9,6 +9,8 @@
   "author": "java72",
   "license": "ISC",
   "dependencies": {
-    "mysql": "^2.9.0"
+    "mysql": "^2.9.0",
+    "express": ">4.0",
+    "body-parser": ">=1.13"
   }
 }
