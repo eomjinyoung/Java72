@@ -11,17 +11,17 @@ var con = mysql.createConnection({
 
 con.connect();
 
-con.query('select bno,title,cre_dt from board10', 
+con.query(
+  'update board10 set title=? where bno=?',
+  ['okok333', 71],
   function(err, rows) {
     if (err) {
       console.log(err);
       return;
     }
     
-    for (var i in rows) {
-      console.log(
-          rows[i].bno, rows[i].title);
-    }
+    console.log('변경 성공!');
+    
     con.end();
 });
 
