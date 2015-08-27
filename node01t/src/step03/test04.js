@@ -2,13 +2,18 @@ var http = require('http');
 var url = require('url');
 var mysql = require('mysql');
 
-var conInfo = {
+var pool = mysql.createPool({
+  connectionLimit: 10,
   host: 'localhost',
   port: 3306,
   user: 'java72',
   password: 'java72',
   database: 'java72db'
-};
+});
+
+pool.on('connection', function(connection) {
+  console.log('커넥션 생성됨.');
+});
 
 var requestMapper = {
     '/board/list.do': doList,
@@ -51,9 +56,7 @@ function doForm(request, response) {
 
 function doList(request, response) {
   var urlInfo = url.parse(request.url, true);
-  var con = mysql.createConnection(conInfo);
-  con.connect();
-  con.query('select bno,title,cre_dt,views from board10', 
+  pool.query('select bno,title,cre_dt,views from board10', 
       function(err, rows) {
         response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
         response.write('<html><head>\n');
@@ -82,7 +85,7 @@ function doList(request, response) {
             response.write('  <td>' + rows[i].views + '</td>');
             response.write('</tr>');
           }
-          con.end();
+          
         }
         response.write('</table>');
         response.write('</body></html>\n');
@@ -103,13 +106,38 @@ function doInsert(request, response) {
 
 function doView(request, response) {
   var urlInfo = url.parse(request.url, true);
-  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
-  response.write('<html><head>\n');
-  response.write('<title>게시글 조회</title></head>\n');
-  response.write('<body>\n');
-  response.write('<h1>게시글 상세정보</h1>');
-  response.write('</body></html>\n');
-  response.end();
+  pool.query(
+      'select bno,title,content,cre_dt,views'
+      + ' from board10 where bno=?',
+      [urlInfo.query.no],
+      function(err, rows) {
+    response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
+    response.write('<html><head>\n');
+    response.write('<title>게시글 조회</title></head>\n');
+    response.write('<body>\n');
+    response.write('<h1>게시글 상세정보</h1>');
+    
+    if (rows.length > 0) {
+      response.write('<form action="update.do" method="get">');
+      response.write('번호: <input type="text" name="no" ');
+      response.write('            value="' + rows[0].bno + '"><br>');
+      response.write('제목: <input type="text" name="title" ');
+      response.write('            value="' + rows[0].title + '"><br>');
+      response.write('내용: <textarea name="content" rows="5" ');
+      response.write('      cols="30">' + rows[0].content + '</textarea><br>');
+      response.write('등록일: ' + rows[0].cre_dt + '<br>');
+      response.write('조회수: ' + rows[0].views + '<br>');
+      response.write('<button>변경</button>');
+      response.write('<a href="delete.do?no=' + rows[0].bno + '">삭제</a>');
+      response.write('<a href="list.do">목록</a>');
+      response.write('</form>');
+    } else {
+      response.write('<p>해당 게시물이 존재하지 않습니다.</p>\n'); 
+    }
+    
+    response.write('</body></html>\n');
+    response.end();
+  });
 }
 
 function doUpdate(request, response) {
