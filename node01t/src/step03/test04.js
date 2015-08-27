@@ -1,5 +1,14 @@
 var http = require('http');
 var url = require('url');
+var mysql = require('mysql');
+
+var conInfo = {
+  host: 'localhost',
+  port: 3306,
+  user: 'java72',
+  password: 'java72',
+  database: 'java72db'
+};
 
 var requestMapper = {
     '/board/list.do': doList,
@@ -42,13 +51,43 @@ function doForm(request, response) {
 
 function doList(request, response) {
   var urlInfo = url.parse(request.url, true);
-  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
-  response.write('<html><head>\n');
-  response.write('<title>게시글 목록</title></head>\n');
-  response.write('<body>\n');
-  response.write('<h1>게시글 목록</h1>');
-  response.write('</body></html>\n');
-  response.end();
+  var con = mysql.createConnection(conInfo);
+  con.connect();
+  con.query('select bno,title,cre_dt,views from board10', 
+      function(err, rows) {
+        response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
+        response.write('<html><head>\n');
+        response.write('<title>게시글 목록</title></head>\n');
+        response.write('<body>\n');
+        response.write('<h1>게시글 목록</h1>');
+        response.write('<table>');
+        response.write('<tr>');
+        response.write('  <th>번호</th>');
+        response.write('  <th>제목</th>');
+        response.write('  <th>조회수</th>');
+        response.write('</tr>');
+        if (err) {
+          resopnse.write(err);
+        } else { 
+          for (var i in rows) {
+            response.write('<tr>');
+            response.write('  <td>' + rows[i].bno + '</td>');
+            response.write('  <td>'
+                + '<a href="view.do?no=' 
+                + rows[i].bno 
+                + '">'
+                + rows[i].title
+                + '</a>'
+                + '</td>');
+            response.write('  <td>' + rows[i].views + '</td>');
+            response.write('</tr>');
+          }
+          con.end();
+        }
+        response.write('</table>');
+        response.write('</body></html>\n');
+        response.end();
+    });
 }
 
 function doInsert(request, response) {
