@@ -142,13 +142,19 @@ function doView(request, response) {
 
 function doUpdate(request, response) {
   var urlInfo = url.parse(request.url, true);
-  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
-  response.write('<html><head>\n');
-  response.write('<title>게시글 변경</title></head>\n');
-  response.write('<body>\n');
-  response.write('<h1>변경 결과</h1>');
-  response.write('</body></html>\n');
-  response.end();
+  pool.query(
+    'update board10 set title=?,content=?'
+      + ' where bno=?',
+    [ urlInfo.query.title,
+      urlInfo.query.content,
+      urlInfo.query.no ],
+    function(err, rows) {
+      response.writeHead(200, {
+        'Content-Type': 'text/html;charset=UTF-8',
+        'Refresh': '0;url=list.do'      
+      });
+      response.end();
+  });
 }
 
 function doDelete(request, response) {
