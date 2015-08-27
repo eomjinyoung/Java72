@@ -62,32 +62,33 @@ function doList(request, response) {
         response.write('<html><head>\n');
         response.write('<title>게시글 목록</title></head>\n');
         response.write('<body>\n');
-        response.write('<h1>게시글 목록</h1>');
-        response.write('<table>');
-        response.write('<tr>');
-        response.write('  <th>번호</th>');
-        response.write('  <th>제목</th>');
-        response.write('  <th>조회수</th>');
-        response.write('</tr>');
+        response.write('<h1>게시글 목록</h1>\n');
+        response.write('<p><a href="form.do">새 글</a></p>\n');
+        response.write('<table>\n');
+        response.write('<tr>\n');
+        response.write('  <th>번호</th>\n');
+        response.write('  <th>제목</th>\n');
+        response.write('  <th>조회수</th>\n');
+        response.write('</tr>\n');
         if (err) {
           resopnse.write(err);
         } else { 
           for (var i in rows) {
-            response.write('<tr>');
-            response.write('  <td>' + rows[i].bno + '</td>');
+            response.write('<tr>\n');
+            response.write('  <td>' + rows[i].bno + '</td>\n');
             response.write('  <td>'
                 + '<a href="view.do?no=' 
                 + rows[i].bno 
                 + '">'
                 + rows[i].title
                 + '</a>'
-                + '</td>');
-            response.write('  <td>' + rows[i].views + '</td>');
-            response.write('</tr>');
+                + '</td>\n');
+            response.write('  <td>' + rows[i].views + '</td>\n');
+            response.write('</tr>\n');
           }
           
         }
-        response.write('</table>');
+        response.write('</table>\n');
         response.write('</body></html>\n');
         response.end();
     });
@@ -159,13 +160,16 @@ function doUpdate(request, response) {
 
 function doDelete(request, response) {
   var urlInfo = url.parse(request.url, true);
-  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
-  response.write('<html><head>\n');
-  response.write('<title>게시글 삭제</title></head>\n');
-  response.write('<body>\n');
-  response.write('<h1>삭제 결과</h1>');
-  response.write('</body></html>\n');
-  response.end();
+  pool.query(
+      'delete from board10 where bno=?',
+      [ urlInfo.query.no ],
+      function(err, rows) {
+        response.writeHead(200, {
+          'Content-Type': 'text/html;charset=UTF-8',
+          'Refresh': '0;url=list.do'      
+        });
+        response.end();
+    });
 }
 
 function doError(request, response) {
