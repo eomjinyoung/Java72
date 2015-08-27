@@ -40,56 +40,57 @@ function doForm(request, response) {
   response.end();
 }
 
-function doPlus(request, response) {
+function doList(request, response) {
   var urlInfo = url.parse(request.url, true);
   response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
   response.write('<html><head>\n');
-  response.write('<title>요청 결과</title></head>\n');
+  response.write('<title>게시글 목록</title></head>\n');
   response.write('<body>\n');
-  
-  var result = 0,
-  v1 = parseInt(urlInfo.query.v1),
-  v2 = parseInt(urlInfo.query.v2);
-  result = v1 + v2;
-  
-  response.write(v1 + ' + ' + v2 + ' = ' + result);
-  
+  response.write('<h1>게시글 목록</h1>');
   response.write('</body></html>\n');
   response.end();
 }
 
-function doMinus(request, response) {
+function doInsert(request, response) {
   var urlInfo = url.parse(request.url, true);
   response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
   response.write('<html><head>\n');
-  response.write('<title>요청 결과</title></head>\n');
+  response.write('<title>게시글 등록</title></head>\n');
   response.write('<body>\n');
-  
-  var result = 0,
-  v1 = parseInt(urlInfo.query.v1),
-  v2 = parseInt(urlInfo.query.v2);
-  result = v1 - v2;
-  
-  response.write(v1 + ' - ' + v2 + ' = ' + result);
-  
+  response.write('<h1>등록 결과</h1>');
   response.write('</body></html>\n');
   response.end();
 }
 
-function doMultiple(request, response) {
+function doView(request, response) {
   var urlInfo = url.parse(request.url, true);
   response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
   response.write('<html><head>\n');
-  response.write('<title>요청 결과</title></head>\n');
+  response.write('<title>게시글 조회</title></head>\n');
   response.write('<body>\n');
-  
-  var result = 0,
-  v1 = parseInt(urlInfo.query.v1),
-  v2 = parseInt(urlInfo.query.v2);
-  result = v1 * v2;
-  
-  response.write(v1 + ' * ' + v2 + ' = ' + result);
-  
+  response.write('<h1>게시글 상세정보</h1>');
+  response.write('</body></html>\n');
+  response.end();
+}
+
+function doUpdate(request, response) {
+  var urlInfo = url.parse(request.url, true);
+  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
+  response.write('<html><head>\n');
+  response.write('<title>게시글 변경</title></head>\n');
+  response.write('<body>\n');
+  response.write('<h1>변경 결과</h1>');
+  response.write('</body></html>\n');
+  response.end();
+}
+
+function doDelete(request, response) {
+  var urlInfo = url.parse(request.url, true);
+  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
+  response.write('<html><head>\n');
+  response.write('<title>게시글 삭제</title></head>\n');
+  response.write('<body>\n');
+  response.write('<h1>삭제 결과</h1>');
   response.write('</body></html>\n');
   response.end();
 }
