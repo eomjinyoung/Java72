@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({
 var board = require('./routes/board');
 app.use('/board', board);
 
+var member = require('./routes/member');
+app.use('/member', member);
 
 app.get('/', function (req, res) {
   res.send('Hello World!');

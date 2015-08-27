@@ -183,7 +183,8 @@ define([
       
       $('#fEmail').keyup(function(event) {
         $.getJSON(
-            contextRoot + '/json/member/existEmail.do',
+            //contextRoot + '/json/member/existEmail.do',
+            'http://localhost:8888/member/existEmail.do',
             {
               email: $(this).val()
             },
