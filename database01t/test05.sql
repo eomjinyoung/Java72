@@ -17,9 +17,15 @@ alter table member
 alter table member
   add constraint member_uk unique key (email); 
   
+insert into member(mname,email,pwd,cre_dt)
+values('user1','user1@test.com','1111',now());
+  
+insert into member(mname,email,pwd,cre_dt)
+values('user2','user2@test.com','1111',now());
 
-  
-  
+insert into member(mname,email,pwd,cre_dt)
+values('user3','user3@test.com','1111',now());
+
   
   
   
