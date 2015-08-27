@@ -142,22 +142,22 @@ function doView(request, response) {
     response.write('<html><head>\n');
     response.write('<title>게시글 조회</title></head>\n');
     response.write('<body>\n');
-    response.write('<h1>게시글 상세정보</h1>');
+    response.write('<h1>게시글 상세정보</h1>\n');
     
     if (rows.length > 0) {
-      response.write('<form action="update.do" method="get">');
-      response.write('번호: <input type="text" name="no" ');
-      response.write('            value="' + rows[0].bno + '"><br>');
-      response.write('제목: <input type="text" name="title" ');
-      response.write('            value="' + rows[0].title + '"><br>');
-      response.write('내용: <textarea name="content" rows="5" ');
-      response.write('      cols="30">' + rows[0].content + '</textarea><br>');
-      response.write('등록일: ' + rows[0].cre_dt + '<br>');
-      response.write('조회수: ' + rows[0].views + '<br>');
-      response.write('<button>변경</button>');
-      response.write('<a href="delete.do?no=' + rows[0].bno + '">삭제</a>');
-      response.write('<a href="list.do">목록</a>');
-      response.write('</form>');
+      response.write('<form action="update.do" method="post">\n');
+      response.write('번호: <input type="text" name="no" \n');
+      response.write('            value="' + rows[0].bno + '"><br>\n');
+      response.write('제목: <input type="text" name="title" \n');
+      response.write('            value="' + rows[0].title + '"><br>\n');
+      response.write('내용: <textarea name="content" rows="5" \n');
+      response.write('      cols="30">' + rows[0].content + '</textarea><br>\n');
+      response.write('등록일: ' + rows[0].cre_dt + '<br>\n');
+      response.write('조회수: ' + rows[0].views + '<br>\n');
+      response.write('<button>변경</button>\n');
+      response.write('<a href="delete.do?no=' + rows[0].bno + '">삭제</a>\n');
+      response.write('<a href="list.do">목록</a>\n');
+      response.write('</form>\n');
     } else {
       response.write('<p>해당 게시물이 존재하지 않습니다.</p>\n'); 
     }
@@ -168,19 +168,26 @@ function doView(request, response) {
 }
 
 function doUpdate(request, response) {
-  var urlInfo = url.parse(request.url, true);
-  pool.query(
-    'update board10 set title=?,content=?'
-      + ' where bno=?',
-    [ urlInfo.query.title,
-      urlInfo.query.content,
-      urlInfo.query.no ],
-    function(err, rows) {
-      response.writeHead(200, {
-        'Content-Type': 'text/html;charset=UTF-8',
-        'Refresh': '0;url=list.do'      
+  var messageBody = '';
+  request.on('data', function(data) {
+    messageBody += data;
+  });
+  
+  request.on('end', function() {
+    var params = querystring.parse(messageBody);
+    pool.query(
+        'update board10 set title=?,content=?'
+          + ' where bno=?',
+        [ params.title,
+          params.content,
+          params.no ],
+        function(err, rows) {
+          response.writeHead(200, {
+            'Content-Type': 'text/html;charset=UTF-8',
+            'Refresh': '0;url=list.do'      
+          });
+          response.end();
       });
-      response.end();
   });
 }
 
