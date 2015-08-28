@@ -22,7 +22,7 @@ router.get('/list.do', function (request, response) {
       response.write('<title>게시글 목록</title></head>\n');
       response.write('<body>\n');
       response.write('<h1>게시글 목록</h1>\n');
-      response.write('<p><a href="form.do">새 글</a></p>\n');
+      response.write('<p><a href="form.html">새 글</a></p>\n');
       response.write('<table>\n');
       response.write('<tr>\n');
       response.write('  <th>번호</th>\n');
@@ -51,22 +51,6 @@ router.get('/list.do', function (request, response) {
       response.write('</body></html>\n');
       response.end();
   });
-});
-
-router.get('/form.do', function(request, response) {
-  response.writeHead(200,{'Content-Type': 'text/html;charset=UTF-8'});
-  response.write('<html><head>\n');
-  response.write('<title>게시판</title></head>\n');
-  response.write('<body>\n');
-  response.write('<h1>새 게시글</h1>\n');
-  response.write('<form action="insert.do" method="post">\n');
-  response.write('제목: <input type="text" name="title"><br>\n');
-  response.write('내용: <textarea name="content"\n'); 
-  response.write('     rows="3" cols="20"></textarea><br>\n');
-  response.write('<button>등록</button>\n');
-  response.write('</form>\n');
-  response.write('</body></html>\n');
-  response.end();
 });
 
 router.post('/insert.do', function(request, response) {

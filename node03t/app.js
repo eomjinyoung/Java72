@@ -8,11 +8,18 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// 정적 자원(HTML, CSS, JavaScript, Images, ...)을 
+// 처리하는 도구 등록
+app.use(express.static('www'));
+
 var board = require('./routes/board');
 app.use('/board', board);
 
 var member = require('./routes/member');
 app.use('/member', member);
+
+var files = require('./routes/files');
+app.use('/files', files);
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
