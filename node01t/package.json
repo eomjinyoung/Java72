@@ -1,0 +1,14 @@
+{
+  "name": "node01t",
+  "version": "1.0.0",
+  "description": "Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)\r  ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "java72",
+  "license": "ISC",
+  "dependencies": {
+	  "mysql": "^2.9.0"
+  }
+}
